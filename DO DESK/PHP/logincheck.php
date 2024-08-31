@@ -4,12 +4,12 @@ require_once 'connections.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $accountID = $_POST['username'];
+    $email = $_POST['username'];
     $password = $_POST['password'];
 
     $query = "SELECT userTBL.personID, userTBL.firstName, userTBL.middleName, userTBL.lastName, userTBL.suffixName, userTBL.role 
     FROM accountTBL INNER JOIN userTBL ON accountTBL.personID = userTBL.personID 
-    WHERE accountTBL.userID = '$accountID' AND accountTBL.password = '$password'";
+    WHERE accountTBL.email = '$email' AND accountTBL.password = '$password'";
 
     $result = $conn->query($query);
 
@@ -25,13 +25,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: ../Final HTML/DODesk-Dashboard.html");
         exit();
     } else {
-        header("Location: ../Final HTML/DODesk-login.html"); //remember to change to index.php
+        //header("Location: ../Final HTML/DODesk-login.html"); //remember to change to index.php
+        echo "did not login properly";
         exit();
     }
 
     $conn->close();
 } else {
-    header("Location: ../Final HTML/DODesk-login.html"); //remember to change to index.php
+    //header("Location: ../Final HTML/DODesk-login.html"); //remember to change to index.php
     echo "did not login properly";
 }
 ?>
