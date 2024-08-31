@@ -12,7 +12,7 @@ let eventDateData = "August 30, 2024";
 let totalMinorViolations = 6;
 let totalMajorViolations = 46;
 //report lists
-let reports = 3;
+let reports = 1;
 let studentNumberData = '02000393';
 let lastNameData = 'Hall';
 let firstNameData = 'Jason';
