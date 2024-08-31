@@ -25,14 +25,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: ../Final HTML/DODesk-Dashboard.html");
         exit();
     } else {
-        //header("Location: ../Final HTML/DODesk-login.html"); //remember to change to index.php
-        echo "did not login properly";
+        header("Location: ../Final HTML/DODesk-login.html"); //remember to change to index.php
         exit();
     }
 
     $conn->close();
 } else {
-    //header("Location: ../Final HTML/DODesk-login.html"); //remember to change to index.php
+    header("Location: ../Final HTML/DODesk-login.html"); //remember to change to index.php
     echo "did not login properly";
 }
 ?>
