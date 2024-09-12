@@ -18,6 +18,6 @@ form.addEventListener('submit', (e) => {
         body: formData,
     }).then((Response)  => Response.text())
     .then((text) => {
-        document.querySelector('#transcriptions').innerHTML = text;
+        document.querySelector('#myTextarea').innerHTML = text;
     })
 });

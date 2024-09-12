@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DO DESK: Disciplinary Office Management System</title>
     
-    <link rel="icon" type="image/x-icon" href="/PICTURE/DoDeskViolet.png">
+    <link rel="icon" type="image/x-icon" href="../PICTURE/DoDeskViolet.png">
     <!--Font-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
         <!--font-->
-        <link rel="stylesheet" href="/DO DESK/CSS/poppinsFont.css">
+        <link rel="stylesheet" href="../CSS/poppinsFont.css">
         <!--Page Style-->
-        <link rel="stylesheet" href="/DO DESK/CSS/DODesk-OnTranscribeStyle.css">
+        <link rel="stylesheet" href="../CSS/DODesk-OnTranscribeStyle.css">
         <style>
           body {
               margin: 0;
@@ -142,43 +142,25 @@
                 <br>
                 
                 <div class="textarea-container">
+                  <textarea readonly id="myTextarea" placeholder="Upload your audio file"></textarea>
                   <div class="inputs-container">
                     <!-- Inputs -->
-                    <input type="file" id="upload-file">
-                    <input type="submit" value="Open File" id="open-file">
+                    
                   </div>
-                  <textarea  id="myTextarea" placeholder="Your text goes here..."></textarea>
                 </div>
+                <form action="../JAVASCRIPT/upload.js" method="post" enctype="multipart/form-data" id="myform">
+                  <input type="file" id="myFile" name="filename">
+                  <input type="submit" value="Upload File" name="submit">
+                </form>
                 <p>Click on the "Choose File" button to upload a file:</p>
                 <p>File Supported: mp3, mp4, mpeg, mpga, m4a, wav, and webm. File size should not exceed 25mb</p>
               </div> 
-
             </div>
-
-      </div>
-    
-      <script>
-        const textarea = document.getElementById("myTextarea");
-        const uploadFile = document.getElementById("upload-file");
-        const openFile = document.getElementById("open-file");
-    
-        textarea.addEventListener('input', function() {
-            // Check if the textarea has any value
-            if (textarea.value.trim() !== "") {
-                // Hide the inputs if there is text in the textarea
-                uploadFile.style.display = "none";
-                openFile.style.display = "none";
-            } else {
-                // Show the inputs if the textarea is empty
-                uploadFile.style.display = "block";
-                openFile.style.display = "block";
-            }
-        });
-    </script>
-     
-  <script src="scriptRecord.js"></script>
+          </div>
+  <!--<script src="scriptRecord.js"></script>-->
 
         <!--Scroll bar properties-->
-      <script src="/DO DESK/JAVASCRIPT/DODesk-RecordsJS.js"></script>
+      <script src="../JAVASCRIPT/upload.js"></script>
+
 </body>
 </html>
