@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             move_uploaded_file($file_tmp, $file);
 
             //ayusin yung api key para di nakalabas dito
-            //$yourApiKey = 'your_API_key';
+            //$yourApiKey = 'API KEY';
             //$yourApiKey = getenv('your_API_key');
             $client = OpenAI::client($yourApiKey);
             
@@ -46,10 +46,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             catch(Exception $e){
                 $text = 'error';
             }
-            print_r ($text);
+            $fileInfo = array(
+                0 => $text,
+                1 => $file_name,
+            );
+            print_r (json_encode($fileInfo));
         }
         if($errors){
-            print_r ($errors);
+            $fileInfo = array(
+                0 => $text,
+                1 => $file_name,
+            );
+            print_r (json_encode($fileInfo));
         }
     }
 }

@@ -1,4 +1,5 @@
 const url = '../PHP/openAITranscribe.php'
+const audioPath = '../uploads/'
 const form = document.querySelector('#myform');
 
 form.addEventListener('submit', (e) => {
@@ -16,8 +17,13 @@ form.addEventListener('submit', (e) => {
     fetch(url, {
         method: 'POST',
         body: formData,
-    }).then((Response)  => Response.text())
-    .then((text) => {
-        document.querySelector('#myTextarea').innerHTML = text;
+    }).then((Response)  => Response.json())
+    .then((json) => {
+        console.log(json)
+        document.querySelector('#myTextarea').innerHTML = json[0]
+        document.querySelector('#sampleTextarea').innerHTML = json[1]
+        document.querySelector('#audioPlayer').setAttribute('src', audioPath+json[1])
+        document.querySelector('#audio').load();
     })
+    
 });
