@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $text = '';
         $errors = [];
         $path = '../uploads/';
-        $extensions = ['mp3', 'mp4', 'mpeg', 'mpga', 'm4a', 'wav', 'web'];
+        $extensions = ['mp3', 'mp4', 'mpeg', 'mpga', 'm4a', 'wav', 'webm'];
         
         $file_name = $_FILES['files']['name'][0]; //file name
         $file_tmp = $_FILES['files']['tmp_name'][0]; // temp name on server
@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             move_uploaded_file($file_tmp, $file);
 
             //ayusin yung api key para di nakalabas dito
-            //$yourApiKey = 'API KEY';
+            //$yourApiKey = 'YOUR API';
             //$yourApiKey = getenv('your_API_key');
             $client = OpenAI::client($yourApiKey);
             
