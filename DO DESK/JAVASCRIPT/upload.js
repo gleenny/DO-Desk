@@ -51,6 +51,8 @@ if (navigator.mediaDevices) {
           link.download = clipName
           document.body.appendChild(link)
 
+          console.log(link);
+
           link.dispatchEvent(
             new MouseEvent('click', {
               bubbles: true,
@@ -88,7 +90,6 @@ form.addEventListener('submit', (e) => {
     .then((json) => {
         console.log(json)
         document.querySelector('#myTextarea').innerHTML = json[0]
-        document.querySelector('#sampleTextarea').innerHTML = json[1]
         document.querySelector('#audioPlayer').setAttribute('src', audioPath+json[1])
         document.querySelector('#audio').load();
     })

@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             move_uploaded_file($file_tmp, $file);
 
             //ayusin yung api key para di nakalabas dito
-            //$yourApiKey = 'YOUR API';
+            //$yourApiKey = 'YOUR API KEY';
             //$yourApiKey = getenv('your_API_key');
             $client = OpenAI::client($yourApiKey);
             
