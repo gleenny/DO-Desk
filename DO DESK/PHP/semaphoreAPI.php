@@ -2,9 +2,9 @@
 
 $ch = curl_init();
 $parameters = array(
-    //'apikey' => 'API KEY', //Your API KEY
-    'number' => '09228774548', //message to
-    'message' => 'I would like to talk about you cars extended warranty',
+    'apikey' => 'YOUR API', //Your API KEY
+    'number' => '09178628580', //message to
+    'message' => 'I would like to talk about your cars extended warranty',
     'sendername' => 'DODesk' //waiting for approval ng sendername
 );
 curl_setopt( $ch, CURLOPT_URL,'https://api.semaphore.co/api/v4/messages' );
