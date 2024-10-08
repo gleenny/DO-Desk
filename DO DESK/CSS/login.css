@@ -159,6 +159,28 @@ body {
   animation-delay: 2.5s;
 }
 
+.message-box {
+  display: none; /* Hidden by default */
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 5px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.message-success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.message-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+
 #logo {
   height: 50px;
   float: left;
