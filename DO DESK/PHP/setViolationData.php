@@ -14,7 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     VALUES (NULL, '$violationType', '$violationCase', '$studentNumber', '1', '1000101');";
 
     if ($conn->query($query) === TRUE) {
-        echo "New record created successfully";
+        echo "New record created successfully!";
+  
     } else {
         echo "Error: " . $query . "<br>" . $conn->error;
     }

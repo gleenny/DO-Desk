@@ -177,7 +177,7 @@ align-items: center;
 
 .button {
 display: flex;
-align-items: center;
+align-items: end;
 color: #9b9ca7;
 background: #1a1b3c;
 border: none;
@@ -233,6 +233,7 @@ width: 30px;
 padding: 10px 16px;
 margin-right: 0;
 }
+
 .cards-button:hover {
 background-color: rgb(28,36,68);
 cursor: pointer;
@@ -245,7 +246,7 @@ margin: 0 2px 0 0;
 .user-box .cards-header .date-wrapper,
 .user-box .cards-view .date-wrapper {
 display: flex;
-align-items: center;
+align-items: end;
 margin: auto;
 }
 .user-box .cards-header .date-wrapper .title,
@@ -260,7 +261,7 @@ border-radius: 6px;
 display: flex;
 flex-direction: column;
 flex-grow: 1;
-max-height: 430px;
+max-height: 100%;
 width: 100%;
 
 }
@@ -475,55 +476,22 @@ margin-left: 20px;
   animation-fill-mode: forwards;
 }
 
-/* modal */
+
+/* The Modal (background) */
 .modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
   left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.4);
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 500px;
-  border-radius: 10px;
-}
-
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-label {
-  display: block;
-  margin: 10px 0 5px;
-}
-
-input, select, button {
-  width: 100%;
-  padding: 10px;
-  margin: 5px 0 10px;
-  box-sizing: border-box;
-}
 
 @keyframes fadeItIn {
   0% {

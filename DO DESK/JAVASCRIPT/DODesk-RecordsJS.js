@@ -1,41 +1,47 @@
-const url = "../PHP/getViolationsData.php";
+const geturl = "../PHP/getViolationsData.php";
+const seturl = "../PHP/setViolationData.php";
+const form = document.querySelector('#myform');
 
-let minor = 3;
-let major = 4;
-let community = 5;
-let pending = 6;
-
-let reports = 1;
-let recordedByData = 'Mrs.Facturan'
-let studentNumberData = '02000393';
-let lastNameData = 'Hall';
-let firstNameData = 'Jason';
-let middleNameData = 'Thor';
-let courseData = 'BSIT';
-let levelData = '4YR A705';
-let violationData = 'Minor';
-let statusData = 'Done';
-
+let rowCount = 0;
 let studentCount = 0;
-
-setCounts();
 getViolationInfo();
 
-function setCounts(){
-    document.querySelector('#minorCount').innerHTML = minor;
-    document.querySelector('#majorCount').innerHTML = major;
-    document.querySelector('#communityCount').innerHTML = community;
-    document.querySelector('#pendingCount').innerHTML = pending;
-    
-}
+//adding new violations
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
 
+    const formData = new FormData();
+
+    formData.append("violationType", document.querySelector("#violationType").value);
+    formData.append("violationCase", document.querySelector("#violationCase").value);
+    formData.append("studentNumber", document.querySelector("#studentNumber").value);
+
+    fetch(seturl, {
+        method: 'POST',
+        body: formData,
+    }).then((Response) => {
+        return Response.text()
+    }).then((body) => {
+        console.log(body)
+        console.log("Data has been added");
+        console.log("Resetting table"); 
+        for(let i = 0; i <= rowCount - 1; i++){
+            document.querySelector("#reportListRows").deleteRow(0);
+        }
+        console.log("Repopulating table"); 
+        getViolationInfo();
+    })
+});
+
+//report list of student violations
 function getViolationInfo(){
-    fetch(url, {
+    fetch(geturl, {
         method: 'GET'
     }).then((Response) => Response.json())
     .then((json) => {
         console.log("Displaying list of violation cases") 
-        for(let i = 0; i <= (json["Officer"].length - 1); i++){
+        rowCount = json["Officer"].length;
+        for(let i = 0; i <= rowCount - 1; i++){
 
             let tableRow = document.createElement('tr');
             tableRow.id = 'violationList' + i;
@@ -75,6 +81,7 @@ function getViolationInfo(){
 
 
             document.querySelector('#reportListRows').appendChild(tableRow);//tbody
+            
             document.querySelector('#violationList' + i).appendChild(RecordedBy);
                 document.querySelector('#RecordedBy' + i).innerHTML = json["recordedBy"][i];
 
@@ -103,7 +110,33 @@ function getViolationInfo(){
         //document.querySelector('#student').innerHTML = json["studentNumber"][0];
     })
 }
+/*
+// Modal 
+//Get the div = modal 
+var modal = document.getElementById("myModal");
 
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}*/
 
 
 

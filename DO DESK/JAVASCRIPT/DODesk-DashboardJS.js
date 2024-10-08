@@ -1,3 +1,6 @@
+//link 
+const url = "../PHP/getViolationsData.php";
+
 //data
 const userTitle = "Disciplinary Officer";
 const picturePathFile = '/DO DESK/PICTURE/';
@@ -78,68 +81,77 @@ document.addEventListener("DOMContentLoaded", function() {
 //GAWAN MO NG DI HARCODED YUNG REPORT LIST
 //DI PA FINAL TO
 function setReportLists(){
-    for(let i = 1; i <= reports; i++){
-        let tableRow = document.createElement('tr');
-        tableRow.id = 'reportList' + i;
-    
-        let studentNumber = document.createElement('td');
-        studentNumber.id = 'studentNumber' + i;
-        let lastName = document.createElement('td');
-        lastName.id = 'lastName' + i;
-        let firstName = document.createElement('td');
-        firstName.id = 'firstName' + i;
-        let middleName = document.createElement('td');
-        middleName.id = 'middleName' + i;
-        let course = document.createElement('td');
-        course.id = 'course' + i;
+    fetch(url, {
+        method: 'GET'
+    }).then((Response) => Response.json())
+    .then((json) => {
+        console.log("Displaying list of violation cases") 
+        for(let i = 0; i <= (json["Officer"].length - 1); i++){
+
+            let tableRow = document.createElement('tr');
+            tableRow.id = 'violationList' + i;
         
-        //baka tanggalin to
-        let timeIn = document.createElement('td');
-        timeIn.id = 'timeIn' + i;
-        let timeOut = document.createElement('td');
-        timeOut.id = 'timeOut' + i;
-        
-        //status
-        let status = document.createElement('td');
-        status.id = 'status' + i;
-        let statusDiv = document.createElement('div');
-        statusDiv.id = 'statusDiv' + i;
-        statusDiv.classList.add('status');
-        if(statusData == 'Done'){
-            statusDiv.classList.add('is-green');
+            let RecordedBy = document.createElement('td');
+            RecordedBy.id = 'RecordedBy' + i;
+
+            let studentNumber = document.createElement('td');
+            studentNumber.id = 'studentNumber' + i;
+
+            if(json["middleName"][i] == null){
+                studentNameHolder = json["firstName"][i] + " " + json["lastName"][i];
+            }
+            else{
+                studentNameHolder = json["firstName"][i] + " " + json["middleName"][i] + " " + json["lastName"][i];
+            }  
+
+            let studentName = document.createElement('td');
+            studentName.id = 'studentName' + i;
+            let course = document.createElement('td');
+            course.id = 'course' + i;
+            let section = document.createElement('td');
+            section.id = 'section' + i;
+            let violationType = document.createElement('td');
+            violationType.id = 'violationType' + i;
+            let violationCase = document.createElement('td');
+            violationCase.id = 'violationCase' + i;
+
+            if(json["active"][i] == 1){
+                resolveHolder = "Unresolved"
+            }
+            else{
+                resolveHolder = "Resolved"
+            }  
+            let active = document.createElement('td');
+            active.id = 'active' + i;
+
+
+            document.querySelector('#reportListRows').appendChild(tableRow);//tbody
+            document.querySelector('#violationList' + i).appendChild(RecordedBy);
+                document.querySelector('#RecordedBy' + i).innerHTML = json["recordedBy"][i];
+
+            document.querySelector('#violationList' + i).appendChild(studentNumber);
+                document.querySelector('#studentNumber' + i).innerHTML = json["studentNumber"][i];
+
+            document.querySelector('#violationList' + i).appendChild(studentName);
+                document.querySelector('#studentName' + i).innerHTML = studentNameHolder;
+
+            document.querySelector('#violationList' + i).appendChild(course);
+                document.querySelector('#course' + i).innerHTML = json["course"][i];
+
+            document.querySelector('#violationList' + i).appendChild(section);
+                document.querySelector('#section' + i).innerHTML = json["section"][i];
+
+            document.querySelector('#violationList' + i).appendChild(violationType);
+                document.querySelector('#violationType' + i).innerHTML = json["violationType"][i];
+
+            document.querySelector('#violationList' + i).appendChild(violationCase);
+                document.querySelector('#violationCase' + i).innerHTML = json["violationCase"][i];
+
+            document.querySelector('#violationList' + i).appendChild(active);
+                document.querySelector('#active' + i).innerHTML = resolveHolder;
         }
-        else if(statusData == 'Pending'){
-            statusDiv.classList.add('is-red');
-        }
-        else if(statusData == 'Waiting'){
-            statusDiv.classList.add('is-wait');
-        }
-    
-        document.querySelector('#reportListRows').appendChild(tableRow);
-        document.querySelector('#reportList' + i).appendChild(studentNumber);
-            document.querySelector('#studentNumber' + i).innerHTML = studentNumberData;
-    
-        document.querySelector('#reportList' + i).appendChild(lastName);
-            document.querySelector('#lastName' + i).innerHTML = lastNameData;
-    
-        document.querySelector('#reportList' + i).appendChild(firstName);
-            document.querySelector('#firstName' + i).innerHTML = firstNameData;
-    
-        document.querySelector('#reportList' + i).appendChild(middleName);
-            document.querySelector('#middleName' + i).innerHTML = middleNameData;
-    
-        document.querySelector('#reportList' + i).appendChild(course);
-            document.querySelector('#course' + i).innerHTML = courseData;
-    
-        document.querySelector('#reportList' + i).appendChild(timeIn);
-            document.querySelector('#timeIn' + i).innerHTML = timeInData;
-            
-        document.querySelector('#reportList' + i).appendChild(timeOut);
-            document.querySelector('#timeOut' + i).innerHTML = timeOutData;
-    
-        document.querySelector('#reportList' + i).appendChild(status);
-        document.querySelector('#status' + i).appendChild(statusDiv);
-            document.querySelector('#statusDiv' + i).innerHTML = statusData;
-    }
+
+        //document.querySelector('#student').innerHTML = json["studentNumber"][0];
+    })
 }
 

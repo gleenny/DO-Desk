@@ -130,41 +130,28 @@
         </div>
 
         <!--First Flow-->
-        <div class="user-box first-box">
 
-          <!--1:First module-->
-          <div class="minorModule card" style="--delay: .1s">
-            <div class="count" id="minorCount">0</div>
-            <div class="title">Minor Violation</div>
-          </div>
-
-          <!--1:second module-->
-          <div class="minorModule card" style="--delay: .3s">
-            <div class="count" id="majorCount">0</div>
-            <div class="title">Major Violation</div>
-          </div>
-
-          <!--1:third module-->
-          <div class="communityService card" style="--delay: .5s">
-            <div class="count" id="communityCount">0</div>
-            <div class="title">Community Service</div>
-          </div>
-
-          <!--1:fourt module-->
-          <div class="pendingRecords card" style="--delay: .6s">
-            <div class="count" id="pendingCount">0</div>
-            <div class="title">Pending Records</div>
-          </div>
-
-        </div>
 
         <!--Second Flow-->
         <div class="user-box second-box">
-          <!--2:First module-->
+
+
+          <form action="../JAVASCRIPT/DODesk-RecordsJS.js" enctype="multipart/form-data" method="POST" id="myform">
+            <input type="text" placeholder="Violation Type" id="violationType">
+            <input type="text" placeholder="Violation Case" id="violationCase">
+            <input type="text" placeholder="Student Number" id="studentNumber">
+            <input type="submit" value="Submit Violation" name="submit" > 
+          </form>
+        </div>
+
+        <!--Second Flow-->
+        <div class="user-box third-box">
+          <!--3:First module-->
 
           <!--List Module-->
           <div class="cards-wrapper" style="--delay: 1s">
             <div class="cards-header">
+              
             <div class="cards-view">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
               <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
@@ -173,9 +160,19 @@
               
               <span class="today"> Report List</span>
             </div>
-            <div class="cards-button button" id="openModal">
-              Search Student
+            <a href="../Final HTML/addViolation.html" class="cards-button button">
+              Add Student
+            </a>
+            
+            <a href="../Final HTML/addViolation.html" class="cards-button button">
+              Update Student
+            </a>
+            <form action="../PHP/searchOnViolationtbl.php" method="GET">
+              <div class="input-group mb-3">
+                  <input type="text" name="search" requiredvalue="<?php if(isset($_GET['search'])){echo $_GET['search']; } ?>" class="form-control" placeholder="Search data">
+                  <button type="submit" class="btn btn-primary">Search</button>
               </div>
+          </form>
             </div>
             <div class="cards card">
             <table class="table">
@@ -192,70 +189,23 @@
                 
               </tr>
               </thead>
-              
+
               <tbody id="reportListRows">
               </tbody>
             </table>
             </div>
           </div>
+          
         </div>
+        <script src="../JAVASCRIPT/DODesk-RecordsJS.js"></script>
 
-        <a href="addViolation.html">Add Violation</a>
 
-  <div id="myModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <form id="searchForm">
-        <label for="studentNumber">Student Number:</label>
-        <input type="number" id="studentNumber" name="studentNumber" required>
-        
-        <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" name="lastName">
-        
-        <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" name="firstName">
-        
-        <label for="middleName">Middle Name:</label>
-        <input type="text" id="middleName" name="middleName">
-        
-        <label for="course">Course:</label>
-        <select id="course" name="course">
-          <option value="BSIT">BSIT</option>
-          <option value="BSHM">BSHM</option>
-          <option value="BSTM">BSTM</option>
-          <option value="BSCpe">BSCpe</option>
-          <option value="BSBA">BSBA</option>
-          <option value="BACOMM">BACOMM</option>
-        </select>
-        
-        <label for="year">Year:</label>
-        <select id="year" name="year">
-          <option value="11GR">11GR</option>
-          <option value="12GR">12GR</option>
-          <option value="1YR">1YR</option>
-          <option value="2YR">2YR</option>
-          <option value="3YR">3YR</option>
-          <option value="4TH">4TH</option>
-        </select>
-        
-        <label for="section">Section:</label>
-        <input type="text" id="section" name="section">
-        
-        <label for="status">Status:</label>
-        <select id="status" name="status">
-          <option value="Done">Done</option>
-          <option value="Pending">Pending</option>
-          <option value="Waiting">Waiting</option>
-        </select>
-        
-        <button type="submit">Search</button>
-      </form>
-    </div>
-  </div>
+        <!--Scripts-->
+          
 
-  <script src="scriptRecord.js"></script>
+      <!--para mashow report list-->
 
-        <!--Scroll bar properties-->
-      <script src="../JAVASCRIPT/DODesk-RecordsJS.js"></script>
+
+
 </body>
 </html>
