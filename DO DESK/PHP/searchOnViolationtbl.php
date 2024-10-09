@@ -8,8 +8,8 @@
                                         $filtervalues = str_replace(" ","%",$filtervalues);                          
                                         $query = "SELECT violationtbl.*, studenttbl.`firstName`, studenttbl.`middleName`, studenttbl.`lastName`
                                         FROM violationtbl 
-                                            LEFT JOIN studenttbl ON violationtbl.`studentNumber` = studenttbl.`studentNumber`
-                                            WHERE CONCAT(studenttbl.`firstName`, studenttbl.`middleName`, studenttbl.`lastName`) LIKE '%$filtervalues%';";
+                                        LEFT JOIN studenttbl ON violationtbl.`studentNumber` = studenttbl.`studentNumber`
+                                        WHERE CONCAT(studenttbl.`firstName`, studenttbl.`middleName`, studenttbl.`lastName`) LIKE '%$filtervalues%';";
                                         $query_run = mysqli_query($con, $query);
 
                                         if(mysqli_num_rows($query_run) > 0)

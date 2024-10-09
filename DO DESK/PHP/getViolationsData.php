@@ -9,11 +9,13 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
     $query = "SELECT `violationtbl`.*,
      `studenttbl`.`firstName`,
-      `studenttbl`.`middleName`,
-       `studenttbl`.`lastName`,
-        `studenttbl`.`course`,
-         `studenttbl`.`section`,
-          `usertbl`.`lastName` AS `Officer`
+     `studenttbl`.`middleName`,
+     `studenttbl`.`lastName`,
+     `studenttbl`.`course`,
+     `studenttbl`.`section`,
+     
+     `usertbl`.`lastName` AS `Officer`
+
     FROM `violationtbl` 
 	LEFT JOIN `studenttbl` ON `violationtbl`.`studentNumber` = `studenttbl`.`studentNumber` 
 	LEFT JOIN `usertbl` ON `violationtbl`.`recordedBy` = `usertbl`.`personID`;";
@@ -38,7 +40,9 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
         print_r (json_encode($cases));
         //print_r ($cases);
     }
-    
+
+
+        
     $conn->close();
 }
 

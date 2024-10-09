@@ -2,9 +2,13 @@ const geturl = "../PHP/getViolationsData.php";
 const seturl = "../PHP/setViolationData.php";
 const form = document.querySelector('#myform');
 
+
+const getsearch = "../PHP/searchViolationData.php";
 let rowCount = 0;
 let studentCount = 0;
 getViolationInfo();
+//searchStudents();
+
 
 //adding new violations
 form.addEventListener('submit', (e) => {
@@ -41,6 +45,7 @@ function getViolationInfo(){
     .then((json) => {
         console.log("Displaying list of violation cases") 
         rowCount = json["Officer"].length;
+
         for(let i = 0; i <= rowCount - 1; i++){
 
             let tableRow = document.createElement('tr');
@@ -110,6 +115,61 @@ function getViolationInfo(){
         //document.querySelector('#student').innerHTML = json["studentNumber"][0];
     })
 }
+
+
+//report list of student violations
+document.getElementById('searchForm').addEventListener('submit', function (e) {
+    e.preventDefault(); // Prevent default form submission
+
+    const formData = new FormData();
+    formData.append("studentNumber", document.querySelector("#searchNumber").value);
+    formData.append("studentName", document.querySelector("#searchName").value);
+    formData.append("course", document.querySelector("#searchCourse").value);
+    formData.append("section", document.querySelector("#searchSection").value);
+    formData.append("violationType", document.querySelector("#typeOfViolation").value);
+    formData.append("violationCase", document.querySelector("#searchCase").value);
+    formData.append("status", document.querySelector("#status").value);
+
+    formData.append("requestType", "SearchStudentViolation");
+
+    fetch(geturl, {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => response.json())
+    .then(json => {
+        // Handle and display search results
+        const resultContainer = document.getElementById('searchResults');
+        resultContainer.innerHTML = '';
+
+        console.log(json);
+
+       /* if (json.length > 0) {
+            json.forEach(item => {
+                resultContainer.innerHTML += `<div>
+                    <strong>Student Number:</strong> ${item.studentNumber} <br>
+                    <strong>Name:</strong> ${item.studentName} <br>
+                    <strong>Course:</strong> ${item.course} <br>
+                    <strong>Violation Type:</strong> ${item.ViolationType} <br>
+                    <strong>Case:</strong> ${item.ViolationCase} <br>
+                    <strong>Status:</strong> ${item.status} <br><hr>
+                </div>`;
+            });
+        } else {
+            resultContainer.innerHTML = 'No results found';
+        }
+    })*/
+  /*  .catch(error => {
+        // Display error message to user
+        const resultContainer = document.getElementById('searchResults');
+        resultContainer.innerHTML = 'An error occurred while processing your request. Please try again later.';
+        console.error('Error:', error); // Log error to console for debugging purposes
+    });*/
+})
+});
+
+
+
 /*
 // Modal 
 //Get the div = modal 
