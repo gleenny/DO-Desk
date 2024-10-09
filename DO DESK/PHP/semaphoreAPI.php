@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         for($i = 0; $i < sizeof($mobileNumbers); $i++){
             $ch = curl_init();
             $parameters = array(
-                'apikey' => 'e1e318783c6fa04008ec10e82affc6b6 ', //Your API KEY
+                'apikey' => 'YOUR API KEY', //Your API KEY
                 'number' => $mobileNumbers[$i], //message to
                 'message' => $message,
                 'sendername' => 'DODesk' //APPROVED NA, SANA SA ENDORSEMENT DIN
