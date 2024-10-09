@@ -1,6 +1,8 @@
 const geturl = "../PHP/getViolationsData.php";
 const seturl = "../PHP/setViolationData.php";
+const searchurl = "../PHP/searchViolationData.php";
 const form = document.querySelector('#myform');
+const searchForm = document.getElementById('searchForm');
 
 
 const getsearch = "../PHP/searchViolationData.php";
@@ -118,21 +120,134 @@ function getViolationInfo(){
 
 
 //report list of student violations
-document.getElementById('searchForm').addEventListener('submit', function (e) {
+searchForm.addEventListener('submit', function (e) {
     e.preventDefault(); // Prevent default form submission
 
     const formData = new FormData();
+
     formData.append("studentNumber", document.querySelector("#searchNumber").value);
     formData.append("studentName", document.querySelector("#searchName").value);
     formData.append("course", document.querySelector("#searchCourse").value);
     formData.append("section", document.querySelector("#searchSection").value);
     formData.append("violationType", document.querySelector("#typeOfViolation").value);
     formData.append("violationCase", document.querySelector("#searchCase").value);
-    formData.append("status", document.querySelector("#status").value);
+    //status
+    /*if(document.querySelector("#status").value == "Resolve"){
+        formData.append("status", 0);
+    }
+    else if(document.querySelector("#status").value == "Unresolve"){
+        formData.append("status", 1);
+    }
+    else{
+        formData.append("status", '');
+    }*/
 
     formData.append("requestType", "SearchStudentViolation");
+    
 
-    fetch(geturl, {
+    fetch(searchurl, {
+        method: 'POST',
+        body: formData,
+    })
+    .then((Response) => Response.json())
+    .then((json) => {
+
+        console.log(formData.get("studentName"))
+
+        // Handle and display search results
+        console.log(json);
+        console.log("Resetting table"); 
+        for(let i = 0; i <= rowCount - 1; i++){
+            document.querySelector("#reportListRows").deleteRow(0);
+        }
+        console.log("Repopulating table"); 
+        console.log("Displaying list of violation cases") 
+        rowCount = json["Officer"].length;
+
+        for(let i = 0; i <= rowCount - 1; i++){
+
+            let tableRow = document.createElement('tr');
+            tableRow.id = 'violationList' + i;
+        
+            let RecordedBy = document.createElement('td');
+            RecordedBy.id = 'RecordedBy' + i;
+
+            let studentNumber = document.createElement('td');
+            studentNumber.id = 'studentNumber' + i;
+
+            if(json["middleName"][i] == null){
+                studentNameHolder = json["firstName"][i] + " " + json["lastName"][i];
+            }
+            else{
+                studentNameHolder = json["firstName"][i] + " " + json["middleName"][i] + " " + json["lastName"][i];
+            }  
+
+            let studentName = document.createElement('td');
+            studentName.id = 'studentName' + i;
+            let course = document.createElement('td');
+            course.id = 'course' + i;
+            let section = document.createElement('td');
+            section.id = 'section' + i;
+            let violationType = document.createElement('td');
+            violationType.id = 'violationType' + i;
+            let violationCase = document.createElement('td');
+            violationCase.id = 'violationCase' + i;
+
+            if(json["active"][i] == 1){
+                resolveHolder = "Unresolved"
+            }
+            else{
+                resolveHolder = "Resolved"
+            }  
+            let active = document.createElement('td');
+            active.id = 'active' + i;
+
+
+            document.querySelector('#reportListRows').appendChild(tableRow);//tbody
+            
+            document.querySelector('#violationList' + i).appendChild(RecordedBy);
+                document.querySelector('#RecordedBy' + i).innerHTML = json["recordedBy"][i];
+
+            document.querySelector('#violationList' + i).appendChild(studentNumber);
+                document.querySelector('#studentNumber' + i).innerHTML = json["studentNumber"][i];
+
+            document.querySelector('#violationList' + i).appendChild(studentName);
+                document.querySelector('#studentName' + i).innerHTML = studentNameHolder;
+
+            document.querySelector('#violationList' + i).appendChild(course);
+                document.querySelector('#course' + i).innerHTML = json["course"][i];
+
+            document.querySelector('#violationList' + i).appendChild(section);
+                document.querySelector('#section' + i).innerHTML = json["section"][i];
+
+            document.querySelector('#violationList' + i).appendChild(violationType);
+                document.querySelector('#violationType' + i).innerHTML = json["violationType"][i];
+
+            document.querySelector('#violationList' + i).appendChild(violationCase);
+                document.querySelector('#violationCase' + i).innerHTML = json["violationCase"][i];
+
+            document.querySelector('#violationList' + i).appendChild(active);
+                document.querySelector('#active' + i).innerHTML = resolveHolder;
+        }
+    })
+});
+
+/*fetch(searchurl, {
+    method: 'POST',
+    body: formData,
+})
+.then((Response) => {
+return Response.text()
+})
+.then(json => {
+    // Handle and display search results
+    const resultContainer = document.getElementById('searchResults');
+    resultContainer.innerHTML = '';
+
+    console.log(json);
+})*/
+
+/*fetch(searchurl, {
         method: 'POST',
         body: formData,
     })
@@ -143,8 +258,9 @@ document.getElementById('searchForm').addEventListener('submit', function (e) {
         resultContainer.innerHTML = '';
 
         console.log(json);
+    })*/
 
-       /* if (json.length > 0) {
+/* if (json.length > 0) {
             json.forEach(item => {
                 resultContainer.innerHTML += `<div>
                     <strong>Student Number:</strong> ${item.studentNumber} <br>
@@ -165,9 +281,6 @@ document.getElementById('searchForm').addEventListener('submit', function (e) {
         resultContainer.innerHTML = 'An error occurred while processing your request. Please try again later.';
         console.error('Error:', error); // Log error to console for debugging purposes
     });*/
-})
-});
-
 
 
 /*
