@@ -11,14 +11,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $studentName = $_POST['studentName'];
         $searchCourse = $_POST['course'];
         $searchSection = $_POST['section'];
-        $typeOfViolation = $_POST['violationType'];
+        if($_POST['violationType'] == "None"){
+            $typeOfViolation = "";
+        }else {
+            $typeOfViolation = $_POST['violationType'];
+        }
         $searchCase = $_POST['violationCase'];
         //$status = $_POST['status'];
 
         // SQL query
 
-        if (!empty($studentNumber)) {
-            $sql = "SELECT `violationtbl`.*,
+        $sql = "SELECT `violationtbl`.*,
                 `studenttbl`.`firstName`,
                 `studenttbl`.`middleName`,
                 `studenttbl`.`lastName`,
@@ -29,43 +32,30 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 FROM `violationtbl` 
                 LEFT JOIN `studenttbl` ON `violationtbl`.`studentNumber` = `studenttbl`.`studentNumber` 
-                LEFT JOIN `usertbl` ON `violationtbl`.`recordedBy` = `usertbl`.`personID`
-                WHERE `studenttbl`.`studentNumber` LIKE '$studentNumber'"; 
+                LEFT JOIN `usertbl` ON `violationtbl`.`recordedBy` = `usertbl`.`personID`";
+
+        if (!empty($studentNumber)) {
+            $sql .= "WHERE `studenttbl`.`studentNumber` LIKE '$studentNumber'";
         }
 
         else if (!empty($studentName)) {
-            $sql = "SELECT `violationtbl`.*,
-            `studenttbl`.`firstName`,
-            `studenttbl`.`middleName`,
-            `studenttbl`.`lastName`,
-            `studenttbl`.`course`,
-            `studenttbl`.`section`,
-            
-            `usertbl`.`lastName` AS `Officer`
-
-            FROM `violationtbl` 
-            LEFT JOIN `studenttbl` ON `violationtbl`.`studentNumber` = `studenttbl`.`studentNumber` 
-            LEFT JOIN `usertbl` ON `violationtbl`.`recordedBy` = `usertbl`.`personID`
-            WHERE CONCAT(`studenttbl`.`firstName`, COALESCE(`studenttbl`.`middleName`, ''), `studenttbl`.`lastName`) LIKE '%$studentName%'"; 
+            $sql .= " WHERE CONCAT(`studenttbl`.`firstName`, COALESCE(`studenttbl`.`middleName`, ''), `studenttbl`.`lastName`) LIKE '%$studentName%'"; 
         }
 
         if (!empty($searchCourse) ) {
             $sql .= " AND course LIKE '%$searchCourse%'";
         }
-        if (!empty($searchSection)) {
+        else if (!empty($searchSection)) {
             $sql .= " AND section LIKE '%$searchSection%'";
         }
-        if (!empty($typeOfViolation)) {
+        else if (!empty($typeOfViolation)) {
             $sql .= " AND ViolationType LIKE '%$typeOfViolation%'";
         }
-        if (!empty($searchCase)) {
+        else if (!empty($searchCase)) {
             $sql .= " AND ViolationCase LIKE '%$searchCase%'";
         }
-        /*if (!empty($status)) {
-            $sql .= " AND active LIKE '$status'";
-        }*/
 
-        $sql .= ";";
+        //$sql .= ";";
 
         $result = $conn->query($sql);
         $searchResults = [];
