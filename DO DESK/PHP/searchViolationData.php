@@ -5,8 +5,10 @@ require_once 'connections.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if($_POST["requestType"] == "SearchStudentViolation"){
-        // Retrieve form data
-        //$studentNumber = isset($_POST['studentNumber']) ? $_POST['studentNumber'] : '';
+        //$studentNumber = isset($_POST['studentNumber']) ? $_POST['studentNumber'] : '';\
+
+        $conditionCounter = 0;
+
         $studentNumber = $_POST['studentNumber'];
         $studentName = $_POST['studentName'];
         $searchCourse = $_POST['course'];
@@ -19,8 +21,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $searchCase = $_POST['violationCase'];
         //$status = $_POST['status'];
 
+        if(!($studentNumber == "")){
+            $conditionCounter++;
+        }
+        if(!($studentName == "")){
+            $conditionCounter++;
+        }
+        if(!($searchCourse == "")){
+            $conditionCounter++;
+        }
+        if(!($searchSection == "")){
+            $conditionCounter++;
+        }
+        if(!($typeOfViolation == "")){
+            $conditionCounter++;
+        }
+        if(!($searchCase == "")){
+            $conditionCounter++;
+        }
         // SQL query
-
         $sql = "SELECT `violationtbl`.*,
                 `studenttbl`.`firstName`,
                 `studenttbl`.`middleName`,
@@ -32,30 +51,42 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 FROM `violationtbl` 
                 LEFT JOIN `studenttbl` ON `violationtbl`.`studentNumber` = `studenttbl`.`studentNumber` 
-                LEFT JOIN `usertbl` ON `violationtbl`.`recordedBy` = `usertbl`.`personID`";
+                LEFT JOIN `usertbl` ON `violationtbl`.`recordedBy` = `usertbl`.`personID`
+                WHERE ";
 
-        if (!empty($studentNumber)) {
-            $sql .= "WHERE `studenttbl`.`studentNumber` LIKE '$studentNumber'";
+        for($i = 0; $i < $conditionCounter; $i++){
+            if($i >= 1){
+                $sql .= " AND ";
+            }
+
+            if(!($studentNumber == "")){
+                $sql .= "`studenttbl`.`studentNumber` LIKE '%$studentNumber%'";
+                $studentNumber = "";
+            }
+            else if(!($studentName == "")){
+                $sql .= "CONCAT(`studenttbl`.`firstName`, COALESCE(`studenttbl`.`middleName`, ''), `studenttbl`.`lastName`) LIKE '%$studentName%'";
+                $studentName = "";
+            }
+            else if(!($searchCourse == "")){
+                $sql .= "`studenttbl`.`course` LIKE '%$searchCourse%'";
+                $searchCourse = "";
+            }
+            else if(!($searchSection == "")){
+                $sql .= "`studenttbl`.`section` LIKE '%$searchSection%'";
+                $searchSection = "";
+            }
+            else if(!($typeOfViolation == "")){
+                $sql .= "`violationtbl`.`violationType` LIKE '%$typeOfViolation%'";
+                $typeOfViolation = "";
+            }
+            else if(!($searchCase == "")){
+                $sql .= "`violationtbl`.`violationCase` LIKE '%$searchCase%'";
+                $searchCase = "";
+            }
         }
 
-        else if (!empty($studentName)) {
-            $sql .= " WHERE CONCAT(`studenttbl`.`firstName`, COALESCE(`studenttbl`.`middleName`, ''), `studenttbl`.`lastName`) LIKE '%$studentName%'"; 
-        }
-
-        if (!empty($searchCourse) ) {
-            $sql .= " AND course LIKE '%$searchCourse%'";
-        }
-        else if (!empty($searchSection)) {
-            $sql .= " AND section LIKE '%$searchSection%'";
-        }
-        else if (!empty($typeOfViolation)) {
-            $sql .= " AND ViolationType LIKE '%$typeOfViolation%'";
-        }
-        else if (!empty($searchCase)) {
-            $sql .= " AND ViolationCase LIKE '%$searchCase%'";
-        }
-
-        //$sql .= ";";
+        //echo $searchCourse;
+        //echo $sql;
 
         $result = $conn->query($sql);
         $searchResults = [];
