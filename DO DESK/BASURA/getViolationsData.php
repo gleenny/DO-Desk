@@ -36,12 +36,11 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             $cases["course"][] = $row['course'];
             $cases["section"][] = $row['section'];
             $cases["Officer"][] = $row['Officer'];
+            $cases["violationDate"][] = $row['violationDate'];
         }
         print_r (json_encode($cases));
         //print_r ($cases);
     }
-
-
         
     $conn->close();
 }

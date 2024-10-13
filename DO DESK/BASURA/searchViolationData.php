@@ -19,7 +19,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $typeOfViolation = $_POST['violationType'];
         }
         $searchCase = $_POST['violationCase'];
-        //$status = $_POST['status'];
+        if($_POST['status'] == "None"){
+            $status = "";
+        }else if($_POST['status'] == "Resolve"){
+            $status = 0;
+        }else if($_POST['status'] == "Unresolved"){
+            $status = 1;
+        }
+        $searchDate = $_POST['date'];
 
         if(!($studentNumber == "")){
             $conditionCounter++;
@@ -37,6 +44,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $conditionCounter++;
         }
         if(!($searchCase == "")){
+            $conditionCounter++;
+        }
+        if(!($status == "")){
+            $conditionCounter++;
+        }
+        if(!($searchDate == "")){
             $conditionCounter++;
         }
         // SQL query
@@ -83,10 +96,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $sql .= "`violationtbl`.`violationCase` LIKE '%$searchCase%'";
                 $searchCase = "";
             }
+            else if(!($status == "")){
+                $sql .= "`violationtbl`.`active` LIKE '%$status%'";
+                $status = "";
+            }
+            else if(!($searchDate == "")){
+                $sql .= "`violationtbl`.`violationDate` = '$searchDate'";
+                $searchDate = "";
+            }
         }
-
-        //echo $searchCourse;
-        //echo $sql;
 
         $result = $conn->query($sql);
         $searchResults = [];
@@ -105,9 +123,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $searchResults["course"][] = $row['course'];
                 $searchResults["section"][] = $row['section'];
                 $searchResults["Officer"][] = $row['Officer'];
+                $searchResults["violationDate"][] = $row['violationDate'];
             }
         }
-
+        //echo $sql;
+        //print_r($searchResults);
         echo json_encode($searchResults);
 
         $conn->close();

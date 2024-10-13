@@ -150,18 +150,17 @@
           <input type="text" name="searchCourse" id="searchCourse" placeholder="Course">
           <input type="text" name="searchSection" id="searchSection" placeholder="Section">
           <select name="typeOfViolation" id="typeOfViolation" value=" ">
-            <option value="None"> </option>
+            <option value=""> </option>
               <option value="Minor">Minor</option>
               <option value="Major">Major</option>
           </select>
           <input type="text" name="searchCase" id="searchCase" placeholder="Case">
-          <!--
           <select name="status" id="status" value=" ">
-            <option value="None"> </option>
+            <option value=""> </option>
               <option value="Resolve">Resolve</option>
               <option value="Unresolve">Unresolve</option>
           </select>
-          -->
+          <input type="date" name="searchDate" id="searchDate" placeholder="Date">
           <button type="submit" id="searchbtn" class="btn btn-primary">Search</button>
       </form>
 
@@ -207,6 +206,7 @@
                 <th>Type Of Violation</th>
                 <th>Case</th>
                 <th>Status</th>
+                <th>Date</th>
                 
               </tr>
               </thead>
