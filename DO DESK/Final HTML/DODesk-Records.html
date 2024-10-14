@@ -134,16 +134,19 @@
 
         <!--Second Flow-->
         <div class="user-box second-box">
-
-
+          <!--Adding Violations-->
           <form action="../JAVASCRIPT/DODesk-RecordsJS.js" enctype="multipart/form-data" method="POST" id="myform">
-            <input type="text" placeholder="Violation Type" id="violationType">
+
+            <select name="violationType" id="violationType" value=" ">
+              <option value="Minor">Minor</option>
+              <option value="Major">Major</option>
+            </select>
             <input type="text" placeholder="Violation Case" id="violationCase">
             <input type="text" placeholder="Student Number" id="studentNumber">
             <input type="submit" value="Submit Violation" name="submit" > 
           </form>
         </div>
-
+        <!--searching violations-->
         <form id="searchForm">
           <input type="text" name="searchNumber" id="searchNumber" placeholder="Student Number">
           <input type="text" name="searchName" id="searchName" placeholder="Student Name">
@@ -162,7 +165,16 @@
           </select>
           <input type="date" name="searchDate" id="searchDate" placeholder="Date">
           <button type="submit" id="searchbtn" class="btn btn-primary">Search</button>
-      </form>
+        </form>
+        <!--updating violation status-->
+        <form action="../JAVASCRIPT/DODesk-RecordsJS.js" enctype="multipart/form-data" method="POST" id="updateStatusForm">
+          <input type="text" placeholder="violationID" id="violationID">
+          <select name="violationStatus" id="violationStatus" value=" ">
+              <option value="Resolve">Resolve</option>
+              <option value="Unresolve">Unresolve</option>
+          </select>
+          <input type="submit" value="Update Status" name="submit" >
+        </form>
 
         <!--Second Flow-->
         <div class="user-box third-box">
@@ -198,6 +210,7 @@
             <table class="table">
               <thead>
               <tr>
+                <th>Violation ID</th>
                 <th>Record By</th>
                 <th>Student number</th>
                 <th>Student Name</th>
@@ -207,7 +220,6 @@
                 <th>Case</th>
                 <th>Status</th>
                 <th>Date</th>
-                
               </tr>
               </thead>
 

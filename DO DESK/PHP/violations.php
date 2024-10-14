@@ -101,6 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $searchDate = "";
             }
         }
+        $sql .= "ORDER BY `violationtbl`.`violationDate` DESC";
 
         $result = $conn->query($sql);
         $searchResults = [];
@@ -144,16 +145,40 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             echo "Error: " . $query . "<br>" . $conn->error;
         }
     
-        print_r("hello " . $violationType);
-    
+        $conn->close();
+    }
+    if($_POST['requestType'] == "updateStatus"){
+        
+        $violationID = $_POST["violationID"];
+        if($_POST["violationStatus"] == "Resolve"){
+            $violationStatus = '0';
+        }
+        else if($_POST["violationStatus"] == "Unresolve"){
+            $violationStatus = '1';
+        }
+
+        $query = "UPDATE `violationtbl`
+                SET `active` = '$violationStatus'
+                WHERE `violationID` = '$violationID'";
+
+        if ($conn->query($query) === TRUE) {
+            echo "Data has been updated!";
+
+        } else {
+            echo "Error: " . $query . "<br>" . $conn->error;
+        }
         $conn->close();
     }
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
     $cases = [];
+    $minorCount = 0;
+    $majorCount = 0;
 
     $query = "SELECT `violationtbl`.*,
+        `usertbl`.`firstName` AS `doFirst`,
+        `usertbl`.`lastName` AS `doLast`,
         `studenttbl`.`firstName`,
         `studenttbl`.`middleName`,
         `studenttbl`.`lastName`,
@@ -164,17 +189,25 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
     FROM `violationtbl` 
     LEFT JOIN `studenttbl` ON `violationtbl`.`studentNumber` = `studenttbl`.`studentNumber` 
-    LEFT JOIN `usertbl` ON `violationtbl`.`recordedBy` = `usertbl`.`personID`;";
+    LEFT JOIN `usertbl` ON `violationtbl`.`recordedBy` = `usertbl`.`personID`
+    ORDER BY `violationtbl`.`violationDate` DESC";
 
     $result = $conn->query($query);
 
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()){
+            if($row['violationType'] == "Minor" && $row['active'] =='1'){
+                $minorCount++;
+            }else if($row['violationType'] == "Major" && $row['active'] =='1'){
+                $majorCount++;
+            }
             $cases["violationID"][] = $row['violationID'];
             $cases["violationType"][] = $row['violationType'];
             $cases["violationCase"][] = $row['violationCase'];
             $cases["studentNumber"][] = $row['studentNumber'];
             $cases["active"][] = $row['active'];
+            $cases["doFirst"][] = $row['doFirst'];
+            $cases["doLast"][] = $row['doLast'];
             $cases["recordedBy"][] = $row['recordedBy'];
             $cases["firstName"][] = $row['firstName'];
             $cases["middleName"][] = $row['middleName'];
@@ -184,6 +217,8 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             $cases["Officer"][] = $row['Officer'];
             $cases["violationDate"][] = $row['violationDate'];
         }
+        $cases["minorCount"][] = $minorCount;
+        $cases["majorCount"][] = $majorCount;
         print_r (json_encode($cases));
         //print_r ($cases);
     }

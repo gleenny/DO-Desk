@@ -1,5 +1,5 @@
 //link 
-const url = "../PHP/getViolationsData.php";
+const url = "../PHP/violations.php";
 
 //data
 const userTitle = "Disciplinary Officer";
@@ -11,9 +11,6 @@ let profilePicPath = 'Profile.jpg';
 let events = 3;
 let eventTypeData = "Drug Test";
 let eventDateData = "August 30, 2024";
-//total violations
-let totalMinorViolations = 6;
-let totalMajorViolations = 46;
 //report lists
 let reports = 1;
 let studentNumberData = '02000393';
@@ -27,8 +24,7 @@ let statusData = 'Done';
 
 setEventList();
 setUserInfo();
-setTotalViolations();
-setReportLists();
+setData();
 
 //display user info
 function setUserInfo(){
@@ -36,11 +32,10 @@ function setUserInfo(){
     document.querySelector('.account-title').innerHTML = userTitle;
     document.querySelector('#profilePic').setAttribute('src', picturePathFile + profilePicPath);
 }
-
+//TANGGAL NA SIGURO TO
 //dispay event list
 function setEventList(){
     for(let i = 1; i <= events; i++){
-
         let eventWrapper = document.createElement('div');
             eventWrapper.classList.add('event-wrapper');
             eventWrapper.id = 'eventWrapper' + i
@@ -65,34 +60,23 @@ function setEventList(){
             document.querySelector('#eventDate' + i).innerHTML = eventDateData;
     }
 }
-
-function setTotalViolations(){
-    document.querySelector('.subtitle-count').innerHTML = totalMinorViolations;
-    document.querySelector('.subtitle-count.dist').innerHTML = totalMajorViolations;
-    document.querySelector('.counter').innerHTML = totalMinorViolations + totalMajorViolations;
-}
-
-//design ng scroll
-document.addEventListener("DOMContentLoaded", function() {
-    document.body.style.setProperty('--scrollbar-thumb-color', 'purple');
-    document.body.style.setProperty('--scrollbar-track-color', '#f1f1f1');
-});
-
-//GAWAN MO NG DI HARCODED YUNG REPORT LIST
-//DI PA FINAL TO
-function setReportLists(){
+function setData(){
     fetch(url, {
         method: 'GET'
     }).then((Response) => Response.json())
     .then((json) => {
+        //setting violation counts
+        document.querySelector('#minorCount').innerHTML = json["minorCount"]
+        document.querySelector('#majorCount').innerHTML = json["majorCount"]
+        //setting record List
         console.log("Displaying list of violation cases") 
         for(let i = 0; i <= (json["Officer"].length - 1); i++){
 
             let tableRow = document.createElement('tr');
             tableRow.id = 'violationList' + i;
         
-            let RecordedBy = document.createElement('td');
-            RecordedBy.id = 'RecordedBy' + i;
+            let doName = document.createElement('td');
+            doName.id = 'doName' + i;
 
             let studentNumber = document.createElement('td');
             studentNumber.id = 'studentNumber' + i;
@@ -124,10 +108,9 @@ function setReportLists(){
             let active = document.createElement('td');
             active.id = 'active' + i;
 
-
             document.querySelector('#reportListRows').appendChild(tableRow);//tbody
-            document.querySelector('#violationList' + i).appendChild(RecordedBy);
-                document.querySelector('#RecordedBy' + i).innerHTML = json["recordedBy"][i];
+            document.querySelector('#violationList' + i).appendChild(doName);
+                document.querySelector('#doName' + i).innerHTML = json["doFirst"][i] + " " + json["doLast"][i];
 
             document.querySelector('#violationList' + i).appendChild(studentNumber);
                 document.querySelector('#studentNumber' + i).innerHTML = json["studentNumber"][i];
@@ -150,8 +133,12 @@ function setReportLists(){
             document.querySelector('#violationList' + i).appendChild(active);
                 document.querySelector('#active' + i).innerHTML = resolveHolder;
         }
-
-        //document.querySelector('#student').innerHTML = json["studentNumber"][0];
     })
 }
+
+//design ng scroll
+document.addEventListener("DOMContentLoaded", function() {
+    document.body.style.setProperty('--scrollbar-thumb-color', 'purple');
+    document.body.style.setProperty('--scrollbar-track-color', '#f1f1f1');
+});
 

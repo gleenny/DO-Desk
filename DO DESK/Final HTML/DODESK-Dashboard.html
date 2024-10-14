@@ -146,28 +146,17 @@
       <!---first module-->
       <div class="user-box first-box">
         <div class="activity card" style="--delay: .1s">
-          <div class="title">Violations</div>
+          <div class="title">Unresolved Violations</div>
 
           <div class="activity-wrapper">
             <div class="activity-info">
               <div class="subtitle">Minor Violation:</div>
-              <div class="subtitle-count">5</div>
+              <div class="subtitle-count" id="minorCount">5</div>
               <div class="subtitle">Major Violation:</div>
-              <div class="subtitle-count dist">45</div>
+              <div class="subtitle-count dist" id="majorCount">45</div>
             </div>
             <div class="activity-chart">
-              <div class="circle">
-                <div class="pie">
-                  <svg>
-                    <circle cx="60" cy="60" r="45"></circle>
-                  </svg>
-                </div>
-                <div class="counter">50</div>
-              </div>
             </div>
-          </div>
-          <div class="button offer-button">
-            View Violations
           </div>
         </div>
 
@@ -349,7 +338,6 @@
 
     <!--Scroll bar properties-->
     <script src="../JAVASCRIPT/DODesk-DashboardJS.js"></script>
-    <script src="../JAVASCRIPT/populateName.js"></script>
 </body>
 
 </html>
