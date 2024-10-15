@@ -130,52 +130,76 @@
         </div>
 
         <!--First Flow-->
-
-
+        <div class="user-box first-box" style="--delay: .6s">
+            <!--searching violations-->
+            <form id="searchForm">
+              <input class="textType" type="text" name="searchNumber" id="searchNumber" placeholder="Student Number">
+              <input class="textType" type="text" name="searchName" id="searchName" placeholder="Student Name">
+              <input class="textType" type="text" name="searchCourse" id="searchCourse" placeholder="Course">
+              <input class="textType" type="text" name="searchSection" id="searchSection" placeholder="Section">
+              <select class="textType" name="typeOfViolation" id="typeOfViolation" value=" ">
+                <option value=""> </option>
+                  <option value="Minor">Minor</option>
+                  <option value="Major">Major</option>
+              </select>
+              <input class="textType" type="text" name="searchCase" id="searchCase" placeholder="Case">
+              <select class="textType" name="status" id="status" value=" ">
+                <option value=""> </option>
+                  <option value="Resolve">Resolve</option>
+                  <option value="Unresolve">Unresolve</option>
+              </select>
+              <input class="textType" type="date" name="searchDate" id="searchDate" placeholder="Date">
+              <button type="submit" id="searchbtn" class="searchbutton">Search</button>
+            </form>
+        </div>  
         <!--Second Flow-->
-        <div class="user-box second-box">
-          <!--Adding Violations-->
-          <form action="../JAVASCRIPT/DODesk-RecordsJS.js" enctype="multipart/form-data" method="POST" id="myform">
+        <div class="user-box second-box" style="--delay: .6s">
+          <!-- Trigger/Open The Modal -->
 
-            <select name="violationType" id="violationType" value=" ">
-              <option value="Minor">Minor</option>
-              <option value="Major">Major</option>
-            </select>
-            <input type="text" placeholder="Violation Case" id="violationCase">
-            <input type="text" placeholder="Student Number" id="studentNumber">
-            <input type="submit" value="Submit Violation" name="submit" > 
-          </form>
-        </div>
-        <!--searching violations-->
-        <form id="searchForm">
-          <input type="text" name="searchNumber" id="searchNumber" placeholder="Student Number">
-          <input type="text" name="searchName" id="searchName" placeholder="Student Name">
-          <input type="text" name="searchCourse" id="searchCourse" placeholder="Course">
-          <input type="text" name="searchSection" id="searchSection" placeholder="Section">
-          <select name="typeOfViolation" id="typeOfViolation" value=" ">
-            <option value=""> </option>
-              <option value="Minor">Minor</option>
-              <option value="Major">Major</option>
-          </select>
-          <input type="text" name="searchCase" id="searchCase" placeholder="Case">
-          <select name="status" id="status" value=" ">
-            <option value=""> </option>
-              <option value="Resolve">Resolve</option>
-              <option value="Unresolve">Unresolve</option>
-          </select>
-          <input type="date" name="searchDate" id="searchDate" placeholder="Date">
-          <button type="submit" id="searchbtn" class="btn btn-primary">Search</button>
-        </form>
+            <button class="cards-button button" id="btnSubmit">Submit Violation</button>
+
+            <!-- The Modal Register Violation -->
+            <div id="modalSubmit" class="modal">
+
+              <!-- Modal content -->
+              <div class="modal-content">
+                <span class="close">&times;</span>
+                <!--Adding Violations-->
+                  <form action="../JAVASCRIPT/DODesk-RecordsJS.js" enctype="multipart/form-data" method="POST" id="myform">
+                    <div class="title">Sumbit Violation</div>
+                    <input type="text" placeholder="Student Number" id="studentNumber">
+                    <select name="violationType" id="violationType" value=" ">
+                      <option value="Minor">Minor</option>
+                      <option value="Major">Major</option>
+                    </select>
+                    <input type="text" placeholder="Violation Case" id="violationCase">
+                    <input type="submit" value="Submit Violation" name="submit" > 
+                  </form>
+              </div>
+            </div>
+
         <!--updating violation status-->
-        <form action="../JAVASCRIPT/DODesk-RecordsJS.js" enctype="multipart/form-data" method="POST" id="updateStatusForm">
-          <input type="text" placeholder="violationID" id="violationID">
-          <select name="violationStatus" id="violationStatus" value=" ">
-              <option value="Resolve">Resolve</option>
-              <option value="Unresolve">Unresolve</option>
-          </select>
-          <input type="submit" value="Update Status" name="submit" >
-        </form>
+        <!-- Trigger/Open The Modal -->
+            <button class="cards-button button" id="btnUpdate">Update Status</button>
 
+            <!-- The Modal -->
+            <div id="modalUpdate" class="modal">
+              <!-- Modal content -->
+              <div class="modal-content">
+                <span class="close">&times;</span>
+                <form action="../JAVASCRIPT/DODesk-RecordsJS.js" enctype="multipart/form-data" method="POST" id="updateStatusForm">
+                  <div class="title">Update Status</div>
+                  <input type="text" placeholder="violationID" id="violationID">
+                  <select name="violationStatus" id="violationStatus" value=" ">
+                      <option value="Resolve">Resolve</option>
+                      <option value="Unresolve">Unresolve</option>
+                  </select>
+                  <input type="submit" value="Update Status" name="submit" >
+                </form>
+               </div>
+            </div>
+      </div>
+      
         <!--Second Flow-->
         <div class="user-box third-box">
           <!--3:First module-->
@@ -186,25 +210,12 @@
               
             <div class="cards-view">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <rect x="3" y="4" width="16" height="16" rx="2" ry="2" />
               <path d="M16 2v4M8 2v4M3 10h18" />
               </svg>
               
               <span class="today"> Report List</span>
             </div>
-            <a href="../Final HTML/addViolation.html" class="cards-button button">
-              Add Student
-            </a>
-            
-            <a href="../Final HTML/addViolation.html" class="cards-button button">
-              Update Student
-            </a>
-            <form action="../PHP/searchOnViolationtbl.php" method="GET">
-              <div class="input-group mb-3">
-                  <input type="text" name="search" requiredvalue="<?php if(isset($_GET['search'])){echo $_GET['search']; } ?>" class="form-control" placeholder="Search data">
-                  <button type="submit" class="btn btn-primary">Search</button>
-              </div>
-          </form>
             </div>
             <div class="cards card">
             <table class="table">
