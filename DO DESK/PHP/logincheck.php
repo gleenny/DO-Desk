@@ -4,15 +4,19 @@ require_once 'connections.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $email = $_POST['username'];
-    $password = $_POST['password'];
-
-    $query = "SELECT userTBL.personID, userTBL.firstName, userTBL.middleName, userTBL.lastName, userTBL.suffixName, userTBL.role 
+    $query = "SELECT accountTBL.userID, userTBL.personID, userTBL.firstName, userTBL.middleName, userTBL.lastName, userTBL.suffixName, userTBL.role 
     FROM accountTBL INNER JOIN userTBL ON accountTBL.personID = userTBL.personID 
-    WHERE accountTBL.email = '$email' AND accountTBL.password = '$password'";
+    WHERE accountTBL.email = ? AND accountTBL.password = ?";
 
-    $result = $conn->query($query);
+    $stmt = $conn->prepare($query);
 
+    $stmt->bind_param('ss', $email, $password);    
+
+    $email = $_POST['username'];
+    $password = base64_encode($_POST['password']);
+
+    $stmt->execute();
+    $result = $stmt->get_result();
     if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
         $_SESSION['userID'] = $row['userID'];
@@ -22,16 +26,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['suffixName'] = $row['suffixName'];
         $_SESSION['role'] = $row['role'];
 
-        header("Location: ../Final HTML/DODesk-Dashboard.html");
+        header("Location: ../final/index.php");
         exit();
     } else {
-        header("Location: ../Final HTML/DODesk-login.html"); //remember to change to index.php
+        header("Location: ../final/DODesk-login.php"); //remember to change to index.php
         exit();
     }
 
     $conn->close();
 } else {
-    header("Location: ../Final HTML/DODesk-login.html"); //remember to change to index.php
+    header("Location: ../final/DODesk-login.php"); //remember to change to index.php
     echo "did not login properly";
 }
 ?>
