@@ -96,7 +96,7 @@
 
     <div class="main-container">
       <div class="header">
-        <a class="header-link active" href="DODESK-Dashboard.html"><svg
+        <a class="header-link" href="DODESK-Dashboard.html"><svg
             viewBox="-6 0 512 512" fill="currentColor">
             <path
               d="M227.7 357.5a15.1 15.1 0 0021.3 0l54-54a15.1 15.1 0 10-21.4-21.3l-43.3 43.2-19.7-19.7a15.1 15.1 0 00-21.4 21.4zm0 0" />
@@ -144,12 +144,16 @@
       <div class="user-box first-box" style="--delay: .1s">
         <div class="AddingStudent card" style="--delay: .1s">
 
+          <div class="title">Message Parent</div>
 
+
+          <!--Search Student-->
       <label>Search Student</label>
-    <form action="../JAVASCRIPT/sendSMSJS.js" enctype="multipart/form-data" method="POST" id="myformFindParent">
-        <input type="text" placeholder="Student Name" id="studentName">
-    <input type="submit" value="Look for Student" name="submit">
-    </form>
+        <form action="../JAVASCRIPT/sendSMSJS.js" enctype="multipart/form-data" method="POST" id="myformFindParent">
+            <input class="SearchStudentBar" type="text" placeholder="Student Name" id="studentName">
+            <input class="buttons" type="submit" value="Look for Student" name="submit">
+        </form>
+
     <br>
     <br>
     <table>
@@ -163,16 +167,28 @@
             </thead>
 
             <tbody id="reportListRows">
+
             </tbody>
     </table>
+
     <br>
     <br>
-    <label>Send message</label>
-    <form action="../JAVASCRIPT/sendSMSJS.js" enctype="multipart/form-data" method="POST" id="myformSMS">
-        <input type="text" placeholder="Student Number" id="studentNumber">
-        <textarea placeholder="Your message Here" id="message"></textarea>
-    <input type="submit" value="Send Message" name="submit">
+
+    <div class="message">
+      <div class="title">Send Message</div>
+
+        <!--For message-->
+        <form action="../JAVASCRIPT/sendSMSJS.js" enctype="multipart/form-data" method="POST" id="myformSMS">
+            <input class="searchBar" type="text" placeholder="Student Number" id="studentNumber">
+            <br>
+            <textarea class="messageTextBox" placeholder="Your message Here" id="message"></textarea>
+            <br>
+            <input class="buttons" type="submit" value="Send Message" name="submit">
     </form>
+
+    </div>
+    
+
   </div>
 
     </div>
