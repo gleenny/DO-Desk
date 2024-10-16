@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container1">
+        <h2>Search Student</h2>
+        <form action="../JAVASCRIPT/DODesk-RecordsJS.js" enctype="multipart/form-data" method="POST" id="myform">
+            <input type="text" placeholder="Violation Type" id="violationType">
+            <input type="text" placeholder="Violation Case" id="violationCase">
+            <input type="text" placeholder="Student Number" id="studentNumber">
+            <input type="submit" value="Submit Violation" name="submit" > 
+          </form>
+        </div>
+
+        <form id="searchForm">
+          <input type="text" name="searchNumber" id="searchNumber" placeholder="Student Number">
+          <input type="text" name="searchName" id="searchName" placeholder="Student Name">
+          <input type="text" name="searchCourse" id="searchCourse" placeholder="Course">
+          <input type="text" name="searchSection" id="searchSection" placeholder="Section">
+          <select name="typeOfViolation" id="typeOfViolation" value=" ">
+            <option value="None"> </option>
+              <option value="Minor">Minor</option>
+              <option value="Major">Major</option>
+          </select>
+          <input type="text" name="searchCase" id="searchCase" placeholder="Case">
+          <!--
+          <select name="status" id="status" value=" ">
+            <option value="None"> </option>
+              <option value="Resolve">Resolve</option>
+              <option value="Unresolve">Unresolve</option>
+          </select>
+          -->
+          <button type="submit" id="searchbtn" class="btn btn-primary">Search</button>
+      </form>
+      
+      <div id="searchResults"></div> <!-- Container for showing results -->
+      
+    </div>
+
+    <style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+      
+      td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+      
+      </style>
+    <div class="container2">
+    <table class="table">
+              <thead>
+              <tr>
+                <th>Record By</th>
+                <th>Student number</th>
+                <th>Student Name</th>
+                <th>Course</th>
+                <th>Section</th>
+                <th>Type Of Violation</th>
+                <th>Case</th>
+                <th>Status</th>
+                
+              </tr>
+              </thead>
+
+              <tbody id="reportListRows">
+              </tbody>
+            </table>
+            </div>
+          </div>
+          
+        </div>
+        <script src="../JAVASCRIPT/DODesk-RecordsJS.js"></script>
+    
+
+  </table>
+    </div>
+</body>
+</html>
