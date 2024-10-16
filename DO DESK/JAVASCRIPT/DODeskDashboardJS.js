@@ -67,7 +67,7 @@ function setData(){
         document.querySelector('#majorCount').innerHTML = json["majorCount"]
         //setting record List
         console.log("Displaying list of violation cases") 
-        for(let i = 0; i <= (json["Officer"].length - 1); i++){
+        for(let i = 0; i <= (json["Officer"].length) - 1 && i < 5; i++){
 
             let tableRow = document.createElement('tr');
             tableRow.id = 'violationList' + i;

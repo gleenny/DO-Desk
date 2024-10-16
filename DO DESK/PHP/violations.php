@@ -5,8 +5,6 @@ require_once 'connections.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if($_POST["requestType"] == "SearchStudentViolation"){
-        //$studentNumber = isset($_POST['studentNumber']) ? $_POST['studentNumber'] : '';\
-
         $conditionCounter = 0;
 
         $studentNumber = $_POST['studentNumber'];
@@ -50,6 +48,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
         // SQL query
         $sql = "SELECT `violationTBL`.*,
+                `userTBL`.`firstName` AS `doFirst`,
+                `userTBL`.`lastName` AS `doLast`,
                 `studentTBL`.`firstName`,
                 `studentTBL`.`middleName`,
                 `studentTBL`.`lastName`,
@@ -112,6 +112,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $searchResults["violationType"][] = $row['violationType'];
                 $searchResults["violationCase"][] = $row['violationCase'];
                 $searchResults["studentNumber"][] = $row['studentNumber'];
+                $searchResults["doFirst"][] = $row['doFirst'];
+                $searchResults["doLast"][] = $row['doLast'];
                 $searchResults["active"][] = $row['active'];
                 $searchResults["recordedBy"][] = $row['recordedBy'];
                 $searchResults["firstName"][] = $row['firstName'];
@@ -123,8 +125,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $searchResults["violationDate"][] = $row['violationDate'];
             }
         }
-        //echo $sql;
-        //print_r($searchResults);
         echo json_encode($searchResults);
 
         $conn->close();
@@ -133,10 +133,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $violationType = $_POST["violationType"];
         $violationCase = $_POST["violationCase"];
         $studentNumber = $_POST["studentNumber"];
+        $doID = $_SESSION["userID"];
         $currentDate = date("Y-m-d");
         
         $query = "INSERT INTO `violationTBL` (`violationID`, `violationType`, `violationCase`, `studentNumber`, `active`, `recordedBy`, `violationDate`) 
-        VALUES (NULL, '$violationType', '$violationCase', '$studentNumber', '1', '1000101', '$currentDate');";
+        VALUES (NULL, '$violationType', '$violationCase', '$studentNumber', '1', '$doID', '$currentDate');";
     
         if ($conn->query($query) === TRUE) {
             echo "New record created successfully!";
@@ -220,9 +221,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
         $cases["minorCount"][] = $minorCount;
         $cases["majorCount"][] = $majorCount;
         print_r (json_encode($cases));
-        //print_r ($cases);
-    }
-        
+    }     
     $conn->close();
 }
 

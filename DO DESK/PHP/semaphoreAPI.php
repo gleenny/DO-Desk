@@ -43,9 +43,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     if($_POST['requestType'] == "sendMessage"){
         $studentNumber = $_POST["studentNumber"];
         $message = $_POST["message"];
+        $date = $_POST["date"];
 
-        $numberQuery = "SELECT `studentTBL`.`studentNumber`, `studentparentTBL`.`parentID`, `parentTBL`.`mobileNumber`
-            FROM `studentTBL` 
+        $numberQuery = "SELECT `studentTBL`.`studentNumber`,
+         `studentTBL`.`firstName`,
+          `studentTBL`.`middleName`,
+           `studentTBL`.`lastName`,
+            `studentparentTBL`.`parentID`,
+                `parentTBL`.`mobileNumber`
+        FROM `studentTBL` 
             LEFT JOIN `studentparentTBL` ON `studentparentTBL`.`studentNumber` = `studentTBL`.`studentNumber` 
             LEFT JOIN `parentTBL` ON `studentparentTBL`.`parentID` = `parentTBL`.`parentID`
             WHERE `studentTBL`.`studentNumber` LIKE '$studentNumber';";
@@ -55,10 +61,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()){
                 $mobileNumbers[] = $row['mobileNumber'];
+                $studentName = $row['firstName']. " ". $row['lastName'];
             }
-            print_r(sizeof($mobileNumbers));
-            print_r($mobileNumbers);
         } 
+        if($message == ""){
+            $message = "Hello, This is the Disciplinary Officer of STI College Global City. We are reaching out to the parents/guardians of $studentName regarding their school violations. We are hoping to meet you in the Disciplinary Office of our school on $date";
+        }
 
         for($i = 0; $i < sizeof($mobileNumbers); $i++){
             $ch = curl_init();

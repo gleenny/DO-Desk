@@ -4,15 +4,15 @@ require_once 'connections.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $query = "SELECT accountTBL.userID, userTBL.personID, userTBL.firstName, userTBL.middleName, userTBL.lastName, userTBL.suffixName, userTBL.role 
+    $query = "SELECT accountTBL.userID, userTBL.personID, userTBL.firstName, userTBL.middleName, userTBL.lastName, userTBL.role 
     FROM accountTBL INNER JOIN userTBL ON accountTBL.personID = userTBL.personID 
-    WHERE accountTBL.email = ? AND accountTBL.password = ?";
+    WHERE accountTBL.username = ? AND accountTBL.password = ?";
 
     $stmt = $conn->prepare($query);
 
-    $stmt->bind_param('ss', $email, $password);    
+    $stmt->bind_param('ss', $username, $password);    
 
-    $email = $_POST['username'];
+    $username = $_POST['username'];
     $password = base64_encode($_POST['password']);
 
     $stmt->execute();
@@ -23,10 +23,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['firstName'] = $row['firstName'];
         $_SESSION['middleName'] = $row['middleName'];
         $_SESSION['lastName'] = $row['lastName'];
-        $_SESSION['suffixName'] = $row['suffixName'];
         $_SESSION['role'] = $row['role'];
 
-        header("Location: ../final/index.php");
+        //if($_SESSION['role'] === "Officer"){
+            header("Location: ../final/index.php");
+        //}
+        
         exit();
     } else {
         header("Location: ../final/DODesk-login.php"); //remember to change to index.php

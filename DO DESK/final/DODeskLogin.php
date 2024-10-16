@@ -10,7 +10,7 @@
       </div>
       <div class="form">
         <form action="../PHP/logincheck.php" method="POST">
-          <input type="text" name="username" class="form-field animation a3" placeholder="Email" required>
+          <input type="text" name="username" class="form-field animation a3" placeholder="Username" required>
           <input type="password" name="password" class="form-field animation a4" placeholder="Password" required>
           <button type="submit" class="animation a6">Login</button>
         </form>

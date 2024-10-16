@@ -2,11 +2,11 @@ const url = "../PHP/semaphoreAPI.php";
 const smsForm = document.querySelector("#myformSMS");
 const searchForm = document.querySelector("#myformFindParent");
 
+let rowCount = 0;
+
 //searching information
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
-
-    console.log("helo")
 
     const formData = new FormData();
 
@@ -18,6 +18,11 @@ searchForm.addEventListener('submit', (e) => {
         body: formData
     }).then((Response) => Response.json())
     .then((json) => {
+        console.log("Clearing the table") 
+        for(let i = 0; i <= rowCount - 1; i++){
+            console.log("count " + i)
+            document.querySelector("#reportListRows").deleteRow(0);
+        }
         console.log("Displaying list of violation cases") 
         rowCount = json["studentNumber"].length;
         for(let i = 0; i <= rowCount - 1; i++){
@@ -50,7 +55,6 @@ searchForm.addEventListener('submit', (e) => {
             let mobileNumber = document.createElement('td');
             mobileNumber.id = 'mobileNumber' + i;
 
-
             document.querySelector('#reportListRows').appendChild(tableRow);//tbody
 
             document.querySelector('#studentParents' + i).appendChild(studentNumber);
@@ -65,6 +69,8 @@ searchForm.addEventListener('submit', (e) => {
             document.querySelector('#studentParents' + i).appendChild(mobileNumber);
                 document.querySelector('#mobileNumber' + i).innerHTML = json["mobileNumber"][i];
         }
+    }).catch(error => {
+        console.log("An error occure: " + error);
     })
 })
 
@@ -72,21 +78,32 @@ searchForm.addEventListener('submit', (e) => {
 smsForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    console.log("helo")
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    today = yyyy + '-' + mm + '-' + dd;
 
-    const formData = new FormData();
+    if(document.querySelector('#scheduleDate').value > today){
+        const formData = new FormData();
 
-    formData.append("studentNumber", document.querySelector('#studentNumber').value);
-    formData.append("message", document.querySelector('#message').value);
-    formData.append("requestType", "sendMessage");
+        formData.append("studentNumber", document.querySelector('#studentNumber').value);
+        formData.append("message", document.querySelector('#message').value);
+        formData.append("date", document.querySelector('#scheduleDate').value);
+        formData.append("requestType", "sendMessage");
 
-    fetch(url, {
-        method: 'POST',
-        body: formData
-    }).then((Response) => {
-        return Response.text()
-    }).then((body) => {
-        console.log(body)
-        console.log("Message was succesfully sent to the student's parent")
-    })
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        }).then((Response) => {
+            return Response.text()
+        }).then((body) => {
+            console.log(body)
+            console.log("Message was succesfully sent to the student's parent")
+        }).catch(error => {
+            console.log("An error occure: " + error);
+        })
+    }else{
+        console.log("selected date is invalid");
+    }
 })
