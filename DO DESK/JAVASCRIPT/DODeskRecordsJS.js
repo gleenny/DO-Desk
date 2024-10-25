@@ -1,40 +1,58 @@
 const violationurl = "../PHP/violations.php";
+const messageurl = "../PHP/semaphoreAPI.php";
 const form = document.querySelector('#myform');
 const searchForm = document.getElementById('searchForm');
 const updateStatusForm = document.querySelector('#updateStatusForm');
+const messageParentsForm = document.querySelector('#myformMessage');
 
 let rowCount = 0;
+let rowCountMinor = 0;
+let rowMinorReset = 0;
+let studentViolator;
 getViolationInfo();
 
 // Get the modal
 var modal1 = document.getElementById("modalSubmit");
 var modal2 = document.getElementById("modalUpdate");
+var modal3 = document.getElementById("modalMessage");
+var modal4 = document.getElementById("modalSendMessage");
 
 // Get the button that opens the modal
 var btn1 = document.getElementById("btnSubmit");
 var btn2 = document.getElementById("btnUpdate");
-
+var btn3 = document.getElementById("submitViolation");
+var btn4 = document.getElementById("sendMessage");
 
 // Get the <span> element that closes the modal
 var span1 = document.getElementsByClassName("close")[0];
 var span2 = document.getElementsByClassName("close")[0];
-
+var span3 = document.getElementsByClassName("close")[0];
+var span4 = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
 btn1.onclick = function() {
-  modal1.style.display = "block";
+    modal1.style.display = "block";
 }
 btn2.onclick = function() {
     modal2.style.display = "block";
-  }
+}
+btn4.onclick = function() {
+    modal4.style.display = "block";
+}
 
 // When the user clicks on <span> (x), close the modal
 span1.onclick = function() {
-  modal1.style.display = "none";
+    modal1.style.display = "none";
 }
 span2.onclick = function() {
     modal2.style.display = "none";
-  }
+}
+span3.onclick = function() {
+    modal3.style.display = "none";
+}
+span3.onclick = function() {
+    modal4.style.display = "none";
+}
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
@@ -44,8 +62,48 @@ window.onclick = function(event) {
   else if (event.target == modal2) {
     modal2.style.display = "none";
   }
+  else if (event.target == modal3) {
+    modal3.style.display = "none";
+  }
+  else if (event.target == modal4) {
+    modal4.style.display = "none";
+  }
 }
 
+//send message to parents
+messageParentsForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    today = yyyy + '-' + mm + '-' + dd;
+
+    if(document.querySelector('#scheduleDate').value > today){
+        const formData = new FormData();
+
+        formData.append("studentNumber", studentViolator);
+        formData.append("message", document.querySelector("#messageText").value);
+        formData.append("date", document.querySelector("#schedDate").value);
+
+        formData.append("requestType", "sendMessage");
+
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        }).then((Response) => {
+            return Response.text()
+        }).then((body) => {
+            console.log(body)
+            console.log("Message was succesfully sent to the student's parent")
+        }).catch(error => {
+            console.log("An error occure: " + error);
+        })
+    }else{
+        console.log("selected date is invalid");
+    }
+})
 
 //adding new violations
 form.addEventListener('submit', (e) => {
@@ -72,7 +130,79 @@ form.addEventListener('submit', (e) => {
         console.log("Repopulating table"); 
         getViolationInfo();
     })
+
+    checkMinorViolationCount();
 });
+
+//checking 3 minor violations
+function checkMinorViolationCount(){
+    const formData = new FormData();
+
+    formData.append("studentNumber", document.querySelector("#studentNumber").value);
+
+    formData.append("requestType", "checkMinorViolationCount");
+
+    fetch(violationurl, {
+        method: 'POST',
+        body: formData
+    }).then((Response) =>  Response.json())
+    .then((json) => {
+        rowCountMinor = json["violationID"].length;
+        if((rowCountMinor % 3) == 0){
+            console.log("reset table")
+            for(let i = 0; i < rowMinorReset; i++){
+                document.querySelector("#studentViolations").deleteRow(0);
+            }
+            console.log("populate table")
+            for(let i = 0; i < 3; i++){
+                let tableRowMinor = document.createElement('tr');
+                tableRowMinor.id = 'violationListMinor' + i;
+            
+                let violationIDMinor = document.createElement('td');
+                violationIDMinor.id = 'violationIDMinor' + i;
+    
+                let violationTypeMinor = document.createElement('td');
+                violationTypeMinor.id = 'violationTypeMinor' + i;
+    
+                let violationCaseMinor = document.createElement('td');
+                violationCaseMinor.id = 'violationCaseMinor' + i;
+    
+                if(json["active"][i] == 1){
+                    resolveHolder = "Unresolved"
+                }
+                else{
+                    resolveHolder = "Resolved"
+                }  
+                let activeMinor = document.createElement('td');
+                activeMinor.id = 'activeMinor' + i;
+    
+                let violationDateMinor = document.createElement('td');
+                violationDateMinor.id = 'violationDateMinor' + i;
+    
+                document.querySelector('#studentViolations').appendChild(tableRowMinor);//tbody
+    
+                document.querySelector('#violationListMinor' + i).appendChild(violationIDMinor);
+                    document.querySelector('#violationIDMinor' + i).innerHTML = json["violationID"][i];
+                
+                document.querySelector('#violationListMinor' + i).appendChild(violationTypeMinor);
+                    document.querySelector('#violationTypeMinor' + i).innerHTML = json["violationType"][i];
+    
+                document.querySelector('#violationListMinor' + i).appendChild(violationCaseMinor);
+                    document.querySelector('#violationCaseMinor' + i).innerHTML = json["violationCase"][i];
+    
+                document.querySelector('#violationListMinor' + i).appendChild(activeMinor);
+                    document.querySelector('#activeMinor' + i).innerHTML = resolveHolder;
+    
+                document.querySelector('#violationListMinor' + i).appendChild(violationDateMinor);
+                    document.querySelector('#violationDateMinor' + i).innerHTML = json["violationDate"][i];
+            } 
+            rowMinorReset = 3;
+            document.querySelector('#messageParent').innerHTML = json["firstName"][0] + "'s minor violations";
+            studentViolator = json["studentNumber"][0];
+            modal3.style.display = "block";
+        }
+    })
+}
 
 //report list of student violations
 function getViolationInfo(){
@@ -129,6 +259,8 @@ searchForm.addEventListener('submit', function (e) {
             getViolationInfo();
         })
 });
+
+//updating the case status
 updateStatusForm.addEventListener('submit', (e) => {
     e.preventDefault();
 

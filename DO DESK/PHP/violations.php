@@ -170,6 +170,33 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
         $conn->close();
     }
+    if($_POST['requestType'] == "checkMinorViolationCount"){
+        
+        $studentNumber = $_POST["studentNumber"];
+
+        $query = "SELECT `studenttbl`.`firstName`, `violationtbl`.`violationID`, `violationtbl`.`violationType`, `violationtbl`.`violationCase`, `violationtbl`.`active`, `violationtbl`.`violationDate`, `violationtbl`.`studentNumber`
+                    FROM `studenttbl` 
+	                LEFT JOIN `violationtbl` ON `violationtbl`.`studentNumber` = `studenttbl`.`studentNumber`
+                    WHERE `violationtbl`.`studentNumber` LIKE '$studentNumber' AND `violationtbl`.`violationType` LIKE 'Minor'
+                    ORDER BY `violationTBL`.`violationID` DESC";
+
+        $results = $conn->query($query);
+        $minorViolationResults = [];
+
+        if($results->num_rows > 0){  
+            while ($row = $results->fetch_assoc()) {
+                $minorViolationResults["firstName"][] = $row['firstName'];
+                $minorViolationResults["studentNumber"][] = $row['studentNumber'];
+                $minorViolationResults["violationID"][] = $row['violationID'];
+                $minorViolationResults["violationType"][] = $row['violationType'];
+                $minorViolationResults["violationCase"][] = $row['violationCase'];
+                $minorViolationResults["active"][] = $row['active'];
+                $minorViolationResults["violationDate"][] = $row['violationDate'];
+            }
+        }
+        echo json_encode($minorViolationResults);
+        $conn->close();
+    }
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "GET") {

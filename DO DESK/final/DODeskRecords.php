@@ -98,11 +98,62 @@
                       <option value="Major">Major</option>
                     </select>
                     <input type="text" placeholder="Violation Case" id="violationCase">
-                    <input type="submit" value="Submit Violation" name="submit" > 
+                    <input type="submit" value="Submit Violation" name="submit" id="submitViolation"> 
                   </form>
               </div>
             </div>
 
+            <!-- The Modal message Violation -->
+            <div id="modalMessage" class="modal">
+
+              <!-- Modal messaging content -->
+              <div class="modal-content">
+                <span class="close">&times;</span>
+                <!--message notif-->
+                <form action="../JAVASCRIPT/DODesk-RecordsJS.js" enctype="multipart/form-data" method="POST" id="myform">
+                  <div class="title" id="messageParent">First name's violations</div>
+                  <div class="cards card">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Violation ID</th>
+                          <th>Type Of Violation</th>
+                          <th>Case</th>
+                          <th>Status</th>
+                          <th>Date</th>
+                        </tr>
+                      </thead>
+                      <tbody id="studentViolations">
+                      </tbody>
+                    </table>
+                  </div>
+                  <button class="cards-button button" id="sendMessage">Notify Parents</button>
+                  <button class="cards-button button" id="cancel">Cancel</button>
+                </form>
+              </div>
+            </div>
+
+          <!--
+            !--The Modal parent Violation--
+            <div id="modalSendMessage" class="modal">
+
+            
+              !-- Modal content --
+              <div class="modal-content">
+                <span class="close">&times;</span>
+                !--message parent--
+                  <form action="../JAVASCRIPT/DODesk-RecordsJS.js" enctype="multipart/form-data" method="POST" id="myformMessage">
+                    <div class="title">Message student's parents</div>
+                    <div id="studentName">student Name</div> 
+                    <div id="studentName">student Number</div>
+                    <input type="date" name="schedDate" id="schedDate" placeholder="Date">
+                    <textarea class="messageTextBox" id="messageText" placeholder="Your message here, leave blank for preset message">
+                    <input type="submit" value="Notify Parents" name="submit" id="notifyParents"> 
+                  </form>
+              </div>
+            </div>
+          -->
+            
         <!--updating violation status-->
         <!-- Trigger/Open The Modal -->
             <button class="cards-button button" id="btnUpdate">Update Status</button>
