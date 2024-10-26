@@ -4,6 +4,7 @@ const form = document.querySelector('#myform');
 const searchForm = document.getElementById('searchForm');
 const updateStatusForm = document.querySelector('#updateStatusForm');
 const messageParentsForm = document.querySelector('#myformMessage');
+const notifyParentForm = document.querySelector('#myNotifyForm');
 
 let rowCount = 0;
 let rowCountMinor = 0;
@@ -12,6 +13,13 @@ let studentViolator;
 getViolationInfo();
 
 // Get the modal
+var modal = document.getElementById('id01');
+window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+
 var modal1 = document.getElementById("modalSubmit");
 var modal2 = document.getElementById("modalUpdate");
 var modal3 = document.getElementById("modalMessage");
