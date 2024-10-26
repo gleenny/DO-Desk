@@ -1,5 +1,6 @@
 //link 
 const url = "../PHP/violations.php";
+const auditurl = "../PHP/audit.php";
 
 //data
 const picturePathFile = '/DO DESK/PICTURE/';
@@ -20,7 +21,6 @@ let timeInData = '1:11pm';
 let timeOutData = '2:22pm';
 let statusData = 'Done';
 
-setEventList();
 setData();
 
 //display user info
@@ -29,34 +29,7 @@ function setUserInfo(){
     document.querySelector('.account-title').innerHTML = userTitle;
     document.querySelector('#profilePic').setAttribute('src', picturePathFile + profilePicPath);
 }
-//TANGGAL NA SIGURO TO
-//dispay event list
-function setEventList(){
-    for(let i = 1; i <= events; i++){
-        let eventWrapper = document.createElement('div');
-            eventWrapper.classList.add('event-wrapper');
-            eventWrapper.id = 'eventWrapper' + i
-    
-        let eventName = document.createElement('div');
-            eventName.classList.add('event-name');
-            eventName.id = 'eventName' + i
-    
-        let eventType = document.createElement('div');
-            eventType.classList.add('event-type');
-            eventType.id = 'eventType' + i
-    
-        let eventDate = document.createElement('div');
-            eventDate.classList.add('event-date');
-            eventDate.id = 'eventDate' + i
-    
-            document.querySelector('.card.calendarEvent').appendChild(eventWrapper);
-            document.querySelector('#eventWrapper' + i).appendChild(eventName);
-                document.querySelector('#eventName' + i).appendChild(eventType);
-            document.querySelector('#eventType' + i).innerHTML = eventTypeData;
-                document.querySelector('#eventName' + i).appendChild(eventDate);
-            document.querySelector('#eventDate' + i).innerHTML = eventDateData;
-    }
-}
+
 function setData(){
     fetch(url, {
         method: 'GET'
