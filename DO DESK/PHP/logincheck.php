@@ -25,15 +25,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['lastName'] = $row['lastName'];
         $_SESSION['role'] = $row['role'];
 
-        //if($_SESSION['role'] === "Officer"){
+        $dateTime = date("Y-m-d H:i:s");
+        $userID = $_SESSION['userID'];
+    
+        $auditQuery = "INSERT INTO `audittbl` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
+        VALUES (NULL, '$userID', '$dateTime', 'Login user', NULL);";
+    
+        $audit = $conn->prepare($auditQuery);
+        $audit->execute();
+        if($_SESSION['role'] === "Disciplinary Officer"){
             header("Location: ../final/index.php");
-        //}
-        
+        }else if($_SESSION['role'] === "Admin"){
+            header("Location: ../final/DODeskAdmin.php");
+        }
+
         exit();
     } else {
         header("Location: ../final/DODesk-login.php"); //remember to change to index.php
         exit();
     }
+
+    
 
     $conn->close();
 } else {
