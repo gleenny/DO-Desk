@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['middleName'] = $row['middleName'];
         $_SESSION['lastName'] = $row['lastName'];
         $_SESSION['role'] = $row['role'];
-
+        //audit
         $dateTime = date("Y-m-d H:i:s");
         $userID = $_SESSION['userID'];
         $auditQuery = "INSERT INTO `audittbl` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 

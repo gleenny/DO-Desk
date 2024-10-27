@@ -61,7 +61,8 @@
                 <br>
                 
                 <div class="textarea-container">
-                  <textarea readonly id="myTextarea" placeholder="Upload your audio file"></textarea>
+                  <input type="text" placeholder="violation ID" id="violationID">
+                  <textarea id="myTextarea" placeholder="Upload your audio file"></textarea>
                   <div class="inputs-container">
                     <!-- Inputs -->
                     
@@ -74,6 +75,7 @@
                 <form action="../JAVASCRIPT/upload.js" method="post" enctype="multipart/form-data" id="myform">
                   <input type="file" id="myFile" name="filename">
                   <input type="submit" value="Upload File" name="submit">
+                  <input type="button" value="Save Transcription" id="saveText">
                 </form>
                 <audio controls id="audio">
                   <source id="audioPlayer" src="">

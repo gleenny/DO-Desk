@@ -1,10 +1,33 @@
 const url = '../PHP/openAITranscribe.php'
-const audioPath = '../uploads/'
+const texturl = '../PHP/savingText.php'
+const audioPath = '../audio/'
 const form = document.querySelector('#myform');  
+const record = document.querySelector("#record");
+const tigil = document.querySelector("#stop");
+const saveTranscript = document.querySelector('#saveText');
 
-const record = document.querySelector("#record")
-const tigil = document.querySelector("#stop")
+let filename;
 
+//save text file and db query
+saveTranscript.addEventListener("click", textUpload);
+function textUpload(){
+  
+  const formData = new FormData();
+
+  formData.append("textContent", document.querySelector("#myTextarea").value);
+  fileParts = filename.split(".");
+  formData.append("fileName", fileParts[0]);
+  formData.append("violationID", document.querySelector("#violationID").value);
+  
+  formData.append("requestType", "uploadText");
+
+  fetch(texturl, {
+    method: 'POST',
+    body: formData
+  }).then((Response) => {
+    console.log(Response);
+  })
+}
 //recording
 if (navigator.mediaDevices) {
     console.log("getUserMedia supported.");
@@ -35,7 +58,7 @@ if (navigator.mediaDevices) {
   
         mediaRecorder.onstop = (e) => {
           const clipName = prompt("Enter a name for your sound clip");
-  
+
           audio.controls = true;
           const blob = new Blob(chunks, { type: "audio/webm; codecs=opus" });
           chunks = [];
@@ -45,14 +68,16 @@ if (navigator.mediaDevices) {
   
           const blobUrl = URL.createObjectURL(blob);
 
-          //download audio file
           const link = document.createElement('a');
-          link.href = blobUrl;
-          link.download = clipName
-          document.body.appendChild(link)
 
-          console.log(link);
-
+          if(clipName != null){
+            link.href = blobUrl;
+            link.download = clipName
+            document.body.appendChild(link)
+  
+            console.log(link);
+          }
+          
           link.dispatchEvent(
             new MouseEvent('click', {
               bubbles: true,
@@ -90,7 +115,8 @@ form.addEventListener('submit', (e) => {
     .then((json) => {
         console.log(json)
         document.querySelector('#myTextarea').innerHTML = json[0]
-        document.querySelector('#audioPlayer').setAttribute('src', audioPath+json[1])
+        filename = json[1];
+        document.querySelector('#audioPlayer').setAttribute('src', audioPath+filename)
         document.querySelector('#audio').load();
     })
     

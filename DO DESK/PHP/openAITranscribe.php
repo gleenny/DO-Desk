@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         require_once 'vendor/autoload.php';
         $text = '';
         $errors = [];
-        $path = '../uploads/';
+        $path = '../audio/';
         $extensions = ['mp3', 'mp4', 'mpeg', 'mpga', 'm4a', 'wav', 'webm'];
         
         $file_name = $_FILES['files']['name'][0]; //file name
@@ -44,6 +44,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
                 foreach ($response->segments as $segment) {
                     $text .= $segment->text;
                 }
+
+                //audit
+                $dateTime = date("Y-m-d H:i:s");
+                $userID = $_SESSION['userID'];
+                $auditQuery = "INSERT INTO `audittbl` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
+                VALUES (NULL, '$userID', '$dateTime', 'Transcribed a file', NULL);";
+                $audit = $conn->prepare($auditQuery);
+                $audit->execute();
             }
             catch(Exception $e){
                 $text = 'error';
