@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
                 'apikey' => SEMAPHOREAPIKEY, //Your API KEY
                 'number' => $mobileNumbers[$i], //message to
                 'message' => $message,
-                'sendername' => 'DODesk' //APPROVED NA, SANA SA ENDORSEMENT DIN
+                'sendername' => 'DODesk'
             );
             curl_setopt( $ch, CURLOPT_URL,'https://api.semaphore.co/api/v4/messages' );
             curl_setopt( $ch, CURLOPT_POST, 1 );
@@ -88,8 +88,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             curl_close ($ch);
             
             //Show the server response
-            echo $output;
+            echo "The message has been sent";
         }
+        $dateTime = date("Y-m-d H:i:s");
+        $userID = $_SESSION['userID'];
+        $auditQuery = "INSERT INTO `audittbl` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
+        VALUES (NULL, '$userID', '$dateTime', 'Messaged parents', '$studentName: parent meeting on $date');";
+        $audit = $conn->prepare($auditQuery);
+        $audit->execute();
     }
 }
 

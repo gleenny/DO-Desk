@@ -4,6 +4,7 @@ session_start(); // Start the session
 require_once 'connections.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    //search violations
     if($_POST["requestType"] == "SearchStudentViolation"){
         $conditionCounter = 0;
 
@@ -129,6 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         $conn->close();
     }
+    //adding violations
     if($_POST['requestType'] == "addViolation"){
         $violationType = $_POST["violationType"];
         $violationCase = $_POST["violationCase"];
@@ -141,6 +143,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     
         if ($conn->query($query) === TRUE) {
             echo "New record created successfully!";
+
+            $dateTime = date("Y-m-d H:i:s");
+            $userID = $_SESSION['userID'];
+            $auditQuery = "INSERT INTO `audittbl` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
+            VALUES (NULL, '$userID', '$dateTime', 'Added new violation', 'Student Number: $studentNumber - Violation Case: $violationCase');";
+            $audit = $conn->prepare($auditQuery);
+            $audit->execute();
       
         } else {
             echo "Error: " . $query . "<br>" . $conn->error;
@@ -148,6 +157,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     
         $conn->close();
     }
+    //updating violation status
     if($_POST['requestType'] == "updateStatus"){
         
         $violationID = $_POST["violationID"];
@@ -165,11 +175,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($conn->query($query) === TRUE) {
             echo "Data has been updated!";
 
+            $dateTime = date("Y-m-d H:i:s");
+            $userID = $_SESSION['userID'];
+            $statusChange = $_POST["violationStatus"];
+            $auditQuery = "INSERT INTO `audittbl` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
+            VALUES (NULL, '$userID', '$dateTime', 'Changed violation status', 'Violation ID: $violationID - changed into $statusChange');";
+            $audit = $conn->prepare($auditQuery);
+            $audit->execute();
+
         } else {
             echo "Error: " . $query . "<br>" . $conn->error;
         }
         $conn->close();
     }
+    //checking minor violations
     if($_POST['requestType'] == "checkMinorViolationCount"){
         
         $studentNumber = $_POST["studentNumber"];
