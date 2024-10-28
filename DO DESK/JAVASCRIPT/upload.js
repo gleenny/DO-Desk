@@ -17,6 +17,7 @@ function textUpload(){
   formData.append("textContent", document.querySelector("#myTextarea").value);
   fileParts = filename.split(".");
   formData.append("fileName", fileParts[0]);
+  formData.append("fileExtension", fileParts[1]);
   formData.append("violationID", document.querySelector("#violationID").value);
   
   formData.append("requestType", "uploadText");

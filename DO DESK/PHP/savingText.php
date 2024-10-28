@@ -9,6 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if($_POST["requestType"] == "uploadText"){
         //creating text file
         $fileName = $_POST["fileName"];
+        $fileExtension = $_POST["fileExtension"];
         $violationID = $_POST["violationID"];
 
         $myFile = fopen($txtPath.$fileName.".txt", "w") or die("file error");
@@ -17,8 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "File has been uploaded";
 
         //saving in db
-        $query = "INSERT INTO `transcripttbl` (`transcriptID`, `transcriptName`, `violationID`) 
-                VALUES (NULL, '$fileName', '$violationID');";
+        $query = "INSERT INTO `transcripttbl` (`transcriptID`, `transcriptName`, `fileExtension`, `violationID`) 
+                VALUES (NULL, '$fileName', '$fileExtension', '$violationID');";
         
         if($conn->query($query) === TRUE) {
             echo "file has been saved";

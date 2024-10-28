@@ -1,5 +1,6 @@
 <?php
 
+session_start(); // Start the session
 require_once 'connections.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
