@@ -90,8 +90,9 @@
         Reports
     </a>
 
+    <?php if($_SESSION["role"] === "Admin"){ ?>
     <!--Admin-->
-    <a class="header-link" href="DODeskReports.php">
+    <a class="header-link" href="DODeskAdmin.php">
         <svg id='Administrator_Male_24' width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' fill="currentColor"><rect width='24' height='24' stroke='none' fill='#9b9ca7' opacity='0'/>
         <g transform="matrix(0.5 0 0 0.5 12 12)" >
         <path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgba(155,156,167,255); fill-rule: nonzero; opacity: 1;" transform=" translate(-24, -22)" d="M 24 2 C 18.477152501692068 2 14 6.477152501692066 14 12 C 14 17.522847498307932 18.477152501692068 22 24 22 C 29.522847498307932 22 34 17.522847498307932 34 12 C 34 6.477152501692066 29.522847498307932 2 24 2 z M 36.391 26 L 11.609 26 C 9.619 26 8 27.785 8 29.979 L 8 31.5 C 8 34.821 9.888 37.688 13.315000000000001 39.573 C 16.161 41.139 19.955 42 24 42 C 31.706 42 40 38.714 40 31.5 L 40 29.979 C 40 27.785 38.381 26 36.391 26 z M 21.055 38.815 L 23.225 31.580999999999996 L 21.818 29 L 26.182000000000002 29 L 24.774 31.581 L 26.944000000000003 38.816 C 25.976 38.933 24.988 39 24 39 C 23.012 39 22.024 38.933 21.055 38.815 z" stroke-linecap="round" />
@@ -99,4 +100,5 @@
         </svg>
         Administration
     </a>
+    <?php } ?>
 </div>

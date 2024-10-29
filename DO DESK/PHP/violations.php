@@ -146,7 +146,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             $dateTime = date("Y-m-d H:i:s");
             $userID = $_SESSION['userID'];
-            $auditQuery = "INSERT INTO `audittbl` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
+            $auditQuery = "INSERT INTO `auditTBL` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
             VALUES (NULL, '$userID', '$dateTime', 'Added new violation', 'Student Number: $studentNumber - Violation Case: $violationCase');";
             $audit = $conn->prepare($auditQuery);
             $audit->execute();
@@ -178,7 +178,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $dateTime = date("Y-m-d H:i:s");
             $userID = $_SESSION['userID'];
             $statusChange = $_POST["violationStatus"];
-            $auditQuery = "INSERT INTO `audittbl` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
+            $auditQuery = "INSERT INTO `auditTBL` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
             VALUES (NULL, '$userID', '$dateTime', 'Changed violation status', 'Violation ID: $violationID - changed into $statusChange');";
             $audit = $conn->prepare($auditQuery);
             $audit->execute();
@@ -193,10 +193,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         
         $studentNumber = $_POST["studentNumber"];
 
-        $query = "SELECT `studenttbl`.`firstName`, `violationtbl`.`violationID`, `violationtbl`.`violationType`, `violationtbl`.`violationCase`, `violationtbl`.`active`, `violationtbl`.`violationDate`, `violationtbl`.`studentNumber`
-                    FROM `studenttbl` 
-	                LEFT JOIN `violationtbl` ON `violationtbl`.`studentNumber` = `studenttbl`.`studentNumber`
-                    WHERE `violationtbl`.`studentNumber` LIKE '$studentNumber' AND `violationtbl`.`violationType` LIKE 'Minor'
+        $query = "SELECT `studentTBL`.`firstName`, `violationTBL`.`violationID`, `violationTBL`.`violationType`, `violationTBL`.`violationCase`, `violationTBL`.`active`, `violationTBL`.`violationDate`, `violationTBL`.`studentNumber`
+                    FROM `studentTBL` 
+	                LEFT JOIN `violationTBL` ON `violationTBL`.`studentNumber` = `studentTBL`.`studentNumber`
+                    WHERE `violationTBL`.`studentNumber` LIKE '$studentNumber' AND `violationTBL`.`violationType` LIKE 'Minor'
                     ORDER BY `violationTBL`.`violationID` DESC";
 
         $results = $conn->query($query);

@@ -1,26 +1,26 @@
-const violationurl = "../PHP/violations.php";
+const adminurl = "../PHP/admin.php";
 const form = document.querySelector('#myform');
 const searchForm = document.getElementById('searchForm');
 const updateStatusForm = document.querySelector('#updateStatusForm');
 
 let rowCount = 0;
-getViolationInfo();
+getUserInfo();
 
 // Get the modal
 var modal1 = document.getElementById("modalRegister");
-var modal2 = document.getElementById("modalUpdateRole");
+//var modal2 = document.getElementById("modalUpdateRole");
 var modal3 = document.getElementById("modalUpdateStatus");
 
 
 // Get the button that opens the modal
 var btn1 = document.getElementById("btnRegister");
-var btn2 = document.getElementById("btnUpdateRole");
+//var btn2 = document.getElementById("btnUpdateRole");
 var btn3 = document.getElementById("btnUpdateStatus");
 
 
 // Get the <span> element that closes the modal
 var span1 = document.getElementsByClassName("close")[0];
-var span2 = document.getElementsByClassName("close")[0];
+//var span2 = document.getElementsByClassName("close")[0];
 var span3 = document.getElementsByClassName("close")[0];
 
 
@@ -28,9 +28,9 @@ var span3 = document.getElementsByClassName("close")[0];
 btn1.onclick = function() {
   modal1.style.display = "block";
 }
-btn2.onclick = function() {
-  modal2.style.display = "block";
-}
+//btn2.onclick = function() {
+//  modal2.style.display = "block";
+//}
 btn3.onclick = function() {
   modal3.style.display = "block";
 }
@@ -39,92 +39,71 @@ btn3.onclick = function() {
 span1.onclick = function() {
   modal1.style.display = "none";
 }
-span2.onclick = function() {
-    modal2.style.display = "none";
-  }
+//span2.onclick = function() {
+//  modal2.style.display = "none";
+//}
 span3.onclick = function() {
-    modal3.style.display = "none";
-  }
+  modal3.style.display = "none";
+}
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal1) {
     modal1.style.display = "none";
   }
-  else if (event.target == modal2) {
-    modal2.style.display = "none";
-  }
+  //else if (event.target == modal2) {
+  //  modal2.style.display = "none";
+  //}
   else if (event.target == modal3) {
     modal3.style.display = "none";
   }
 }
 
 
-//register new admin
+//register new user
 form.addEventListener('submit', (e) => {
   e.preventDefault()
 
   const formData = new FormData();
   //id from modal register admin
-  formData.append("adminFirstName", document.querySelector("#adminFirstName").value);
-  formData.append("adminMiddleName", document.querySelector("#adminMiddleName").value);
-  formData.append("adminLastName", document.querySelector("#adminLastName").value);
-  formData.append("adminRole", document.querySelector("#adminRole").value);
-  formData.append("adminStatus", document.querySelector("#adminStatus").value);
-  formData.append("adminEmail", document.querySelector("#adminEmail").value);
-  formData.append("addPassword", document.querySelector("#addPassword").value);
+  formData.append("firstName", document.querySelector("#firstName").value);
+  formData.append("middleName", document.querySelector("#middleName").value);
+  formData.append("lastName", document.querySelector("#lastName").value);
+  formData.append("username", document.querySelector("#username").value);
+  formData.append("password", document.querySelector("#password").value);
+  formData.append("role", document.querySelector("#role").value);
 
-  formData.append("requestType", "addViolation");
+  formData.append("requestType", "addUser");
 
-  fetch(violationurl, {
+  fetch(adminurl, {
       method: 'POST',
       body: formData,
   }).then((Response) => {
       return Response.text()
   }).then((body) => {
       console.log(body)
-      console.log("Data has been added");
       console.log("Resetting table"); 
       resetTable();
       console.log("Repopulating table"); 
-      getViolationInfo();
+      getUserInfo();
   })
 });
 
-
-//list of Disciplinary Officer 
-function getViolationInfo(){
-  fetch(violationurl, {
-      method: 'GET'
-  }).then((Response) => Response.json())
-  .then((json) => {
-      console.log("Displaying list of Disciplinary Officer")    
-      rowCount = json["Officer"].length;
-      for(let i = 0; i <= rowCount - 1; i++){
-          populateTable(i, json);
-      }
-  })
-}
-
-//search from list of Disciplinary Officer 
+//search from list of User
 searchForm.addEventListener('submit', function (e) {
   e.preventDefault(); // Prevent default form submission
 
   const formData = new FormData();
 
-   //id from modal register admin
-   formData.append("adminFirstName", document.querySelector("#adminFirstName").value);
-   formData.append("adminMiddleName", document.querySelector("#adminMiddleName").value);
-   formData.append("adminLastName", document.querySelector("#adminLastName").value);
-   formData.append("adminRole", document.querySelector("#adminRole").value);
-   formData.append("adminStatus", document.querySelector("#adminStatus").value);
-   formData.append("adminEmail", document.querySelector("#adminEmail").value);
-   formData.append("addPassword", document.querySelector("#addPassword").value);
+    //id from modal register admin
+    formData.append("userID", document.querySelector("#searchUserID").value);
+    formData.append("name", document.querySelector("#searchName").value);
+    formData.append("status", document.querySelector("#searchStatus").value);
 
-   //opening the SearchStudentViolation
-  formData.append("requestType", "SearchStudentViolation");
+    //opening the SearchStudentViolation
+    formData.append("requestType", "searchUser");
   
-      fetch(violationurl, {
+      fetch(adminurl, {
           method: 'POST',
           body: formData,
       })
@@ -137,7 +116,7 @@ searchForm.addEventListener('submit', function (e) {
           console.log("Repopulating table"); 
           console.log("Displaying list of violation cases") 
 
-          rowCount = json["Officer"].length;
+          rowCount = json["userID"].length;
   
           for(let i = 0; i <= rowCount - 1; i++){
               populateTable(i, json);
@@ -145,10 +124,10 @@ searchForm.addEventListener('submit', function (e) {
       })
       .catch(error => {
           console.log("An error occure: " + error);
-          getViolationInfo();
+          getUserInfo();
       })
 });
-//update Status of Admin
+//update Status of user
 updateStatusForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
@@ -158,36 +137,33 @@ updateStatusForm.addEventListener('submit', (e) => {
   formData.append("adminID", document.querySelector("#adminID").value);
   formData.append("adminStatus", document.querySelector("#adminStatus").value);
 
-  formData.append("requestType", "updateRole");
+  formData.append("requestType", "updateStatus");
 
-  fetch(violationurl, {
+  fetch(adminurl, {
       method: 'POST',
       body: formData
   }).then((Response) =>{
       return Response.text()
   }).then((body) => {
       console.log(body);
-      console.log("Violation case has been updated");
       console.log("Resetting table");
       resetTable();
       console.log("Repopulating table");
-      getViolationInfo();
+      getUserInfo();
   })
 });
-
 //update Role of Admin
-updateStatusForm.addEventListener('submit', (e) => {
+/*updateStatusForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
   const formData = new FormData();
 
-  //id from modalUpdateStatus
   formData.append("adminID", document.querySelector("#adminID").value);
-  formData.append("adminRole", document.querySelector("#adminRole").value);
+  formData.append("adminStatus", document.querySelector("#adminStatus").value);
 
   formData.append("requestType", "updateStatus");
 
-  fetch(violationurl, {
+  fetch(adminurl, {
       method: 'POST',
       body: formData
   }).then((Response) =>{
@@ -198,95 +174,83 @@ updateStatusForm.addEventListener('submit', (e) => {
       console.log("Resetting table");
       resetTable();
       console.log("Repopulating table");
-      getViolationInfo();
+      getUserInfo();
   })
-});
+});*/
+
+//list of Disciplinary Officer 
+function getUserInfo(){
+  fetch(adminurl, {
+      method: 'GET'
+  }).then((Response) => Response.json())
+  .then((json) => {
+      console.log("Displaying list of Users")    
+      rowCount = json["userID"].length;
+      for(let i = 0; i <= rowCount - 1; i++){
+          populateTable(i, json);
+      }
+  })
+}
 
 function resetTable(){
   for(let i = 0; i <= rowCount - 1; i++){
-      document.querySelector("#reportListRows").deleteRow(0);
+      document.querySelector("#userListRows").deleteRow(0);
   }
 }
 
 function populateTable(i, json){
   let tableRow = document.createElement('tr');
-          tableRow.id = 'violationList' + i;
-      
-          let violationID = document.createElement('td');
-          violationID.id = 'violationID' + i;
+          tableRow.id = 'userList' + i;
 
-          let doName = document.createElement('td');
-          doName.id = 'doName' + i;
-
-          let studentNumber = document.createElement('td');
-          studentNumber.id = 'studentNumber' + i;
+          let userID = document.createElement('td');
+            userID.id = 'userID' + i;
 
           if(json["middleName"][i] == null){
-              studentNameHolder = json["firstName"][i] + " " + json["lastName"][i];
+            nameHolder = json["firstName"][i] + " " + json["lastName"][i];
           }
           else{
-              studentNameHolder = json["firstName"][i] + " " + json["middleName"][i] + " " + json["lastName"][i];
+            nameHolder = json["firstName"][i] + " " + json["middleName"][i] + " " + json["lastName"][i];
           }  
+          let name = document.createElement('td');
+          name.id = 'name' + i;
 
-          let studentName = document.createElement('td');
-          studentName.id = 'studentName' + i;
+          let username = document.createElement('td');
+          username.id = 'username' + i;
 
-          let course = document.createElement('td');
-          course.id = 'course' + i;
+          let password = document.createElement('td');
+          password.id = 'password' + i;
 
-          let section = document.createElement('td');
-          section.id = 'section' + i;
-
-          let violationType = document.createElement('td');
-          violationType.id = 'violationType' + i;
-
-          let violationCase = document.createElement('td');
-          violationCase.id = 'violationCase' + i;
+          let role = document.createElement('td');
+          role.id = 'role' + i;
 
           if(json["active"][i] == 1){
-              resolveHolder = "Unresolved"
+              isActive = "active"
           }
           else{
-              resolveHolder = "Resolved"
+              isActive = "Inactive"
           }  
           let active = document.createElement('td');
           active.id = 'active' + i;
 
-          let violationDate = document.createElement('td');
-          violationDate.id = 'violationDate' + i;
+          document.querySelector('#userListRows').appendChild(tableRow);//tbody
 
+          document.querySelector('#userList' + i).appendChild(userID);
+            document.querySelector('#userID' + i).innerHTML = json["userID"][i];
 
-          document.querySelector('#reportListRows').appendChild(tableRow);//tbody
+          document.querySelector('#userList' + i).appendChild(name);
+            document.querySelector('#name' + i).innerHTML = nameHolder;
 
-          document.querySelector('#violationList' + i).appendChild(violationID);
-              document.querySelector('#violationID' + i).innerHTML = json["violationID"][i];
-          
-          document.querySelector('#violationList' + i).appendChild(doName);
-              document.querySelector('#doName' + i).innerHTML = json["doFirst"][i] + " " + json["doLast"][i];
+          document.querySelector('#userList' + i).appendChild(username);
+            document.querySelector('#username' + i).innerHTML = json["username"][i];
 
-          document.querySelector('#violationList' + i).appendChild(studentNumber);
-              document.querySelector('#studentNumber' + i).innerHTML = json["studentNumber"][i];
+          document.querySelector('#userList' + i).appendChild(password);
+            document.querySelector('#password' + i).innerHTML = json["password"][i];
 
-          document.querySelector('#violationList' + i).appendChild(studentName);
-              document.querySelector('#studentName' + i).innerHTML = studentNameHolder;
+          document.querySelector('#userList' + i).appendChild(role);
+            document.querySelector('#role' + i).innerHTML = json["role"][i];
 
-          document.querySelector('#violationList' + i).appendChild(course);
-              document.querySelector('#course' + i).innerHTML = json["course"][i];
-
-          document.querySelector('#violationList' + i).appendChild(section);
-              document.querySelector('#section' + i).innerHTML = json["section"][i];
-
-          document.querySelector('#violationList' + i).appendChild(violationType);
-              document.querySelector('#violationType' + i).innerHTML = json["violationType"][i];
-
-          document.querySelector('#violationList' + i).appendChild(violationCase);
-              document.querySelector('#violationCase' + i).innerHTML = json["violationCase"][i];
-
-          document.querySelector('#violationList' + i).appendChild(active);
-              document.querySelector('#active' + i).innerHTML = resolveHolder;
-
-          document.querySelector('#violationList' + i).appendChild(violationDate);
-              document.querySelector('#violationDate' + i).innerHTML = json["violationDate"][i];
+          document.querySelector('#userList' + i).appendChild(active);
+            document.querySelector('#active' + i).innerHTML = isActive;
 }
 
 document.addEventListener("DOMContentLoaded", function() {

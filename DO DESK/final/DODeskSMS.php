@@ -1,3 +1,6 @@
+<?php if(!isset($_SESSION)){
+  session_start();
+} // Start the session ?>
 <!DOCTYPE html>
 <html lang="en">
 
