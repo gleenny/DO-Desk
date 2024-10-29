@@ -78,7 +78,7 @@
             </form>
         </div>  
         <!--Second Flow-->
-        <div class="user-box second-box" style="--delay: .6s">
+        <div class="user-box second-box">
           <!-- Trigger/Open The Modal -->
               <button class="cards-button button" id="btnSubmit">Submit Violation</button>
 
@@ -164,48 +164,47 @@
             </div>
        </div>
       
-        <!--Second Flow-->
+        <!--Third Flow-->
         <div class="user-box third-box">
-
-          <!--3:First module-->
-
           <!--List Module-->
           <div class="cards-wrapper" style="--delay: 1s">
-            <div class="cards-header">
-              
-            <div class="cards-view">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
-              <rect x="3" y="4" width="16" height="16" rx="2" ry="2" />
-              <path d="M16 2v4M8 2v4M3 10h18" />
-              </svg>
-              
-              <span class="today"> Report List</span>
-            </div>
-            </div>
-            <div class="cards card">
-            <table class="table">
-              <thead>
-              <tr>
-                <th>Violation ID</th>
-                <th>Record By</th>
-                <th>Student number</th>
-                <th>Student Name</th>
-                <th>Course</th>
-                <th>Section</th>
-                <th>Type Of Violation</th>
-                <th>Case</th>
-                <th>Status</th>
-                <th>Date</th>
-              </tr>
-              </thead>
 
-              <tbody id="reportListRows">
-              </tbody>
-            </table>
+            <div class="cards-header">
+              <div class="cards-view">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+                <rect x="3" y="4" width="16" height="16" rx="2" ry="2" />
+                <path d="M16 2v4M8 2v4M3 10h18" />
+                </svg>
+                
+                <span class="today"> Report List</span>
+              </div>
             </div>
+
+            <div class="cards card">
+              <table class="table">
+                <thead>
+                <tr>
+                  <th>Violation ID</th>
+                  <th>Record By</th>
+                  <th>Student number</th>
+                  <th>Student Name</th>
+                  <th>Course</th>
+                  <th>Section</th>
+                  <th>Type Of Violation</th>
+                  <th>Case</th>
+                  <th>Status</th>
+                  <th>Date</th>
+                </tr>
+                </thead>
+
+                <tbody id="reportListRows">
+                </tbody>
+              </table>
+            </div>
+
+           </div>
           </div>
-          
-          </div>
+        </div>
 
         <script src="../JAVASCRIPT/DODeskRecordsJS.js"></script>
 </body>

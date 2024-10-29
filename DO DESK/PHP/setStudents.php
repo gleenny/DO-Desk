@@ -61,6 +61,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
         print_r($result);
     }
+    //display student 
+    if($_POST["requestType"] == "Parents"){
+    }
 }
 
 ?>
