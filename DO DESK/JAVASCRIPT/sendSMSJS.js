@@ -88,6 +88,8 @@ smsForm.addEventListener('submit', (e) => {
         const formData = new FormData();
 
         formData.append("studentNumber", document.querySelector('#studentNumber').value);
+        formData.append("studentName", document.querySelector('#studentNameSMS').value);
+        formData.append("mobileNumber", document.querySelector('#mobileNumber').value);
         formData.append("message", document.querySelector('#message').value);
         formData.append("date", document.querySelector('#scheduleDate').value);
         formData.append("requestType", "sendMessage");

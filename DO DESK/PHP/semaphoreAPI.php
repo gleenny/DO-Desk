@@ -41,29 +41,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     }
     if($_POST['requestType'] == "sendMessage"){
+        $studentName = $_POST["studentName"];
+        $parentNumber = $_POST["mobileNumber"];
         $studentNumber = $_POST["studentNumber"];
         $message = $_POST["message"];
         $date = $_POST["date"];
 
-        $numberQuery = "SELECT `studentTBL`.`studentNumber`,
-         `studentTBL`.`firstName`,
-          `studentTBL`.`middleName`,
-           `studentTBL`.`lastName`,
-            `studentparentTBL`.`parentID`,
-                `parentTBL`.`mobileNumber`
-        FROM `studentTBL` 
-            LEFT JOIN `studentparentTBL` ON `studentparentTBL`.`studentNumber` = `studentTBL`.`studentNumber` 
-            LEFT JOIN `parentTBL` ON `studentparentTBL`.`parentID` = `parentTBL`.`parentID`
-            WHERE `studentTBL`.`studentNumber` LIKE '$studentNumber';";
+        $mobileNumbers = [];
 
-        $result = $conn->query($numberQuery);
+        $mobileNumbers[] = $parentNumber;
 
-        if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()){
-                $mobileNumbers[] = $row['mobileNumber'];
-                $studentName = $row['firstName']. " ". $row['lastName'];
-            }
-        } 
+        if($studentNumber != ""){
+            $numberQuery = "SELECT `studentTBL`.`studentNumber`,
+            `studentTBL`.`firstName`,
+             `studentTBL`.`middleName`,
+              `studentTBL`.`lastName`,
+               `studentparentTBL`.`parentID`,
+                   `parentTBL`.`mobileNumber`
+           FROM `studentTBL` 
+               LEFT JOIN `studentparentTBL` ON `studentparentTBL`.`studentNumber` = `studentTBL`.`studentNumber` 
+               LEFT JOIN `parentTBL` ON `studentparentTBL`.`parentID` = `parentTBL`.`parentID`
+               WHERE `studentTBL`.`studentNumber` LIKE '$studentNumber';";
+   
+           $result = $conn->query($numberQuery);
+   
+           if ($result->num_rows > 0) {
+               while($row = $result->fetch_assoc()){
+                   $mobileNumbers[] = $row['mobileNumber'];
+                   $studentName = $row['firstName']. " ". $row['lastName'];
+               }
+           } 
+        }
+        
         if($message == ""){
             $message = "Hello, This is the Disciplinary Officer of STI College Global City. We are reaching out to the parents/guardians of $studentName regarding their school violations. We are hoping to meet you in the Disciplinary Office of our school on $date";
         }

@@ -79,15 +79,18 @@
       <div class="title">Send Message</div>
         <!--For message-->
         <form action="../JAVASCRIPT/sendSMSJS.js" enctype="multipart/form-data" method="POST" id="myformSMS">
-            <input class="searchBar" type="text" placeholder="Student Number" id="studentNumber">
-            <input class="textType" type="date" name="scheduleDate" id="scheduleDate" placeholder="Date">
-            <br>
-            <textarea class="messageTextBox" placeholder="Your message Here, leave blank for preset message" id="message"></textarea>
-            <br>
-            <input class="buttons" type="submit" value="Send Message" name="submit">
-    </form>
+          <input class="textType" type="date" name="scheduleDate" id="scheduleDate" placeholder="Date"><br>
+          <input class="searchBar" type="text" placeholder="Student Number" id="studentNumber"> OR<br>
+          <input class="searchBar" type="text" placeholder="Student Name" id="studentNameSMS">
+          <input class="searchBar" type="text" placeholder="Parent's Mobile Number" id="mobileNumber">
+          
+          <br>
+          <textarea class="messageTextBox" placeholder="Your message Here, leave blank for preset message" id="message"></textarea>
+          <br>
+          <input class="buttons" type="submit" value="Send Message" name="submit">
+        </form>
+      </div>
     </div>
-  </div>
     </div>
     </div>
     <script src="../JAVASCRIPT/sendSMSJS.js"></script>
