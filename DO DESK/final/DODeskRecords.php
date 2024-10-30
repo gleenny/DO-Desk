@@ -109,7 +109,7 @@
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <!--message notif-->
-                    <form action="../JAVASCRIPT/DODesk-RecordsJS.js" enctype="multipart/form-data" method="POST" id="myformMessage">
+                    <form action="../JAVASCRIPT/DODeskRecordsJS.js" enctype="multipart/form-data" method="POST" id="myformMessage">
                       <div id="messageParent">First name's violations</div>
                       <div>
                         <table>
@@ -154,7 +154,7 @@
             <div id="modalSendMessage" class="modal">
                 <div class="modal-content">
                         <span class="close">&times;</span>
-                          <form action="../JAVASCRIPT/DODesk-RecordsJS.js" enctype="multipart/form-data" method="POST" id="myformMessage">
+                          <form action="../JAVASCRIPT/DODeskRecordsJS.js" enctype="multipart/form-data" method="POST" id="myformMessage">
                             <div class="title">Message student's parents</div>
                             <div id="studentName">student Name</div> 
                             <div id="studentName">student Number</div>
@@ -210,18 +210,18 @@
           <!--searching sanction-->
           <div class="user-box fourth-box">
             <!--searching violations-->
-            <form id="searchForm">
-            <p>Violation List</p>
-                <input class="textType" type="text" name="sanctionID" id="sanctionID" placeholder="Sanction ID">
-                <input class="textType" type="text" name="studentNumber" id="studentNumber" placeholder="Student Number">
-                <input class="textType" type="text" name="studentName" id="studentName" placeholder="Student Name">
-                <input class="textType" type="text" name="violationID" id="violationID" placeholder="Violation ID">
-                <input class="textType" type="text" name="violationCase" id="violationCase" placeholder="Violation Case">
-                <input class="textType" type="text" name="sanction" id="sanction" placeholder="Sanction">
-                <select class="textType" name="status" id="status" value=" ">
+            <form id="searchSanctionForm">
+            <p>Sanction List</p>
+                <input class="textType" type="text" name="sanctionID" id="sanSanctionID" placeholder="Sanction ID">
+                <input class="textType" type="text" name="studentNumber" id="sanStudentNumber" placeholder="Student Number">
+                <input class="textType" type="text" name="studentName" id="sanStudentName" placeholder="Student Name">
+                <input class="textType" type="text" name="violationID" id="sanViolationID" placeholder="Violation ID">
+                <input class="textType" type="text" name="violationCase" id="sanViolationCase" placeholder="Violation Case">
+                <input class="textType" type="text" name="sanction" id="sanSanction" placeholder="Sanction">
+                <select class="textType" name="status" id="sanStatus" value=" ">
                   <option value=""> </option>
-                    <option value="Resolve">Resolve</option>
-                    <option value="Unresolve">Unresolve</option>
+                    <option value="0">Resolve</option>
+                    <option value="1">Unresolve</option>
                 </select>
                 <button type="submit" id="searchbtn" class="searchbutton">Search</button>
               </form>
@@ -237,14 +237,10 @@
                 <div class="modal-content">
                   <span class="close">&times;</span>
                   <!--Adding Violations-->
-                  <label>Register Student</label>
-                    <form action="../JAVASCRIPT/addStudentsJS.js" enctype="multipart/form-data" method="POST" id="myformStudent">
-                        <input type="text" placeholder="Sanction ID" id="sanctionID">
-                        <input type="text" placeholder="Student Number" id="studentNumber">
-                        <input type="text" placeholder="Student Name" id="studentName">
-                        <input type="text" placeholder="Violation ID" id="violationID">
-                        <input type="text" placeholder="Violation Case" id="violationCase">
-                        <input type="text" placeholder="Sanction" id="sanction">
+                  <label>Submit Sanction</label>
+                    <form action="../JAVASCRIPT/DODeskRecordsJS.js" enctype="multipart/form-data" method="POST" id="addSanctionform">
+                        <input type="text" placeholder="Violation ID" id="sanSearchViolationID">
+                        <input type="text" placeholder="Sanction" id="sanSearchSanction">
                         <input type="submit" value="Set Sanction" name="submit">
                     </form>
                 </div>
@@ -271,10 +267,12 @@
                   <th>Sanction ID</th>
                   <th>Record By</th>
                   <th>Student number</th>
+                  <th>Student name</th>
                   <th>Violation ID</th>
                   <th>Violation Case</th>
                   <th>Sanction</th>
                   <th>Status</th>
+                  <th>Date</th>
                 </tr>
                 </thead>
 

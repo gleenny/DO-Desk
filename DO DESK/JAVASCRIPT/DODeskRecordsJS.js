@@ -1,16 +1,22 @@
 const violationurl = "../PHP/violations.php";
 const messageurl = "../PHP/semaphoreAPI.php";
+const sanctionurl = "../PHP/sanction.php";
 const form = document.querySelector('#myform');
 const searchForm = document.getElementById('searchForm');
 const updateStatusForm = document.querySelector('#updateStatusForm');
 const messageParentsForm = document.querySelector('#myformMessage');
 const notifyParentForm = document.querySelector('#myNotifyForm');
+const searchSanction = document.querySelector('#searchSanctionForm');
+const addSanction = document.querySelector('#addSanctionform');
 
 let rowCount = 0;
 let rowCountMinor = 0;
 let rowMinorReset = 0;
 let studentViolator;
 getViolationInfo();
+
+let sanRowCount = 0;
+getSanctionInfo();
 
 // Get the modal
 var modal = document.getElementById('id01');
@@ -157,6 +163,74 @@ form.addEventListener('submit', (e) => {
     checkMinorViolationCount();
 });
 
+//searching student violations
+searchForm.addEventListener('submit', function (e) {
+    e.preventDefault(); // Prevent default form submission
+
+    const formData = new FormData();
+
+    formData.append("studentNumber", document.querySelector("#searchNumber").value);
+    formData.append("studentName", document.querySelector("#searchName").value);
+    formData.append("course", document.querySelector("#searchCourse").value);
+    formData.append("section", document.querySelector("#searchSection").value);
+    formData.append("violationType", document.querySelector("#typeOfViolation").value);
+    formData.append("violationCase", document.querySelector("#searchCase").value);
+    formData.append("status", document.querySelector("#status").value);
+    formData.append("date", document.querySelector("#searchDate").value);
+
+    formData.append("requestType", "SearchStudentViolation");
+    
+        fetch(violationurl, {
+            method: 'POST',
+            body: formData,
+        })
+        .then((Response) => Response.json())
+        .then((json) => {
+            // Handle and display search results
+            console.log("Resetting table"); 
+            resetTable();
+            console.log(json);
+            console.log("Repopulating table"); 
+            console.log("Displaying list of violation cases") 
+
+            rowCount = json["violationID"].length;
+    
+            for(let i = 0; i <= rowCount - 1; i++){
+                populateTable(i, json);
+            }
+        })
+        .catch(error => {
+            console.log("An error occure: " + error);
+            getViolationInfo();
+        })
+});
+
+//updating the case status
+updateStatusForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+
+    formData.append("violationID", document.querySelector("#violationID").value);
+    formData.append("violationStatus", document.querySelector("#violationStatus").value);
+
+    formData.append("requestType", "updateStatus");
+
+    fetch(violationurl, {
+        method: 'POST',
+        body: formData
+    }).then((Response) =>{
+        return Response.text()
+    }).then((body) => {
+        console.log(body);
+        console.log("Violation case has been updated");
+        console.log("Resetting table");
+        resetTable();
+        console.log("Repopulating table");
+        getViolationInfo();
+    })
+});
+
 //checking 3 minor violations
 function checkMinorViolationCount(){
     const formData = new FormData();
@@ -240,74 +314,6 @@ function getViolationInfo(){
         }
     })
 }
-
-//report list of student violations
-searchForm.addEventListener('submit', function (e) {
-    e.preventDefault(); // Prevent default form submission
-
-    const formData = new FormData();
-
-    formData.append("studentNumber", document.querySelector("#searchNumber").value);
-    formData.append("studentName", document.querySelector("#searchName").value);
-    formData.append("course", document.querySelector("#searchCourse").value);
-    formData.append("section", document.querySelector("#searchSection").value);
-    formData.append("violationType", document.querySelector("#typeOfViolation").value);
-    formData.append("violationCase", document.querySelector("#searchCase").value);
-    formData.append("status", document.querySelector("#status").value);
-    formData.append("date", document.querySelector("#searchDate").value);
-
-    formData.append("requestType", "SearchStudentViolation");
-    
-        fetch(violationurl, {
-            method: 'POST',
-            body: formData,
-        })
-        .then((Response) => Response.json())
-        .then((json) => {
-            // Handle and display search results
-            console.log("Resetting table"); 
-            resetTable();
-            console.log(json);
-            console.log("Repopulating table"); 
-            console.log("Displaying list of violation cases") 
-
-            rowCount = json["Officer"].length;
-    
-            for(let i = 0; i <= rowCount - 1; i++){
-                populateTable(i, json);
-            }
-        })
-        .catch(error => {
-            console.log("An error occure: " + error);
-            getViolationInfo();
-        })
-});
-
-//updating the case status
-updateStatusForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const formData = new FormData();
-
-    formData.append("violationID", document.querySelector("#violationID").value);
-    formData.append("violationStatus", document.querySelector("#violationStatus").value);
-
-    formData.append("requestType", "updateStatus");
-
-    fetch(violationurl, {
-        method: 'POST',
-        body: formData
-    }).then((Response) =>{
-        return Response.text()
-    }).then((body) => {
-        console.log(body);
-        console.log("Violation case has been updated");
-        console.log("Resetting table");
-        resetTable();
-        console.log("Repopulating table");
-        getViolationInfo();
-    })
-});
 
 function resetTable(){
     for(let i = 0; i <= rowCount - 1; i++){
@@ -399,3 +405,160 @@ document.addEventListener("DOMContentLoaded", function() {
     document.body.style.setProperty('--scrollbar-thumb-color', 'purple');
     document.body.style.setProperty('--scrollbar-track-color', '#f1f1f1');
 });
+
+//SANCTIONS
+//search sanction
+searchSanction.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+
+    formData.append("sanctionID", document.querySelector("#sanSanctionID").value);
+    formData.append("studentNumber", document.querySelector("#sanStudentNumber").value);
+    formData.append("studentName", document.querySelector("#sanStudentName").value);
+    formData.append("violationID", document.querySelector("#sanViolationID").value);
+    formData.append("violationCase", document.querySelector("#sanViolationCase").value);
+    formData.append("sanction", document.querySelector("#sanSanction").value);
+    formData.append("status", document.querySelector("#sanStatus").value);
+
+    formData.append("requestType", "searchSanction");
+
+    fetch(sanctionurl, {
+        method: 'POST',
+        body: formData,
+    })
+    .then((Response) => Response.json())
+    .then((json) => {
+        // Handle and display search results
+        console.log("Resetting table"); 
+        sanResetTable();
+        console.log(json);
+        console.log("Repopulating table"); 
+        console.log("Displaying list of sanctions") 
+
+        sanRowCount = json["sanctionID"].length;
+
+        for(let i = 0; i <= sanRowCount - 1; i++){
+            populateSanctionTable(i, json);
+        }
+    })
+    .catch(error => {
+        console.log("An error occure: " + error);
+        getSanctionInfo();
+    })
+})
+//adding sanction
+addSanction.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+
+    formData.append("violationID", document.querySelector("#sanSearchViolationID").value);
+    formData.append("sanction", document.querySelector("#sanSearchSanction").value);
+
+    formData.append("requestType", "addSanction");
+
+    fetch(sanctionurl, {
+        method:'POST',
+        body:formData
+    }).then((Response) => {
+        Response.text()
+    }).then((body) => {
+        console.log(body);
+        console.log("Resetting table");
+        sanResetTable();
+        console.log("Repopulating table");
+        getSanctionInfo();
+    })
+})
+
+function getSanctionInfo(){
+    fetch(sanctionurl, {
+        method: 'GET'
+    }).then((Response) => Response.json())
+    .then((json) => {
+        console.log("Displaying list of sanctions")  
+        sanRowCount = json["sanctionID"].length;
+        for(let i = 0; i <= sanRowCount - 1; i++){
+            populateSanctionTable(i, json);
+        }
+    })
+}
+function sanResetTable(){
+    for(let i = 0; i <= sanRowCount - 1; i++){
+        document.querySelector("#sanctionListRows").deleteRow(0);
+    }
+}
+function populateSanctionTable(i, json){
+    let tableRow = document.createElement('tr');
+            tableRow.id = 'sanctionList' + i;
+        
+            let sanSanctionID = document.createElement('td');
+            sanSanctionID.id = 'sanSanctionID' + i;
+
+            let sanRecordedBy = document.createElement('td');
+            sanRecordedBy.id = 'sanRecordedBy' + i;
+
+            let sanStudentNumber = document.createElement('td');
+            sanStudentNumber.id = 'sanStudentNumber' + i;
+
+            if(json["studentMiddle"][i] == null){
+                sanStudentNameHolder = json["studentFirst"][i] + " " + json["studentLast"][i];
+            }
+            else{
+                sanStudentNameHolder = json["studentFirst"][i] + " " + json["studentMiddle"][i] + " " + json["studentLast"][i];
+            }  
+
+            let sanStudentName = document.createElement('td');
+            sanStudentName.id = 'sanStudentName' + i;
+
+            let sanViolationId = document.createElement('td');
+            sanViolationId.id = 'sanViolationId' + i;
+
+            let sanViolationCase = document.createElement('td');
+            sanViolationCase.id = 'sanViolationCase' + i;
+
+            let sanSanction = document.createElement('td');
+            sanSanction.id = 'sanSanction' + i;
+
+            if(json["status"][i] == 1){
+                sanResolveHolder = "Unresolved"
+            }
+            else{
+                sanResolveHolder = "Resolved"
+            }  
+            let sanStatus = document.createElement('td');
+            sanStatus.id = 'sanStatus' + i;
+
+            let sanDate = document.createElement('td');
+            sanDate.id = 'sanDate' + i;
+
+            document.querySelector('#sanctionListRows').appendChild(tableRow);//tbody
+
+            document.querySelector('#sanctionList' + i).appendChild(sanSanctionID);
+                document.querySelector('#sanSanctionID' + i).innerHTML = json["sanctionID"][i];
+            
+            document.querySelector('#sanctionList' + i).appendChild(sanRecordedBy);
+                document.querySelector('#sanRecordedBy' + i).innerHTML = json["firstName"][i] = json['lastName'][i];
+
+            document.querySelector('#sanctionList' + i).appendChild(sanStudentNumber);
+                document.querySelector('#sanStudentNumber' + i).innerHTML = json["studentNumber"][i];
+
+            document.querySelector('#sanctionList' + i).appendChild(sanStudentName);
+                document.querySelector('#sanStudentName' + i).innerHTML = sanStudentNameHolder;
+
+            document.querySelector('#sanctionList' + i).appendChild(sanViolationId);
+                document.querySelector('#sanViolationId' + i).innerHTML = json["violationID"][i];
+
+            document.querySelector('#sanctionList' + i).appendChild(sanViolationCase);
+                document.querySelector('#sanViolationCase' + i).innerHTML = json["violationCase"][i];
+
+            document.querySelector('#sanctionList' + i).appendChild(sanSanction);
+                document.querySelector('#sanSanction' + i).innerHTML = json["sanction"][i];
+
+            document.querySelector('#sanctionList' + i).appendChild(sanStatus);
+                document.querySelector('#sanStatus' + i).innerHTML = sanResolveHolder;
+
+            document.querySelector('#sanctionList' + i).appendChild(sanDate);
+                document.querySelector('#sanDate' + i).innerHTML = json["date"][i];
+}
