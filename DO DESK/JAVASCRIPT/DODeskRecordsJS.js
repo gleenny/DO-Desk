@@ -24,18 +24,24 @@ var modal1 = document.getElementById("modalSubmit");
 var modal2 = document.getElementById("modalUpdate");
 var modal3 = document.getElementById("modalMessage");
 var modal4 = document.getElementById("modalSendMessage");
+var modal5 = document.getElementById("modalSanction");
+
 
 // Get the button that opens the modal
 var btn1 = document.getElementById("btnSubmit");
 var btn2 = document.getElementById("btnUpdate");
 var btn3 = document.getElementById("submitViolation");
 var btn4 = document.getElementById("sendMessage");
+var btn5 = document.getElementById("btnSanction");
+
 
 // Get the <span> element that closes the modal
 var span1 = document.getElementsByClassName("close")[0];
 var span2 = document.getElementsByClassName("close")[0];
 var span3 = document.getElementsByClassName("close")[0];
 var span4 = document.getElementsByClassName("close")[0];
+var span5 = document.getElementsByClassName("close")[0];
+
 
 // When the user clicks on the button, open the modal
 btn1.onclick = function() {
@@ -46,6 +52,9 @@ btn2.onclick = function() {
 }
 btn4.onclick = function() {
     modal4.style.display = "block";
+}
+btn5.onclick = function() {
+    modal5.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -61,6 +70,9 @@ span3.onclick = function() {
 span3.onclick = function() {
     modal4.style.display = "none";
 }
+span5.onclick = function() {
+    modal5.style.display = "none";
+}
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
@@ -75,6 +87,9 @@ window.onclick = function(event) {
   }
   else if (event.target == modal4) {
     modal4.style.display = "none";
+  }
+    else if (event.target == modal5) {
+    modal5.style.display = "none";
   }
 }
 

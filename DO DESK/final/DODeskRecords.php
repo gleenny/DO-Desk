@@ -58,6 +58,8 @@
         <div class="user-box first-box" style="--delay: .6s">
             <!--searching violations-->
             <form id="searchForm">
+            <p>Violation List</p>
+
               <input class="textType" type="text" name="searchNumber" id="searchNumber" placeholder="Student Number">
               <input class="textType" type="text" name="searchName" id="searchName" placeholder="Student Name">
               <input class="textType" type="text" name="searchCourse" id="searchCourse" placeholder="Course">
@@ -80,7 +82,7 @@
         <!--Second Flow-->
         <div class="user-box second-box">
           <!-- Trigger/Open The Modal -->
-              <button class="cards-button button" id="btnSubmit">Submit Violation</button>
+              <button class="cards-button button" id="btnSubmit"  style="--delay: .7s">Submit Violation</button>
 
               <!-- The Modal Register Violation -->
               <div id="modalSubmit" class="modal">
@@ -130,7 +132,7 @@
                   </div>
               </div>
 
-              <button class="cards-button button" id="btnUpdate">Update Status</button>
+              <button class="cards-button button" id="btnUpdate"  style="--delay: .7s">Update Status</button>
               <!-- The Modal -->
               <div id="modalUpdate" class="modal">
                 <!-- Modal content -->
@@ -167,7 +169,7 @@
         <!--Third Flow-->
         <div class="user-box third-box">
           <!--List Module-->
-          <div class="cards-wrapper" style="--delay: 1s">
+          <div class="cards-wrapper" style="--delay: .9s">
 
             <div class="cards-header">
               <div class="cards-view">
@@ -203,8 +205,93 @@
             </div>
 
            </div>
-          </div>
         </div>
+
+          <!--searching sanction-->
+          <div class="user-box fourth-box">
+            <!--searching violations-->
+            <form id="searchForm">
+            <p>Violation List</p>
+                <input class="textType" type="text" name="sanctionID" id="sanctionID" placeholder="Sanction ID">
+                <input class="textType" type="text" name="studentNumber" id="studentNumber" placeholder="Student Number">
+                <input class="textType" type="text" name="studentName" id="studentName" placeholder="Student Name">
+                <input class="textType" type="text" name="violationID" id="violationID" placeholder="Violation ID">
+                <input class="textType" type="text" name="violationCase" id="violationCase" placeholder="Violation Case">
+                <input class="textType" type="text" name="sanction" id="sanction" placeholder="Sanction">
+                <select class="textType" name="status" id="status" value=" ">
+                  <option value=""> </option>
+                    <option value="Resolve">Resolve</option>
+                    <option value="Unresolve">Unresolve</option>
+                </select>
+                <button type="submit" id="searchbtn" class="searchbutton">Search</button>
+              </form>
+          </div>
+
+          <!--modal buttons for sanction-->
+          <div class="user-box fifth-box">
+            <!--button for new sanction-->
+            <button class="cards-button button" id="btnSanction"  style="--delay: .7s">Set Sanction</button>
+             <!-- The Modal Register Violation -->
+             <div id="modalSanction" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <!--Adding Violations-->
+                  <label>Register Student</label>
+                    <form action="../JAVASCRIPT/addStudentsJS.js" enctype="multipart/form-data" method="POST" id="myformStudent">
+                        <input type="text" placeholder="Sanction ID" id="sanctionID">
+                        <input type="text" placeholder="Student Number" id="studentNumber">
+                        <input type="text" placeholder="Student Name" id="studentName">
+                        <input type="text" placeholder="Violation ID" id="violationID">
+                        <input type="text" placeholder="Violation Case" id="violationCase">
+                        <input type="text" placeholder="Sanction" id="sanction">
+                        <input type="submit" value="Set Sanction" name="submit">
+                    </form>
+                </div>
+            </div>
+        </div>
+          <div class="user-box Sixth-box">
+               <!--List Module-->
+          <div class="cards-wrapper" style="--delay: .9s">
+            <div class="cards-header">
+              <div class="cards-view">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+                <rect x="3" y="4" width="16" height="16" rx="2" ry="2" />
+                <path d="M16 2v4M8 2v4M3 10h18" />
+                </svg>
+                
+                <span class="today"> Sanction List</span>
+              </div>
+            </div>
+
+            <div class="cards card">
+              <table class="table">
+                <thead>
+                <tr>
+                  <th>Sanction ID</th>
+                  <th>Record By</th>
+                  <th>Student number</th>
+                  <th>Violation ID</th>
+                  <th>Violation Case</th>
+                  <th>Sanction</th>
+                  <th>Status</th>
+                </tr>
+                </thead>
+
+                <tbody id="sanctionListRows">
+                </tbody>
+              </table>
+            </div>
+
+            </div>
+
+          <!--end fifth-box-->
+          </div>
+
+       <!--end wrapper-->
+    </div>
+        
+        
 
         <script src="../JAVASCRIPT/DODeskRecordsJS.js"></script>
 </body>
