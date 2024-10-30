@@ -90,6 +90,15 @@
         Reports
     </a>
 
+    <a class="header-link" href="DODeskAudit.php">
+        <svg id='Summary_List_24' width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' fill="currentColor" ><rect width='24' height='24' stroke='none' fill='#9b9ca7' opacity='0'/>
+        <g transform="matrix(1 0 0 1 12 12)" >
+        <path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; rgba(155,156,167,255); fill-rule: nonzero; opacity: 1;" transform=" translate(-12, -12)" d="M 20 3 L 4 3 C 2.897 3 2 3.897 2 5 L 2 19 C 2 20.103 2.8970000000000002 21 4 21 L 20 21 C 21.103 21 22 20.103 22 19 L 22 5 C 22 3.897 21.103 3 20 3 z M 11 17 L 5 17 L 5 15 L 11 15 L 11 17 z M 11 13 L 5 13 L 5 11 L 11 11 L 11 13 z M 11 9 L 5 9 L 5 7 L 11 7 L 11 9 z M 15 17 L 13 17 L 13 7 L 15 7 L 15 17 z M 19 17 L 17 17 L 17 15 L 19 15 L 19 17 z M 19 13 L 17 13 L 17 11 L 19 11 L 19 13 z M 19 9 L 17 9 L 17 7 L 19 7 L 19 9 z" stroke-linecap="round" />
+        </g>
+        </svg>
+        Audit
+    </a>
+
     <?php if($_SESSION["role"] === "Admin"){ ?>
     <!--Admin-->
     <a class="header-link" href="DODeskAdmin.php">
@@ -101,4 +110,5 @@
         Administration
     </a>
     <?php } ?>
+
 </div>
