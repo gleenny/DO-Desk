@@ -18,7 +18,7 @@
         <!--Page Style-->
         <link rel="stylesheet" href="../CSS/DODESK-InsertingDetails.css">
         <!--Script-->
-        <link rel="stylesheet" href="styles.css">
+        <!--<link rel="stylesheet" href="styles.css">-->
         <style>
             body {
                 margin: 0;
@@ -61,16 +61,13 @@
         <div class="user-box first-box" style="--delay: .6s">
             <!--searching violations-->
             <form id="searchForm">
-              <input class="textType" type="text" name="searchNumber" id="searchNumber" placeholder="Student ID">
+              <input class="textType" type="text" name="searchNumber" id="searchNumber" placeholder="Student Number">
               <input class="textType" type="text" name="searchName" id="searchName" placeholder="Student Name">
               <input class="textType" type="text" name="searchCourse" id="searchCourse" placeholder="Course">
-              <input class="textType" type="text" name="searchSection" id="searchSection" placeholder="Section">
-              <input class="textType" type="text" name="searchNumber" id="searchNumber" placeholder="Student Number">
               <select class="textType" name="status" id="status" value=" ">
                 <option value=""> </option>
-                  <option value="Resolve">Enrolled</option>
-                  <option value="Unresolve">Graduate</option>
-                  <option value="Unresolve">Deactive</option>
+                  <option value="1">Enrolled</option>
+                  <option value="0">Not ernolled</option>
               </select>
               <button type="submit" id="searchbtn" class="searchbutton">Search</button>
             </form>
@@ -78,9 +75,11 @@
         
         <!--second box -->
         <div class="user-box second-box" >
-            <button class="cards-button button" id="btnSubmit" style="--delay: .7s">Submit Violation</button>
+            <button class="cards-button button" id="btnStudent" style="--delay: .7s">Upload Student</button>
+            <button class="cards-button button" id="btnParent" style="--delay: .7s">Upload Parent</button>
+            <button class="cards-button button" id="btnPairing" style="--delay: .7s">Upload Pairing</button>
             <!-- The Modal Register Violation -->
-              <div id="modalSubmit" class="modal">
+              <div id="modalStudent" class="modal">
                 <!-- Modal content -->
                 <div class="modal-content">
                   <span class="close">&times;</span>
@@ -92,13 +91,19 @@
                         <input type="text" placeholder="Middle Name" id="studentMiddleName">
                         <input type="text" placeholder="Last Name" id="studentLastName">
                         <input type="text" placeholder="Course" id="course">
-                        <input type="text" placeholder="Section" id="section">
                     <input type="submit" value="Submit Student" name="submit">
                     </form>
-                    <br>
-                    <br>
-                    <!--Add Parent--> 
-                    <label>Register Parent</label> 
+                    <label>Batch upload student data</label><br>
+                    <input id="studentExcel" type="file" accept=".xlsx, .xls">
+                    <input id="submitStudentExcel" type="submit" value="submit student excel">
+                </div>
+              </div>
+              <div id="modalParent" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                 <!--Add Parent--> 
+                 <label>Register Parent</label> 
                     <form action="../JAVASCRIPT/addStudentsJS.js" enctype="multipart/form-data" method="POST" id="myformParent">
                         <input type="text" placeholder="First Name" id="parentfirstName">
                         <input type="text" placeholder="Middle Name" id="parentMiddleName">
@@ -106,19 +111,26 @@
                         <input type="text" placeholder="Mobile Number" id="mobileNumber">
                     <input type="submit" value="Submit Parent" name="submit">
                     </form>
-                    <br>
-                    <br>
-                    <!--Student Parent Pairing--> 
-                    <label>Pair Parent</label> 
-                    <form action="../JAVASCRIPT/addStudentsJS.js" enctype="multipart/form-data" method="POST" id="myformPairing">
-                        <input type="text" placeholder="Student Number" id="studentNumberPair">
-                        <input type="text" placeholder="Parent Number" id="parentNumberPair">
-                    <input type="submit" value="Submit Pairing" name="submit">
-                    </form>
+                    <label>Batch upload parent data</label><br>
+                    <input id="parentExcel" type="file" accept=".xlsx, .xls">
+                    <input id="submitParentExcel" type="submit" value="submit parent excel">
                 </div>
               </div>
-
-
+              <div id="modalPairing" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                <!--Student Parent Pairing--> 
+                <label>Pair Students and Parent</label> 
+                  <form action="../JAVASCRIPT/addStudentsJS.js" enctype="multipart/form-data" method="POST" id="myformPairing">
+                      <input type="text" placeholder="Student Number" id="studentNumberPair">
+                      <input type="text" placeholder="Parent Number" id="parentNumberPair">
+                  <input type="submit" value="Submit Pairing" name="submit">
+                  <input id="studentParentExcel" type="file" accept=".xlsx, .xls">
+                  <input id="submitStudentParentExcel" type="submit" value="submit pairing excel">
+                  </form>
+                </div>
+              </div>
         </div>
 
          <!--Third Flow-->
@@ -141,11 +153,9 @@
               <table class="table">
                 <thead>
                 <tr>
-                  <th>Student ID</th>
+                  <th>Student number</th>
                   <th>Student Name</th>
                   <th>Course</th>
-                  <th>Section</th>
-                  <th>Student number</th>
                   <th>Status</th>
                 </tr>
                 </thead>
@@ -154,26 +164,11 @@
                 </tbody>
               </table>
             </div>
-
            </div>
           </div>
-
-
-    
     <!--adding student script-->
-    <script src="../JAVASCRIPT/addStudentsJS.js"></script>
-
-    
-    <script src="script.js"></script>
-        </div>
-
-        <!--Scroll bar properties-->
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                document.body.style.setProperty('--scrollbar-thumb-color', 'purple');
-                document.body.style.setProperty('--scrollbar-track-color', '#f1f1f1');
-            });
-        </script>
-
+    <script src="https://unpkg.com/read-excel-file@5.x/bundle/read-excel-file.min.js"></script>
+    <script src="../JAVASCRIPT/addStudentsJS.js"></script>    
+    <!--<script src="script.js"></script>-->
 </body>
 </html>
