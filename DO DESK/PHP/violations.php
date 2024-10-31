@@ -11,7 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $studentNumber = $_POST['studentNumber'];
         $studentName = $_POST['studentName'];
         $searchCourse = $_POST['course'];
-        $searchSection = $_POST['section'];
         $typeOfViolation = $_POST['violationType'];
         $searchCase = $_POST['violationCase'];
         if($_POST['status'] == "Resolve"){
@@ -30,9 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $conditionCounter++;
         }
         if(!($searchCourse == "")){
-            $conditionCounter++;
-        }
-        if(!($searchSection == "")){
             $conditionCounter++;
         }
         if(!($typeOfViolation == "")){
@@ -55,7 +51,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 `studentTBL`.`middleName`,
                 `studentTBL`.`lastName`,
                 `studentTBL`.`course`,
-                `studentTBL`.`section`,
                 
                 `userTBL`.`lastName` AS `Officer`
 
@@ -80,10 +75,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             else if(!($searchCourse == "")){
                 $sql .= "`studentTBL`.`course` LIKE '%$searchCourse%'";
                 $searchCourse = "";
-            }
-            else if(!($searchSection == "")){
-                $sql .= "`studentTBL`.`section` LIKE '%$searchSection%'";
-                $searchSection = "";
             }
             else if(!($typeOfViolation == "")){
                 $sql .= "`violationTBL`.`violationType` LIKE '%$typeOfViolation%'";
@@ -121,7 +112,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $searchResults["middleName"][] = $row['middleName'];
                 $searchResults["lastName"][] = $row['lastName'];
                 $searchResults["course"][] = $row['course'];
-                $searchResults["section"][] = $row['section'];
                 $searchResults["Officer"][] = $row['Officer'];
                 $searchResults["violationDate"][] = $row['violationDate'];
             }
@@ -230,7 +220,6 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
         `studentTBL`.`middleName`,
         `studentTBL`.`lastName`,
         `studentTBL`.`course`,
-        `studentTBL`.`section`,
         
         `userTBL`.`lastName` AS `Officer`
 
@@ -260,7 +249,6 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             $cases["middleName"][] = $row['middleName'];
             $cases["lastName"][] = $row['lastName'];
             $cases["course"][] = $row['course'];
-            $cases["section"][] = $row['section'];
             $cases["Officer"][] = $row['Officer'];
             $cases["violationDate"][] = $row['violationDate'];
         }

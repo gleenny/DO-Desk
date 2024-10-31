@@ -308,7 +308,7 @@ function getViolationInfo(){
     }).then((Response) => Response.json())
     .then((json) => {
         console.log("Displaying list of violation cases")    
-        rowCount = json["Officer"].length;
+        rowCount = json["violationID"].length;
         for(let i = 0; i <= rowCount - 1; i++){
             populateTable(i, json);
         }
@@ -384,9 +384,6 @@ function populateTable(i, json){
 
             document.querySelector('#violationList' + i).appendChild(course);
                 document.querySelector('#course' + i).innerHTML = json["course"][i];
-
-            document.querySelector('#violationList' + i).appendChild(section);
-                document.querySelector('#section' + i).innerHTML = json["section"][i];
 
             document.querySelector('#violationList' + i).appendChild(violationType);
                 document.querySelector('#violationType' + i).innerHTML = json["violationType"][i];
