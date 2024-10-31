@@ -126,6 +126,7 @@
                       <input type="text" placeholder="Student Number" id="studentNumberPair">
                       <input type="text" placeholder="Parent Number" id="parentNumberPair">
                   <input type="submit" value="Submit Pairing" name="submit">
+                  <label>Batch upload parent data</label><br>
                   <input id="studentParentExcel" type="file" accept=".xlsx, .xls">
                   <input id="submitStudentParentExcel" type="submit" value="submit pairing excel">
                   </form>
@@ -165,10 +166,43 @@
               </table>
             </div>
            </div>
+
+          <!--START OF PARENT TABLE-->
+           <!--List Module-->
+          <div class="cards-wrapper" style="--delay: 1s">
+          <div class="cards-header">
+            <div class="cards-view">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+              <rect x="3" y="4" width="16" height="16" rx="2" ry="2" />
+              <path d="M16 2v4M8 2v4M3 10h18" />
+              </svg>
+              
+              <span class="today">Parent List</span>
+            </div>
+          </div>
+
+          <div class="studentlist card">
+            <table class="table">
+              <thead>
+              <tr>
+                <th>Parent ID</th>
+                <th>Parent Name
+                <th>Mobile Number</th>
+                <th>Child</th>
+              </tr>
+              </thead>
+
+              <tbody id="parentListRows">
+              </tbody>
+            </table>
+          </div>
+          </div>
+          <!--END OF PARENT TABLE-->
+
           </div>
     <!--adding student script-->
     <script src="https://unpkg.com/read-excel-file@5.x/bundle/read-excel-file.min.js"></script>
-    <script src="../JAVASCRIPT/addStudentsJS.js"></script>    
+    <script src="../JAVASCRIPT/DODeskStudentsJS.js"></script>    
     <!--<script src="script.js"></script>-->
 </body>
 </html>
