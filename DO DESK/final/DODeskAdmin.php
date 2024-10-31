@@ -117,7 +117,43 @@
           </form>
           </div>
         </div>
+
+      <!--change password-->
+      <!-- Trigger/Open The Modal -->
+      <button class="cards-button button" id="btnChangePassword">Change Passsword</button>
+      <!-- The Modal -->
+      <div id="modalChangePassword" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <form action="../JAVASCRIPT/DODeskAdmin.js" enctype="multipart/form-data" method="POST" id="changePasswordForm">
+            <div class="title">Change Password</div>
+            <input type="text" placeholder="User ID" id="userIDPassword">
+            <input type="text" placeholder="Password" id="changePassword">
+            <input type="submit" value="Change Password" name="submit">
+          </form>
+          </div>
+        </div>
+
+        <!--change username-->
+      <!-- Trigger/Open The Modal -->
+      <button class="cards-button button" id="btnChangeUsername">Change username</button>
+      <!-- The Modal -->
+      <div id="modalChangeUsername" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <form action="../JAVASCRIPT/DODeskAdmin.js" enctype="multipart/form-data" method="POST" id="changeUsernameForm">
+            <div class="title">Change username</div>
+            <input type="text" placeholder="User ID" id="userIDUsername">
+            <input type="text" placeholder="Username" id="changeUsername">
+            <input type="submit" value="Change Username" name="submit">
+          </form>
+          </div>
+        </div>
+
       </div>
+      
       <div class="user-box third-box">
         <!--3:First module-->
         <!--List Module-->

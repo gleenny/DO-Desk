@@ -123,6 +123,34 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         echo "User has been updated";
     }
+    //changing password
+    if($_POST["requestType"] === "changePassword"){
+        $userID = $_POST["userID"];
+        $password = base64_encode($_POST["password"]);
+
+        $query = "UPDATE `accounttbl` 
+        SET `password` = '$password' 
+        WHERE `accounttbl`.`userID` = '$userID'; ";
+
+        $changePassword = $conn->prepare($query);
+        $changePassword->execute();
+
+        echo "password has been changed";
+    }
+    //changing username
+    if($_POST["requestType"] === "changeUsername"){
+        $userID = $_POST["userID"];
+        $username = base64_encode($_POST["username"]);
+
+        $query = "UPDATE `accounttbl` 
+        SET `username` = '$username' 
+        WHERE `accounttbl`.`userID` = '$userID'; ";
+
+        $changeUsername = $conn->prepare($query);
+        $changeUsername->execute();
+
+        echo "Username has been changed";
+    }
 }
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
     $query = "SELECT `userTBL`.`firstName`,
