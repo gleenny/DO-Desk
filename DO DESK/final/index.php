@@ -223,7 +223,6 @@
                   <th>Student number</th>
                   <th>Student Name</th>
                   <th>Course</th>
-                  <th>Section</th>
                   <th>Type Of Violation</th>
                   <th>Case</th>
                   <th>Status</th>

@@ -62,8 +62,6 @@ function setData(){
             studentName.id = 'studentName' + i;
             let course = document.createElement('td');
             course.id = 'course' + i;
-            let section = document.createElement('td');
-            section.id = 'section' + i;
             let violationType = document.createElement('td');
             violationType.id = 'violationType' + i;
             let violationCase = document.createElement('td');
@@ -90,9 +88,6 @@ function setData(){
 
             document.querySelector('#violationList' + i).appendChild(course);
                 document.querySelector('#course' + i).innerHTML = json["course"][i];
-
-            document.querySelector('#violationList' + i).appendChild(section);
-                document.querySelector('#section' + i).innerHTML = json["section"][i];
 
             document.querySelector('#violationList' + i).appendChild(violationType);
                 document.querySelector('#violationType' + i).innerHTML = json["violationType"][i];
