@@ -50,49 +50,67 @@
     require_once 'userHeader.php';
     ?>
       <div class="user-box first-box" style="--delay: .1s">
+
         <div class="AddingStudent card" style="--delay: .1s">
 
-          <div class="title">Message Parent</div>
+         <div class="searchStudent">
+         <div class="title"  style="font-weight: bold;">Contact Personnel</div>
           <!--Search Student-->
-      <label>Search Student</label>
-        <form action="../JAVASCRIPT/sendSMSJS.js" enctype="multipart/form-data" method="POST" id="myformFindParent">
-            <input class="SearchStudentBar" type="text" placeholder="Student Name" id="studentName">
-            <input class="buttons" type="submit" value="Look for Student" name="submit">
-        </form>
-    <br>
-    <br>
-    <table>
-        <thead>
-            <tr>
-              <th>Student Number</th>
-              <th>Student Name</th>
-              <th>Parent Name</th>
-              <th>Mobile Number</th>
-            </tr>
-            </thead>
-            <tbody id="reportListRows">
-            </tbody>
-    </table>
-    <br>
-    <br>
-    <div class="message">
-      <div class="title">Send Message</div>
-        <!--For message-->
-        <form action="../JAVASCRIPT/sendSMSJS.js" enctype="multipart/form-data" method="POST" id="myformSMS">
-          <input class="textType" type="date" name="scheduleDate" id="scheduleDate" placeholder="Date"><br>
-          <input class="searchBar" type="text" placeholder="Student Number" id="studentNumber"> OR<br>
-          <input class="searchBar" type="text" placeholder="Student Name" id="studentNameSMS">
-          <input class="searchBar" type="text" placeholder="Parent's Mobile Number" id="mobileNumber">
+            <label style=" font-weight: bold;">Search Student</label>
+            <p class="searchNote"> Search the student and you can see the parent name and their phone number </p>
+            <form action="../JAVASCRIPT/sendSMSJS.js" enctype="multipart/form-data" method="POST" id="myformFindParent">
+                <input class="SearchStudentBar" type="text" placeholder="Student Name" id="studentName">
+                <input class="buttons" id="myBtn" type="submit" value="Look for Student" name="submit">
+            </form>
+         </div>
           
-          <br>
-          <textarea class="messageTextBox" placeholder="Your message Here, leave blank for preset message" id="message"></textarea>
-          <br>
-          <input class="buttons" type="submit" value="Send Message" name="submit">
-        </form>
+      <!-- The Modal -->
+          <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <table>
+              <thead>
+                  <tr>
+                    <th class="th-modal">Student Number</th>
+                    <th class="th-modal">Student Name</th>
+                    <th class="th-modal">Parent Name</th>
+                    <th class="th-modal">Mobile Number</th>
+                  </tr>
+                  </thead>
+                  <tbody id="reportListRows">
+                  </tbody>
+              </table>      
+            </div>
+          </div>
+
+          <div class="message">
+              <label style=" font-weight: bold;" class="title">Send Message</label>
+              <p> Set a date when you want to visit your Office</p>
+                <!--For message-->
+                <form action="../JAVASCRIPT/sendSMSJS.js" enctype="multipart/form-data" method="POST" id="myformSMS">
+                  <!--date-->
+                  <input class="datepicker" type="date" name="scheduleDate" id="scheduleDate" placeholder="Date"><br>
+                  <!--Student Number-->
+                  <p>Search the student number it will Message both of the parent</p>
+                  <input class="searchBar" type="text" placeholder="Student Number" id="studentNumber"> 
+                  <h1>OR</h1>
+
+                  <p>Enter the Student name and the Parent contact number</p>
+                  <input class="searchBar" type="text" placeholder="Student Name" id="studentNameSMS">
+                  <input class="searchBar" type="text" placeholder="Parent's Mobile Number" id="mobileNumber">
+                  <br>
+                  <!--textbox-->
+                  <textarea class="messageTextBox" placeholder="Your message Here, leave blank for preset message" id="message"></textarea>
+                  <br>
+                  <input class="buttons" type="submit" value="Send Message" name="submit">
+                </form>
+
+              </div>
+            </div>
+          </div>
       </div>
-    </div>
-    </div>
-    </div>
     <script src="../JAVASCRIPT/sendSMSJS.js"></script>
 </body>
 </html>

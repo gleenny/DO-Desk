@@ -262,7 +262,7 @@ width: 100%;
 
 }
 .card .title {
-font-size: 20px;
+font-size: 30px;
 font-weight: 500;
 margin-bottom: 15px;
 }
@@ -275,7 +275,15 @@ margin-left: 20px;
 }
 
 /* 1st module */
-
+.searchStudent{
+  margin-bottom: 20px;
+}
+.textType {
+  color: #9b9ca7;
+  background: #1a1b3c;
+  border: none;
+  padding: 10px 15px;
+}
 .AddingStudent {
   max-height: 100vh;
   max-width: 70%;
@@ -283,7 +291,6 @@ margin-left: 20px;
   margin-top: 1%;
   margin-left: 20%;
   margin-right: 20%;
-
 }
 
 .title {
@@ -295,10 +302,14 @@ th {
   text-align: left;
 }
 .SearchStudentBar {
-  width : 35%;
+  color: #9b9ca7;
+  background: #FCFBF4;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 16px 0px;
   padding: 10px 15px;
+  width: 20vw;
+}   
 
-}
 .message .title {
   font-size: 16px;
   margin-bottom: 5px;
@@ -308,7 +319,7 @@ th {
   width : 35%;
   margin-bottom: 10px;
   padding: 10px 15px;
-
+  background-color: #FCFBF4;
 }
 
 .message .messageTextBox {
@@ -330,7 +341,99 @@ th {
   background-color: #4f64eb;
   cursor:pointer;
 }
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
 
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 35%; /* Could be more or less, depending on screen size */
+  height: 20%; /* Could be more or less, depending on screen size */
+
+}
+.th-modal {
+  width: 400px;
+  font-weight: bold;
+}
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* date design */
+
+/* Basic Styling */
+.datepicker {
+  width: 25.6%;
+  padding: 10px;
+  font-size: 16px;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #FCFBF4;
+  outline: none;
+  transition: all 0.3s ease;
+  margin-bottom:20px;
+}
+
+/* Hover Effect */
+.datepicker:hover {
+  border-color: #888;
+}
+
+/* Focus Effect */
+.datepicker:focus {
+  border-color: #555;
+  box-shadow: 0 0 5px rgba(85, 85, 85, 0.3);
+}
+
+/* Placeholder Style */
+.datepicker::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+/* Calendar Icon */
+.datepicker::-webkit-calendar-picker-indicator {
+  color: #555;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+/* Disabled Style */
+.datepicker:disabled {
+  background-color: #eee;
+  color: #888;
+}
+
+/*notes*/
+.searchNote {
+    font-size: 10px;
+}
 
 @keyframes fadeItIn {
 0% {
@@ -342,134 +445,17 @@ th {
 }
 
 
-@media screen and (max-width: 1500px) {
-.wrapper {
-  max-width: 1200px;
+@media screen and (max-width: 1279px) {
+  .searchNote {
+    font-size: 8px;
+}
 }
 
-.activity {
-  width: 49%;
-  max-width: none;
-}
-
-.first-box {
-  flex-wrap: wrap;
-}
-.first-box .cards-wrapper {
-  width: 67%;
-  max-width: none;
-  margin: 20px 0;
-}
-.first-box .cards-wrapper .item.is-active {
-  background: none;
-  color: inherit;
-}
-.first-box .account-wrapper {
-  max-width: none;
-  width: calc(33% - 20px);
-  margin: 20px 0 20px 20px;
-}
-
-.second-box {
-  flex-wrap: wrap;
-}
-.second-box .cards-wrapper {
-  margin-top: 40px;
-  width: 66%;
-}
-
-.calendarEvent {
-  margin-top: 40px;
-  max-width: none;
-  width: 30%;
-}
-}
-@media screen and (max-width: 1200px) {
-.time {
-  display: none;
-}
-}
-@media screen and (max-width: 1060px) {
-.user-info .button,
-.user-info .hour {
-  display: none;
-}
-}
-@media screen and (max-width: 1020px) {
-.user-box .cards-view {
-  display: none;
-}
-
-.user-box .cards-header .cards-button {
-  display: none;
-}
-
-.cards-header-date {
-  margin: auto;
-}
-}
-@media screen and (max-width: 930px) {
-.second-box .cards-wrapper {
-  width: 100%;
-}
-
-.calendarEvent {
-  width: 100%;
-  margin-left: 0;
-  height: 100%;
-  margin-top: 20px;
-}
-
-.header-link {
-  display: none;
-}
-
-.user-info .profile {
-  margin-right: 0;
-}
-}
-@media screen and (max-width: 850px) {
-.activity-card {
-  width: 100%;
-}
-
-.user-box  {
-  margin-left: 0;
-  margin-top: 20px;
-}
-
-.left-side {
-  display: none;
-}
-
-.main-container {
-  padding-left: 25px;
-}
-
-.activity-links,
-.destination {
-  margin-top: 20px;
-}
-}
-@media screen and (max-width: 720px) {
-.first-box .account-wrapper {
-  display: none;
-}
-
-.first-box .cards-wrapper {
-  width: 100%;
-}
-
-.second-box .cards.card {
-  overflow-y: auto;
-}
-}
-@media screen and (max-width: 420px) {
-.destination-card + .destination-card {
-  display: none;
-}
-}
-.user-box > * {
--webkit-animation: top 1s var(--delay) both;
-        animation: top 1s var(--delay) both;
+@media screen and (max-width: 768px) {
+  .searchNote {
+    font-size: 40px;
+  } 
+  .buttons {
+    background-color: green;
+  }
 }
