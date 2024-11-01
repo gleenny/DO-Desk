@@ -61,15 +61,20 @@
                 <br>
                 
                 <div class="textarea-container">
-                  <input type="text" placeholder="violation ID" id="violationID">
-                  <textarea id="myTextarea" placeholder="Upload your audio file"></textarea>
+                  <input class="textType"type="text" placeholder="violation ID" id="violationID">
+                  <textarea class="textBox"id="myTextarea" placeholder="Upload your audio file"></textarea>
                   <div class="inputs-container">
                     <!-- Inputs -->
                     
                   </div>
                 </div>
-                <button id="record">record</button>
-                <button id="stop">stop</button>
+                <div class="containerbtn">
+                  <div class="centerbtn">
+                    <button class="buttonRecord" id="record">record</button>
+                    <button class="buttonStop" id="stop">stop</button>
+                  </div>
+                </div>
+              
                 <br>
                 <br>
                 <form action="../JAVASCRIPT/upload.js" method="post" enctype="multipart/form-data" id="myform">

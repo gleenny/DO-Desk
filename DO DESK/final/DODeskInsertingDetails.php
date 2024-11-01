@@ -75,16 +75,16 @@
         
         <!--second box -->
         <div class="user-box second-box" >
-            <button class="cards-button button" id="btnStudent" style="--delay: .7s">Upload Student</button>
-            <button class="cards-button button" id="btnParent" style="--delay: .7s">Upload Parent</button>
-            <button class="cards-button button" id="btnPairing" style="--delay: .7s">Upload Pairing</button>
+            <button class="cards-button button" id="btnStudent" style="--delay: .7s">Register Student</button>
+            <button class="cards-button button" id="btnParent" style="--delay: .7s">Register Parent</button>
+            <button class="cards-button button" id="btnPairing" style="--delay: .7s">Pairing Parent Student</button>
             <!-- The Modal Register Violation -->
               <div id="modalStudent" class="modal">
                 <!-- Modal content -->
                 <div class="modal-content">
                   <span class="close">&times;</span>
                   <!--Adding Violations-->
-                  <label>Register Student</label>
+                  <p style="font-weight: bold;">Register Student</p>
                     <form action="../JAVASCRIPT/addStudentsJS.js" enctype="multipart/form-data" method="POST" id="myformStudent">
                         <input type="text" placeholder="Student Number" id="studentNumber">
                         <input type="text" placeholder="First Name" id="studentfirstName">
@@ -93,7 +93,8 @@
                         <input type="text" placeholder="Course" id="course">
                     <input type="submit" value="Submit Student" name="submit">
                     </form>
-                    <label>Batch upload student data</label><br>
+                    <br>
+                    <p style="font-weight: bold;">Batch upload student data</p>
                     <input id="studentExcel" type="file" accept=".xlsx, .xls">
                     <input id="submitStudentExcel" type="submit" value="submit student excel">
                 </div>
@@ -103,7 +104,7 @@
                 <div class="modal-content">
                   <span class="close">&times;</span>
                  <!--Add Parent--> 
-                 <label>Register Parent</label> 
+                 <p style="font-weight: bold;">Register Parent</lapbel> 
                     <form action="../JAVASCRIPT/addStudentsJS.js" enctype="multipart/form-data" method="POST" id="myformParent">
                         <input type="text" placeholder="First Name" id="parentfirstName">
                         <input type="text" placeholder="Middle Name" id="parentMiddleName">
@@ -111,7 +112,8 @@
                         <input type="text" placeholder="Mobile Number" id="mobileNumber">
                     <input type="submit" value="Submit Parent" name="submit">
                     </form>
-                    <label>Batch upload parent data</label><br>
+                    <br>
+                    <p style="font-weight: bold;">Batch upload parent data</p>
                     <input id="parentExcel" type="file" accept=".xlsx, .xls">
                     <input id="submitParentExcel" type="submit" value="submit parent excel">
                 </div>
@@ -121,14 +123,15 @@
                 <div class="modal-content">
                   <span class="close">&times;</span>
                 <!--Student Parent Pairing--> 
-                <label>Pair Students and Parent</label> 
+                <p style="font-weight: bold;">Pair Students and Parent</p> 
                   <form action="../JAVASCRIPT/addStudentsJS.js" enctype="multipart/form-data" method="POST" id="myformPairing">
                       <input type="text" placeholder="Student Number" id="studentNumberPair">
                       <input type="text" placeholder="Parent Number" id="parentNumberPair">
-                  <input type="submit" value="Submit Pairing" name="submit">
-                  <label>Batch upload parent data</label><br>
-                  <input id="studentParentExcel" type="file" accept=".xlsx, .xls">
-                  <input id="submitStudentParentExcel" type="submit" value="submit pairing excel">
+                      <input class="modalbtnSubmit"type="submit" value="Submit Pairing" name="submit">
+                      <br>
+                      <p style="font-weight: bold;">Batch upload parent data</p>
+                      <input id="studentParentExcel" type="file" accept=".xlsx, .xls">
+                      <input id="submitStudentParentExcel" type="submit" value="submit pairing excel">
                   </form>
                 </div>
               </div>
@@ -146,7 +149,7 @@
                 <path d="M16 2v4M8 2v4M3 10h18" />
                 </svg>
                 
-                <span class="today"> Student List</span>
+                <span style="font-weight: bold;" class="today"> Student List</span>
               </div>
             </div>
 
@@ -167,39 +170,41 @@
             </div>
            </div>
 
-          <!--START OF PARENT TABLE-->
+          <!--END OF PARENT TABLE-->
+        </div>
+
+        <div class="user-box fourth-box">
+                    <!--START OF PARENT TABLE-->
            <!--List Module-->
-          <div class="cards-wrapper" style="--delay: 1s">
-          <div class="cards-header">
-            <div class="cards-view">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
-              <rect x="3" y="4" width="16" height="16" rx="2" ry="2" />
-              <path d="M16 2v4M8 2v4M3 10h18" />
-              </svg>
-              
-              <span class="today">Parent List</span>
+           <div class="cards-wrapper" style="--delay: 1s">
+            <div class="cards-header">
+              <div class="cards-view">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+                <rect x="3" y="4" width="16" height="16" rx="2" ry="2" />
+                <path d="M16 2v4M8 2v4M3 10h18" />
+                </svg>
+                
+                <span style="font-weight: bold;" class="today">Parent List</span>
+              </div>
+            </div>
+
+            <div class="parentList card">
+              <table class="table">
+                <thead>
+                <tr>
+                  <th>Parent ID</th>
+                  <th>Parent Name
+                  <th>Mobile Number</th>
+                  <th>Child</th>
+                </tr>
+                </thead>
+
+                <tbody id="parentListRows">
+                </tbody>
+              </table>
             </div>
           </div>
-
-          <div class="studentlist card">
-            <table class="table">
-              <thead>
-              <tr>
-                <th>Parent ID</th>
-                <th>Parent Name
-                <th>Mobile Number</th>
-                <th>Child</th>
-              </tr>
-              </thead>
-
-              <tbody id="parentListRows">
-              </tbody>
-            </table>
-          </div>
-          </div>
-          <!--END OF PARENT TABLE-->
-
-          </div>
+        </div>
     <!--adding student script-->
     <script src="https://unpkg.com/read-excel-file@5.x/bundle/read-excel-file.min.js"></script>
     <script src="../JAVASCRIPT/DODeskStudentsJS.js"></script>    

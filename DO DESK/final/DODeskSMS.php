@@ -59,8 +59,8 @@
             <label style=" font-weight: bold;">Search Student</label>
             <p class="searchNote"> Search the student and you can see the parent name and their phone number </p>
             <form action="../JAVASCRIPT/sendSMSJS.js" enctype="multipart/form-data" method="POST" id="myformFindParent">
-                <input class="SearchStudentBar" type="text" placeholder="Student Name" id="studentName">
-                <input class="buttons" id="myBtn" type="submit" value="Look for Student" name="submit">
+              <input class="SearchStudentBar" type="text" placeholder="Student Name" id="studentName">
+              <input class="buttons" id="myBtn" type="submit" value="Look for Student" name="submit">              
             </form>
          </div>
           

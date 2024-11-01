@@ -55,9 +55,8 @@
         require_once 'userHeader.php';
       ?>  
       <!--4TH Flow-->
-      <!--dito lalabas yug contents-->
       <div class="user-box fourth-box" style="--delay: .9s">
-        <span>Trancripts</span>
+        <span style="font-weight: bold;">Trancripts</span>
       </div>
       <textarea readonly id="myTextarea" placeholder="Select a trancript file"></textarea>
       <audio controls id="audio">
@@ -104,6 +103,7 @@
       </div>
 
   </div>  
+
       <script src="../JAVASCRIPT/DODeskReportsJS.js"></script>
 </body>
 </html>

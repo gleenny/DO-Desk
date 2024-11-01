@@ -33,8 +33,9 @@ max-width: 1600px;
 background-color: #0e0e23;
 display: flex;
 height: 100vh;
-overflow: hidden;
+overflow: scroll;
 margin: 0 auto;
+
 }
 
 .left-side {
@@ -425,7 +426,14 @@ th + th {
   text-decoration: none;
   cursor: pointer;
 }
+.modalbtnSubmit
+{
+  margin-bottom: 20px;
+}
+.parentList{
+  margin-bottom: 200px;
 
+}
 @keyframes fadeItIn {
   0% {
     background: rgb(28,36,68);

@@ -79,11 +79,11 @@
             <table class="table">
               <thead>
                 <tr>
-                  <th>Log ID</th>
-                  <th>Name</th>
-                  <th>Transaction Date-Time</th>
-                  <th>Process</th>
-                  <th>Note</th>
+                  <th class="th1">Log ID</th>
+                  <th class="th2">Name</th>
+                  <th class="th3">Transaction Date-Time</th>
+                  <th class="th4">Process</th>
+                  <th class="th5">Note</th>
                 </tr>
               </thead>
 
@@ -95,7 +95,7 @@
 
 
 
-    </div>
+      </div>
 
     <!--Scroll bar properties-->
     <script src="../JAVASCRIPT/DODeskAuditJS.js"></script>
