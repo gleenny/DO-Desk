@@ -91,12 +91,12 @@
                         <input type="text" placeholder="Middle Name" id="studentMiddleName">
                         <input type="text" placeholder="Last Name" id="studentLastName">
                         <input type="text" placeholder="Course" id="course">
-                    <input type="submit" value="Submit Student" name="submit">
+                        <input type="submit" value="Submit Student" name="submit" onclick="showSnackbar('Student are register.')"  >
                     </form>
                     <br>
                     <p style="font-weight: bold;">Batch upload student data</p>
                     <input id="studentExcel" type="file" accept=".xlsx, .xls">
-                    <input id="submitStudentExcel" type="submit" value="submit student excel">
+                    <input id="submitStudentExcel" type="submit" value="submit student excel" onclick="showSnackbar('Upload by batch file for student')">
                 </div>
               </div>
               <div id="modalParent" class="modal">
@@ -110,12 +110,12 @@
                         <input type="text" placeholder="Middle Name" id="parentMiddleName">
                         <input type="text" placeholder="Last Name" id="parentLastName">
                         <input type="text" placeholder="Mobile Number" id="mobileNumber">
-                    <input type="submit" value="Submit Parent" name="submit">
+                        <input type="submit" value="Submit Parent" name="submit" onclick="showSnackbar('Parent are register')">
                     </form>
                     <br>
                     <p style="font-weight: bold;">Batch upload parent data</p>
                     <input id="parentExcel" type="file" accept=".xlsx, .xls">
-                    <input id="submitParentExcel" type="submit" value="submit parent excel">
+                    <input id="submitParentExcel" type="submit" value="submit parent excel" onclick="showSnackbar('Upload by batch file for parent.')">
                 </div>
               </div>
               <div id="modalPairing" class="modal">
@@ -127,7 +127,7 @@
                   <form action="../JAVASCRIPT/addStudentsJS.js" enctype="multipart/form-data" method="POST" id="myformPairing">
                       <input type="text" placeholder="Student Number" id="studentNumberPair">
                       <input type="text" placeholder="Parent Number" id="parentNumberPair">
-                      <input class="modalbtnSubmit"type="submit" value="Submit Pairing" name="submit">
+                      <input class="modalbtnSubmit"type="submit" value="Submit Pairing" name="submit" onclick="showSnackbar('Parent paired to student')"> 
                       <br>
                       <p style="font-weight: bold;">Batch upload parent data</p>
                       <input id="studentParentExcel" type="file" accept=".xlsx, .xls">
@@ -205,6 +205,9 @@
             </div>
           </div>
         </div>
+
+          <!-- Snackbar element -->
+          <div id="snackbar"></div>
     <!--adding student script-->
     <script src="https://unpkg.com/read-excel-file@5.x/bundle/read-excel-file.min.js"></script>
     <script src="../JAVASCRIPT/DODeskStudentsJS.js"></script>    

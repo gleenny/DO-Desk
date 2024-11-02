@@ -92,7 +92,7 @@
               <option value="Admin">Admin</option>
             </select>
             <br>
-            <input type="submit" value="Resgister User" name="submit" > 
+            <input type="submit" value="Resgister User" name="submit" onclick="showSnackbar('Register user successfully')" > 
           </form>
         </div>
       </div>
@@ -113,7 +113,7 @@
                 <option value="1">Active</option>
                 <option value="0">Inactive</option>
             </select>
-            <input type="submit" value="Update Status" name="submit" >
+            <input type="submit" value="Update Status" name="submit" onclick="showSnackbar('Update status successfully')">
           </form>
           </div>
         </div>
@@ -132,7 +132,7 @@
             <div class="title">Change Password</div>
             <input type="text" placeholder="User ID" id="userIDPassword">
             <input type="text" placeholder="Password" id="changePassword">
-            <input type="submit" value="Change Password" name="submit">
+            <input type="submit" value="Change Password" name="submit"onclick="showSnackbar('Change password successfully')">
           </form>
           </div>
         </div>
@@ -148,7 +148,7 @@
             <div class="title">Change username</div>
             <input type="text" placeholder="User ID" id="userIDUsername">
             <input type="text" placeholder="Username" id="changeUsername">
-            <input type="submit" value="Change Username" name="submit">
+            <input type="submit" value="Change Username" name="submit" onclick="showSnackbar('Change username successfully')">
           </form>
           </div>
         </div>
@@ -221,11 +221,10 @@
             </table>
           </div>
         </div>
-
-
-
       </div>
     </div>
+    <!-- Snackbar element -->
+    <div id="snackbar"></div>
         <script src="../JAVASCRIPT/DODeskAdmin.js"></script>
 </body>
 </html>

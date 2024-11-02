@@ -559,3 +559,19 @@ function populateSanctionTable(i, json){
             document.querySelector('#sanctionList' + i).appendChild(sanDate);
                 document.querySelector('#sanDate' + i).innerHTML = json["date"][i];
 }
+// Function to show the snackbar with a custom message
+function showSnackbar(message) {
+    const snackbar = document.getElementById("snackbar");
+    
+    // Set the custom message
+    snackbar.textContent = message;
+  
+    // Add the "show" class to make it visible
+    snackbar.classList.add("show");
+  
+    // Remove the "show" class after 3 seconds
+    setTimeout(() => {
+      snackbar.classList.remove("show");
+    }, 3000);
+  }
+  

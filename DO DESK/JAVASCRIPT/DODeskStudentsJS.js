@@ -423,3 +423,20 @@ document.addEventListener("DOMContentLoaded", function() {
     document.body.style.setProperty('--scrollbar-thumb-color', 'purple');
     document.body.style.setProperty('--scrollbar-track-color', '#f1f1f1');
 });
+
+// Function to show the snackbar with a custom message
+function showSnackbar(message) {
+    const snackbar = document.getElementById("snackbar");
+    
+    // Set the custom message
+    snackbar.textContent = message;
+  
+    // Add the "show" class to make it visible
+    snackbar.classList.add("show");
+  
+    // Remove the "show" class after 3 seconds
+    setTimeout(() => {
+      snackbar.classList.remove("show");
+    }, 3000);
+  }
+  

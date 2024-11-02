@@ -99,7 +99,7 @@
                         <option value="Major">Major</option>
                       </select>
                       <input type="text" placeholder="Violation Case" id="violationCase">
-                      <input type="submit" value="Submit Violation" name="submit" id="submitViolation"> 
+                      <input type="submit" value="Submit Violation" name="submit" id="submitViolation" onclick="showSnackbar('Submit Violation')"> 
                     </form>
                 </div>
               </div>
@@ -126,7 +126,7 @@
                           </tbody>
                         </table>
                       </div>
-                      <button id="sendMessage">Notify Parents</button>
+                      <button id="sendMessage" onclick="showSnackbar('Successfully sent a message to parent')">Notify Parents</button>
                       <button id="cancel">Cancel</button>
                     </form>
                   </div>
@@ -145,7 +145,7 @@
                         <option value="Resolve">Resolve</option>
                         <option value="Unresolve">Unresolve</option>
                     </select>
-                    <input type="submit" value="Update Status" name="submit" >
+                    <input type="submit" value="Update Status" name="submit" onclick="showSnackbar('Update status successfully')">
                   </form>
                 </div>    
               </div>
@@ -160,7 +160,7 @@
                             <div id="studentName">student Number</div>
                             <input type="date" name="schedDate" id="schedDate" placeholder="Date">
                             <textarea class="messageTextBox" id="messageText" placeholder="Your message here, leave blank for preset message"> </textarea>
-                            <input type="submit" value="Notify Parents" name="submit" id="notifyParents"> 
+                            <input type="submit" value="Notify Parents" name="submit" id="notifyParents" onclick="showSnackbar('Successfully sent a message to parent')"> 
                           </form>
                 </div>
             </div>
@@ -240,7 +240,7 @@
                     <form action="../JAVASCRIPT/DODeskRecordsJS.js" enctype="multipart/form-data" method="POST" id="addSanctionform">
                         <input type="text" placeholder="Violation ID" id="sanSearchViolationID">
                         <input type="text" placeholder="Sanction" id="sanSearchSanction">
-                        <input type="submit" value="Set Sanction" name="submit">
+                        <input type="submit" value="Set Sanction" name="submit" onclick="showSnackbar('Setting sanction successfully')">
                     </form>
                 </div>
             </div>
@@ -287,6 +287,8 @@
 
        <!--end wrapper-->
     </div>
+     <!-- Snackbar element -->
+  <div id="snackbar"></div>
         
         
 
