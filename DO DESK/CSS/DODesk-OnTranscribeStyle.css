@@ -307,6 +307,55 @@ input[type="submit"] {
   font-size: 14px;
   padding: 5px;
 }
+.textType {
+  color: #9b9ca7;
+  background: #FCFBF4 ;
+  border: none;
+  padding: 10px 15px;
+}
+.textType:hover{
+  cursor: pointer;
+  animation-name: fadeItIn;
+  animation-duration: 1s;
+  animation-delay: 0s;
+  animation-fill-mode: forwards;
+}
+.textBox{
+  resize: none;
+}
+.containerbtn{
+  display: flex; /* Magic starts here, turning your container into a flex container */
+  justify-content: center; /* This centers the child horizontally */
+  align-items: center; /* And this centers it vertically */
+}
+.centerbtn {
+  width: 40%; /* Set any width you prefer */
+}
+.buttonRecord {
+  padding: 10px 15px;
+  background-color: #4255d4;
+  color: #e7e8ea;
+  border: none;
+  width: 300px;
+  margin-bottom: 5px;
+}
+.buttonRecord:hover{
+  background-color: #4f64eb;
+  cursor:pointer;
+}
+.buttonStop {
+  padding: 10px 15px;
+  background-color: #4255d4;
+  color: #e7e8ea;
+  border: none;
+  width: 300px;
+
+}
+.buttonStop:hover{
+  background-color: #4f64eb;
+  cursor:pointer;
+}
+
   @keyframes fadeItIn {
     0% {
       background: rgb(28,36,68);

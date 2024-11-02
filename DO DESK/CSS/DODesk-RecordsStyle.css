@@ -368,6 +368,13 @@ th + th {
   border: none;
   padding: 10px 15px;
 }
+.textType:hover{
+  cursor: pointer;
+  animation-name: fadeItIn;
+  animation-duration: 1s;
+  animation-delay: 0s;
+  animation-fill-mode: forwards;
+}
 .dateType {
   color: #9b9ca7;
   background: #1a1b3c;
@@ -375,13 +382,6 @@ th + th {
   padding: 10px 15px;
 }
 .dateType:hover{
-  animation-name: fadeItIn;
-  animation-duration: 1s;
-  animation-delay: 0s;
-  animation-fill-mode: forwards;
-}
-.textType:hover{
-  cursor: pointer;
   animation-name: fadeItIn;
   animation-duration: 1s;
   animation-delay: 0s;

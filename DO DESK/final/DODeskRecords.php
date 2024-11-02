@@ -178,7 +178,7 @@
                 <path d="M16 2v4M8 2v4M3 10h18" />
                 </svg>
                 
-                <span class="today"> Report List</span>
+                <span style="font-weigth: bold;"class="today"> Report List</span>
               </div>
             </div>
 
@@ -207,10 +207,10 @@
         </div>
 
           <!--searching sanction-->
-          <div class="user-box fourth-box">
+          <div class="user-box fourth-box" style="--delay: .8s">
             <!--searching violations-->
             <form id="searchSanctionForm">
-            <p>Sanction List</p>
+            <p style="font-weigth: bold;">Sanction List</p>
                 <input class="textType" type="text" name="sanctionID" id="sanSanctionID" placeholder="Sanction ID">
                 <input class="textType" type="text" name="studentNumber" id="sanStudentNumber" placeholder="Student Number">
                 <input class="textType" type="text" name="studentName" id="sanStudentName" placeholder="Student Name">
@@ -229,7 +229,7 @@
           <!--modal buttons for sanction-->
           <div class="user-box fifth-box">
             <!--button for new sanction-->
-            <button class="cards-button button" id="btnSanction"  style="--delay: .7s">Set Sanction</button>
+            <button class="cards-button button" id="btnSanction"  style="--delay: .8s">Set Sanction</button>
              <!-- The Modal Register Violation -->
              <div id="modalSanction" class="modal">
                 <!-- Modal content -->
