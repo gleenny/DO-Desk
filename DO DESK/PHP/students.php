@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $course = $_POST["course"];
         $active = $_POST["active"];
 
-        if($_POST["middleName"] == "null"){
+        if(empty($_POST["middleName"])){
             $studentQuery = "INSERT INTO `studentTBL` (`studentNumber`, `firstName`, `middleName`, `lastName`, `course`, `active`) 
             VALUES ('$studentNumber', '$studentFirstName', NULL, '$studentLastName', '$course', '$active');";
         }else{
@@ -37,12 +37,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $parentLastName = $_POST["lastName"];
         $mobileNumber = $_POST["mobileNumber"];
 
-        if($_POST["middleName"] == "null"){
+        if(empty($_POST["middleName"])){
             $parentQuery = "INSERT INTO `parentTBL` (`parentID`, `firstName`, `middleName`, `lastName`, `mobileNumber`) 
             VALUES (NULL, '$parentFirstName', NULL, '$parentLastName', '$mobileNumber');";
+            echo "hello";
         }else{
             $parentQuery = "INSERT INTO `parentTBL` (`parentID`, `firstName`, `middleName`, `lastName`, `mobileNumber`) 
             VALUES (NULL, '$parentFirstName', '$parentMiddleName', '$parentLastName', '$mobileNumber');";
+            echo "world";
         }
 
         if ($conn->query($parentQuery) === TRUE) {

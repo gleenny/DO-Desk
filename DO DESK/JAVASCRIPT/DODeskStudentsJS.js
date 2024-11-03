@@ -169,6 +169,7 @@ function uploadStudents(formData){
         return Response.text()
     }).then((body) => {
         console.log(body)
+        getStudentInfo();
     })
 }
 
@@ -195,6 +196,7 @@ function uploadParents(formData){
         return Response.text()
     }).then((body) => {
         console.log(body)
+        getParentInfo();
     })
 }
 
@@ -220,6 +222,8 @@ function uploadPairing(formData){
     }).then((body) => {
         console.log(body)
         console.log("Student has been paired with parent")
+        getParentInfo();
+        getStudentInfo();
     })
 }
 
@@ -333,48 +337,47 @@ function resetParentTable(){
 
 function populateTable(i, json){
     let tableRow = document.createElement('tr');
-    console.log(parRowCount);
-            tableRow.id = 'studentList' + i;
-    
-            let studentNumber = document.createElement('td');
-            studentNumber.id = 'studentNumber' + i;
+    tableRow.id = 'studentList' + i;
 
-            if(json["middleName"][i] == null){
-                studentNameHolder = json["firstName"][i] + " " + json["lastName"][i];
-            }
-            else{
-                studentNameHolder = json["firstName"][i] + " " + json["middleName"][i] + " " + json["lastName"][i];
-            }  
+    let studentNumber = document.createElement('td');
+    studentNumber.id = 'studentNumber' + i;
 
-            let studentName = document.createElement('td');
-            studentName.id = 'studentName' + i;
+    if(json["middleName"][i] == null){
+        studentNameHolder = json["firstName"][i] + " " + json["lastName"][i];
+    }
+    else{
+        studentNameHolder = json["firstName"][i] + " " + json["middleName"][i] + " " + json["lastName"][i];
+    }  
 
-            let course = document.createElement('td');
-            course.id = 'course' + i;
-       
-            if(json["active"][i] == "1"){
-                resolveHolder = "Enrolled"
-            }
-            else{
-                resolveHolder = "Not Enrolled"
-            } 
-            let status = document.createElement('td');
-            status.id = 'status' + i;
+    let studentName = document.createElement('td');
+    studentName.id = 'studentName' + i;
+
+    let course = document.createElement('td');
+    course.id = 'course' + i;
+
+    if(json["active"][i] == "1"){
+        resolveHolder = "Enrolled"
+    }
+    else{
+        resolveHolder = "Not Enrolled"
+    } 
+    let status = document.createElement('td');
+    status.id = 'status' + i;
 
 
-            document.querySelector('#studentListRows').appendChild(tableRow);//tbody
+    document.querySelector('#studentListRows').appendChild(tableRow);//tbody
 
-            document.querySelector('#studentList' + i).appendChild(studentNumber);
-                document.querySelector('#studentNumber' + i).innerHTML = json["studentNumber"][i];
+    document.querySelector('#studentList' + i).appendChild(studentNumber);
+        document.querySelector('#studentNumber' + i).innerHTML = json["studentNumber"][i];
 
-            document.querySelector('#studentList' + i).appendChild(studentName);
-                document.querySelector('#studentName' + i).innerHTML = studentNameHolder;
+    document.querySelector('#studentList' + i).appendChild(studentName);
+        document.querySelector('#studentName' + i).innerHTML = studentNameHolder;
 
-            document.querySelector('#studentList' + i).appendChild(course);
-                document.querySelector('#course' + i).innerHTML = json["course"][i];
+    document.querySelector('#studentList' + i).appendChild(course);
+        document.querySelector('#course' + i).innerHTML = json["course"][i];
 
-            document.querySelector('#studentList' + i).appendChild(status);
-                document.querySelector('#status' + i).innerHTML = resolveHolder;
+    document.querySelector('#studentList' + i).appendChild(status);
+        document.querySelector('#status' + i).innerHTML = resolveHolder;
 }
 function populateParentTable(i, json){
     let tableRow = document.createElement('tr');

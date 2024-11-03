@@ -63,7 +63,6 @@
               <input class="textType" type="text" name="searchNumber" id="searchNumber" placeholder="Student Number">
               <input class="textType" type="text" name="searchName" id="searchName" placeholder="Student Name">
               <input class="textType" type="text" name="searchCourse" id="searchCourse" placeholder="Course">
-              <input class="textType" type="text" name="searchSection" id="searchSection" placeholder="Section">
               <select class="textType" name="typeOfViolation" id="typeOfViolation" value=" ">
                 <option value=""> </option>
                   <option value="Minor">Minor</option>
@@ -72,8 +71,8 @@
               <input class="textType" type="text" name="searchCase" id="searchCase" placeholder="Case">
               <select class="textType" name="status" id="status" value=" ">
                 <option value=""> </option>
-                  <option value="Resolve">Resolve</option>
-                  <option value="Unresolve">Unresolve</option>
+                  <option value="0">Resolve</option>
+                  <option value="1">Unresolve</option>
               </select>
               <input class="textType" type="date" name="searchDate" id="searchDate" placeholder="Date">
               <button type="submit" id="searchbtn" class="searchbutton">Search</button>
@@ -94,10 +93,6 @@
                     <form action="../JAVASCRIPT/DODeskRecordsJS.js" enctype="multipart/form-data" method="POST" id="myform">
                       <div class="title">Sumbit Violation</div>
                       <input type="text" placeholder="Student Number" id="studentNumber">
-                      <select name="violationType" id="violationType" value=" ">
-                        <option value="Minor">Minor</option>
-                        <option value="Major">Major</option>
-                      </select>
                       <input type="text" placeholder="Violation Case" id="violationCase">
                       <input type="submit" value="Submit Violation" name="submit" id="submitViolation" onclick="showSnackbar('Submit Violation')"> 
                     </form>
@@ -109,26 +104,24 @@
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <!--message notif-->
-                    <form action="../JAVASCRIPT/DODeskRecordsJS.js" enctype="multipart/form-data" method="POST" id="myformMessage">
-                      <div id="messageParent">First name's violations</div>
-                      <div>
-                        <table>
-                          <thead>
-                            <tr>
-                              <th>Violation ID</th>
-                              <th>Type Of Violation</th>
-                              <th>Case</th>
-                              <th>Status</th>
-                              <th>Date</th>
-                            </tr>
-                          </thead>
-                          <tbody id="studentViolations">
-                          </tbody>
-                        </table>
-                      </div>
-                      <button id="sendMessage" onclick="showSnackbar('Successfully sent a message to parent')">Notify Parents</button>
-                      <button id="cancel">Cancel</button>
-                    </form>
+                  <div id="messageParent">First name's violations</div>
+                    <div>
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Violation ID</th>
+                            <th>Type Of Violation</th>
+                            <th>Case</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                          </tr>
+                        </thead>
+                        <tbody id="studentViolations">
+                        </tbody>
+                      </table>
+                    </div>
+                    <button id="sendMessage" onclick="showSnackbar('Successfully sent a message to parent')">Notify Parents</button>
+                    <button id="cancel">Cancel</button>
                   </div>
               </div>
 
@@ -156,11 +149,12 @@
                         <span class="close">&times;</span>
                           <form action="../JAVASCRIPT/DODeskRecordsJS.js" enctype="multipart/form-data" method="POST" id="myformMessage">
                             <div class="title">Message student's parents</div>
-                            <div id="studentName">student Name</div> 
-                            <div id="studentName">student Number</div>
+                            <div id="studentNameSMS">student Name</div> 
+                            <div id="studentNumberSMS">student Number</div>
                             <input type="date" name="schedDate" id="schedDate" placeholder="Date">
-                            <textarea class="messageTextBox" id="messageText" placeholder="Your message here, leave blank for preset message"> </textarea>
-                            <input type="submit" value="Notify Parents" name="submit" id="notifyParents" onclick="showSnackbar('Successfully sent a message to parent')"> 
+                            <textarea class="messageTextBox" id="messageText" placeholder="Your message here, leave blank for preset message"></textarea>
+    <!--tinaggal ko snackbar-->
+                            <input type="submit" value="Notify Parents" name="submit" id="notifyParents" > 
                           </form>
                 </div>
             </div>
@@ -240,6 +234,26 @@
                     <form action="../JAVASCRIPT/DODeskRecordsJS.js" enctype="multipart/form-data" method="POST" id="addSanctionform">
                         <input type="text" placeholder="Violation ID" id="sanSearchViolationID">
                         <input type="text" placeholder="Sanction" id="sanSearchSanction">
+                        <input type="submit" value="Set Sanction" name="submit" onclick="showSnackbar('Setting sanction successfully')">
+                    </form>
+                </div>
+            </div>
+
+    <!--UPDATE SANCTION-->
+            <button class="cards-button button" id="btnUpdateSanction"  style="--delay: .8s">Update Sanction</button>
+             <!-- The Modal Register Violation -->
+             <div id="modalUpdateSanction" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <!--Adding Violations-->
+                  <label>Update Sanction</label>
+                    <form action="../JAVASCRIPT/DODeskRecordsJS.js" enctype="multipart/form-data" method="POST" id="updateSanctionform">
+                        <input type="text" placeholder="Sanction ID" id="sanctionID">
+                        <select name="sanctionStatus" id="sanctionStatus" value="">
+                            <option value="0">Resolve</option>
+                            <option value="1">Unresolve</option>
+                        </select>
                         <input type="submit" value="Set Sanction" name="submit" onclick="showSnackbar('Setting sanction successfully')">
                     </form>
                 </div>

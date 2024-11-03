@@ -6,20 +6,6 @@ const auditurl = "../PHP/audit.php";
 const picturePathFile = '/DO DESK/PICTURE/';
 
 let profilePicPath = 'Profile.jpg';
-//event lists
-let events = 3;
-let eventTypeData = "Drug Test";
-let eventDateData = "August 30, 2024";
-//report lists
-let reports = 1;
-let studentNumberData = '02000393';
-let lastNameData = 'Hall';
-let firstNameData = 'Jason';
-let middleNameData = 'Thor';
-let courseData = 'BSIT';
-let timeInData = '1:11pm';
-let timeOutData = '2:22pm';
-let statusData = 'Done';
 
 setData();
 
@@ -40,7 +26,7 @@ function setData(){
         document.querySelector('#majorCount').innerHTML = json["majorCount"]
         //setting record List
         console.log("Displaying list of violation cases") 
-        for(let i = 0; i <= (json["Officer"].length) - 1 && i < 5; i++){
+        for(let i = 0; i <= (json["violationID"].length) - 1 && i < 5; i++){
 
             let tableRow = document.createElement('tr');
             tableRow.id = 'violationList' + i;

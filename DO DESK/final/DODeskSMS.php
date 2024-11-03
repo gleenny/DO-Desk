@@ -87,18 +87,18 @@
 
           <div class="message">
               <label style=" font-weight: bold;" class="title">Send Message</label>
-              <p> Set a date when you want to visit your Office</p>
+              <p>Date when you would like the parents to visit the Office (for preset message)</p>
                 <!--For message-->
                 <form action="../JAVASCRIPT/sendSMSJS.js" enctype="multipart/form-data" method="POST" id="myformSMS">
                   <!--date-->
                   <input class="datepicker" type="date" name="scheduleDate" id="scheduleDate" placeholder="Date"><br>
                   <!--Student Number-->
-                  <p>Search the student number it will Message both of the parent</p>
+                  <p>Student number, to message all of student's parents/guardian</p>
                   <input class="searchBar" type="text" placeholder="Student Number" id="studentNumber"> 
                   <h1>OR</h1>
 
                   <p>Enter the Student name and the Parent contact number</p>
-                  <input class="searchBar" type="text" placeholder="Student Name" id="studentNameSMS">
+                  <input class="searchBar" type="text" placeholder="Student Name (for preset)" id="studentNameSMS">
                   <input class="searchBar" type="text" placeholder="Parent's Mobile Number" id="mobileNumber">
                   <br>
                   <!--textbox-->

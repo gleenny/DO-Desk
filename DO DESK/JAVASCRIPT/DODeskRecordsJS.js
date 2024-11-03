@@ -8,6 +8,7 @@ const messageParentsForm = document.querySelector('#myformMessage');
 const notifyParentForm = document.querySelector('#myNotifyForm');
 const searchSanction = document.querySelector('#searchSanctionForm');
 const addSanction = document.querySelector('#addSanctionform');
+const updateSanction = document.querySelector('#updateSanctionform');
 
 let rowCount = 0;
 let rowCountMinor = 0;
@@ -17,6 +18,8 @@ getViolationInfo();
 
 let sanRowCount = 0;
 getSanctionInfo();
+
+let studentNameHolderSMS
 
 // Get the modal
 var modal = document.getElementById('id01');
@@ -31,6 +34,7 @@ var modal2 = document.getElementById("modalUpdate");
 var modal3 = document.getElementById("modalMessage");
 var modal4 = document.getElementById("modalSendMessage");
 var modal5 = document.getElementById("modalSanction");
+var modal6 = document.getElementById("modalUpdateSanction");
 
 
 // Get the button that opens the modal
@@ -39,6 +43,7 @@ var btn2 = document.getElementById("btnUpdate");
 var btn3 = document.getElementById("submitViolation");
 var btn4 = document.getElementById("sendMessage");
 var btn5 = document.getElementById("btnSanction");
+var btn6 = document.getElementById("btnUpdateSanction");
 
 
 // Get the <span> element that closes the modal
@@ -47,6 +52,7 @@ var span2 = document.getElementsByClassName("close")[0];
 var span3 = document.getElementsByClassName("close")[0];
 var span4 = document.getElementsByClassName("close")[0];
 var span5 = document.getElementsByClassName("close")[0];
+var span6 = document.getElementsByClassName("close")[0];
 
 
 // When the user clicks on the button, open the modal
@@ -58,9 +64,14 @@ btn2.onclick = function() {
 }
 btn4.onclick = function() {
     modal4.style.display = "block";
+    document.querySelector('#studentNameSMS').innerHTML = studentNameHolderSMS;
+    document.querySelector('#studentNumberSMS').innerHTML = studentViolator;
 }
 btn5.onclick = function() {
     modal5.style.display = "block";
+}
+btn6.onclick = function() {
+    modal6.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -78,6 +89,9 @@ span3.onclick = function() {
 }
 span5.onclick = function() {
     modal5.style.display = "none";
+}
+span6.onclick = function() {
+    modal6.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
@@ -97,8 +111,34 @@ window.onclick = function(event) {
     else if (event.target == modal5) {
     modal5.style.display = "none";
   }
+  else if (event.target == modal6) {
+    modal6.style.display = "none";
+  }
 }
+//Update sanction
+updateSanction.addEventListener('submit', (e) => {
+    e.preventDefault();
 
+    const formData = new FormData();
+
+    formData.append("sanctionID", document.querySelector("#sanctionID").value);
+    formData.append("sanctionStatus", document.querySelector("#sanctionStatus").value);
+
+    formData.append("requestType", "updateSanction");
+
+    fetch(sanctionurl, {
+        method: 'POST',
+        body: formData
+    }).then((Response) =>{
+        return Response.text()
+    }).then((body) => {
+        console.log(body);
+        console.log("Resetting table");
+        sanResetTable();
+        console.log("Repopulating table");
+        getSanctionInfo();
+    })
+});
 //send message to parents
 messageParentsForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -109,7 +149,7 @@ messageParentsForm.addEventListener('submit', (e) => {
     var yyyy = today.getFullYear();
     today = yyyy + '-' + mm + '-' + dd;
 
-    if(document.querySelector('#scheduleDate').value > today){
+    if(document.querySelector('#schedDate').value > today){
         const formData = new FormData();
 
         formData.append("studentNumber", studentViolator);
@@ -118,7 +158,7 @@ messageParentsForm.addEventListener('submit', (e) => {
 
         formData.append("requestType", "sendMessage");
 
-        fetch(url, {
+        fetch(messageurl, {
             method: 'POST',
             body: formData
         }).then((Response) => {
@@ -140,7 +180,6 @@ form.addEventListener('submit', (e) => {
 
     const formData = new FormData();
 
-    formData.append("violationType", document.querySelector("#violationType").value);
     formData.append("violationCase", document.querySelector("#violationCase").value);
     formData.append("studentNumber", document.querySelector("#studentNumber").value);
 
@@ -149,18 +188,20 @@ form.addEventListener('submit', (e) => {
     fetch(violationurl, {
         method: 'POST',
         body: formData,
-    }).then((Response) => {
-        return Response.text()
-    }).then((body) => {
-        console.log(body)
+    }).then((Response) => Response.json())
+    .then((json) => {
+        console.log(json)
         console.log("Data has been added");
         console.log("Resetting table"); 
         resetTable();
         console.log("Repopulating table"); 
         getViolationInfo();
+        console.log("hello")
+        if(json["type"][0] == "Minor"){
+            console.log(json["type"])
+            checkMinorViolationCount();
+        }
     })
-
-    checkMinorViolationCount();
 });
 
 //searching student violations
@@ -172,7 +213,6 @@ searchForm.addEventListener('submit', function (e) {
     formData.append("studentNumber", document.querySelector("#searchNumber").value);
     formData.append("studentName", document.querySelector("#searchName").value);
     formData.append("course", document.querySelector("#searchCourse").value);
-    formData.append("section", document.querySelector("#searchSection").value);
     formData.append("violationType", document.querySelector("#typeOfViolation").value);
     formData.append("violationCase", document.querySelector("#searchCase").value);
     formData.append("status", document.querySelector("#status").value);
@@ -245,6 +285,7 @@ function checkMinorViolationCount(){
     }).then((Response) =>  Response.json())
     .then((json) => {
         rowCountMinor = json["violationID"].length;
+        studentNameHolderSMS = json["firstName"][0];
         if((rowCountMinor % 3) == 0){
             console.log("reset table")
             for(let i = 0; i < rowMinorReset; i++){
@@ -345,9 +386,6 @@ function populateTable(i, json){
 
             let course = document.createElement('td');
             course.id = 'course' + i;
-
-            let section = document.createElement('td');
-            section.id = 'section' + i;
 
             let violationType = document.createElement('td');
             violationType.id = 'violationType' + i;

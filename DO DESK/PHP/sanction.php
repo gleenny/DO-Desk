@@ -39,19 +39,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
         // SQL query
         $sql = "SELECT `sanctiontbl`.*,
-                `violationtbl`.`studentNumber`,
-                `studenttbl`.`firstName` AS `studentFirst`,
-                `studenttbl`.`middleName` AS `studentMiddle`,
+                `accounttbl`.`personID`,
+                `usertbl`.`firstName`,
+                `usertbl`.`lastName`,
+                    `violationtbl`.`studentNumber`,
+                    `studenttbl`.`firstName` AS `studentFirst`,
+                    `studenttbl`.`middleName` AS `studentMiddle`,
                     `studenttbl`.`lastName` AS `studentLast`,
-                    `violationtbl`.`violationCase`,
-                    `accounttbl`.`userID`,
-                    `usertbl`.`firstName`,
-                        `usertbl`.`lastName`
+                        `offensetbl`.`offense` AS `violationCase`,
+                        `punishmenttbl`.`sanction`
                 FROM `sanctiontbl` 
+                LEFT JOIN `accounttbl` ON `sanctiontbl`.`recordedBy` = `accounttbl`.`userID` 
+                LEFT JOIN `usertbl` ON `accounttbl`.`personID` = `usertbl`.`personID` 
                 LEFT JOIN `violationtbl` ON `sanctiontbl`.`violationID` = `violationtbl`.`violationID` 
                 LEFT JOIN `studenttbl` ON `violationtbl`.`studentNumber` = `studenttbl`.`studentNumber` 
-                LEFT JOIN `accounttbl` ON `sanctiontbl`.`recordedBy` = `accounttbl`.`userID` 
-                LEFT JOIN `usertbl` ON `accounttbl`.`personID` = `usertbl`.`personID`
+                LEFT JOIN `offensetbl` ON `violationtbl`.`offenseID` = `offensetbl`.`offenseID` 
+                LEFT JOIN `punishmenttbl` ON `sanctiontbl`.`sanction` = `punishmenttbl`.`sanctionID`
                 WHERE ";
 
         for($i = 0; $i < $conditionCounter; $i++){
@@ -76,11 +79,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $violationID = "";
             }
             else if(!($violationCase == "")){
-                $sql .= "`violationTBL`.`violationCase` LIKE '%$violationCase%'";
+                $sql .= "`offenseTBL`.`offense` LIKE '%$violationCase%'";
                 $violationCase = "";
             }
             else if(!($sanction == "")){
-                $sql .= "`sanctionTBL`.`sanction` LIKE '%$sanction%'";
+                $sql .= "`punishmentTBL`.`sanction` LIKE '%$sanction%'";
                 $sanction = "";
             }
             else if(!($status == "")){
@@ -106,6 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $sanctions["violationCase"][] = $row['violationCase'];
                 $sanctions["sanction"][] = $row['sanction'];
                 $sanctions["status"][] = $row['active'];
+                $sanctions["date"][] = $row['date'];
             }
         }
         echo json_encode($sanctions);
@@ -118,8 +122,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $doID = $_SESSION["userID"];
         $currentDate = date("Y-m-d");
         
+        $sanctionIDQuery = "SELECT `punishmentTBL`.*
+        FROM `punishmentTBL`
+        WHERE `punishmentTBL`.`sanction` LIKE '$sanction';";
+
+        $result = $conn->query($sanctionIDQuery);
+
+        if ($result->num_rows == 1) {
+            while ($row = $result->fetch_assoc()) {
+                $sanctionID = $row['sanctionID'];
+            }
+        }
+
         $query = "INSERT INTO `sanctiontbl` (`sanctionID`, `violationID`, `sanction`, `active`, `recordedBy`, `date`) 
-        VALUES (NULL, '$violationID', '$sanction', '1', '$doID', '$currentDate');";
+        VALUES (NULL, '$violationID', '$sanctionID', '1', '$doID', '$currentDate');";
     
         if ($conn->query($query) === TRUE) {
             echo "New record created successfully!";
@@ -137,25 +153,50 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     
         $conn->close();
     }
-    
+    if($_POST['requestType'] == "updateSanction"){
+        $sanctionID = $_POST["sanctionID"];
+        $sanctionStatus =  $_POST["sanctionStatus"];;
+
+        $query = "UPDATE `sanctionTBL`
+                SET `active` = '$sanctionStatus'
+                WHERE `sanctionID` = '$sanctionID'";
+
+        if ($conn->query($query) === TRUE) {
+            echo "Data has been updated!";
+
+            $dateTime = date("Y-m-d H:i:s");
+            $userID = $_SESSION['userID'];
+            $auditQuery = "INSERT INTO `auditTBL` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
+            VALUES (NULL, '$userID', '$dateTime', 'Changed violation status', 'Sanction ID: $sanctionID - changed into $sanctionStatus');";
+            $audit = $conn->prepare($auditQuery);
+            $audit->execute();
+
+        } else {
+            echo "Error: " . $query . "<br>" . $conn->error;
+        }
+        $conn->close();
+    }
 }
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
     $sanctions = [];
 
     $query = "SELECT `sanctiontbl`.*,
-     `violationtbl`.`studentNumber`,
-      `studenttbl`.`firstName` AS `studentFirst`,
-       `studenttbl`.`middleName` AS `studentMiddle`,
-        `studenttbl`.`lastName` AS `studentLast`,
-         `violationtbl`.`violationCase`,
-          `accounttbl`.`userID`,
-           `usertbl`.`firstName`,
-            `usertbl`.`lastName`
+     `accounttbl`.`personID`,
+      `usertbl`.`firstName`,
+       `usertbl`.`lastName`,
+        `violationtbl`.`studentNumber`,
+         `studenttbl`.`firstName` AS `studentFirst`,
+          `studenttbl`.`middleName` AS `studentMiddle`,
+           `studenttbl`.`lastName` AS `studentLast`,
+            `offensetbl`.`offense` AS `violationCase`,
+             `punishmenttbl`.`sanction`
     FROM `sanctiontbl` 
+	LEFT JOIN `accounttbl` ON `sanctiontbl`.`recordedBy` = `accounttbl`.`userID` 
+	LEFT JOIN `usertbl` ON `accounttbl`.`personID` = `usertbl`.`personID` 
 	LEFT JOIN `violationtbl` ON `sanctiontbl`.`violationID` = `violationtbl`.`violationID` 
 	LEFT JOIN `studenttbl` ON `violationtbl`.`studentNumber` = `studenttbl`.`studentNumber` 
-	LEFT JOIN `accounttbl` ON `sanctiontbl`.`recordedBy` = `accounttbl`.`userID` 
-	LEFT JOIN `usertbl` ON `accounttbl`.`personID` = `usertbl`.`personID`
+	LEFT JOIN `offensetbl` ON `violationtbl`.`offenseID` = `offensetbl`.`offenseID` 
+	LEFT JOIN `punishmenttbl` ON `sanctiontbl`.`sanction` = `punishmenttbl`.`sanctionID`
 	ORDER BY `sanctiontbl`.`sanctionID` DESC";
 
     $result = $conn->query($query);

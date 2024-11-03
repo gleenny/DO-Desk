@@ -109,31 +109,42 @@ smsForm.addEventListener('submit', (e) => {
     var yyyy = today.getFullYear();
     today = yyyy + '-' + mm + '-' + dd;
 
-    if(document.querySelector('#scheduleDate').value > today){
-        const formData = new FormData();
+    const formData = new FormData();
 
-        formData.append("studentNumber", document.querySelector('#studentNumber').value);
-        formData.append("studentName", document.querySelector('#studentNameSMS').value);
-        formData.append("mobileNumber", document.querySelector('#mobileNumber').value);
-        formData.append("message", document.querySelector('#message').value);
-        formData.append("date", document.querySelector('#scheduleDate').value);
-        formData.append("requestType", "sendMessage");
+    formData.append("studentNumber", document.querySelector('#studentNumber').value);
+    formData.append("studentName", document.querySelector('#studentNameSMS').value);
+    formData.append("mobileNumber", document.querySelector('#mobileNumber').value);
+    formData.append("message", document.querySelector('#message').value);
+    formData.append("date", document.querySelector('#scheduleDate').value);
+    formData.append("requestType", "sendMessage");
 
-        fetch(url, {
-            method: 'POST',
-            body: formData
-        }).then((Response) => {
-            return Response.text()
-        }).then((body) => {
-            console.log(body)
-            console.log("Message was succesfully sent to the student's parent")
-        }).catch(error => {
-            console.log("An error occure: " + error);
-        })
+    //preset bulk
+    if(document.querySelector('#scheduleDate').value > today && document.querySelector('#studentNumber').value != "" && document.querySelector('#message').value == ""){
+        SMS(formData);
+    }else if(document.querySelector('#studentNumber').value != "" && document.querySelector('#message').value != ""){ //customized bulk
+        SMS(formData);
+    }else if(document.querySelector('#scheduleDate').value > today && document.querySelector('#studentNameSMS').value != "" && document.querySelector('#mobileNumber').value != "" && document.querySelector('#message').value == ""){ //preset one message
+        SMS(formData);
+    }else if(document.querySelector('#mobileNumber').value != "" && document.querySelector('#message').value != ""){ //customize one message
+        SMS(formData);
     }else{
-        console.log("selected date is invalid");
+        console.log("Missing field");
     }
 })
+function SMS(formData){
+    fetch(url, {
+        method: 'POST',
+        body: formData
+    }).then((Response) => {
+        return Response.text()
+    }).then((body) => {
+        console.log(body)
+        console.log("Message was succesfully sent to the student's parent")
+    }).catch(error => {
+        console.log("An error occure: " + error);
+    })
+}
+
 // Function to show the snackbar with a custom message
 function showSnackbar(message) {
     const snackbar = document.getElementById("snackbar");

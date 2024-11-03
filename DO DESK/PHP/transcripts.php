@@ -7,22 +7,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if($_POST["requestType"] == "getTranscripts"){
         $violationID = $_POST["violationID"];
 
-        $sql = "SELECT `studenttbl`.`firstName`,
-         `studenttbl`.`middleName`,
-          `studenttbl`.`lastName`,
-           `studenttbl`.`studentNumber`,
-            `violationtbl`.`violationID`,
-             `violationtbl`.`violationCase`,
-              `violationtbl`.`violationType`,
-               `violationtbl`.`active`,
-                `violationtbl`.`violationDate`,
-                 `transcripttbl`.`transcriptID`,
-                  `transcripttbl`.`transcriptName`,
-                   `transcripttbl`.`fileExtension`
-                FROM `studenttbl` 
-	            LEFT JOIN `violationtbl` ON `violationtbl`.`studentNumber` = `studenttbl`.`studentNumber` 
-	            LEFT JOIN `transcripttbl` ON `transcripttbl`.`violationID` = `violationtbl`.`violationID`
-                WHERE `transcripttbl`.`transcriptName` IS NOT NULL AND `violationtbl`.`violationID` LIKE '$violationID'";
+        $sql = "SELECT `transcripttbl`.*,
+         `violationtbl`.`studentNumber`,
+          `studenttbl`.`firstName`,
+           `studenttbl`.`middleName`,
+            `studenttbl`.`lastName`,
+             `violationtbl`.`offenseID`,
+              `offensetbl`.`offense` AS `violationCase`,
+               `offensetbl`.`violationType`,
+                `violationtbl`.`active`,
+                 `violationtbl`.`violationDate`
+        FROM `transcripttbl` 
+        LEFT JOIN `violationtbl` ON `transcripttbl`.`violationID` = `violationtbl`.`violationID` 
+        LEFT JOIN `studenttbl` ON `violationtbl`.`studentNumber` = `studenttbl`.`studentNumber` 
+        LEFT JOIN `offensetbl` ON `violationtbl`.`offenseID` = `offensetbl`.`offenseID`
+        WHERE `violationtbl`.`violationID` LIKE '$violationID'";
 
         $result = $conn->query($sql);
         $searchResults = [];

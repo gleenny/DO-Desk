@@ -41,15 +41,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     }
     if($_POST['requestType'] == "sendMessage"){
-        $studentName = $_POST["studentName"];
-        $parentNumber = $_POST["mobileNumber"];
-        $studentNumber = $_POST["studentNumber"];
-        $message = $_POST["message"];
-        $date = $_POST["date"];
 
         $mobileNumbers = [];
 
-        $mobileNumbers[] = $parentNumber;
+        if(isset($_POST["studentName"])){
+            $studentName = $_POST["studentName"];
+        }
+        if(isset($_POST["mobileNumber"])){
+            $parentNumber = $_POST["mobileNumber"];
+            $mobileNumbers[] = $parentNumber;
+        }
+
+        $studentNumber = $_POST["studentNumber"];
+        $message = $_POST["message"];
+        $date = $_POST["date"];
 
         if($studentNumber != ""){
             $numberQuery = "SELECT `studentTBL`.`studentNumber`,
@@ -77,6 +82,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             $message = "Hello, This is the Disciplinary Officer of STI College Global City. We are reaching out to the parents/guardians of $studentName regarding their school violations. We are hoping to meet you in the Disciplinary Office of our school on $date";
         }
 
+        echo $message;
+
         for($i = 0; $i < sizeof($mobileNumbers); $i++){
             $ch = curl_init();
             $parameters = array(
@@ -97,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             curl_close ($ch);
             
             //Show the server response
-            echo "The message has been sent";
+            echo $output;
         }
         $dateTime = date("Y-m-d H:i:s");
         $userID = $_SESSION['userID'];
