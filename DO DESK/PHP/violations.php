@@ -4,7 +4,6 @@ session_start(); // Start the session
 require_once 'connections.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    //done?
     //search violations
     if($_POST["requestType"] == "SearchStudentViolation"){
         $conditionCounter = 0;
@@ -143,7 +142,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         VALUES (NULL, '$offenseID', '$studentNumber', '1', '$doID', '$currentDate');";
     
         if ($conn->query($query) === TRUE) {
-            echo json_encode($violationType);;
+            $violationType["result"][] = "Data has been added";
+            echo json_encode($violationType);
 
             $dateTime = date("Y-m-d H:i:s");
             $userID = $_SESSION['userID'];
@@ -153,7 +153,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $audit->execute();
       
         } else {
-            echo "Error: " . $query . "<br>" . $conn->error;
+            $violationType["result"][] = "Error: " . $query . "<br>" . $conn->error;
+            echo json_encode($violationType);
         }
     
         $conn->close();

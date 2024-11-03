@@ -93,7 +93,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                `userTBL`.`role`
                             FROM `userTBL`;";
         $result = $conn->query($getPersonIDQuery);
-        $personID;
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 $personID = $row['personID'];
@@ -105,6 +104,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         VALUES (NULL, '$username', '$password', '$personID', '1');";
         $addAccount = $conn->prepare($accountQuery);
         $addAccount->execute();
+
+        //audit
+        $dateTime = date("Y-m-d H:i:s");
+        $userID = $_SESSION['userID'];
+        $auditQuery = "INSERT INTO `auditTBL` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
+        VALUES (NULL, '$userID', '$dateTime', 'Added new user', '$personID : $firstName $lastName');";
+        $audit = $conn->prepare($auditQuery);
+        $audit->execute();
 
         echo "User has been added";
 
@@ -121,6 +128,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $updateAccount = $conn->prepare($query);
         $updateAccount->execute();
 
+        $dateTime = date("Y-m-d H:i:s");
+        $userID = $_SESSION['userID'];
+        $auditQuery = "INSERT INTO `auditTBL` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
+        VALUES (NULL, '$userID', '$dateTime', 'Updated the status of user', '$adminID : $adminStatus');";
+        $audit = $conn->prepare($auditQuery);
+        $audit->execute();
+
         echo "User has been updated";
     }
     //changing password
@@ -135,6 +149,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $changePassword = $conn->prepare($query);
         $changePassword->execute();
 
+        $dateTime = date("Y-m-d H:i:s");
+        $userID = $_SESSION['userID'];
+        $auditQuery = "INSERT INTO `auditTBL` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
+        VALUES (NULL, '$userID', '$dateTime', 'Changed password of user', '$userID');";
+        $audit = $conn->prepare($auditQuery);
+        $audit->execute();
+
         echo "password has been changed";
     }
     //changing username
@@ -148,6 +169,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         $changeUsername = $conn->prepare($query);
         $changeUsername->execute();
+
+        $dateTime = date("Y-m-d H:i:s");
+            $userID = $_SESSION['userID'];
+            $auditQuery = "INSERT INTO `auditTBL` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
+            VALUES (NULL, '$userID', '$dateTime', 'Changed username of user', '$userID');";
+            $audit = $conn->prepare($auditQuery);
+            $audit->execute();
 
         echo "Username has been changed";
     }

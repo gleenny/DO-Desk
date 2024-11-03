@@ -104,7 +104,7 @@
                   <!--textbox-->
                   <textarea class="messageTextBox" placeholder="Your message Here, leave blank for preset message" id="message"></textarea>
                   <br>
-                  <input class="buttons" type="submit" value="Send Message" name="submit" onclick="showSnackbar('Sent a Message!')">
+                  <input class="buttons" type="submit" value="Send Message" name="submit">
                 </form>
                   <!-- Snackbar element -->
                 <div id="snackbar"></div>

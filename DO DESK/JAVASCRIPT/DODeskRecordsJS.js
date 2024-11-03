@@ -132,7 +132,7 @@ updateSanction.addEventListener('submit', (e) => {
     }).then((Response) =>{
         return Response.text()
     }).then((body) => {
-        console.log(body);
+        showSnackbar(body);
         console.log("Resetting table");
         sanResetTable();
         console.log("Repopulating table");
@@ -164,10 +164,9 @@ messageParentsForm.addEventListener('submit', (e) => {
         }).then((Response) => {
             return Response.text()
         }).then((body) => {
-            console.log(body)
-            console.log("Message was succesfully sent to the student's parent")
+            showSnackbar("Message was succesfully sent to the student's parent");
         }).catch(error => {
-            console.log("An error occure: " + error);
+            showSnackbar("An error occure: " + error);
         })
     }else{
         console.log("selected date is invalid");
@@ -190,15 +189,12 @@ form.addEventListener('submit', (e) => {
         body: formData,
     }).then((Response) => Response.json())
     .then((json) => {
-        console.log(json)
-        console.log("Data has been added");
+        showSnackbar(json["result"][0]);
         console.log("Resetting table"); 
         resetTable();
         console.log("Repopulating table"); 
         getViolationInfo();
-        console.log("hello")
         if(json["type"][0] == "Minor"){
-            console.log(json["type"])
             checkMinorViolationCount();
         }
     })
@@ -262,7 +258,7 @@ updateStatusForm.addEventListener('submit', (e) => {
     }).then((Response) =>{
         return Response.text()
     }).then((body) => {
-        console.log(body);
+        showSnackbar(body);
         console.log("Violation case has been updated");
         console.log("Resetting table");
         resetTable();
@@ -499,7 +495,7 @@ addSanction.addEventListener('submit', (e) => {
     }).then((Response) => {
         Response.text()
     }).then((body) => {
-        console.log(body);
+        showSnackbar(body);
         console.log("Resetting table");
         sanResetTable();
         console.log("Repopulating table");

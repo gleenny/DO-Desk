@@ -92,7 +92,7 @@
               <option value="Admin">Admin</option>
             </select>
             <br>
-            <input type="submit" value="Resgister User" name="submit" onclick="showSnackbar('Register user successfully')" > 
+            <input type="submit" value="Resgister User" name="submit" > 
           </form>
         </div>
       </div>
@@ -113,7 +113,7 @@
                 <option value="1">Active</option>
                 <option value="0">Inactive</option>
             </select>
-            <input type="submit" value="Update Status" name="submit" onclick="showSnackbar('Update status successfully')">
+            <input type="submit" value="Update Status" name="submit">
           </form>
           </div>
         </div>
@@ -132,7 +132,7 @@
             <div class="title">Change Password</div>
             <input type="text" placeholder="User ID" id="userIDPassword">
             <input type="text" placeholder="Password" id="changePassword">
-            <input type="submit" value="Change Password" name="submit"onclick="showSnackbar('Change password successfully')">
+            <input type="submit" value="Change Password" name="submit">
           </form>
           </div>
         </div>
@@ -148,7 +148,7 @@
             <div class="title">Change username</div>
             <input type="text" placeholder="User ID" id="userIDUsername">
             <input type="text" placeholder="Username" id="changeUsername">
-            <input type="submit" value="Change Username" name="submit" onclick="showSnackbar('Change username successfully')">
+            <input type="submit" value="Change Username" name="submit">
           </form>
           </div>
         </div>

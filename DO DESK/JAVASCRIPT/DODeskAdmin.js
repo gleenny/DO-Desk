@@ -168,7 +168,7 @@ changePasswordForm.addEventListener('submit', (e) => {
   }).then((Response) => {
       return Response.text()
   }).then((body) => {
-      console.log(body)
+    showSnackbar(body);
   })
 })
 
@@ -193,7 +193,7 @@ form.addEventListener('submit', (e) => {
   }).then((Response) => {
       return Response.text()
   }).then((body) => {
-      console.log(body)
+      showSnackbar(body);
       console.log("Resetting table"); 
       resetTable();
       console.log("Repopulating table"); 
@@ -257,13 +257,14 @@ updateStatusForm.addEventListener('submit', (e) => {
   }).then((Response) =>{
       return Response.text()
   }).then((body) => {
-      console.log(body);
+      showSnackbar(body);
       console.log("Resetting table");
       resetTable();
       console.log("Repopulating table");
       getUserInfo();
   })
 });
+
 //update Role of Admin
 /*updateStatusForm.addEventListener('submit', (e) => {
   e.preventDefault();

@@ -168,7 +168,7 @@ function uploadStudents(formData){
     }).then((Response) => {
         return Response.text()
     }).then((body) => {
-        console.log(body)
+        showSnackbar(body);
         getStudentInfo();
     })
 }
@@ -195,7 +195,7 @@ function uploadParents(formData){
     }).then((Response) => {
         return Response.text()
     }).then((body) => {
-        console.log(body)
+        showSnackbar(body);
         getParentInfo();
     })
 }
@@ -220,7 +220,7 @@ function uploadPairing(formData){
     }).then((Response) => {
         return Response.text()
     }).then((body) => {
-        console.log(body)
+        showSnackbar(body);
         console.log("Student has been paired with parent")
         getParentInfo();
         getStudentInfo();

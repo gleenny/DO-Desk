@@ -28,6 +28,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $changePass->execute();
 
             echo "password has been changed";
+
+            $dateTime = date("Y-m-d H:i:s");
+            $userID = $_SESSION['userID'];
+            $auditQuery = "INSERT INTO `auditTBL` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
+            VALUES (NULL, '$userID', '$dateTime', 'User changed own password', '$userID');";
+            $audit = $conn->prepare($auditQuery);
+            $audit->execute();
+
         }else{
             echo "old password is incorrect";
         }
@@ -56,6 +64,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $changePass->execute();
 
             echo "username has been changed";
+
+            $dateTime = date("Y-m-d H:i:s");
+            $userID = $_SESSION['userID'];
+            $auditQuery = "INSERT INTO `auditTBL` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
+            VALUES (NULL, '$userID', '$dateTime', 'User changed own username', '$userID');";
+            $audit = $conn->prepare($auditQuery);
+            $audit->execute();
         }else{
             echo "old username is incorrect";
         }

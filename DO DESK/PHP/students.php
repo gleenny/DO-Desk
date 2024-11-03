@@ -24,6 +24,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         if ($conn->query($studentQuery) === TRUE) {
             $result = "New record created successfully!";
 
+            $dateTime = date("Y-m-d H:i:s");
+            $userID = $_SESSION['userID'];
+            $auditQuery = "INSERT INTO `auditTBL` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
+            VALUES (NULL, '$userID', '$dateTime', 'Added Student', '$studentNumber');";
+            $audit = $conn->prepare($auditQuery);
+            $audit->execute();
+
         } else {
             $result = "Error: " . $studentQuery . "<br>" . $conn->error;
         }
@@ -50,6 +57,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         if ($conn->query($parentQuery) === TRUE) {
             $result = "New record created successfully!";
 
+            $dateTime = date("Y-m-d H:i:s");
+            $userID = $_SESSION['userID'];
+            $auditQuery = "INSERT INTO `auditTBL` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
+            VALUES (NULL, '$userID', '$dateTime', 'Added Parent', '$parentFirstName $parentLastName');";
+            $audit = $conn->prepare($auditQuery);
+            $audit->execute();
+
         } else {
             $result = "Error: " . $parentQuery . "<br>" . $conn->error;
         }
@@ -66,6 +80,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
         if ($conn->query($pairingQuery) === TRUE) {
             $result = "New record created successfully!";
+
+            $dateTime = date("Y-m-d H:i:s");
+            $userID = $_SESSION['userID'];
+            $auditQuery = "INSERT INTO `auditTBL` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
+            VALUES (NULL, '$userID', '$dateTime', 'Student Paired With Parent', '$studentNumberPair : $parentNumberPair');";
+            $audit = $conn->prepare($auditQuery);
+            $audit->execute();
 
         } else {
             $result = "Error: " . $pairingQuery . "<br>" . $conn->error;
