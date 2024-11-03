@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "File has been uploaded";
 
         //saving in db
-        $query = "INSERT INTO `transcripttbl` (`transcriptID`, `transcriptName`, `fileExtension`, `violationID`) 
+        $query = "INSERT INTO `transcriptTBL` (`transcriptID`, `transcriptName`, `fileExtension`, `violationID`) 
                 VALUES (NULL, '$fileName', '$fileExtension', '$violationID');";
         
         if($conn->query($query) === TRUE) {
@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             //audit
             $dateTime = date("Y-m-d H:i:s");
             $userID = $_SESSION['userID'];
-            $auditQuery = "INSERT INTO `audittbl` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
+            $auditQuery = "INSERT INTO `auditTBL` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
             VALUES (NULL, '$userID', '$dateTime', 'saved transcription', 'violationID: $violationID - file Name: $fileName');";
             $audit = $conn->prepare($auditQuery);
             $audit->execute();

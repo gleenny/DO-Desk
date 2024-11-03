@@ -11,18 +11,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $userID = $_SESSION["userID"];
 
-        $verifyQuery = "SELECT `accounttbl`.*
-            FROM `accounttbl`
-            WHERE `accounttbl`.`password` LIKE '$oldPassword'
-            AND `accounttbl`.`userID` LIKE '$userID'";
+        $verifyQuery = "SELECT `accountTBL`.*
+            FROM `accountTBL`
+            WHERE `accountTBL`.`password` LIKE '$oldPassword'
+            AND `accountTBL`.`userID` LIKE '$userID'";
 
         $check = $conn->prepare($verifyQuery);
         $check->execute();
         $result = $check->get_result();
         if ($result->num_rows == 1) {
-            $changeQuery = "UPDATE `accounttbl` 
+            $changeQuery = "UPDATE `accountTBL` 
             SET `password` = '$newPassword' 
-            WHERE `accounttbl`.`userID` = '$userID';";
+            WHERE `accountTBL`.`userID` = '$userID';";
 
             $changePass = $conn->prepare($changeQuery);
             $changePass->execute();
@@ -39,18 +39,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $userID = $_SESSION["userID"];
 
-        $verifyQuery = "SELECT `accounttbl`.*
-            FROM `accounttbl`
-            WHERE `accounttbl`.`username` LIKE '$oldUsername'
-            AND `accounttbl`.`userID` LIKE '$userID'";
+        $verifyQuery = "SELECT `accountTBL`.*
+            FROM `accountTBL`
+            WHERE `accountTBL`.`username` LIKE '$oldUsername'
+            AND `accountTBL`.`userID` LIKE '$userID'";
 
         $check = $conn->prepare($verifyQuery);
         $check->execute();
         $result = $check->get_result();
         if ($result->num_rows == 1) {
-            $changeQuery = "UPDATE `accounttbl` 
+            $changeQuery = "UPDATE `accountTBL` 
             SET `username` = '$newUsername' 
-            WHERE `accounttbl`.`userID` = '$userID';";
+            WHERE `accountTBL`.`userID` = '$userID';";
 
             $changePass = $conn->prepare($changeQuery);
             $changePass->execute();

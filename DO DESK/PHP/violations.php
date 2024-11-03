@@ -39,21 +39,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $conditionCounter++;
         }
         // SQL query
-        $sql = "SELECT `violationtbl`.*,
-                `accounttbl`.`personID`,
-                `usertbl`.`firstName` AS `doFirst`,
-                `usertbl`.`lastName` AS `doLast`,
-                `studenttbl`.`firstName`,
-                    `studenttbl`.`middleName`,
-                    `studenttbl`.`lastName`,
-                    `studenttbl`.`course`,
-                    `offensetbl`.`offense` AS `violationCase`,
-                        `offensetbl`.`violationType`
-                FROM `violationtbl` 
-                LEFT JOIN `accounttbl` ON `violationtbl`.`recordedBy` = `accounttbl`.`userID` 
-                LEFT JOIN `usertbl` ON `accounttbl`.`personID` = `usertbl`.`personID` 
-                LEFT JOIN `studenttbl` ON `violationtbl`.`studentNumber` = `studenttbl`.`studentNumber` 
-                LEFT JOIN `offensetbl` ON `violationtbl`.`offenseID` = `offensetbl`.`offenseID` 
+        $sql = "SELECT `violationTBL`.*,
+                `accountTBL`.`personID`,
+                `userTBL`.`firstName` AS `doFirst`,
+                `userTBL`.`lastName` AS `doLast`,
+                `studentTBL`.`firstName`,
+                    `studentTBL`.`middleName`,
+                    `studentTBL`.`lastName`,
+                    `studentTBL`.`course`,
+                    `offenseTBL`.`offense` AS `violationCase`,
+                        `offenseTBL`.`violationType`
+                FROM `violationTBL` 
+                LEFT JOIN `accountTBL` ON `violationTBL`.`recordedBy` = `accountTBL`.`userID` 
+                LEFT JOIN `userTBL` ON `accountTBL`.`personID` = `userTBL`.`personID` 
+                LEFT JOIN `studentTBL` ON `violationTBL`.`studentNumber` = `studentTBL`.`studentNumber` 
+                LEFT JOIN `offenseTBL` ON `violationTBL`.`offenseID` = `offenseTBL`.`offenseID` 
                 WHERE ";
 
         for($i = 0; $i < $conditionCounter; $i++){
@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
 
             if(!($studentNumber == "")){
-                $sql .= "`violationtbl`.`studentNumber` LIKE '%$studentNumber%'";
+                $sql .= "`violationTBL`.`studentNumber` LIKE '%$studentNumber%'";
                 $studentNumber = "";
             }
             else if(!($studentName == "")){
@@ -74,11 +74,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $searchCourse = "";
             }
             else if(!($typeOfViolation == "")){
-                $sql .= "`offensetbl`.`violationType` LIKE '%$typeOfViolation%'";
+                $sql .= "`offenseTBL`.`violationType` LIKE '%$typeOfViolation%'";
                 $typeOfViolation = "";
             }
             else if(!($searchCase == "")){
-                $sql .= "`offensetbl`.`offense` LIKE '%$searchCase%'";
+                $sql .= "`offenseTBL`.`offense` LIKE '%$searchCase%'";
                 $searchCase = "";
             }
             else if(!($status == "")){
@@ -126,9 +126,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $doID = $_SESSION["userID"];
         $currentDate = date("Y-m-d");
         
-        $offenseIDQuery = "SELECT `offensetbl`.*
-                        FROM `offensetbl`
-                        WHERE `offensetbl`.`offense` LIKE '$violationCase';";
+        $offenseIDQuery = "SELECT `offenseTBL`.*
+                        FROM `offenseTBL`
+                        WHERE `offenseTBL`.`offense` LIKE '$violationCase';";
         
         $result = $conn->query($offenseIDQuery);
 
@@ -194,18 +194,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         
         $studentNumber = $_POST["studentNumber"];
 
-        $query = "SELECT `violationtbl`.`violationID`,
-         `violationtbl`.`offenseID`,
-          `offensetbl`.`offense` AS `violationCase`,
-           `offensetbl`.`violationType`,
-            `violationtbl`.`active`,
-             `violationtbl`.`violationDate`,
-              `studenttbl`.`firstName`,
-              `violationtbl`.`studentNumber`
-            FROM `violationtbl` 
-            LEFT JOIN `offensetbl` ON `violationtbl`.`offenseID` = `offensetbl`.`offenseID` 
-            LEFT JOIN `studenttbl` ON `violationtbl`.`studentNumber` = `studenttbl`.`studentNumber`
-            WHERE `violationtbl`.`studentNumber` LIKE '$studentNumber' AND `offensetbl`.`violationType` LIKE 'Minor'
+        $query = "SELECT `violationTBL`.`violationID`,
+         `violationTBL`.`offenseID`,
+          `offenseTBL`.`offense` AS `violationCase`,
+           `offenseTBL`.`violationType`,
+            `violationTBL`.`active`,
+             `violationTBL`.`violationDate`,
+              `studentTBL`.`firstName`,
+              `violationTBL`.`studentNumber`
+            FROM `violationTBL` 
+            LEFT JOIN `offenseTBL` ON `violationTBL`.`offenseID` = `offenseTBL`.`offenseID` 
+            LEFT JOIN `studentTBL` ON `violationTBL`.`studentNumber` = `studentTBL`.`studentNumber`
+            WHERE `violationTBL`.`studentNumber` LIKE '$studentNumber' AND `offenseTBL`.`violationType` LIKE 'Minor'
             ORDER BY `violationTBL`.`violationID` DESC;";
 
         $results = $conn->query($query);
@@ -233,21 +233,21 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
     $minorCount = 0;
     $majorCount = 0;
 
-    $query = "SELECT `violationtbl`.*,
-     `accounttbl`.`personID`,
-      `usertbl`.`firstName` AS `doFirst`,
-       `usertbl`.`lastName` AS `doLast`,
-        `studenttbl`.`firstName`,
-         `studenttbl`.`middleName`,
-          `studenttbl`.`lastName`,
-           `studenttbl`.`course`,
-            `offensetbl`.`offense` AS `violationCase`,
-             `offensetbl`.`violationType`
-    FROM `violationtbl` 
-	LEFT JOIN `accounttbl` ON `violationtbl`.`recordedBy` = `accounttbl`.`userID` 
-	LEFT JOIN `usertbl` ON `accounttbl`.`personID` = `usertbl`.`personID` 
-	LEFT JOIN `studenttbl` ON `violationtbl`.`studentNumber` = `studenttbl`.`studentNumber` 
-	LEFT JOIN `offensetbl` ON `violationtbl`.`offenseID` = `offensetbl`.`offenseID` 
+    $query = "SELECT `violationTBL`.*,
+     `accountTBL`.`personID`,
+      `userTBL`.`firstName` AS `doFirst`,
+       `userTBL`.`lastName` AS `doLast`,
+        `studentTBL`.`firstName`,
+         `studentTBL`.`middleName`,
+          `studentTBL`.`lastName`,
+           `studentTBL`.`course`,
+            `offenseTBL`.`offense` AS `violationCase`,
+             `offenseTBL`.`violationType`
+    FROM `violationTBL` 
+	LEFT JOIN `accountTBL` ON `violationTBL`.`recordedBy` = `accountTBL`.`userID` 
+	LEFT JOIN `userTBL` ON `accountTBL`.`personID` = `userTBL`.`personID` 
+	LEFT JOIN `studentTBL` ON `violationTBL`.`studentNumber` = `studentTBL`.`studentNumber` 
+	LEFT JOIN `offenseTBL` ON `violationTBL`.`offenseID` = `offenseTBL`.`offenseID` 
     ORDER BY `violationTBL`.`violationDate` DESC";
 
     $result = $conn->query($query);

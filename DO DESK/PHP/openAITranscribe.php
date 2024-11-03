@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
                 //audit
                 $dateTime = date("Y-m-d H:i:s");
                 $userID = $_SESSION['userID'];
-                $auditQuery = "INSERT INTO `audittbl` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
+                $auditQuery = "INSERT INTO `auditTBL` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
                 VALUES (NULL, '$userID', '$dateTime', 'Transcribed a file', NULL);";
                 $audit = $conn->prepare($auditQuery);
                 $audit->execute();

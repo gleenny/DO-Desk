@@ -128,9 +128,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $userID = $_POST["userID"];
         $password = base64_encode($_POST["password"]);
 
-        $query = "UPDATE `accounttbl` 
+        $query = "UPDATE `accountTBL` 
         SET `password` = '$password' 
-        WHERE `accounttbl`.`userID` = '$userID'; ";
+        WHERE `accountTBL`.`userID` = '$userID'; ";
 
         $changePassword = $conn->prepare($query);
         $changePassword->execute();
@@ -142,9 +142,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $userID = $_POST["userID"];
         $username = base64_encode($_POST["username"]);
 
-        $query = "UPDATE `accounttbl` 
+        $query = "UPDATE `accountTBL` 
         SET `username` = '$username' 
-        WHERE `accounttbl`.`userID` = '$userID'; ";
+        WHERE `accountTBL`.`userID` = '$userID'; ";
 
         $changeUsername = $conn->prepare($query);
         $changeUsername->execute();

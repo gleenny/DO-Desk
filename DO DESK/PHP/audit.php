@@ -4,15 +4,15 @@ session_start(); // Start the session
 require_once 'connections.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
-    $query = "SELECT `audittbl`.*,
-            `accounttbl`.`personID`,
-             `usertbl`.`firstName`,
-              `usertbl`.`lastName`,
-               `usertbl`.`role`
-            FROM `audittbl` 
-            LEFT JOIN `accounttbl` ON `audittbl`.`userID` = `accounttbl`.`userID` 
-            LEFT JOIN `usertbl` ON `accounttbl`.`personID` = `usertbl`.`personID`
-            ORDER BY `audittbl`.`transactionDateTime` DESC;";
+    $query = "SELECT `auditTBL`.*,
+            `accountTBL`.`personID`,
+             `userTBL`.`firstName`,
+              `userTBL`.`lastName`,
+               `userTBL`.`role`
+            FROM `auditTBL` 
+            LEFT JOIN `accountTBL` ON `auditTBL`.`userID` = `accountTBL`.`userID` 
+            LEFT JOIN `userTBL` ON `accountTBL`.`personID` = `userTBL`.`personID`
+            ORDER BY `auditTBL`.`transactionDateTime` DESC;";
 
     $result = $conn->query($query);
     $searchResults = [];
