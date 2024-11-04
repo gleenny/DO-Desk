@@ -1,5 +1,6 @@
 const url = '../PHP/openAITranscribe.php'
 const texturl = '../PHP/savingText.php'
+const violationurl = "../PHP/violations.php"
 const audioPath = '../audio/'
 const form = document.querySelector('#myform');  
 const record = document.querySelector("#record");
@@ -7,6 +8,8 @@ const tigil = document.querySelector("#stop");
 const saveTranscript = document.querySelector('#saveText');
 
 let filename;
+
+getViolationID();
 
 //save text file and db query
 saveTranscript.addEventListener("click", textUpload);
@@ -120,5 +123,24 @@ form.addEventListener('submit', (e) => {
         document.querySelector('#audioPlayer').setAttribute('src', audioPath+filename)
         document.querySelector('#audio').load();
     })
-    
 });
+
+function getViolationID(){
+  const formData = new FormData();
+
+  formData.append("requestType", "getViolationID")
+  
+  fetch(violationurl, {
+      method: 'POST',
+      body:formData
+  }).then((Response) => Response.json())
+  .then((json) => {   
+      for(let i = 0; i < json["violationID"].length ; i++){
+          let opt = document.createElement('option');
+          opt.text = json["violationID"][i]
+          opt.value = json["violationID"][i]
+
+          document.querySelector('#violationID').options.add(opt);
+      }
+  })
+}

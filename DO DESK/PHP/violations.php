@@ -226,7 +226,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo json_encode($minorViolationResults);
         $conn->close();
     }
-    
+    if($_POST['requestType'] == "getViolationID"){
+
+        $query = "SELECT `violationtbl`.`violationID` FROM `violationtbl`;";
+
+        $result = $conn->query($query);
+        
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()){
+                $vID["violationID"][] = $row['violationID'];
+            }
+            echo json_encode($vID);
+        }     
+        $conn->close();
+    }
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "GET") {

@@ -52,7 +52,9 @@ window.onclick = function(event) {
 
 getStudentInfo();
 getParentInfo();
-
+getCourses();
+getStudentID();
+getParentID()
 
 //student batch
 studentExcelUpload.addEventListener('click', (e) => {
@@ -320,6 +322,71 @@ function getParentInfo(){
         parRowCount = json["parentID"].length;
         for(let i = 0; i <= parRowCount - 1; i++){
             populateParentTable(i, json);
+        }
+    })
+}
+
+function getCourses(){
+    const formData = new FormData();
+
+    formData.append("requestType", "getCourses")
+    
+    fetch(url, {
+        method: 'POST',
+        body:formData
+    }).then((Response) => Response.json())
+    .then((json) => {   
+        for(let i = 0; i < json["courses"].length ; i++){
+            let opt = document.createElement('option');
+            opt.text = json["courses"][i]
+            opt.value = json["courses"][i]
+
+            document.querySelector('#searchCourse').options.add(opt);
+        }
+        for(let i = 0; i < json["courses"].length ; i++){
+            let opt = document.createElement('option');
+            opt.text = json["courses"][i]
+            opt.value = json["courses"][i]
+
+            document.querySelector('#course').options.add(opt);
+        }
+    })
+}
+function getStudentID(){
+    const formData = new FormData();
+
+    formData.append("requestType", "getStudentID")
+    
+    fetch(url, {
+        method: 'POST',
+        body:formData
+    }).then((Response) => Response.json())
+    .then((json) => {   
+        for(let i = 0; i < json["studentNumber"].length ; i++){
+            let opt = document.createElement('option');
+            opt.text = json["studentNumber"][i]
+            opt.value = json["studentNumber"][i]
+
+            document.querySelector('#studentNumberPair').options.add(opt);
+        }
+    })
+}
+function getParentID(){
+    const formData = new FormData();
+
+    formData.append("requestType", "getParentID")
+    
+    fetch(url, {
+        method: 'POST',
+        body:formData
+    }).then((Response) => Response.json())
+    .then((json) => {   
+        for(let i = 0; i < json["parentID"].length ; i++){
+            let opt = document.createElement('option');
+            opt.text = json["parentID"][i]
+            opt.value = json["parentID"][i]
+
+            document.querySelector('#parentNumberPair').options.add(opt);
         }
     })
 }

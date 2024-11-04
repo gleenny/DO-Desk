@@ -108,7 +108,8 @@
           <span class="close">&times;</span>
           <form action="../JAVASCRIPT/DODeskAdmin.js" enctype="multipart/form-data" method="POST" id="updateStatusForm">
             <div class="title">Update Status</div>
-            <input type="text" placeholder="Admin ID" id="adminID">
+            <select name="adminID" id="adminID" value=" ">
+            </select>
             <select name="adminStatus" id="adminStatus" value=" ">
                 <option value="1">Active</option>
                 <option value="0">Inactive</option>
@@ -120,8 +121,9 @@
 
       <!--change password-->
       <!-- Trigger/Open The Modal -->
+      <!--
       <button class="cards-button button" id="btnChangeUsername">Change username</button>
-
+      -->
       <button class="cards-button button" id="btnChangePassword">Change Passsword</button>
       <!-- The Modal -->
       <div id="modalChangePassword" class="modal">
@@ -130,7 +132,8 @@
           <span class="close">&times;</span>
           <form action="../JAVASCRIPT/DODeskAdmin.js" enctype="multipart/form-data" method="POST" id="changePasswordForm">
             <div class="title">Change Password</div>
-            <input type="text" placeholder="User ID" id="userIDPassword">
+            <select name="userIDPassword" id="userIDPassword" value=" ">
+            </select>
             <input type="text" placeholder="Password" id="changePassword">
             <input type="submit" value="Change Password" name="submit">
           </form>

@@ -64,16 +64,6 @@
               <input class="textType" type="text" name="searchName" id="searchName" placeholder="Student Name">
               <select class="textType" name="searchCourse" id="searchCourse" value=" ">
                 <option value=""> </option>
-                  <option value="ABM">ABM</option>
-                  <option value="BACOMM">BACOMM</option>
-                  <option value="BSAIS">BSAIS</option>
-                  <option value="BSBA">BSBA</option>
-                  <option value="BSCpE">BSCpE</option>
-                  <option value="BSCS">BSCS</option>
-                  <option value="BSHM">BSHM</option>
-                  <option value="BSIT">BSIT</option>
-                  <option value="BSTM">BSTM</option>
-                  <option value="STEM">STEM</option>
               </select>
               <select class="textType" name="typeOfViolation" id="typeOfViolation" value=" ">
                 <option value=""> </option>
@@ -106,42 +96,6 @@
                       <div class="title">Sumbit Violation</div>
                       <input type="text" placeholder="Student Number" id="studentNumber">
                       <select class="textType" name="violationCase" id="violationCase" value=" ">
-                        <option value="3 Minor Offenese">3 Minor Offenese</option>
-                        <option value="Intoxication, bringing liquor inside campus">Intoxication, bringing liquor inside campus</option>
-                        <option value="Cheating">Cheating</option>
-                        <option value="Vandalism/Destruction of property">Vandalism/Destruction of property</option>
-                        <option value="Disrespectful posting on social media">Disrespectful posting on social media</option>
-                        <option value="Wearing uniform on ill-repute places">Wearing uniform on ill-repute places</option>
-                        <option value="False testimony">False testimony</option>
-                        <option value="Grave insult">Grave insult</option>
-                        <option value="Hacking">Hacking</option>
-                        <option value="Tampering of records and receipts">Tampering of records and receipts</option>
-                        <option value="Stealing">Stealing</option>
-                        <option value="Distribution of elms materials">Distribution of elms materials</option>
-                        <option value="Misuse of school funds or property">Misuse of school funds or property</option>
-                        <option value="Public disorder/disturbance">Public disorder/disturbance</option>
-                        <option value="Any act of Immorality">Any act of Immorality</option>
-                        <option value="Any act of Bullying">Any act of Bullying</option>
-                        <option value="Brawl">Brawl</option>
-                        <option value="Physical assault">Physical assault</option>
-                        <option value="Drug usage">Drug usage</option>
-                        <option value="Giving false fire alarms and bomb threats">Giving false fire alarms and bomb threats</option>
-                        <option value="Misuse of fire fighting equipment">Misuse of fire fighting equipment</option>
-                        <option value="Non-adherence to the “STI Student Decorum”">Non-adherence to the “STI Student Decorum”</option>
-                        <option value="Discourtesy">Discourtesy</option>
-                        <option value="ID tapping">ID tapping</option>
-                        <option value="Not in proper uniform">Not in proper uniform</option>
-                        <option value="Wearing of inappropriate campus attire">Wearing of inappropriate campus attire</option>
-                        <option value="Losing or forgetting one’s ID three (3) times">Losing or forgetting one’s ID three (3) times</option>
-                        <option value="Disrespect to national symbols">Disrespect to national symbols</option>
-                        <option value="Irresponsible use of school property">Irresponsible use of school property</option>
-                        <option value="Gambling">Gambling</option>
-                        <option value="Disruption of classes and school activities">Disruption of classes and school activities</option>
-                        <option value="Public display of Affectionn">Public display of Affectionn</option>
-                        <option value="Violation school procedure">Violation school procedure</option>
-                        <option value="Smoking inside the campus">Smoking inside the campus</option>
-                        <option value="Allowing a non-STI student to enter the campus">Allowing a non-STI student to enter the campus</option>
-                        <option value="Bringing of pets in the school premises">Bringing of pets in the school premises</option>
                       </select>
                       <input type="submit" value="Submit Violation" name="submit" id="submitViolation"> 
                     </form>
@@ -182,7 +136,9 @@
                   <span class="close">&times;</span>
                   <form action="../JAVASCRIPT/DODesk-RecordsJS.js" enctype="multipart/form-data" method="POST" id="updateStatusForm">
                     <div class="title">Update Status</div>
-                    <input type="text" placeholder="violationID" id="violationID">
+                    <select class="textType" name="violationID" id="violationID" value=" ">
+                      
+                    </select>
                     <select name="violationStatus" id="violationStatus" value=" ">
                         <option value="Resolve">Resolve</option>
                         <option value="Unresolve">Unresolve</option>
@@ -259,42 +215,6 @@
                 <input class="textType" type="text" name="violationID" id="sanViolationID" placeholder="Violation ID">
                 <select class="textType" name="violationCase" id="sanViolationCase" value=" ">
                 <option value=""></option>
-                  <option value="3 Minor Offenese">3 Minor Offenese</option>
-                  <option value="Intoxication, bringing liquor inside campus">Intoxication, bringing liquor inside campus</option>
-                  <option value="Cheating">Cheating</option>
-                  <option value="Vandalism/Destruction of property">Vandalism/Destruction of property</option>
-                  <option value="Disrespectful posting on social media">Disrespectful posting on social media</option>
-                  <option value="Wearing uniform on ill-repute places">Wearing uniform on ill-repute places</option>
-                  <option value="False testimony">False testimony</option>
-                  <option value="Grave insult">Grave insult</option>
-                  <option value="Hacking">Hacking</option>
-                  <option value="Tampering of records and receipts">Tampering of records and receipts</option>
-                  <option value="Stealing">Stealing</option>
-                  <option value="Distribution of elms materials">Distribution of elms materials</option>
-                  <option value="Misuse of school funds or property">Misuse of school funds or property</option>
-                  <option value="Public disorder/disturbance">Public disorder/disturbance</option>
-                  <option value="Any act of Immorality">Any act of Immorality</option>
-                  <option value="Any act of Bullying">Any act of Bullying</option>
-                  <option value="Brawl">Brawl</option>
-                  <option value="Physical assault">Physical assault</option>
-                  <option value="Drug usage">Drug usage</option>
-                  <option value="Giving false fire alarms and bomb threats">Giving false fire alarms and bomb threats</option>
-                  <option value="Misuse of fire fighting equipment">Misuse of fire fighting equipment</option>
-                  <option value="Non-adherence to the “STI Student Decorum”">Non-adherence to the “STI Student Decorum”</option>
-                  <option value="Discourtesy">Discourtesy</option>
-                  <option value="ID tapping">ID tapping</option>
-                  <option value="Not in proper uniform">Not in proper uniform</option>
-                  <option value="Wearing of inappropriate campus attire">Wearing of inappropriate campus attire</option>
-                  <option value="Losing or forgetting one’s ID three (3) times">Losing or forgetting one’s ID three (3) times</option>
-                  <option value="Disrespect to national symbols">Disrespect to national symbols</option>
-                  <option value="Irresponsible use of school property">Irresponsible use of school property</option>
-                  <option value="Gambling">Gambling</option>
-                  <option value="Disruption of classes and school activities">Disruption of classes and school activities</option>
-                  <option value="Public display of Affectionn">Public display of Affectionn</option>
-                  <option value="Violation school procedure">Violation school procedure</option>
-                  <option value="Smoking inside the campus">Smoking inside the campus</option>
-                  <option value="Allowing a non-STI student to enter the campus">Allowing a non-STI student to enter the campus</option>
-                  <option value="Bringing of pets in the school premises">Bringing of pets in the school premises</option>
                 </select>
                 <select class="textType" name="sanction" id="sanStatus" value=" ">
                 <option value=""> </option>
@@ -327,22 +247,6 @@
                     <form action="../JAVASCRIPT/DODeskRecordsJS.js" enctype="multipart/form-data" method="POST" id="addSanctionform">
                         <input type="text" placeholder="Violation ID" id="sanSearchViolationID">
                         <select class="textType" name="Sanction" id="sanSearchSanction" value=" ">
-                          <option value="Verbal Warning">Verbal Warning</option>
-                          <option value="Written Reprimand">Written Reprimand</option>
-                          <option value="3 Days community Service">3 Days community Service</option>
-                          <option value="4 Days community Service">4 Days community Service</option>
-                          <option value="5 Days community Service">5 Days community Service</option>
-                          <option value="6 Days community Service">6 Days community Service</option>
-                          <option value="7 Days community Service">7 Days community Service</option>
-                          <option value="3 Days suspension">3 Days suspension</option>
-                          <option value="4 Days suspension">4 Days suspension</option>
-                          <option value="5 Days suspension">5 Days suspension</option>
-                          <option value="6 Days suspension">6 Days suspension</option>
-                          <option value="7 Days suspension">7 Days suspension</option>
-                          <option value="8 Days suspension">8 Days suspension</option>
-                          <option value="9 Days suspension">9 Days suspension</option>
-                          <option value="10 Days suspension">10 Days suspension</option>
-                          <option value="Non-readmisson">Non-readmisson</option>
                         </select>
                         <input type="submit" value="Set Sanction" name="submit">
                     </form>
@@ -359,7 +263,8 @@
                   <!--Adding Violations-->
                   <label>Update Sanction</label>
                     <form action="../JAVASCRIPT/DODeskRecordsJS.js" enctype="multipart/form-data" method="POST" id="updateSanctionform">
-                        <input type="text" placeholder="Sanction ID" id="sanctionID">
+                        <select class="textType" name="sanctionID" id="sanctionID" value=" ">
+                        </select>
                         <select name="sanctionStatus" id="sanctionStatus" value="">
                             <option value="0">Resolve</option>
                             <option value="1">Unresolve</option>

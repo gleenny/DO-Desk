@@ -65,16 +65,6 @@
               <input class="textType" type="text" name="searchName" id="searchName" placeholder="Student Name">
               <select class="textType" name="searchCourse" id="searchCourse" value=" ">
                 <option value=""> </option>
-                  <option value="ABM">ABM</option>
-                  <option value="BACOMM">BACOMM</option>
-                  <option value="BSAIS">BSAIS</option>
-                  <option value="BSBA">BSBA</option>
-                  <option value="BSCpE">BSCpE</option>
-                  <option value="BSCS">BSCS</option>
-                  <option value="BSHM">BSHM</option>
-                  <option value="BSIT">BSIT</option>
-                  <option value="BSTM">BSTM</option>
-                  <option value="STEM">STEM</option>
               </select>
               <select class="textType" name="status" id="status" value=" ">
                 <option value=""> </option>
@@ -102,17 +92,7 @@
                         <input type="text" placeholder="First Name" id="studentfirstName">
                         <input type="text" placeholder="Middle Name" id="studentMiddleName">
                         <input type="text" placeholder="Last Name" id="studentLastName">
-                        <select class="textType" name="searchCourse" id="course" value=" ">
-                          <option value="ABM">ABM</option>
-                          <option value="BACOMM">BACOMM</option>
-                          <option value="BSAIS">BSAIS</option>
-                          <option value="BSBA">BSBA</option>
-                          <option value="BSCpE">BSCpE</option>
-                          <option value="BSCS">BSCS</option>
-                          <option value="BSHM">BSHM</option>
-                          <option value="BSIT">BSIT</option>
-                          <option value="BSTM">BSTM</option>
-                          <option value="STEM">STEM</option>
+                        <select class="textType" name="course" id="course" value=" ">
                         </select>
                         <input type="submit" value="Submit Student" name="submit">
                     </form>
@@ -148,8 +128,12 @@
                 <!--Student Parent Pairing--> 
                 <p style="font-weight: bold;">Pair Students and Parent</p> 
                   <form action="../JAVASCRIPT/addStudentsJS.js" enctype="multipart/form-data" method="POST" id="myformPairing">
-                      <input type="text" placeholder="Student Number" id="studentNumberPair">
-                      <input type="text" placeholder="Parent Number" id="parentNumberPair">
+                    <label for="studentNumberPair">Student Number</label>
+                      <select class="textType" name="studentNumberPair" id="studentNumberPair" value=" ">
+                      </select><br>
+                    <label for="parentNumberPair">Parent ID</label>
+                      <select class="textType" name="parentNumberPair" id="parentNumberPair" value=" ">
+                      </select>
                       <input class="modalbtnSubmit"type="submit" value="Submit Pairing" name="submit"> 
                       <br>
                       <p style="font-weight: bold;">Batch upload parent data</p>

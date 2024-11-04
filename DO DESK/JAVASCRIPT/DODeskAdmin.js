@@ -10,6 +10,7 @@ const changeUsernameForm = document.querySelector('#changeUsernameForm');
 let rowCount = 0;
 getUserInfo();
 getAudit();
+getAdminID();
 
 
 // Get the modal
@@ -22,7 +23,7 @@ var modal4 = document.getElementById("modalChangeUsername");
 var btn1 = document.getElementById("btnRegister");
 var btn2 = document.getElementById("btnUpdateStatus");
 var btn3 = document.getElementById("btnChangePassword");
-var btn4 = document.getElementById("btnChangeUsername");
+//var btn4 = document.getElementById("btnChangeUsername");
 
 // Get the <span> element that closes the modal
 var span1 = document.getElementsByClassName("close")[0];
@@ -40,9 +41,10 @@ btn2.onclick = function() {
 btn3.onclick = function() {
   modal3.style.display = "block";
 }
-btn4.onclick = function() {
+
+/*btn4.onclick = function() {
   modal4.style.display = "block";
-}
+}*/
 
 // When the user clicks on <span> (x), close the modal
 span1.onclick = function() {
@@ -187,18 +189,23 @@ form.addEventListener('submit', (e) => {
 
   formData.append("requestType", "addUser");
 
-  fetch(adminurl, {
+  if(document.querySelector("#firstName").value != "" && document.querySelector("#lastName").value != "" &&
+   document.querySelector("#username").value != "" && document.querySelector("#password").value != ""){
+    fetch(adminurl, {
       method: 'POST',
       body: formData,
-  }).then((Response) => {
-      return Response.text()
-  }).then((body) => {
-      showSnackbar(body);
-      console.log("Resetting table"); 
-      resetTable();
-      console.log("Repopulating table"); 
-      getUserInfo();
-  })
+    }).then((Response) => {
+        return Response.text()
+    }).then((body) => {
+        showSnackbar(body);
+        console.log("Resetting table"); 
+        resetTable();
+        console.log("Repopulating table"); 
+        getUserInfo();
+    })
+  }else{
+    showSnackbar("missing field");
+  }
 });
 
 //search from list of User
@@ -291,6 +298,33 @@ updateStatusForm.addEventListener('submit', (e) => {
   })
 });*/
 
+function getAdminID(){
+  const formData = new FormData();
+
+  formData.append("requestType", "getAdminID")
+  
+  fetch(adminurl, {
+      method: 'POST',
+      body:formData
+  }).then((Response) => Response.json())
+  .then((json) => {   
+      for(let i = 0; i < json["userID"].length ; i++){
+          let opt = document.createElement('option');
+          opt.text = json["userID"][i]
+          opt.value = json["userID"][i]
+
+          document.querySelector('#adminID').options.add(opt);
+      }
+      for(let i = 0; i < json["userID"].length ; i++){
+        let opt = document.createElement('option');
+        opt.text = json["userID"][i]
+        opt.value = json["userID"][i]
+
+        document.querySelector('#userIDPassword').options.add(opt);
+      }
+  })
+}
+
 //list of Disciplinary Officer 
 function getUserInfo(){
   fetch(adminurl, {
@@ -319,51 +353,51 @@ function populateTable(i, json){
             userID.id = 'userID' + i;
 
           if(json["middleName"][i] == null){
-            nameHolder = json["firstName"][i] + " " + json["lastName"][i];
+            NameHolderUser = json["firstName"][i] + " " + json["lastName"][i];
           }
           else{
-            nameHolder = json["firstName"][i] + " " + json["middleName"][i] + " " + json["lastName"][i];
+            NameHolderUser = json["firstName"][i] + " " + json["middleName"][i] + " " + json["lastName"][i];
           }  
-          let name = document.createElement('td');
-          name.id = 'name' + i;
+          let nameUser = document.createElement('td');
+          nameUser.id = 'nameUser' + i;
 
-          let username = document.createElement('td');
-          username.id = 'username' + i;
+          let usernameUser = document.createElement('td');
+          usernameUser.id = 'usernameUser' + i;
 
-          let password = document.createElement('td');
-          password.id = 'password' + i;
+          let passwordUser = document.createElement('td');
+          passwordUser.id = 'passwordUser' + i;
 
-          let role = document.createElement('td');
-          role.id = 'role' + i;
+          let roleUser = document.createElement('td');
+          roleUser.id = 'roleUser' + i;
 
           if(json["active"][i] == 1){
-              isActive = "active"
+              isActiveUser = "active"
           }
           else{
-              isActive = "Inactive"
+            isActiveUser = "Inactive"
           }  
-          let active = document.createElement('td');
-          active.id = 'active' + i;
+          let activeUser = document.createElement('td');
+          activeUser.id = 'activeUser' + i;
 
           document.querySelector('#userListRows').appendChild(tableRow);//tbody
 
           document.querySelector('#userList' + i).appendChild(userID);
             document.querySelector('#userID' + i).innerHTML = json["userID"][i];
 
-          document.querySelector('#userList' + i).appendChild(name);
-            document.querySelector('#name' + i).innerHTML = nameHolder;
+          document.querySelector('#userList' + i).appendChild(nameUser);
+            document.querySelector('#nameUser' + i).innerHTML = NameHolderUser;
 
-          document.querySelector('#userList' + i).appendChild(username);
-            document.querySelector('#username' + i).innerHTML = json["username"][i];
+          document.querySelector('#userList' + i).appendChild(usernameUser);
+            document.querySelector('#usernameUser' + i).innerHTML = json["username"][i];
 
-          document.querySelector('#userList' + i).appendChild(password);
-            document.querySelector('#password' + i).innerHTML = json["password"][i];
+          document.querySelector('#userList' + i).appendChild(passwordUser);
+            document.querySelector('#passwordUser' + i).innerHTML = json["password"][i];
 
-          document.querySelector('#userList' + i).appendChild(role);
-            document.querySelector('#role' + i).innerHTML = json["role"][i];
+          document.querySelector('#userList' + i).appendChild(roleUser);
+            document.querySelector('#roleUser' + i).innerHTML = json["role"][i];
 
-          document.querySelector('#userList' + i).appendChild(active);
-            document.querySelector('#active' + i).innerHTML = isActive;
+          document.querySelector('#userList' + i).appendChild(activeUser);
+            document.querySelector('#activeUser' + i).innerHTML = isActiveUser;
 }
 // Function to show the snackbar with a custom message
 function showSnackbar(message) {

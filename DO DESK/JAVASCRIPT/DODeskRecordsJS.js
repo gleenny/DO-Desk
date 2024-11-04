@@ -1,6 +1,7 @@
 const violationurl = "../PHP/violations.php";
 const messageurl = "../PHP/semaphoreAPI.php";
 const sanctionurl = "../PHP/sanction.php";
+const studenturl = "../PHP/students.php"
 const form = document.querySelector('#myform');
 const searchForm = document.getElementById('searchForm');
 const updateStatusForm = document.querySelector('#updateStatusForm');
@@ -18,6 +19,12 @@ getViolationInfo();
 
 let sanRowCount = 0;
 getSanctionInfo();
+
+getCourses();
+getSanctions();
+getViolationCase();
+getViolationID();
+getSanctionID();
 
 let studentNameHolderSMS
 
@@ -184,20 +191,24 @@ form.addEventListener('submit', (e) => {
 
     formData.append("requestType", "addViolation");
 
-    fetch(violationurl, {
-        method: 'POST',
-        body: formData,
-    }).then((Response) => Response.json())
-    .then((json) => {
-        showSnackbar(json["result"][0]);
-        console.log("Resetting table"); 
-        resetTable();
-        console.log("Repopulating table"); 
-        getViolationInfo();
-        if(json["type"][0] == "Minor"){
-            checkMinorViolationCount();
-        }
-    })
+    if(document.querySelector("#studentNumber").value != ""){
+        fetch(violationurl, {
+            method: 'POST',
+            body: formData,
+        }).then((Response) => Response.json())
+        .then((json) => {
+            showSnackbar(json["result"][0]);
+            console.log("Resetting table"); 
+            resetTable();
+            console.log("Repopulating table"); 
+            getViolationInfo();
+            if(json["type"][0] == "Minor"){
+                checkMinorViolationCount();
+            }
+        })
+    }else{
+        showSnackbar("Missing field");
+    }
 });
 
 //searching student violations
@@ -334,6 +345,109 @@ function checkMinorViolationCount(){
             document.querySelector('#messageParent').innerHTML = json["firstName"][0] + "'s minor violations";
             studentViolator = json["studentNumber"][0];
             modal3.style.display = "block";
+        }
+    })
+}
+
+function getCourses(){
+    const formData = new FormData();
+
+    formData.append("requestType", "getCourses")
+    
+    fetch(studenturl, {
+        method: 'POST',
+        body:formData
+    }).then((Response) => Response.json())
+    .then((json) => {   
+        for(let i = 0; i < json["courses"].length ; i++){
+            let opt = document.createElement('option');
+            opt.text = json["courses"][i]
+            opt.value = json["courses"][i]
+
+            document.querySelector('#searchCourse').options.add(opt);
+        }
+    })
+}
+function getSanctions(){
+    const formData = new FormData();
+
+    formData.append("requestType", "getSanctions")
+    
+    fetch(sanctionurl, {
+        method: 'POST',
+        body:formData
+    }).then((Response) => Response.json())
+    .then((json) => {   
+        for(let i = 0; i < json["sanction"].length ; i++){
+            let opt = document.createElement('option');
+            opt.text = json["sanction"][i]
+            opt.value = json["sanction"][i]
+
+            document.querySelector('#sanSearchSanction').options.add(opt);
+        }
+    })
+}
+function getViolationCase(){
+    const formData = new FormData();
+
+    formData.append("requestType", "getViolationCase")
+    
+    fetch(sanctionurl, {
+        method: 'POST',
+        body:formData
+    }).then((Response) => Response.json())
+    .then((json) => {   
+        for(let i = 0; i < json["violationCase"].length ; i++){
+            let opt = document.createElement('option');
+            opt.text = json["violationCase"][i]
+            opt.value = json["violationCase"][i]
+
+            document.querySelector('#violationCase').options.add(opt);
+        }
+        for(let i = 0; i < json["violationCase"].length ; i++){
+            let opt = document.createElement('option');
+            opt.text = json["violationCase"][i]
+            opt.value = json["violationCase"][i]
+
+            document.querySelector('#sanViolationCase').options.add(opt);
+        }
+    })
+}
+function getViolationID(){
+    const formData = new FormData();
+
+    formData.append("requestType", "getViolationID")
+    
+    fetch(violationurl, {
+        method: 'POST',
+        body:formData
+    }).then((Response) => Response.json())
+    .then((json) => {   
+        for(let i = 0; i < json["violationID"].length ; i++){
+            let opt = document.createElement('option');
+            opt.text = json["violationID"][i]
+            opt.value = json["violationID"][i]
+
+            document.querySelector('#violationID').options.add(opt);
+        }
+    })
+}
+function getSanctionID(){
+    const formData = new FormData();
+
+    formData.append("requestType", "getSanctionID")
+    
+    fetch(sanctionurl, {
+        method: 'POST',
+        body:formData
+    }).then((Response) => Response.json())
+    .then((json) => {   
+        for(let i = 0; i < json["sanctionID"].length ; i++){
+            let opt = document.createElement('option');
+            opt.text = json["sanctionID"][i]
+            opt.value = json["sanctionID"][i]
+
+            document.querySelector('#sanctionID').options.add(opt);
         }
     })
 }
@@ -489,18 +603,22 @@ addSanction.addEventListener('submit', (e) => {
 
     formData.append("requestType", "addSanction");
 
-    fetch(sanctionurl, {
-        method:'POST',
-        body:formData
-    }).then((Response) => {
-        Response.text()
-    }).then((body) => {
-        showSnackbar(body);
-        console.log("Resetting table");
-        sanResetTable();
-        console.log("Repopulating table");
-        getSanctionInfo();
-    })
+    if(document.querySelector("#sanSearchViolationID").value != ""){
+        fetch(sanctionurl, {
+            method:'POST',
+            body:formData
+        }).then((Response) => {
+            Response.text()
+        }).then((body) => {
+            showSnackbar(body);
+            console.log("Resetting table");
+            sanResetTable();
+            console.log("Repopulating table");
+            getSanctionInfo();
+        })
+    }else{
+        showSnackbar("Missing Field");
+    }
 })
 
 function getSanctionInfo(){

@@ -179,6 +179,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         echo "Username has been changed";
     }
+    if($_POST["requestType"] == "getAdminID"){
+        $query = "SELECT `accounttbl`.`userID` FROM `accounttbl`;";
+   
+       $result = $conn->query($query);
+   
+       if ($result->num_rows > 0) {
+           while($row = $result->fetch_assoc()){
+               $userID["userID"][] = $row['userID'];
+           }
+           echo json_encode($userID);
+       }     
+       $conn->close();
+    }
 }
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
     $query = "SELECT `userTBL`.`firstName`,
