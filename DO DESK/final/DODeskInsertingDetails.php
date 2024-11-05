@@ -63,7 +63,9 @@
             <form id="searchForm">
               <input class="textType" type="text" name="searchNumber" id="searchNumber" placeholder="Student Number">
               <input class="textType" type="text" name="searchName" id="searchName" placeholder="Student Name">
-              <input class="textType" type="text" name="searchCourse" id="searchCourse" placeholder="Course">
+              <select class="textType" name="searchCourse" id="searchCourse" value=" ">
+                <option value=""> </option>
+              </select>
               <select class="textType" name="status" id="status" value=" ">
                 <option value=""> </option>
                   <option value="1">Enrolled</option>
@@ -83,20 +85,21 @@
                 <!-- Modal content -->
                 <div class="modal-content">
                   <span class="close">&times;</span>
-                  <!--Adding Violations-->
+                  <!--Adding Students-->
                   <p style="font-weight: bold;">Register Student</p>
                     <form action="../JAVASCRIPT/addStudentsJS.js" enctype="multipart/form-data" method="POST" id="myformStudent">
                         <input type="text" placeholder="Student Number" id="studentNumber">
                         <input type="text" placeholder="First Name" id="studentfirstName">
                         <input type="text" placeholder="Middle Name" id="studentMiddleName">
                         <input type="text" placeholder="Last Name" id="studentLastName">
-                        <input type="text" placeholder="Course" id="course">
-                        <input type="submit" value="Submit Student" name="submit" onclick="showSnackbar('Student are register.')"  >
+                        <select class="textType" name="course" id="course" value=" ">
+                        </select>
+                        <input type="submit" value="Submit Student" name="submit">
                     </form>
                     <br>
                     <p style="font-weight: bold;">Batch upload student data</p>
                     <input id="studentExcel" type="file" accept=".xlsx, .xls">
-                    <input id="submitStudentExcel" type="submit" value="submit student excel" onclick="showSnackbar('Upload by batch file for student')">
+                    <input id="submitStudentExcel" type="submit" value="submit student excel">
                 </div>
               </div>
               <div id="modalParent" class="modal">
@@ -110,12 +113,12 @@
                         <input type="text" placeholder="Middle Name" id="parentMiddleName">
                         <input type="text" placeholder="Last Name" id="parentLastName">
                         <input type="text" placeholder="Mobile Number" id="mobileNumber">
-                        <input type="submit" value="Submit Parent" name="submit" onclick="showSnackbar('Parent are register')">
+                        <input type="submit" value="Submit Parent" name="submit">
                     </form>
                     <br>
                     <p style="font-weight: bold;">Batch upload parent data</p>
                     <input id="parentExcel" type="file" accept=".xlsx, .xls">
-                    <input id="submitParentExcel" type="submit" value="submit parent excel" onclick="showSnackbar('Upload by batch file for parent.')">
+                    <input id="submitParentExcel" type="submit" value="submit parent excel">
                 </div>
               </div>
               <div id="modalPairing" class="modal">
@@ -125,9 +128,13 @@
                 <!--Student Parent Pairing--> 
                 <p style="font-weight: bold;">Pair Students and Parent</p> 
                   <form action="../JAVASCRIPT/addStudentsJS.js" enctype="multipart/form-data" method="POST" id="myformPairing">
-                      <input type="text" placeholder="Student Number" id="studentNumberPair">
-                      <input type="text" placeholder="Parent Number" id="parentNumberPair">
-                      <input class="modalbtnSubmit"type="submit" value="Submit Pairing" name="submit" onclick="showSnackbar('Parent paired to student')"> 
+                    <label for="studentNumberPair">Student Number</label>
+                      <select class="textType" name="studentNumberPair" id="studentNumberPair" value=" ">
+                      </select><br>
+                    <label for="parentNumberPair">Parent ID</label>
+                      <select class="textType" name="parentNumberPair" id="parentNumberPair" value=" ">
+                      </select>
+                      <input class="modalbtnSubmit"type="submit" value="Submit Pairing" name="submit"> 
                       <br>
                       <p style="font-weight: bold;">Batch upload parent data</p>
                       <input id="studentParentExcel" type="file" accept=".xlsx, .xls">

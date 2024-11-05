@@ -176,6 +176,48 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
         $conn->close();
     }
+    if($_POST['requestType'] == "getSanctions"){
+
+        $query = "SELECT `punishmenttbl`.`sanction` FROM `punishmenttbl`;";
+
+        $result = $conn->query($query);
+        
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()){
+                $sanction["sanction"][] = $row['sanction'];
+            }
+            echo json_encode($sanction);
+        }     
+        $conn->close();
+    }
+    if($_POST['requestType'] == "getViolationCase"){
+
+        $query = "SELECT `offensetbl`.`offense` FROM `offensetbl`;";
+
+        $result = $conn->query($query);
+        
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()){
+                $vCases["violationCase"][] = $row['offense'];
+            }
+            echo json_encode($vCases);
+        }     
+        $conn->close();
+    }
+    if($_POST['requestType'] == "getSanctionID"){
+
+        $query = "SELECT `sanctiontbl`.`sanctionID` FROM `sanctiontbl`;";
+
+        $result = $conn->query($query);
+        
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()){
+                $sID["sanctionID"][] = $row['sanctionID'];
+            }
+            echo json_encode($sID);
+        }     
+        $conn->close();
+    }
 }
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
     $sanctions = [];

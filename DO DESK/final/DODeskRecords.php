@@ -62,7 +62,9 @@
 
               <input class="textType" type="text" name="searchNumber" id="searchNumber" placeholder="Student Number">
               <input class="textType" type="text" name="searchName" id="searchName" placeholder="Student Name">
-              <input class="textType" type="text" name="searchCourse" id="searchCourse" placeholder="Course">
+              <select class="textType" name="searchCourse" id="searchCourse" value=" ">
+                <option value=""> </option>
+              </select>
               <select class="textType" name="typeOfViolation" id="typeOfViolation" value=" ">
                 <option value=""> </option>
                   <option value="Minor">Minor</option>
@@ -93,8 +95,9 @@
                     <form action="../JAVASCRIPT/DODeskRecordsJS.js" enctype="multipart/form-data" method="POST" id="myform">
                       <div class="title">Sumbit Violation</div>
                       <input type="text" placeholder="Student Number" id="studentNumber">
-                      <input type="text" placeholder="Violation Case" id="violationCase">
-                      <input type="submit" value="Submit Violation" name="submit" id="submitViolation" onclick="showSnackbar('Submit Violation')"> 
+                      <select class="textType" name="violationCase" id="violationCase" value=" ">
+                      </select>
+                      <input type="submit" value="Submit Violation" name="submit" id="submitViolation"> 
                     </form>
                 </div>
               </div>
@@ -120,7 +123,7 @@
                         </tbody>
                       </table>
                     </div>
-                    <button id="sendMessage" onclick="showSnackbar('Successfully sent a message to parent')">Notify Parents</button>
+                    <button id="sendMessage">Notify Parents</button>
                     <button id="cancel">Cancel</button>
                   </div>
               </div>
@@ -133,12 +136,14 @@
                   <span class="close">&times;</span>
                   <form action="../JAVASCRIPT/DODesk-RecordsJS.js" enctype="multipart/form-data" method="POST" id="updateStatusForm">
                     <div class="title">Update Status</div>
-                    <input type="text" placeholder="violationID" id="violationID">
+                    <select class="textType" name="violationID" id="violationID" value=" ">
+                      
+                    </select>
                     <select name="violationStatus" id="violationStatus" value=" ">
                         <option value="Resolve">Resolve</option>
                         <option value="Unresolve">Unresolve</option>
                     </select>
-                    <input type="submit" value="Update Status" name="submit" onclick="showSnackbar('Update status successfully')">
+                    <input type="submit" value="Update Status" name="submit">
                   </form>
                 </div>    
               </div>
@@ -153,7 +158,6 @@
                             <div id="studentNumberSMS">student Number</div>
                             <input type="date" name="schedDate" id="schedDate" placeholder="Date">
                             <textarea class="messageTextBox" id="messageText" placeholder="Your message here, leave blank for preset message"></textarea>
-    <!--tinaggal ko snackbar-->
                             <input type="submit" value="Notify Parents" name="submit" id="notifyParents" > 
                           </form>
                 </div>
@@ -209,12 +213,21 @@
                 <input class="textType" type="text" name="studentNumber" id="sanStudentNumber" placeholder="Student Number">
                 <input class="textType" type="text" name="studentName" id="sanStudentName" placeholder="Student Name">
                 <input class="textType" type="text" name="violationID" id="sanViolationID" placeholder="Violation ID">
-                <input class="textType" type="text" name="violationCase" id="sanViolationCase" placeholder="Violation Case">
-                <input class="textType" type="text" name="sanction" id="sanSanction" placeholder="Sanction">
-                <select class="textType" name="status" id="sanStatus" value=" ">
-                  <option value=""> </option>
+                <select class="textType" name="violationCase" id="sanViolationCase" value=" ">
+                <option value=""></option>
+                </select>
+                <select class="textType" name="sanction" id="sanStatus" value=" ">
+                <option value=""> </option>
                     <option value="0">Resolve</option>
                     <option value="1">Unresolve</option>
+                </select>
+                <select class="textType" name="status" id="sanSanction" value=" ">
+                  <option value=""></option>
+                    <option value="Verbal Warning">Verbal Warning</option>
+                    <option value="Written Reprimand">Written Reprimand</option>
+                    <option value="community Service">community Service</option>
+                    <option value="suspension">suspension</option>
+                    <option value="Non-readmisson">Non-readmisson</option>
                 </select>
                 <button type="submit" id="searchbtn" class="searchbutton">Search</button>
               </form>
@@ -233,8 +246,9 @@
                   <label>Submit Sanction</label>
                     <form action="../JAVASCRIPT/DODeskRecordsJS.js" enctype="multipart/form-data" method="POST" id="addSanctionform">
                         <input type="text" placeholder="Violation ID" id="sanSearchViolationID">
-                        <input type="text" placeholder="Sanction" id="sanSearchSanction">
-                        <input type="submit" value="Set Sanction" name="submit" onclick="showSnackbar('Setting sanction successfully')">
+                        <select class="textType" name="Sanction" id="sanSearchSanction" value=" ">
+                        </select>
+                        <input type="submit" value="Set Sanction" name="submit">
                     </form>
                 </div>
             </div>
@@ -249,12 +263,13 @@
                   <!--Adding Violations-->
                   <label>Update Sanction</label>
                     <form action="../JAVASCRIPT/DODeskRecordsJS.js" enctype="multipart/form-data" method="POST" id="updateSanctionform">
-                        <input type="text" placeholder="Sanction ID" id="sanctionID">
+                        <select class="textType" name="sanctionID" id="sanctionID" value=" ">
+                        </select>
                         <select name="sanctionStatus" id="sanctionStatus" value="">
                             <option value="0">Resolve</option>
                             <option value="1">Unresolve</option>
                         </select>
-                        <input type="submit" value="Set Sanction" name="submit" onclick="showSnackbar('Setting sanction successfully')">
+                        <input type="submit" value="Set Sanction" name="submit">
                     </form>
                 </div>
             </div>

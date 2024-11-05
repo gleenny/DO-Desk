@@ -128,7 +128,7 @@ smsForm.addEventListener('submit', (e) => {
     }else if(document.querySelector('#mobileNumber').value != "" && document.querySelector('#message').value != ""){ //customize one message
         SMS(formData);
     }else{
-        console.log("Missing field");
+        showSnackbar("Missing field");
     }
 })
 function SMS(formData){
@@ -138,10 +138,9 @@ function SMS(formData){
     }).then((Response) => {
         return Response.text()
     }).then((body) => {
-        console.log(body)
-        console.log("Message was succesfully sent to the student's parent")
+        showSnackbar("Message was succesfully sent to the student's parent");
     }).catch(error => {
-        console.log("An error occure: " + error);
+        showSnackbar("An error occure: " + error);
     })
 }
 

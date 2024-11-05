@@ -66,12 +66,14 @@
                     <input type="submit" value="Change Password" name="submit">
                 </form>
                 <br>
+                <!--
                 <form id="changeUsername" method="POST">
                     <input type="text" placeholder="Old username" id="oldUsername">
                     <input type="text" placeholder="New username" id="newUsername">
                     <input type="submit" value="Change Username" name="submit">
                 </form>
                 <br>
+                -->
                 <input type="text" placeholder="setting" class="search ">
                 <div class="btn personal-details">Personal Details</div>
                 <div class="btn privacy">Privacy</div>

@@ -24,6 +24,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         if ($conn->query($studentQuery) === TRUE) {
             $result = "New record created successfully!";
 
+            $dateTime = date("Y-m-d H:i:s");
+            $userID = $_SESSION['userID'];
+            $auditQuery = "INSERT INTO `auditTBL` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
+            VALUES (NULL, '$userID', '$dateTime', 'Added Student', '$studentNumber');";
+            $audit = $conn->prepare($auditQuery);
+            $audit->execute();
+
         } else {
             $result = "Error: " . $studentQuery . "<br>" . $conn->error;
         }
@@ -50,6 +57,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         if ($conn->query($parentQuery) === TRUE) {
             $result = "New record created successfully!";
 
+            $dateTime = date("Y-m-d H:i:s");
+            $userID = $_SESSION['userID'];
+            $auditQuery = "INSERT INTO `auditTBL` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
+            VALUES (NULL, '$userID', '$dateTime', 'Added Parent', '$parentFirstName $parentLastName');";
+            $audit = $conn->prepare($auditQuery);
+            $audit->execute();
+
         } else {
             $result = "Error: " . $parentQuery . "<br>" . $conn->error;
         }
@@ -66,6 +80,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
         if ($conn->query($pairingQuery) === TRUE) {
             $result = "New record created successfully!";
+
+            $dateTime = date("Y-m-d H:i:s");
+            $userID = $_SESSION['userID'];
+            $auditQuery = "INSERT INTO `auditTBL` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
+            VALUES (NULL, '$userID', '$dateTime', 'Student Paired With Parent', '$studentNumberPair : $parentNumberPair');";
+            $audit = $conn->prepare($auditQuery);
+            $audit->execute();
 
         } else {
             $result = "Error: " . $pairingQuery . "<br>" . $conn->error;
@@ -243,6 +264,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
                $students["studentLast"][] = $row['studentLast'];
            }
            echo json_encode($students);
+       }     
+       $conn->close();
+    }
+    //get Courses
+    if($_POST["requestType"] == "getCourses"){
+        $query = "SELECT `coursetbl`.`courseID` FROM `coursetbl`;";
+   
+       $result = $conn->query($query);
+   
+       if ($result->num_rows > 0) {
+           while($row = $result->fetch_assoc()){
+               $courses["courses"][] = $row['courseID'];
+           }
+           echo json_encode($courses);
+       }     
+       $conn->close();
+    }
+    if($_POST["requestType"] == "getStudentID"){
+        $query = "SELECT `studenttbl`.`studentNumber` FROM `studenttbl`;";
+   
+       $result = $conn->query($query);
+   
+       if ($result->num_rows > 0) {
+           while($row = $result->fetch_assoc()){
+               $sNumbers["studentNumber"][] = $row['studentNumber'];
+           }
+           echo json_encode($sNumbers);
+       }     
+       $conn->close();
+    }
+    if($_POST["requestType"] == "getParentID"){
+        $query = "SELECT `parenttbl`.`parentID` FROM `parenttbl`;";
+   
+       $result = $conn->query($query);
+   
+       if ($result->num_rows > 0) {
+           while($row = $result->fetch_assoc()){
+               $parentID["parentID"][] = $row['parentID'];
+           }
+           echo json_encode($parentID);
        }     
        $conn->close();
     }

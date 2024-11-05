@@ -61,7 +61,8 @@
                 <br>
                 
                 <div class="textarea-container">
-                  <input class="textType"type="text" placeholder="violation ID" id="violationID">
+                  <select class="textType" name="violationID" id="violationID" value=" ">
+                  </select>
                   <textarea class="textBox"id="myTextarea" placeholder="Upload your audio file"></textarea>
                   <div class="inputs-container">
                     <!-- Inputs -->
