@@ -87,7 +87,7 @@
 
           <div class="message">
               <label style=" font-weight: bold;" class="title">Send Message</label>
-              <p>Date when you would like the parents to visit the Office (for preset message)</p>
+                <p>Date when you would like the parents to visit the Office (for preset message)</p>
                 <!--For message-->
                 <form action="../JAVASCRIPT/sendSMSJS.js" enctype="multipart/form-data" method="POST" id="myformSMS">
                   <!--date-->

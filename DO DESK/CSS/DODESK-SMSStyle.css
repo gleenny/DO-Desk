@@ -310,6 +310,7 @@ th {
   width: 20vw;
 }   
 
+
 .message .title {
   font-size: 16px;
   margin-bottom: 5px;
@@ -469,42 +470,21 @@ th {
   background: #11132c;
 }
 }
-@media screen and (max-width: 3200px) {
-  .searchNote {
-    font-size: 15px;
-  } 
 
-}
-@media screen and (max-width: 2000px) {
-  .searchNote {
-    font-size: 13px;
-  } 
-}
-@media screen and (max-width: 1700px) {
-  .searchNote {
-    font-size: 10px;
-  } 
-
-}
-@media screen and (max-width: 1400px) {
-  .wrapper{
+@media screen and (max-width: 898px) {
+  .AddingStudent {
+    max-width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 16px 0px;
+    margin: 0%;
+  }
+  .message .messageTextBox {
     width: 100%;
-    height: 100%;
+    height: 250px;
+
   }
-  .searchNote {
-    font-size: 9px;
-  } 
+  
 }
 
-@media screen and (max-width: 1279px) {
-
-}
-
-@media screen and (max-width: 768px) {
-  .searchNote {
-    font-size: 9px;
-  } 
-  .buttons {
-    background-color: green;
-  }
+@media screen and (max-width: 798px) {
+  
 }
