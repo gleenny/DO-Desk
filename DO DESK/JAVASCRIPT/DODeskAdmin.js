@@ -82,8 +82,8 @@ function getAudit(){
   }).then((Response) => Response.json())
   .then((json) => {
       console.log("Displaying Audit Trail")    
-      rowCount = json["logID"].length;
-      for(let i = 0; i <= rowCount - 1; i++){
+      logRowCount = json["logID"].length;
+      for(let i = 0; i <= logRowCount - 1; i++){
         populateTableAudit(i, json);
       }
   })

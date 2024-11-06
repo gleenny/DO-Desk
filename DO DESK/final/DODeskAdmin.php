@@ -217,7 +217,7 @@
                   <th class="th4">Process</th>
                   <th class="th5">Note</th>
                 </tr>
-              </thead>
+              </thead> 
 
               <tbody id="AuditListRows">
               </tbody>

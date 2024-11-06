@@ -8,7 +8,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     if($_POST["requestType"] == "Students"){
         $studentNumber = $_POST["studentNumber"];
         $studentFirstName = $_POST["firstName"];
-        $studentMiddleName = $_POST["middleName"];
+        if($_POST["middleName"] == "null"){
+            $studentMiddleName = "";
+        }else {
+            $studentMiddleName = $_POST["middleName"];
+        }
         $studentLastName = $_POST["lastName"];
         $course = $_POST["course"];
         $active = $_POST["active"];
@@ -40,7 +44,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     //adding parents
     if($_POST["requestType"] == "Parents"){
         $parentFirstName = $_POST["firstName"];
-        $parentMiddleName = $_POST["middleName"];
+        if($_POST["middleName"] == "null"){
+            $parentMiddleName = "";
+        }else {
+            $parentMiddleName = $_POST["middleName"];
+        }
         $parentLastName = $_POST["lastName"];
         $mobileNumber = $_POST["mobileNumber"];
 
@@ -133,11 +141,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
                 $studentName = "";
             }
             else if(!($course == "")){
-                $sql .= "`studentTBL`.`course` LIKE '%$searchCourse%'";
+                $sql .= "`studentTBL`.`course` LIKE '%$course%'";
                 $course = "";
             }
             else if(!($active == "")){
-                $sql .= "`studentTBL`.`section` LIKE '%$searchSection%'";
+                $sql .= "`studentTBL`.`active` LIKE '%$active%'";
                 $active = "";
             }
             
@@ -209,11 +217,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
                 $studentName = "";
             }
             else if(!($course == "")){
-                $sql .= "`studentTBL`.`course` LIKE '%$searchCourse%'";
+                $sql .= "`studentTBL`.`course` LIKE '%$course%'";
                 $course = "";
             }
             else if(!($active == "")){
-                $sql .= "`studentTBL`.`section` LIKE '%$searchSection%'";
+                $sql .= "`studentTBL`.`active` LIKE '%$active%'";
                 $active = "";
             }
             
@@ -269,7 +277,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     }
     //get Courses
     if($_POST["requestType"] == "getCourses"){
-        $query = "SELECT `coursetbl`.`courseID` FROM `coursetbl`;";
+        $query = "SELECT `courseTBL`.`courseID` FROM `courseTBL`;";
    
        $result = $conn->query($query);
    
@@ -282,7 +290,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
        $conn->close();
     }
     if($_POST["requestType"] == "getStudentID"){
-        $query = "SELECT `studenttbl`.`studentNumber` FROM `studenttbl`;";
+        $query = "SELECT `studentTBL`.`studentNumber` FROM `studentTBL`;";
    
        $result = $conn->query($query);
    
@@ -295,7 +303,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
        $conn->close();
     }
     if($_POST["requestType"] == "getParentID"){
-        $query = "SELECT `parenttbl`.`parentID` FROM `parenttbl`;";
+        $query = "SELECT `parentTBL`.`parentID` FROM `parentTBL`;";
    
        $result = $conn->query($query);
    

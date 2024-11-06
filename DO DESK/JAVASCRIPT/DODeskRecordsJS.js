@@ -10,6 +10,7 @@ const notifyParentForm = document.querySelector('#myNotifyForm');
 const searchSanction = document.querySelector('#searchSanctionForm');
 const addSanction = document.querySelector('#addSanctionform');
 const updateSanction = document.querySelector('#updateSanctionform');
+const violationBatch = document.querySelector('#submitViolationExcel');
 
 let rowCount = 0;
 let rowCountMinor = 0;
@@ -122,6 +123,47 @@ window.onclick = function(event) {
     modal6.style.display = "none";
   }
 }
+
+//violation batch
+violationBatch.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    const input = document.getElementById("violationExcel");
+    readXlsxFile(input.files[0]).then(function (data) {
+        const headers = data[0];
+        const jsonData = [];
+        for (let i = 1; i < data.length; i++) {
+            const temp = {};
+            for (let j = 0; j < headers.length; j++) {
+                temp[headers[j]] = data[i][j];
+            }
+            jsonData.push(temp);
+        }
+        for(i = 0; i < jsonData.length; i++){
+            const formData = new FormData();
+    
+            formData.append("studentNumber", jsonData[i]["Student Number"]);
+            formData.append("violationCase", jsonData[i]["Offense"]);
+    
+            formData.append("requestType", "addViolation");
+            
+            fetch(violationurl, {
+                method: 'POST',
+                body: formData,
+            }).then((Response) => Response.json())
+            .then((json) => {
+                showSnackbar(json["result"][0]);
+                console.log("Resetting table"); 
+                resetTable();
+                console.log("Repopulating table"); 
+                getViolationInfo();
+            }).catch(error => {
+                console.log(error)
+                showSnackbar("An error occured: " + error);
+            })
+        }
+    }); 
+})
 //Update sanction
 updateSanction.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -468,7 +510,8 @@ function getViolationInfo(){
 
 function resetTable(){
     for(let i = 0; i <= rowCount - 1; i++){
-        document.querySelector("#reportListRows").deleteRow(0);
+        // console.log(document.querySelector("#reportListRows"));
+        document.querySelector("#reportListRows").innerHTML = '';
     }
 }
 function populateTable(i, json){

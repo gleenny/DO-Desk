@@ -98,6 +98,10 @@
                       <select class="violationdrp"name="violationCase" id="violationCase" value=" "> <br>
                       </select> 
                       <br><input type="submit" value="Submit Violation" name="submit" id="submitViolation"> <br>
+                      <br>
+                      <p style="font-weight: bold;">Batch violation</p>
+                      <input id="violationExcel" type="file" accept=".xlsx, .xls">
+                      <input id="submitViolationExcel" type="button" value="submit violation excel">
                     </form>
                 </div>
               </div>
@@ -320,7 +324,7 @@
   <div id="snackbar"></div>
         
         
-
+  <script src="https://unpkg.com/read-excel-file@5.x/bundle/read-excel-file.min.js"></script>
         <script src="../JAVASCRIPT/DODeskRecordsJS.js"></script>
 </body>
 </html>

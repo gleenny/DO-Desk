@@ -178,7 +178,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
     if($_POST['requestType'] == "getSanctions"){
 
-        $query = "SELECT `punishmenttbl`.`sanction` FROM `punishmenttbl`;";
+        $query = "SELECT `punishmentTBL`.`sanction` FROM `punishmentTBL`;";
 
         $result = $conn->query($query);
         
@@ -192,7 +192,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
     if($_POST['requestType'] == "getViolationCase"){
 
-        $query = "SELECT `offensetbl`.`offense` FROM `offensetbl`;";
+        $query = "SELECT `offenseTBL`.`offense` FROM `offenseTBL`;";
 
         $result = $conn->query($query);
         
@@ -206,7 +206,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
     if($_POST['requestType'] == "getSanctionID"){
 
-        $query = "SELECT `sanctiontbl`.`sanctionID` FROM `sanctiontbl`;";
+        $query = "SELECT `sanctionTBL`.`sanctionID` FROM `sanctionTBL`;";
 
         $result = $conn->query($query);
         
