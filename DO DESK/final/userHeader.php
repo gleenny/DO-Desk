@@ -100,10 +100,11 @@
         </svg>
         Administration
     </a>
+    <div style="font-weight: bold;" class="name">
     <?php } ?>
 
     <?php
         echo $_SESSION['firstName']. " ". $_SESSION['lastName'];
     ?>
-
+    </div>
 </div>

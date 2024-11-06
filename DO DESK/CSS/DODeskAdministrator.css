@@ -368,7 +368,7 @@
     padding: 10px 15px;
   }
 
- select {
+ .selecttype {
     color: #9b9ca7;
     background: #1a1b3c;
     border: none;
