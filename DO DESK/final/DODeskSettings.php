@@ -58,33 +58,17 @@
       ?>
         <div class="user-box first-box">
             <div class="searchs card" style="--delay: .2s">
-                <h1> Find the setting you need </h1>
+                <h1>Settings </h1>
                 <br>
+                <div class="btn privacy">Privacy</div>
+
                 <form id="changePassword" method="POST">
                     <input type="text" placeholder="Old password" id="oldPass">
                     <input type="text" placeholder="New password" id="newPass">
                     <input type="submit" value="Change Password" name="submit">
                 </form>
                 <br>
-                <!--
-                <form id="changeUsername" method="POST">
-                    <input type="text" placeholder="Old username" id="oldUsername">
-                    <input type="text" placeholder="New username" id="newUsername">
-                    <input type="submit" value="Change Username" name="submit">
-                </form>
-                <br>
-                -->
-                <input type="text" placeholder="setting" class="search ">
-                <div class="btn personal-details">Personal Details</div>
-                <div class="btn privacy">Privacy</div>
 
-                <div class="user-box first-box">
-                    <div class="btnCard import-data">Import Data</div>
-                    <div class="btnCard dark-mode">Dark Mode</div>
-                </div>
-                <div class="btn messages-settings">Messages Settings</div>
-                <div class="btn activity-logs">Activity Logs</div>
-                <div class="btn about-system">About System</div>
             </div>
         </div>
     </div>

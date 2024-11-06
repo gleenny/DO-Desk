@@ -250,7 +250,7 @@
                   <label>Submit Sanction</label>
                     <form action="../JAVASCRIPT/DODeskRecordsJS.js" enctype="multipart/form-data" method="POST" id="addSanctionform">
                         <input type="text" placeholder="Violation ID" id="sanSearchViolationID">
-                        <select class="textType" name="Sanction" id="sanSearchSanction" value=" ">
+                        <select name="Sanction" id="sanSearchSanction" value=" ">
                         </select>
                         <input type="submit" value="Set Sanction" name="submit">
                     </form>
@@ -267,7 +267,7 @@
                   <!--Adding Violations-->
                   <label>Update Sanction</label>
                     <form action="../JAVASCRIPT/DODeskRecordsJS.js" enctype="multipart/form-data" method="POST" id="updateSanctionform">
-                        <select class="textType" name="sanctionID" id="sanctionID" value=" ">
+                        <select  name="sanctionID" id="sanctionID" value=" ">
                         </select>
                         <select name="sanctionStatus" id="sanctionStatus" value="">
                             <option value="0">Resolve</option>

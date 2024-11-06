@@ -60,7 +60,7 @@
           <form id="searchForm">
             <input class="textType" type="text" name="searchNumber" id="searchUserID" placeholder="User ID">
             <input class="textType" type="text" name="searchName" id="searchName" placeholder="Name">
-            <select  name="status" id="searchStatus" value="">
+            <select  class="selecttype"name="status" id="searchStatus" value="">
               <option value=""></option>
               <option value="1">Active</option>
               <option value="0">Inactive</option>
@@ -71,7 +71,7 @@
       <!--Second box-->
       <div class="user-box second-box" style="--delay: .6s">
         <!-- Trigger/Open The Modal -->
-        <button class="cards-button button" id="btnRegister">Register Administrator</button>
+        <button class="cards-button button" id="btnRegister">Register User</button>
         <!-- The Modal Register Violation -->
         <div id="modalRegister" class="modal">
         <!-- Modal content -->
