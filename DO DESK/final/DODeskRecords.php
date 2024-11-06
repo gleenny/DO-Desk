@@ -94,10 +94,10 @@
                   <!--Adding Violations-->
                     <form action="../JAVASCRIPT/DODeskRecordsJS.js" enctype="multipart/form-data" method="POST" id="myform">
                       <div class="title">Sumbit Violation</div>
-                      <input type="text" placeholder="Student Number" id="studentNumber">
-                      <select class="textType" name="violationCase" id="violationCase" value=" ">
-                      </select>
-                      <input type="submit" value="Submit Violation" name="submit" id="submitViolation"> 
+                      <input type="text" placeholder="Student Number" id="studentNumber"> <br>
+                      <select class="violationdrp"name="violationCase" id="violationCase" value=" "> <br>
+                      </select> 
+                      <br><input type="submit" value="Submit Violation" name="submit" id="submitViolation"> <br>
                     </form>
                 </div>
               </div>
@@ -135,14 +135,14 @@
                 <div class="modal-content">
                   <span class="close">&times;</span>
                   <form action="../JAVASCRIPT/DODesk-RecordsJS.js" enctype="multipart/form-data" method="POST" id="updateStatusForm">
-                    <div class="title">Update Status</div>
-                    <select class="textType" name="violationID" id="violationID" value=" ">
+                    <div class="title">Update Status</div> <br>
+                    <select name="violationID" id="violationID" value=" ">
                       
-                    </select>
-                    <select name="violationStatus" id="violationStatus" value=" ">
+                    </select> <br>
+                    <select name="violationStatus" id="violationStatus" value=" "><br>
                         <option value="Resolve">Resolve</option>
                         <option value="Unresolve">Unresolve</option>
-                    </select>
+                    </select> <br>
                     <input type="submit" value="Update Status" name="submit">
                   </form>
                 </div>    

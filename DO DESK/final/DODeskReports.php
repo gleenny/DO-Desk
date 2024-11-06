@@ -54,12 +54,13 @@
       <?php
         require_once 'userHeader.php';
       ?>  
+      
       <!--4TH Flow-->
       <div class="user-box fourth-box" style="--delay: .9s">
         <span style="font-weight: bold;">Trancripts</span>
       </div>
-      <textarea readonly id="myTextarea" placeholder="Select a trancript file"></textarea>
-      <audio controls id="audio">
+      <textarea class="textbox"readonly id="myTextarea" placeholder="Displaying trancript file"></textarea>
+      <audio controls id="audio"  class="audioInput" >
         <source id="audioPlayer" src="">
       </audio>
       <div class="user-box fourth-box" style="--delay: .9s">

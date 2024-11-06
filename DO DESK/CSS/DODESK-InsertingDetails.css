@@ -515,134 +515,44 @@ th + th {
 
 
 /* Screen */
-@media screen and (max-width: 1500px) {
-  .wrapper {
-    max-width: 1200px;
-  }
-
-  .activity {
-    width: 49%;
-    max-width: none;
-  }
-
-  .first-box {
-    flex-wrap: wrap;
-  }
-  .first-box .cards-wrapper {
-    width: 67%;
-    max-width: none;
-    margin: 20px 0;
-  }
-  .first-box .cards-wrapper .item.is-active {
-    background: none;
-    color: inherit;
-  }
-  .first-box .account-wrapper {
-    max-width: none;
-    width: calc(33% - 20px);
-    margin: 20px 0 20px 20px;
-  }
-
-  .second-box {
-    flex-wrap: wrap;
-  }
-  .second-box .cards-wrapper {
-    margin-top: 40px;
-    width: 66%;
-  }
-
-  .calendarEvent {
-    margin-top: 40px;
-    max-width: none;
-    width: 30%;
-  }
-}
-@media screen and (max-width: 1200px) {
-  .time {
-    display: none;
-  }
-}
-@media screen and (max-width: 1060px) {
-  .user-info .button,
-.user-info .hour {
-    display: none;
-  }
-}
-@media screen and (max-width: 1020px) {
-  .user-box .cards-view {
-    display: none;
-  }
-
-  .user-box .cards-header .cards-button {
-    display: none;
-  }
-
-  .cards-header-date {
-    margin: auto;
-  }
-}
-@media screen and (max-width: 930px) {
-  .second-box .cards-wrapper {
-    width: 100%;
-  }
-
-  .calendarEvent {
-    width: 100%;
-    margin-left: 0;
-    height: 100%;
-    margin-top: 20px;
-  }
-
-  .header-link {
-    display: none;
-  }
-
-  .user-info .profile {
-    margin-right: 0;
-  }
-}
-@media screen and (max-width: 850px) {
-  .activity-card {
-    width: 100%;
-  }
-
-  .user-box  {
-    margin-left: 0;
-    margin-top: 20px;
-  }
-
+@media (max-width: 375px) {
+  
+  /* headers */
   .left-side {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    align-items: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 100px;
+    padding-bottom: 10px;
+        -webkit-animation: left 1s var(--delay) both;
+            animation: left 1s var(--delay) both;
   }
+  .left-side .header-link {
+    padding: 10px;
+    border-bottom: 10px solid transparent;
+  }
+  .header{
+    font-size:0px; 
+  }
+  .header .header-link {
+    padding: 10px;
+  }
+  .header .header-link svg{
+    align-items: center !important;
+  }
+    /* end headers */
+    .wrapper{
+      max-width: 375%;
+    }
+    .modal-content {
+      top: 10;
+      padding: 20px;
+      width:80%;
+      height: 80%;
+      margin: 25% auto; /* 15% from the top and centered */
 
-  .main-container {
-    padding-left: 25px;
+      }
   }
-
-  .activity-links,
-.destination {
-    margin-top: 20px;
-  }
-}
-@media screen and (max-width: 720px) {
-  .first-box .account-wrapper {
-    display: none;
-  }
-
-  .first-box .cards-wrapper {
-    width: 100%;
-  }
-
-  .second-box .cards.card {
-    overflow-y: auto;
-  }
-}
-@media screen and (max-width: 420px) {
-  .destination-card + .destination-card {
-    display: none;
-  }
-}
-.user-box > * {
-  -webkit-animation: top 1s var(--delay) both;
-          animation: top 1s var(--delay) both;
-}

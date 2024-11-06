@@ -56,7 +56,7 @@
          <div class="searchStudent">
          <div class="title"  style="font-weight: bold;">Contact Personnel</div>
           <!--Search Student-->
-            <label style=" font-weight: bold;">Search Student</label>
+            <label class="titlelabel"style="font-weight: bold;">Search Student</label>
             <p class="searchNote"> Search the student and you can see the parent name and their phone number </p>
             <form action="../JAVASCRIPT/sendSMSJS.js" enctype="multipart/form-data" method="POST" id="myformFindParent">
               <input class="SearchStudentBar" type="text" placeholder="Student Name" id="studentName">
@@ -87,17 +87,19 @@
 
           <div class="message">
               <label style=" font-weight: bold;" class="title">Send Message</label>
-              <p>Date when you would like the parents to visit the Office (for preset message)</p>
+              <p class="notice">Date when you would like the parents to visit the Office (for preset message)</p>
                 <!--For message-->
                 <form action="../JAVASCRIPT/sendSMSJS.js" enctype="multipart/form-data" method="POST" id="myformSMS">
                   <!--date-->
                   <input class="datepicker" type="date" name="scheduleDate" id="scheduleDate" placeholder="Date"><br>
                   <!--Student Number-->
-                  <p>Student number, to message all of student's parents/guardian</p>
-                  <input class="searchBar" type="text" placeholder="Student Number" id="studentNumber"> 
-                  <h1>OR</h1>
+                  <h4 style="font-weight: bold;">Option to send a message</h4>
 
-                  <p>Enter the Student name and the Parent contact number</p>
+                  <p class="notice">Student number, to message all of student's parents/guardian</p>
+                  <input class="searchBar" type="text" placeholder="Student Number" id="studentNumber"> 
+                  <h5 style="font-weight: bold;">OR</h5>
+
+                  <p class="notice">Enter the Student name and the Parent contact number</p>
                   <input class="searchBar" type="text" placeholder="Student Name (for preset)" id="studentNameSMS">
                   <input class="searchBar" type="text" placeholder="Parent's Mobile Number" id="mobileNumber">
                   <br>

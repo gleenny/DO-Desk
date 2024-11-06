@@ -102,4 +102,8 @@
     </a>
     <?php } ?>
 
+    <?php
+        echo $_SESSION['firstName']. " ". $_SESSION['lastName'];
+    ?>
+
 </div>

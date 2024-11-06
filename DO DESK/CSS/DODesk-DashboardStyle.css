@@ -254,7 +254,7 @@ body {
   background: radial-gradient(circle, #1a2049 0%, #13162f 100%);
   padding: 40px 30px;
   border-radius: 6px;
-  display: flex;
+  display: block;
   flex-direction: column;
   flex-grow: 1;
   max-height: 430px;
@@ -277,6 +277,8 @@ body {
 
 .activity {
   max-width: 480px;
+  display: flex;
+  flex-wrap: wrap;
 }
 .activity .title {
   margin-bottom: 20px;
@@ -370,6 +372,8 @@ body {
 .graph {
   max-width: 450px;
   width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
 .graph .title {
   margin-bottom: 30px;
@@ -380,6 +384,10 @@ body {
 }
 
 /* 3rd module - calendar */
+.list{
+  display: flex;
+  flex-wrap: wrap;
+}
 .cards-header {
   background: #10122b;
   border-radius: 6px 6px 0 0;
@@ -466,7 +474,7 @@ body {
 /* 4th module - PROFILE */
 .account {
   width: 100%;
-  height: 180px;
+  height: 100px;
   margin-top: auto;
   flex-grow: 0;
   position: relative;
@@ -557,48 +565,6 @@ body {
 
 /* 5th module */
 
-.table .status {
-  color: #1aa385;
-  display: inline-flex;
-  align-items: center;
-}
-.table .status svg {
-  margin-right: 6px;
-  width: 22px;
-  height: 22px;
-  padding: 3px;
-  border-radius: 4px;
-  background-color: #142940;
-  color: currentColor;
-}
-.table .status.is-red {
-  color: #d14b69;
-}
-.table .status.is-red svg {
-  background: #2e2142;
-  color: currentcolor;
-}
-.table .status.is-wait {
-  color: #3E4EC2;
-  position: relative;
-}
-.table .status.is-wait:before {
-  width: 22px;
-  height: 22px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  content: "";
-  background: #1a214d;
-  border-radius: 4px;
-}
-.table .status.is-wait svg {
-  background-color: transparent;
-  color: currentcolor;
-  -webkit-animation: turn 2s linear infinite both;
-          animation: turn 2s linear infinite both;
-}
-
 @-webkit-keyframes turn {
   100% {
     transform: rotate(1turn);
@@ -616,29 +582,7 @@ body {
   padding: 0;
   padding-left: 10px;
 }
-.table th {
-  font-size: 14px;
-  font-weight: normal;
-  padding-bottom: 16px;
-}
 
-.table th:nth-child(n+5) {
-  padding: 0 10px 16px;
-}
-.table td {
-  font-size: 15px;
-  vertical-align: middle;
-  padding: 8px 0;
-}
-.table td:last-of-type {
-  width: 100px;
-}
-.table td:nth-child(n+5) {
-  padding: 0 10px;
-}
-.table td:nth-last-of-type(2) svg {
-  width: 16px;
-}
 .table input {
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -655,11 +599,39 @@ body {
   background-size: 0;
   background-position: center;
 }
-.table input:checked {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' stroke='%23fff' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round' class='css-i6dzq1'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
-  background-color: #252954;
-  background-size: 12px;
-  background-repeat: no-repeat;
+.recordBy{
+  width: 10%;
+  margin: 0 10px;
+}
+.Snumber{
+  width: 15%;
+  padding: 10px;
+
+}
+.Sname{
+  width: 20%;
+  padding: 10px;
+
+}
+.Scourse{
+  width: 7%;
+  margin: 0 10px;
+
+}
+.StypeViolation{
+  width: 13%;
+  margin: 0 10px;
+
+}
+.Scase{
+  width: 25%;
+  margin: 0 10px;
+
+}
+.Sstatus{
+  width: 10%;
+  margin:  10px;
+
 }
 
 /* modal */
@@ -736,60 +708,6 @@ input, select, button {
   }
 }
 
-/* 6th module */
-.calendarEvent {
-  flex-shrink: 0;
-  max-width: 310px;
-  margin-left: 20px;
-  max-height: 100vh;
-}
-.calendarEvent-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 14px;
-  font-weight: 500;
-}
-.calendarEvent .viewBtn {
-  color: #3E4EC2;
-  font-size: 13px;
-  cursor: pointer;
-}
-.calendarEvent .viewBtn:hover {
-  color: white;
-  font-size: 13px;
-  cursor: pointer;
-}
-
-.event-wrapper {
-  margin-top: 20px;
-  display: flex;
-  font-size: 14px;
-  font-weight: 500;
-}
-.event-wrapper:hover {
-  font-size: 13px;
-  cursor: pointer;
-  background: #11132c;
-  padding: 8px 20px;
-  border-bottom: 3px #2830d8 solid;
-  animation-name: fadeItIn;
-  animation-duration: 1s;
-  animation-delay: 0s;
-  animation-fill-mode: forwards;
-}
-.event-wrapper path {
-  width: 24px;
-}
-
-.event-date {
-  font-size: 13px;
-  font-weight: normal;
-}
-.event-type {
-  color: #e7e8ea;
-  margin-bottom: 6px;
-}
 @keyframes fadeItIn {
   0% {
     background: rgb(28,36,68);
@@ -798,135 +716,68 @@ input, select, button {
     background: #11132c;
   }
 }
-
-
-@media screen and (max-width: 1500px) {
-  .wrapper {
-    max-width: 1200px;
-  }
-
-  .activity {
-    width: 49%;
-    max-width: none;
-  }
-
-  .first-box {
-    flex-wrap: wrap;
-  }
-  .first-box .cards-wrapper {
-    width: 67%;
-    max-width: none;
-    margin: 20px 0;
-  }
-  .first-box .cards-wrapper .item.is-active {
-    background: none;
-    color: inherit;
-  }
-  .first-box .account-wrapper {
-    max-width: none;
-    width: calc(33% - 20px);
-    margin: 20px 0 20px 20px;
-  }
-
-  .second-box {
-    flex-wrap: wrap;
-  }
-  .second-box .cards-wrapper {
-    margin-top: 40px;
-    width: 66%;
-  }
-
-  .calendarEvent {
-    margin-top: 40px;
-    max-width: none;
-    width: 30%;
-  }
-}
-@media screen and (max-width: 1200px) {
-  .time {
-    display: none;
-  }
-}
-@media screen and (max-width: 1060px) {
-  .user-info .button,
-.user-info .hour {
-    display: none;
-  }
-}
-@media screen and (max-width: 1020px) {
-  .user-box .cards-view {
-    display: none;
-  }
-
-  .user-box .cards-header .cards-button {
-    display: none;
-  }
-
-  .cards-header-date {
-    margin: auto;
-  }
-}
-@media screen and (max-width: 930px) {
-  .second-box .cards-wrapper {
-    width: 100%;
-  }
-
-  .calendarEvent {
-    width: 100%;
-    margin-left: 0;
-    height: 100%;
-    margin-top: 20px;
-  }
-
-  .header-link {
-    display: none;
-  }
-
-  .user-info .profile {
-    margin-right: 0;
-  }
-}
-@media screen and (max-width: 850px) {
-  .activity-card {
-    width: 100%;
-  }
-
-  .user-box  {
-    margin-left: 0;
-    margin-top: 20px;
-  }
-
+@media (max-width: 375px) {
+  
+  /* headers */
   .left-side {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    align-items: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 100px;
+    padding-bottom: 10px;
+        -webkit-animation: left 1s var(--delay) both;
+            animation: left 1s var(--delay) both;
   }
+  .left-side .header-link {
+    padding: 10px;
+    border-bottom: 10px solid transparent;
+  }
+  .header{
+    font-size:0px; 
+  }
+  .header .header-link {
+    padding: 10px;
+  }
+  .header .header-link svg{
+    align-items: center !important;
+  }
+    /* end headers */
+    .wrapper{
+      max-width: 375%;
+    }
 
-  .main-container {
-    padding-left: 25px;
-  }
+    /* 1st box */
+    .activity{
+      height: 100%;
+      width: 700px;
+      display: block;
+    }
+    .activity .title {
+      font-size: 10px;
+    }
+    .activity .subtitle{
+      font-size: 9px;
+    }
+    .activity .subtitle-count{
+      font-size: 15px;
 
-  .activity-links,
-.destination {
-    margin-top: 20px;
-  }
+    }
+    .list card{
+      width: 700px;
+    }
+    .list th{
+      font-size: 9px;
+    }
+    .list tbody{
+      font-size: 9px;
+    }
+
 }
-@media screen and (max-width: 720px) {
-  .first-box .account-wrapper {
-    display: none;
-  }
 
-  .first-box .cards-wrapper {
-    width: 100%;
-  }
 
-  .second-box .cards.card {
-    overflow-y: auto;
-  }
-}
-@media screen and (max-width: 420px) {
-  .destination-card + .destination-card {
-    display: none;
-  }
-}
 .user-box > * {
   -webkit-animation: top 1s var(--delay) both;
           animation: top 1s var(--delay) both;

@@ -57,7 +57,7 @@
             <!--FIrst Column-->
             <div class="user-box first-box">
               <div class="notes card" style="--delay: .1s">
-                <p>Recording Case</p>
+                <p class="title">Recording Case</p>
                 <br>
                 
                 <div class="textarea-container">
@@ -80,14 +80,15 @@
                 <br>
                 <form action="../JAVASCRIPT/upload.js" method="post" enctype="multipart/form-data" id="myform">
                   <input type="file" id="myFile" name="filename">
-                  <input type="submit" value="Upload File" name="submit">
-                  <input type="button" value="Save Transcription" id="saveText">
+                  <br>
+                  <input class="buttonUpload"type="submit" value="Upload File" name="submit">
+                  <input class= "buttonSave" type="button" value="Save Transcription" id="saveText">
                 </form>
                 <audio controls id="audio">
                   <source id="audioPlayer" src="">
                 </audio>
-                <p>Click on the "Choose File" button to upload a file:</p>
-                <p>File Supported: mp3, mp4, mpeg, mpga, m4a, wav, and webm. File size should not exceed 25mb</p>
+                <p class="notice">Click on the "Choose File" button to upload a file:</p>
+                <p class="notice">File Supported: mp3, mp4, mpeg, mpga, m4a, wav, and webm. File size should not exceed 25mb</p>
               </div> 
             </div>
           </div>

@@ -298,3 +298,36 @@
 .btnCard  + .btnCard {
     margin-top: 20px;
 }
+@media (max-width: 375px) {
+  
+  /* headers */
+  .left-side {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    align-items: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 100px;
+    padding-bottom: 10px;
+        -webkit-animation: left 1s var(--delay) both;
+            animation: left 1s var(--delay) both;
+  }
+  .left-side .header-link {
+    padding: 10px;
+    border-bottom: 10px solid transparent;
+  }
+  .header{
+    font-size:0px; 
+  }
+  .header .header-link {
+    padding: 10px;
+  }
+  .header .header-link svg{
+    align-items: center !important;
+  }
+    /* end headers */
+    .wrapper{
+      max-width: 375%;
+    }
+  }

@@ -92,8 +92,9 @@
                         <input type="text" placeholder="First Name" id="studentfirstName">
                         <input type="text" placeholder="Middle Name" id="studentMiddleName">
                         <input type="text" placeholder="Last Name" id="studentLastName">
-                        <select class="textType" name="course" id="course" value=" ">
+                        <select name="course" id="course" value=" ">
                         </select>
+                        <br>
                         <input type="submit" value="Submit Student" name="submit">
                     </form>
                     <br>
@@ -129,10 +130,13 @@
                 <p style="font-weight: bold;">Pair Students and Parent</p> 
                   <form action="../JAVASCRIPT/addStudentsJS.js" enctype="multipart/form-data" method="POST" id="myformPairing">
                     <label for="studentNumberPair">Student Number</label>
-                      <select class="textType" name="studentNumberPair" id="studentNumberPair" value=" ">
+                    <br>
+                      <select  name="studentNumberPair" id="studentNumberPair" value=" ">
                       </select><br>
                     <label for="parentNumberPair">Parent ID</label>
-                      <select class="textType" name="parentNumberPair" id="parentNumberPair" value=" ">
+                    <br>
+                      <select  name="parentNumberPair" id="parentNumberPair" value=" ">
+                        <br>
                       </select>
                       <input class="modalbtnSubmit"type="submit" value="Submit Pairing" name="submit"> 
                       <br>
