@@ -1,0 +1,121 @@
+<?php
+session_start(); // Start the session
+require_once 'connections.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+    if($_POST['requestType'] == "searchParent"){
+        $studentName = $_POST["studentName"];
+        $students = [];
+
+        $parentQuery = "SELECT `studentTBL`.`studentNumber`,
+         `studentTBL`.`firstName`,
+          `studentTBL`.`middleName`,
+           `studentTBL`.`lastName`,
+            `studentparentTBL`.`parentID`,
+             `parentTBL`.`firstName` AS `parentFirst`,
+              `parentTBL`.`middleName` AS `parentMiddle`,
+               `parentTBL`.`lastName` AS `parentLast`,
+                `parentTBL`.`mobileNumber`
+        FROM `studentTBL` 
+            LEFT JOIN `studentparentTBL` ON `studentparentTBL`.`studentNumber` = `studentTBL`.`studentNumber` 
+            LEFT JOIN `parentTBL` ON `studentparentTBL`.`parentID` = `parentTBL`.`parentID`
+            WHERE CONCAT(`studentTBL`.`firstName`, COALESCE(`studentTBL`.`middleName`, ''), `studentTBL`.`lastName`)  LIKE '%$studentName%';";
+
+    $result = $conn->query($parentQuery);
+
+    if ($result->num_rows > 0) {
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()){
+                $students["studentNumber"][] = $row['studentNumber'];
+                $students["firstName"][] = $row['firstName'];
+                $students["middleName"][] = $row['middleName'];
+                $students["lastName"][] = $row['lastName'];
+                $students["parentFirst"][] = $row['parentFirst'];
+                $students["parentMiddle"][] = $row['parentMiddle'];
+                $students["parentLast"][] = $row['parentLast'];
+                $students["mobileNumber"][] = $row['mobileNumber'];
+            }
+            print_r (json_encode($students));
+        }
+    }
+
+    }
+    if($_POST['requestType'] == "sendMessage"){
+
+        $mobileNumbers = [];
+
+        if(isset($_POST["studentName"])){
+            $studentName = $_POST["studentName"];
+        }
+        if(isset($_POST["mobileNumber"])){
+            $parentNumber = $_POST["mobileNumber"];
+            $mobileNumbers[] = $parentNumber;
+        }
+
+        $studentNumber = $_POST["studentNumber"];
+        $message = $_POST["message"];
+        $date = $_POST["date"];
+
+        if($studentNumber != ""){
+            $numberQuery = "SELECT `studentTBL`.`studentNumber`,
+            `studentTBL`.`firstName`,
+             `studentTBL`.`middleName`,
+              `studentTBL`.`lastName`,
+               `studentparentTBL`.`parentID`,
+                   `parentTBL`.`mobileNumber`
+           FROM `studentTBL` 
+               LEFT JOIN `studentparentTBL` ON `studentparentTBL`.`studentNumber` = `studentTBL`.`studentNumber` 
+               LEFT JOIN `parentTBL` ON `studentparentTBL`.`parentID` = `parentTBL`.`parentID`
+               WHERE `studentTBL`.`studentNumber` LIKE '$studentNumber';";
+   
+           $result = $conn->query($numberQuery);
+   
+           if ($result->num_rows > 0) {
+               while($row = $result->fetch_assoc()){
+                   $mobileNumbers[] = $row['mobileNumber'];
+                   $studentName = $row['firstName']. " ". $row['lastName'];
+               }
+           } 
+        }
+        
+        if($message == ""){
+            $message = "Hello, This is the Disciplinary Officer of STI College Global City. We are reaching out to the parents/guardians of $studentName regarding their school violations. We are hoping to meet you in the Disciplinary Office of our school on $date";
+        }
+
+        echo $message;
+
+        for($i = 0; $i < sizeof($mobileNumbers); $i++){
+            $ch = curl_init();
+            $parameters = array(
+                'apikey' => SEMAPHOREAPIKEY, //Your API KEY
+                'number' => $mobileNumbers[$i], //message to
+                'message' => $message,
+                'sendername' => 'DODesk'
+            );
+            curl_setopt( $ch, CURLOPT_URL,'https://api.semaphore.co/api/v4/messages' );
+            curl_setopt( $ch, CURLOPT_POST, 1 );
+            
+            //Send the parameters set above with the request
+            curl_setopt( $ch, CURLOPT_POSTFIELDS, http_build_query( $parameters ) );
+            
+            // Receive response from server
+            curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+            $output = curl_exec( $ch );
+            curl_close ($ch);
+            
+            //Show the server response
+            echo $output;
+        }
+        $dateTime = date("Y-m-d H:i:s");
+        $userID = $_SESSION['userID'];
+        $auditQuery = "INSERT INTO `auditTBL` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
+        VALUES (NULL, '$userID', '$dateTime', 'Messaged parents', '$studentName: parent meeting on $date');";
+        $audit = $conn->prepare($auditQuery);
+        $audit->execute();
+    }
+}
+
+
+
+
+?>
