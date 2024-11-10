@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $conditionCounter = 0;
 
         $userID = $_POST["userID"];
-        $name = $_POST["name"];
+        $name = str_ireplace(' ', '%', $_POST['name']);
         $active = $_POST["status"];
 
         if(!($userID == "")){
@@ -26,8 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
          `userTBL`.`lastName`,
           `accountTBL`.`userID`,
            `accountTBL`.`username`,
-            `accountTBL`.`password`,
-             `userTBL`.`role`,
+            `userTBL`.`role`,
              `accountTBL`.`active`
         FROM `userTBL` 
         LEFT JOIN `accountTBL` ON `accountTBL`.`personID` = `userTBL`.`personID`
@@ -61,7 +60,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $searchResults["lastName"][] = $row['lastName'];
                 $searchResults["userID"][] = $row['userID'];
                 $searchResults["username"][] = base64_decode($row['username']);
-                $searchResults["password"][] = base64_decode($row['password']);
                 $searchResults["role"][] = $row['role'];
                 $searchResults["active"][] = $row['active'];
             }

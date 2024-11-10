@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $conditionCounter = 0;
 
         $studentNumber = $_POST['studentNumber'];
-        $studentName = $_POST['studentName'];
+        $studentName = str_ireplace(' ', '%', $_POST['studentName']);
         $searchCourse = $_POST['course'];
         $typeOfViolation = $_POST['violationType'];
         $searchCase = $_POST['violationCase'];

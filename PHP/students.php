@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             $dateTime = date("Y-m-d H:i:s");
             $userID = $_SESSION['userID'];
             $auditQuery = "INSERT INTO `auditTBL` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
-            VALUES (NULL, '$userID', '$dateTime', 'Added Student', '$studentNumber');";
+            VALUES (NULL, '$userID', '$dateTime', 'Added Student', 'student number: $studentNumber');";
             $audit = $conn->prepare($auditQuery);
             $audit->execute();
 
@@ -107,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $conditionCounter = 0;
 
         $studentNumber = $_POST["searchNumber"];
-        $studentName = $_POST["searchName"];
+        $studentName = str_ireplace(' ', '%', $_POST['searchName']);
         $course = $_POST["course"];
         $active = $_POST["status"];
 
@@ -174,7 +174,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $conditionCounter = 0;
 
         $studentNumber = $_POST["searchNumber"];
-        $studentName = $_POST["searchName"];
+        $studentName = str_ireplace(' ', '%', $_POST['searchName']);
         $course = $_POST["course"];
         $active = $_POST["status"];
 
