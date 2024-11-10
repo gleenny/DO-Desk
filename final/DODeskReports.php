@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DO DESK: Disciplinary Office Management System</title>
     
-    <link rel="icon" type="image/x-icon" href="/PICTURE/DoDeskViolet.png">
+    <link rel="icon" type="image/x-icon" href="../PICTURE/DoDeskViolet.png">
     <!--Font-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,18 +56,21 @@
       ?>  
       
       <!--4TH Flow-->
-      <div class="user-box fourth-box" style="--delay: .9s">
-        <span style="font-weight: bold;">Trancripts</span>
+      <div class="user-box first-box" style="--delay: .1s">
+        <h2 style="font-weight: bold;">Trancripts</h2>
+        <br>
       </div>
-      <textarea class="textbox"readonly id="myTextarea" placeholder="Displaying trancript file"></textarea>
-      <audio controls id="audio"  class="audioInput" >
-        <source id="audioPlayer" src="">
-      </audio>
-      <div class="user-box fourth-box" style="--delay: .9s">
-    </div>  
+      <div class="user-box first-box" style="--delay: .2s">
+
+      <p>To view evidence records associated with a violation, please enter the Violation ID in the search field.</p>
+    </div>
+      <div class="user-box first-box" style="--delay: .3s">
+      <input class="textType" type="text" id="violationID" placeholder="violation ID">
+      <button class="searchbutton" id="searchBTN">search files</button>
+      </div>
 
     <!--5TH Flow-->
-    <div class="user-box fifth-box" style="--delay: .1s">
+    <div class="user-box third-box" style="--delay: .1s">
       <!--List Module-->
       <div class="cards-wrapper" style="--delay: 1s">
         <div class="cards-header">
@@ -77,12 +80,8 @@
           <path d="M16 2v4M8 2v4M3 10h18" />
           </svg>
           
-          <span class="today">Transcript files</span>
-          <span class="today" id="studentInfo">student name: student number</span>
-          <span class="today" id="violationIDInfo">violation ID: </span>
-        </div>
-        <input type="text" id="violationID" placeholder="violation ID">
-        <button id="searchBTN">search files</button>
+          <span class="today">Transcript files</span>        </div>
+        
         </div>
         <div class="cards card">
         <table class="table">
@@ -101,9 +100,20 @@
           </tbody>
         </table>
         </div>
-      </div>
+        </div>
+      </div>  
+      <span id="studentInfo"></span>
+      <span id="violationIDInfo"></span>
 
-  </div>  
+      <div class="user-box fourth-box" style="--delay: .9s">
+          <textarea class="textbox" readonly id="myTextarea" placeholder="Displaying trancript file"></textarea><br>          
+      </div>  
+      <div class="user-box sixth-box" style="--delay: .9s">
+
+      <audio controls id="audio"  class="audioInput" >
+            <source id="audioPlayer" src="">
+          </audio>
+
 
       <script src="../JAVASCRIPT/DODeskReportsJS.js"></script>
 </body>

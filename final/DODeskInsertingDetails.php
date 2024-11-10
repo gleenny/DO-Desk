@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DO DESK: Disciplinary Office Management System</title>
     
-    <link rel="icon" type="image/x-icon" href="/PICTURE/DoDeskViolet.png">
+    <link rel="icon" type="image/x-icon" href="../PICTURE/DoDeskViolet.png">
     <!--Font-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,7 +58,7 @@
     ?>
     
         <!--first box-->
-        <div class="user-box first-box" style="--delay: .6s">
+        <div class="user-box first-box" style="--delay: .10s">
             <!--searching violations-->
             <form id="searchForm">
               <input class="textType" type="text" name="searchNumber" id="searchNumber" placeholder="Student Number">
