@@ -4,7 +4,7 @@ session_start(); // Start the session
 require_once 'connections.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    //search violations
+    //search sanctions
     if($_POST["requestType"] == "searchSanction"){
         $conditionCounter = 0;
 

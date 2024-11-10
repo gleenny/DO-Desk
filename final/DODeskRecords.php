@@ -255,6 +255,9 @@
                         <select class="textType" name="Sanction" id="sanSearchSanction" value=" ">
                         </select>
                         <input type="submit" value="Set Sanction" name="submit">
+                        <p style="font-weight: bold;">Batch Sanction</p>
+                        <input id="sanctionExcel" type="file" accept=".xlsx, .xls">
+                        <input id="submitSanctionExcel" type="button" value="Submit Sanction Excel">
                     </form>
                 </div>
             </div>
