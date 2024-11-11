@@ -95,26 +95,26 @@
             <th>File</th>
           </tr>
           </thead>
-          
           <tbody id="transcriptFiles">
           </tbody>
         </table>
         </div>
         </div>
-      </div>  
-      <span id="studentInfo"></span>
-      <span id="violationIDInfo"></span>
-
-      <div class="user-box fourth-box" style="--delay: .9s">
-          <textarea class="textbox" readonly id="myTextarea" placeholder="Displaying trancript file"></textarea><br>          
+        <div id="snackbar"></div>
       </div>  
       <div class="user-box sixth-box" style="--delay: .9s">
-
-      <audio controls id="audio"  class="audioInput" >
+        <!-- The Modal Register Violation -->
+        <div id="modalSubmit" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <!--Adding Violations-->
+            <span id="studentInfo"></span>
+            <span id="violationIDInfo"></span>
+            <textarea class="textbox" readonly id="myTextarea" placeholder="Displaying trancript file"></textarea><br>  
+            <audio controls id="audio"  class="audioInput" >
             <source id="audioPlayer" src="">
-          </audio>
-
-
+          </div>
       <script src="../JAVASCRIPT/DODeskReportsJS.js"></script>
 </body>
 </html>
