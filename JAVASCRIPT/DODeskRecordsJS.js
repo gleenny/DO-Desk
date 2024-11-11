@@ -12,6 +12,8 @@ const addSanction = document.querySelector('#addSanctionform');
 const updateSanction = document.querySelector('#updateSanctionform');
 const violationBatch = document.querySelector('#submitViolationExcel');
 const sanctionBatch = document.querySelector('#submitSanctionExcel');
+const exportViolation = document.querySelector('#exportViolations');
+const exportSanction = document.querySelector('#exportSanction');
 
 let rowMinorReset = 0;
 let studentViolator;
@@ -235,7 +237,8 @@ searchForm.addEventListener('submit', function (e) {
             }   
         })
         .catch(error => {
-            showSnackbar("An error occured: " + error);
+            console.log(error)
+            showSnackbar("Table Refresh");
             document.querySelector("#reportListRows").innerHTML = '';
             getViolationInfo();
         })
@@ -406,7 +409,7 @@ function getViolationInfo(){
         method: 'GET'
     }).then((Response) => Response.json())
     .then((json) => {    
-        for(let i = 0; i <= json["violationID"].length; i++){
+        for(let i = 0; i < json["violationID"].length; i++){
             populateTable(i, json);
         }
     })
@@ -489,10 +492,12 @@ searchSanction.addEventListener('submit', (e) => {
             for(let i = 0; i < json["sanctionID"].length; i++){
                 populateSanctionTable(i, json);
             }
+            showSnackbar("data has been displayed");
         }
     })
     .catch(error => {
-        showSnackbar("An error occure: " + error);
+        console.log(error)
+        showSnackbar("Table Refresh");
         document.querySelector("#sanctionListRows").innerHTML = '';
         getSanctionInfo();
     })
@@ -616,6 +621,58 @@ function populateSanctionTable(i, json){
                 document.querySelector('#sanctionList' + i).appendChild(sanDate);
                     document.querySelector('#sanDate' + i).innerHTML = json["date"][i];
 }
+exportViolation.addEventListener('click', (e) => {
+    e.preventDefault();
+    const violationTable = document.querySelector("#violationTable");
+    exportViolationTable(violationTable, 'student-violation.xls');
+})
+function exportViolationTable(table, filename = 'excel-file.xls') {
+    const tableHTML = table.outerHTML.replace(/\s/g, '%20');
+  
+    const downloadLink = document.createElement('a');
+    document.body.appendChild(downloadLink);
+  
+    const dataType = 'application/vnd.ms-excel';
+  
+    if (navigator.msSaveOrOpenBlob) {
+      const blob = new Blob(['\ufeff', tableHTML], {
+        type: dataType,
+      });
+      navigator.msSaveOrOpenBlob(blob, filename);
+    } else {
+      downloadLink.href = `data:${dataType}, ${tableHTML}`;
+  
+      downloadLink.download = filename;
+  
+      downloadLink.click();
+    }
+}
+exportSanction.addEventListener('click', (e) => {
+    e.preventDefault();
+    const sanctionTable = document.querySelector("#sanctionTable");
+    exportSanctionTable(sanctionTable, 'student-sanction.xls');
+})
+function exportSanctionTable(table, filename = 'excel-file.xls') {
+    const tableHTML = table.outerHTML.replace(/\s/g, '%20');
+  
+    const downloadLink = document.createElement('a');
+    document.body.appendChild(downloadLink);
+  
+    const dataType = 'application/vnd.ms-excel';
+  
+    if (navigator.msSaveOrOpenBlob) {
+      const blob = new Blob(['\ufeff', tableHTML], {
+        type: dataType,
+      });
+      navigator.msSaveOrOpenBlob(blob, filename);
+    } else {
+      downloadLink.href = `data:${dataType}, ${tableHTML}`;
+  
+      downloadLink.download = filename;
+  
+      downloadLink.click();
+    }
+}
 document.addEventListener("DOMContentLoaded", function() {
     document.body.style.setProperty('--scrollbar-thumb-color', 'purple');
     document.body.style.setProperty('--scrollbar-track-color', '#f1f1f1');
@@ -634,4 +691,4 @@ function showSnackbar(message) {
     setTimeout(() => {
       snackbar.classList.remove("show");
     }, 3000);
-  }
+}

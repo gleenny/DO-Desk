@@ -1,0 +1,39 @@
+DODeskAdmin.js
+
+var modal4 = document.getElementById("modalChangeUsername");
+var btn4 = document.getElementById("btnChangeUsername");
+var span4 = document.getElementsByClassName("close")[0];
+btn4.onclick = function() {
+  modal4.style.display = "block";
+}
+span4.onclick = function() {
+    modal4.style.display = "none";
+}
+else if (event.target == modal4) {
+    modal4.style.display = "none";
+}
+
+updateStatusForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+  
+    const formData = new FormData();
+  
+    formData.append("adminID", document.querySelector("#adminID").value);
+    formData.append("adminStatus", document.querySelector("#adminStatus").value);
+  
+    formData.append("requestType", "updateStatus");
+  
+    fetch(adminurl, {
+        method: 'POST',
+        body: formData
+    }).then((Response) =>{
+        return Response.text()
+    }).then((body) => {
+        console.log(body);
+        console.log("Violation case has been updated");
+        console.log("Resetting table");
+        resetTable();
+        console.log("Repopulating table");
+        getUserInfo();
+    })
+  });

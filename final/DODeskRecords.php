@@ -135,6 +135,7 @@
               </div>
 
               <button class="cards-button button" id="btnUpdate"  style="--delay: .7s">Update Status</button>
+              <button class="cards-button button" id="exportViolations" style="--delay: .7s">Export as Excel</button>
               <!-- The Modal -->
               <div id="modalUpdate" class="modal">
                 <!-- Modal content -->
@@ -187,7 +188,7 @@
             </div>
 
             <div class="cards card">
-              <table class="table">
+              <table class="table" id="violationTable">
                 <thead>
                 <tr>
                   <th>Violation ID</th>
@@ -264,6 +265,7 @@
 
     <!--UPDATE SANCTION-->
             <button class="cards-button button" id="btnUpdateSanction"  style="--delay: .8s">Update Sanction</button>
+            <button class="cards-button button" id="exportSanction" style="--delay: .7s">Export as Excel</button>
              <!-- The Modal Register Violation -->
              <div id="modalUpdateSanction" class="modal">
                 <!-- Modal content -->
@@ -298,7 +300,7 @@
             </div>
 
             <div class="cards card">
-              <table class="table">
+              <table class="table" id="sanctionTable">
                 <thead>
                 <tr>
                   <th>Sanction ID</th>

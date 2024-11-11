@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         $sanctionID = $_POST['sanctionID'];
         $studentNumber = $_POST['studentNumber'];
-        $studentName = $_POST['studentName'];
+        $studentName = str_ireplace(' ', '%', $_POST['studentName']);
         $violationID = $_POST['violationID'];
         $violationCase = $_POST['violationCase'];
         $sanction = $_POST['sanction'];

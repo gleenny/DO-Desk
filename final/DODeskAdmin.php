@@ -60,8 +60,8 @@
           <form id="searchForm">
             <input class="textType" type="text" name="searchNumber" id="searchUserID" placeholder="User ID">
             <input class="textType" type="text" name="searchName" id="searchName" placeholder="Name">
-            <select  class="select" name="status" id="searchStatus" value="">
-              <option value=""></option>
+            <select class="select" name="status" id="searchStatus" value="">
+              <option value="">Status</option>
               <option value="1">Active</option>
               <option value="0">Inactive</option>
             </select>
@@ -180,7 +180,6 @@
               <th>User ID</th>
               <th>Name</th>
               <th>Username</th>
-              <th>Password</th>
               <th>Role</th>
               <th>Status</th>
             </tr>
