@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DO DESK: Disciplinary Office Management System</title>
     
-    <link rel="icon" type="image/x-icon" href="/PICTURE/DoDeskViolet.png">
+    <link rel="icon" type="image/x-icon" href="../PICTURE/DoDeskViolet.png">
     <!--Font-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,7 +60,7 @@
           <form id="searchForm">
             <input class="textType" type="text" name="searchNumber" id="searchUserID" placeholder="User ID">
             <input class="textType" type="text" name="searchName" id="searchName" placeholder="Name">
-            <select  name="status" id="searchStatus" value="">
+            <select class="select" name="status" id="searchStatus" value="">
               <option value="">Status</option>
               <option value="1">Active</option>
               <option value="0">Inactive</option>

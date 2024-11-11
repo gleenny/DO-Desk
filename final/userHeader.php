@@ -52,58 +52,139 @@
     </div>
 
     <div class="main-container">
-<div class="header">
-    <!--dashboard-->
-    <a class="header-link" href="index.php"><svg
-        viewBox="-6 0 512 512" fill="currentColor">
-        <path
-            d="M227.7 357.5a15.1 15.1 0 0021.3 0l54-54a15.1 15.1 0 10-21.4-21.3l-43.3 43.2-19.7-19.7a15.1 15.1 0 00-21.4 21.4zm0 0" />
-        <path
-            d="M250.1 439.8a120.1 120.1 0 10-120-120c0 66.2 53.8 120 120 120zm0-209.7a89.9 89.9 0 010 179.5 89.9 89.9 0 010-179.5zm0 0" />
-        <path
-            d="M451.3 32.2h-27.5v-17a15.1 15.1 0 00-30.3 0v17h-29.7v-17a15.1 15.1 0 00-30.2 0v17h-167v-17a15.1 15.1 0 00-30.2 0v17h-29.7v-17a15.1 15.1 0 00-30.2 0v17H48.9A49 49 0 000 81v382A49 49 0 0048.9 512h402.4a49 49 0 0049-48.9v-382a49 49 0 00-49-49zm18.7 431c0 10.2-8.4 18.6-18.7 18.6H49A18.7 18.7 0 0130.2 463V158H470zM30.2 81c0-10.3 8.4-18.7 18.7-18.7h27.6v17.1a15.1 15.1 0 0030.2 0v-17h29.7v17a15.1 15.1 0 0030.3 0v-17h166.9v17a15.1 15.1 0 0030.2 0v-17h29.7v17a15.1 15.1 0 0030.3 0v-17h27.5c10.3 0 18.7 8.3 18.7 18.6v46.6H30.2zm0 0" />
-        </svg>
-        Dashboard
-    </a>
-    <!--Records-->
-    <a class="header-link" href="DODeskRecords.php"><svg viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-        <path d="M10 13a2 2 0 110-4 2 2 0 010 4zm0-2.5a.5.5 0 100 1 .5.5 0 000-1z" />
-        <path
-            d="M20.3 11.8h-8.8a.8.8 0 010-1.6h8.8a.8.8 0 010 1.6zM8.5 11.8H3.7a.8.8 0 010-1.6h4.8a.8.8 0 010 1.6zM15 19a2 2 0 110-4 2 2 0 010 4zm0-2.5a.5.5 0 100 1 .5.5 0 000-1z" />
-        <path
-            d="M20.3 17.8h-3.8a.8.8 0 010-1.6h3.8a.8.8 0 010 1.6zM13.5 17.8H3.7a.8.8 0 010-1.6h9.8a.8.8 0 010 1.6z" />
-        <path
-            d="M21.3 23H2.6A2.8 2.8 0 010 20.2V3.9C0 2.1 1.2 1 2.8 1h18.4C22.9 1 24 2.2 24 3.8v16.4c0 1.6-1.2 2.8-2.8 2.8zM2.6 2.5c-.6 0-1.2.6-1.2 1.3v16.4c0 .7.6 1.3 1.3 1.3h18.4c.7 0 1.3-.6 1.3-1.3V3.9c0-.7-.6-1.3-1.3-1.3z" />
-        <path d="M23.3 6H.6a.8.8 0 010-1.5h22.6a.8.8 0 010 1.5z" />
-        </svg>
-        Records
-    </a>
-    <!--Reports-->
-    <a class="header-link" href="DODeskReports.php"><svg viewBox="0 0 512 512"
-        xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-        <path
-            d="M76 240c12.1 0 23.1-4.8 31.2-12.6l44.2 22A44.9 44.9 0 00196 300a45 45 0 0040.6-64.4l60-60a45 45 0 0062.3-54l52.2-39.2a45 45 0 10-18-24l-52.2 39.2a45 45 0 00-65.5 56.8l-60 60a44.7 44.7 0 00-50.6 8.2l-44.2-22A44.9 44.9 0 0076 150a45 45 0 000 90zM436 30a15 15 0 110 30 15 15 0 010-30zm-120 90a15 15 0 110 30 15 15 0 010-30zM196 240a15 15 0 110 30 15 15 0 010-30zM76 180a15 15 0 110 30 15 15 0 010-30zm0 0" />
-        <path
-            d="M497 482h-16V165a15 15 0 00-15-15h-60a15 15 0 00-15 15v317h-30V255a15 15 0 00-15-15h-60a15 15 0 00-15 15v227h-30V375a15 15 0 00-15-15h-60a15 15 0 00-15 15v107h-30V315a15 15 0 00-15-15H46a15 15 0 00-15 15v167H15a15 15 0 100 30h482a15 15 0 100-30zm-76-302h30v302h-30zm-120 90h30v212h-30zM181 390h30v92h-30zM61 330h30v152H61zm0 0" />
-        </svg>
-        Reports
-    </a>
 
-    <?php if($_SESSION["role"] === "Admin"){ ?>
-    <!--Admin-->
-    <a class="header-link" href="DODeskAdmin.php">
-        <svg id='Administrator_Male_24' width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' fill="currentColor"><rect width='24' height='24' stroke='none' fill='#9b9ca7' opacity='0'/>
-        <g transform="matrix(0.5 0 0 0.5 12 12)" >
-        <path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgba(155,156,167,255); fill-rule: nonzero; opacity: 1;" transform=" translate(-24, -22)" d="M 24 2 C 18.477152501692068 2 14 6.477152501692066 14 12 C 14 17.522847498307932 18.477152501692068 22 24 22 C 29.522847498307932 22 34 17.522847498307932 34 12 C 34 6.477152501692066 29.522847498307932 2 24 2 z M 36.391 26 L 11.609 26 C 9.619 26 8 27.785 8 29.979 L 8 31.5 C 8 34.821 9.888 37.688 13.315000000000001 39.573 C 16.161 41.139 19.955 42 24 42 C 31.706 42 40 38.714 40 31.5 L 40 29.979 C 40 27.785 38.381 26 36.391 26 z M 21.055 38.815 L 23.225 31.580999999999996 L 21.818 29 L 26.182000000000002 29 L 24.774 31.581 L 26.944000000000003 38.816 C 25.976 38.933 24.988 39 24 39 C 23.012 39 22.024 38.933 21.055 38.815 z" stroke-linecap="round" />
-        </g>
-        </svg>
-        Administration
-    </a>
-    <?php } ?>
+        <div class="header">
+            <div class="left-links">
 
-    <?php
-        echo $_SESSION['firstName']. " ". $_SESSION['lastName'];
-    ?>
+                <!--dashboard-->
+                <a class="header-link" href="index.php">
+                    <svg
+                    viewBox="-6 0 512 512" fill="currentColor">
+                    <path
+                        d="M227.7 357.5a15.1 15.1 0 0021.3 0l54-54a15.1 15.1 0 10-21.4-21.3l-43.3 43.2-19.7-19.7a15.1 15.1 0 00-21.4 21.4zm0 0" />
+                    <path
+                        d="M250.1 439.8a120.1 120.1 0 10-120-120c0 66.2 53.8 120 120 120zm0-209.7a89.9 89.9 0 010 179.5 89.9 89.9 0 010-179.5zm0 0" />
+                    <path
+                        d="M451.3 32.2h-27.5v-17a15.1 15.1 0 00-30.3 0v17h-29.7v-17a15.1 15.1 0 00-30.2 0v17h-167v-17a15.1 15.1 0 00-30.2 0v17h-29.7v-17a15.1 15.1 0 00-30.2 0v17H48.9A49 49 0 000 81v382A49 49 0 0048.9 512h402.4a49 49 0 0049-48.9v-382a49 49 0 00-49-49zm18.7 431c0 10.2-8.4 18.6-18.7 18.6H49A18.7 18.7 0 0130.2 463V158H470zM30.2 81c0-10.3 8.4-18.7 18.7-18.7h27.6v17.1a15.1 15.1 0 0030.2 0v-17h29.7v17a15.1 15.1 0 0030.3 0v-17h166.9v17a15.1 15.1 0 0030.2 0v-17h29.7v17a15.1 15.1 0 0030.3 0v-17h27.5c10.3 0 18.7 8.3 18.7 18.6v46.6H30.2zm0 0" />
+                    </svg>
+                    Dashboard
+                </a>
+                <!--Records-->
+                <a class="header-link" href="DODeskRecords.php"><svg viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                    <path d="M10 13a2 2 0 110-4 2 2 0 010 4zm0-2.5a.5.5 0 100 1 .5.5 0 000-1z" />
+                    <path
+                        d="M20.3 11.8h-8.8a.8.8 0 010-1.6h8.8a.8.8 0 010 1.6zM8.5 11.8H3.7a.8.8 0 010-1.6h4.8a.8.8 0 010 1.6zM15 19a2 2 0 110-4 2 2 0 010 4zm0-2.5a.5.5 0 100 1 .5.5 0 000-1z" />
+                    <path
+                        d="M20.3 17.8h-3.8a.8.8 0 010-1.6h3.8a.8.8 0 010 1.6zM13.5 17.8H3.7a.8.8 0 010-1.6h9.8a.8.8 0 010 1.6z" />
+                    <path
+                        d="M21.3 23H2.6A2.8 2.8 0 010 20.2V3.9C0 2.1 1.2 1 2.8 1h18.4C22.9 1 24 2.2 24 3.8v16.4c0 1.6-1.2 2.8-2.8 2.8zM2.6 2.5c-.6 0-1.2.6-1.2 1.3v16.4c0 .7.6 1.3 1.3 1.3h18.4c.7 0 1.3-.6 1.3-1.3V3.9c0-.7-.6-1.3-1.3-1.3z" />
+                    <path d="M23.3 6H.6a.8.8 0 010-1.5h22.6a.8.8 0 010 1.5z" />
+                    </svg>
+                    Records
+                </a>
+                <!--Reports-->
+                <a class="header-link" href="DODeskReports.php"><svg viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                    <path
+                        d="M76 240c12.1 0 23.1-4.8 31.2-12.6l44.2 22A44.9 44.9 0 00196 300a45 45 0 0040.6-64.4l60-60a45 45 0 0062.3-54l52.2-39.2a45 45 0 10-18-24l-52.2 39.2a45 45 0 00-65.5 56.8l-60 60a44.7 44.7 0 00-50.6 8.2l-44.2-22A44.9 44.9 0 0076 150a45 45 0 000 90zM436 30a15 15 0 110 30 15 15 0 010-30zm-120 90a15 15 0 110 30 15 15 0 010-30zM196 240a15 15 0 110 30 15 15 0 010-30zM76 180a15 15 0 110 30 15 15 0 010-30zm0 0" />
+                    <path
+                        d="M497 482h-16V165a15 15 0 00-15-15h-60a15 15 0 00-15 15v317h-30V255a15 15 0 00-15-15h-60a15 15 0 00-15 15v227h-30V375a15 15 0 00-15-15h-60a15 15 0 00-15 15v107h-30V315a15 15 0 00-15-15H46a15 15 0 00-15 15v167H15a15 15 0 100 30h482a15 15 0 100-30zm-76-302h30v302h-30zm-120 90h30v212h-30zM181 390h30v92h-30zM61 330h30v152H61zm0 0" />
+                    </svg>
+                    Reports
+                </a>
+
+                <?php if($_SESSION["role"] === "Admin"){ ?>
+                <!--Admin-->
+                <a class="header-link" href="DODeskAdmin.php">
+                    <svg id='Administrator_Male_24' width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' fill="currentColor"><rect width='24' height='24' stroke='none' fill='#9b9ca7' opacity='0'/>
+                    <g transform="matrix(0.5 0 0 0.5 12 12)" >
+                    <path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgba(155,156,167,255); fill-rule: nonzero; opacity: 1;" transform=" translate(-24, -22)" d="M 24 2 C 18.477152501692068 2 14 6.477152501692066 14 12 C 14 17.522847498307932 18.477152501692068 22 24 22 C 29.522847498307932 22 34 17.522847498307932 34 12 C 34 6.477152501692066 29.522847498307932 2 24 2 z M 36.391 26 L 11.609 26 C 9.619 26 8 27.785 8 29.979 L 8 31.5 C 8 34.821 9.888 37.688 13.315000000000001 39.573 C 16.161 41.139 19.955 42 24 42 C 31.706 42 40 38.714 40 31.5 L 40 29.979 C 40 27.785 38.381 26 36.391 26 z M 21.055 38.815 L 23.225 31.580999999999996 L 21.818 29 L 26.182000000000002 29 L 24.774 31.581 L 26.944000000000003 38.816 C 25.976 38.933 24.988 39 24 39 C 23.012 39 22.024 38.933 21.055 38.815 z" stroke-linecap="round" />
+                    </g>
+                    </svg>
+                    Administration
+                </a>
+            </div>
+
+             <?php } ?>
+
+            <h1 class="right-heading"> 
+                <?php
+                echo $_SESSION['firstName']. " ". $_SESSION['lastName'];
+            ?>
+            </h1>
+            <style>
+                
+                .left-links {
+                display: flex;
+                gap: 15px; /* Adds space between each <a> link */
+                }
+
+                .right-heading {
+                font-size: 24px;
+                color: #333;
+                }
+
+                .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: #141834;
+                background: radial-gradient(circle, #141834 0%, #13162f 100%);
+                box-shadow: 0 16px 12px #0e0e23;
+                width: 100%;
+                padding: 0 30px;
+                -webkit-animation: top 1s both;
+                        animation: top 1s both;
+                border-radius: 6px;
+                font-size: 15px;
+                white-space: nowrap;
+                position: sticky;
+                top: 0;
+                left: 0;
+                z-index: 10;
+                }
+                .right-heading {
+                float: left;
+                color: #9b9ca7;
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                padding: 20px;
+                transition: 0.3s;
+                border-bottom: 3px solid transparent;
+                transition: 0.3s;
+                font-size: 15px;
+                font-weight: bold;
+                }
+                .header:before {
+                content: "";
+                width: 100%;
+                height: 25px;
+                position: absolute;
+                top: -25px;
+                left: 0;
+                background-color: #0e0e23;
+                }
+                .header-link {
+                float: left;
+                color: #9b9ca7;
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                padding: 20px;
+                transition: 0.3s;
+                border-bottom: 3px solid transparent;
+                transition: 0.3s;
+                }
+                .header-link svg {
+                width: 20px;
+                margin-right: 14px;
+                }
+                .header-link.active, .header-link:hover {
+                background: #11132c;
+                border-bottom: 3px solid #4255d4;
+                }
+                </style>
 
 </div>

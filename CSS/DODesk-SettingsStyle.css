@@ -249,6 +249,13 @@
   .user-box .cards-view .date-wrapper .title {
   margin: 0 16px;
   }
+  .searchs{
+    max-height: 100vh;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 16px 0px;
+    margin-top: 1%;
+    margin-left: 20%;
+    margin-right: 20%;
+  }
   
   .card {
   background: radial-gradient(circle, #1a2049 0%, #13162f 100%);
@@ -257,9 +264,8 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  max-height: 430px;
+  max-height: auto;
   width: 100%;
-  
   }
   .card .title {
   font-size: 16px;
@@ -272,32 +278,53 @@
   .card + .card {
   margin-left: 20px;
   }
-
-  .btn:hover {
-    color:white;
-    cursor: pointer;
+  .titleSection{
+    color: #ccc8fc;
   }
-.search {
-    background-color: #03051f;
-    border: 0px;
+  
+  .textType {
+    color: #9b9ca7;
+    background: #dddef1;
+    border: none;
+    padding: 10px 15px;
+  }
+  .textType:hover{
+    cursor: pointer;
+    animation-name: fadeItIn;
+    animation-duration: 1s;
+    animation-delay: 0s;
+    animation-fill-mode: forwards;
+  }
+  .search {
+    color: #9b9ca7;
+    background: #141530;
+    border: none;
+    padding: 10px 15px;
+  }
+  .search:hover {
+    background: #232435;
     color: white;
-    height: 50px;
-    padding: 10px 10px;
-    border-radius: 10px;
-    margin: 10px 10px 20px 10px;
-}
-.btnCard {
-    background-color: #0f1224;
-    border: 0px;
+    cursor: pointer;
+    animation-name: fadeItIn;
+    animation-duration: 1s;
+    animation-delay: 0s;
+    animation-fill-mode: forwards;
+  }
+  a.buttonFormats {
+    display: inline-block;
+    padding: 5px 15px;
+    color: #9b9ca7;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  a.buttonFormats:hover {
+    background-color: #141530;
     color: white;
-    height: 100px;
-    width: 100px;
-    padding: 10px 10px;
-    border-radius: 10px;
-}
-.btnCard  + .btnCard {
-    margin-top: 20px;
-}
+
+    border-bottom: 3px solid blue;
+  }
+
 @media (max-width: 375px) {
   
   /* headers */

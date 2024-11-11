@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>DO DESK: Disciplinary Office Management System</title>
         
-        <link rel="icon" type="image/x-icon" href="/PICTURE/DoDeskViolet.png">
+        <link rel="icon" type="image/x-icon" href="../PICTURE/DoDeskViolet.png">
         <!--Font-->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,16 +58,36 @@
       ?>
         <div class="user-box first-box">
             <div class="searchs card" style="--delay: .2s">
-                <h1>Settings</h1>
+                <h1 style="font-weight: bold; color: #ccc8fc;">Settings</h1>
+                <br>
+                <h7 class="titleSection" style="font-weight: bold;" >Change password</h7>
+                <p>Kindly enter your current password, followed by your new password.</p>
                 <br>
                 <form id="changePassword" method="POST">
-                    <input type="text" placeholder="Old password" id="oldPass">
-                    <input type="text" placeholder="New password" id="newPass">
-                    <input type="submit" value="Change Password" name="submit">
+                    <input class="textType" type="text" placeholder="Old password" id="oldPass">
+                    <input class="textType" type="text" placeholder="New password" id="newPass">
+                    <input class="search" type="submit" value="Change Password" name="submit">
                 </form>
                 <br>
+                <h7 class="titleSection" style="font-weight: bold; ">Batch upload format</h7>
+                <p>Please click the button below to download the necessary files for batch upload.</p>
+                <br>
+                <div class="formatfiles">
+                  <a class="buttonFormats" href="../FormatFiles\pairing student and parent Format.xlsx" download>Pairing student and parent Format</a><br>
+
+                  <a class="buttonFormats" href="../FormatFiles\parents bacth upload Format.xlsx" download>Parent Format</a><br>
+
+                  <a class="buttonFormats"href="../FormatFiles/sanctionFormat.xlsx" download>Sanction Format</a><br>
+
+                  <a class="buttonFormats"href="../FormatFiles\student batch upload Format.xlsx" download>Student Format</a><br>
+
+                  <a class="buttonFormats"href="../FormatFiles\Violation batch upload Format.xlsx" download>Violation Format</a><br>
+
+                </div>
+
                 
         </div>
+
     </div>
     <script src="../JAVASCRIPT/DODeskSettingJS.js"></script>
 </body>

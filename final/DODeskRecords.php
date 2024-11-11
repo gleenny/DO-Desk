@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DO DESK: Disciplinary Office Management System</title>
     
-    <link rel="icon" type="image/x-icon" href="/PICTURE/DoDeskViolet.png">
+    <link rel="icon" type="image/x-icon" href="../PICTURE/DoDeskViolet.png">
     <!--Font-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,7 +58,7 @@
         <div class="user-box first-box" style="--delay: .6s">
             <!--searching violations-->
             <form id="searchForm">
-            <p>Violation List</p>
+            <p style="font-weight: bold;">Violation Records</p>
 
               <input class="textType" type="text" name="searchNumber" id="searchNumber" placeholder="Student Number">
               <input class="textType" type="text" name="searchName" id="searchName" placeholder="Student Name">
@@ -183,7 +183,7 @@
                 <path d="M16 2v4M8 2v4M3 10h18" />
                 </svg>
                 
-                <span style="font-weigth: bold;"class="today"> Report List</span>
+                <span style="font-weigth: bold;"class="today"> Violation List</span>
               </div>
             </div>
 
@@ -215,7 +215,7 @@
           <div class="user-box fourth-box" style="--delay: .8s">
             <!--searching violations-->
             <form id="searchSanctionForm">
-            <p style="font-weigth: bold;">Sanction List</p>
+            <p style="font-weight: bold;">Sanction Records</p>
                 <input class="textType" type="text" name="sanctionID" id="sanSanctionID" placeholder="Sanction ID">
                 <input class="textType" type="text" name="studentNumber" id="sanStudentNumber" placeholder="Student Number">
                 <input class="textType" type="text" name="studentName" id="sanStudentName" placeholder="Student Name">
@@ -295,7 +295,7 @@
                 <path d="M16 2v4M8 2v4M3 10h18" />
                 </svg>
                 
-                <span class="today"> Sanction List</span>
+                <span style="font-weigth: bold;"class="today"> Sanction List</span>
               </div>
             </div>
 
