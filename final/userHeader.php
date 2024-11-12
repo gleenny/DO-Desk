@@ -185,6 +185,42 @@
                 background: #11132c;
                 border-bottom: 3px solid #4255d4;
                 }
+                @media (max-width: 768px) 
+                {
+                    .right-heading{
+                        display: none;
+                    }
+                    .header {
+                        font-size: 10px;
+                        padding: 0 35px;
+
+                    }
+                }
+                @media (max-width: 698px) 
+                {
+
+                    .header {
+                        font-size: 0px;
+                        padding: 0 35px;
+
+                    }
+                }
+                @media (max-width: 485px) 
+                {
+
+                    .header-link {
+                        padding: 13px;
+
+                    }
+                }
+                @media (max-width: 375px) 
+                {
+
+                    .header-link {
+                        padding: 10px;
+
+                    }
+                }
                 </style>
 
 </div>

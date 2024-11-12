@@ -240,101 +240,17 @@ body {
 .activity-wrapper {
   display: flex;
 }
-.activity-chart {
-  margin-left: auto;
-}
 
-.circle {
-  width: 100px;
-  height: 100px;
-  border: 3px solid #606377;
-  border-radius: 50%;
-  position: relative;
-}
-
-.pie {
-  position: relative;
-  width: 120px;
-  height: 120px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%) rotate(-90deg);
-}
-.pie svg circle {
-  fill: transparent;
-  stroke: #4356d6;
-  stroke-width: 14;
-  stroke-dasharray: 275;
-  stroke-dashoffset: 235;
-  -webkit-animation: pieChart 3.8s linear forwards;
-          animation: pieChart 3.8s linear forwards;
-}
-
-@-webkit-keyframes pieChart {
-  100% {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes pieChart {
-  100% {
-    stroke-dashoffset: 0;
-  }
-}
-.counter {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  color: #3e50c5;
-  font-weight: 500;
-}
-
-.offer-button {
-  background: #4255d4;
-  padding: 14px;
-  text-align: center;
-  justify-content: center;
-  margin-top: auto;
-  margin-right: 0;
-  color: #fff;
-  font-size: 13px;
-  cursor: pointer;
-}
-
-/* 2nd module */
-
-.graph {
-  max-width: 450px;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-}
-.graph .title {
-  margin-bottom: 30px;
-}
-
-.graph .subtitle {
-  margin-bottom: 8px;
-}
 
 /* 3rd module - calendar */
-.list{
-  display: flex;
-  flex-wrap: wrap;
+.recentList{
+  max-height: 100%;
+  max-width: 100%;
+  height: 350px;
+  width: 100%;
+  overflow-y: scroll;
 }
-.cards-header {
-  background: #10122b;
-  border-radius: 6px 6px 0 0;
-  padding: 20px 45px;
-  font-size: 14px;
-  font-weight: 500;
-}
-.cards-header-date {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+
 .cards-header-date svg {
   color: #4154d1;
   background: #14183c;
@@ -347,156 +263,7 @@ body {
   max-width: 305px;
   width: 100%;
 }
-.cards-hour {
-  font-size: 26px;
-}
-.cards-hour .am-pm {
-  font-size: 15px;
-  font-weight: 500;
-}
-.cards.card {
-  border-radius: 0 0 6px 6px;
-  padding: 30px 20px;
-}
-.cards.card svg {
-  width: 24px;
-  margin-left: auto;
-  color: #818394;
-}
-.cards-head {
-  display: flex;
-  align-items: center;
-}
 
-.degree {
-  margin-top: 10px;
-  font-size: 13px;
-  display: flex;
-  align-items: center;
-  color: #818394;
-  font-weight: 500;
-}
-.degree svg {
-  width: 24px;
-  margin-right: 12px;
-}
-
-.items {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 10px;
-  font-size: 10px;
-  font-weight: 500;
-}
-.items.numbers {
-  margin-top: 0;
-}
-
-.item {
-  flex: 0 1 calc(100% / 7);
-  padding: 10px 5px;
-  text-align: center;
-}
-.item.is-active {
-  background: #4255d4;
-  border-radius: 50%;
-  color: #fff;
-}
-.item.disable {
-  color: #595b5b;
-}
-
-/* 4th module - PROFILE */
-.account {
-  width: 100%;
-  height: 100px;
-  margin-top: auto;
-  flex-grow: 0;
-  position: relative;
-  transition: 0.3s;
-  cursor: pointer;
-  transition: 0.3s;
-}
-.account:hover {
-  transform: scale(1.02);
-}
-
-.account-wrapper {
-  max-width: 310px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin-left: 20px;
-  align-items: center;
-}
-.account-profile {
-  margin: auto;
-  position: relative;
-  text-align: center;
-  position: relative;
-}
-.account-profile img {
-  width: 84px;
-  height: 84px;
-  border-radius: 50%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: left;
-     object-position: left;
-  border: 3px solid #4255d3;
-  padding: 5px;
-  cursor: pointer;
-}
-.account-profile img:hover {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  border: 3px solid #7d88eb;
-  cursor: pointer;
-}
-.account-profile .blob {
-  position: absolute;
-  border-radius: 50%;
-  -webkit-animation: fly 5.8s linear infinite alternate;
-          animation: fly 5.8s linear infinite alternate;
-}
-.account-profile .blob:nth-child(1) {
-  width: 14px;
-  height: 14px;
-  top: 25px;
-  left: -20px;
-  background: #28327a;
-  -webkit-animation-delay: 0.9s;
-          animation-delay: 0.9s;
-}
-.account-profile .blob:nth-child(2) {
-  width: 18px;
-  height: 18px;
-  background: #87344c;
-  right: -20px;
-  top: -20px;
-  -webkit-animation-delay: 0.2s;
-          animation-delay: 0.2s;
-}
-.account-profile .blob:nth-child(3) {
-  width: 12px;
-  height: 12px;
-  background: #13645b;
-  right: -35px;
-  top: 50%;
-  -webkit-animation-delay: 1.8s;
-          animation-delay: 1.8s;
-}
-.account-name {
-  margin: 20px 0 10px;
-  cursor: pointer;
-}
-.account-name:hover {
-  color: #b6bcf7;
-}
-.account-title {
-  font-size: 12px;
-}
 
 /* 5th module */
 
@@ -512,27 +279,86 @@ body {
   }
 }
 
-.table {
-  text-align: left;
+table {
+  white-space: nowrap;
+  border-collapse: collapse;
+  margin: 0;
   padding: 0;
-  padding-left: 10px;
+  width: 100%;
+  table-layout: fixed;
 }
 
-.table input {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  width: 16px;
-  height: 16px;
-  border: 1px solid #9b9ca7;
-  vertical-align: middle;
-  background-color: transparent;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-right: 16px;
-  transition: 0.25s;
-  background-size: 0;
-  background-position: center;
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+table tr {
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.TableTitle{
+  font-size:15px;
+}
+
+@media screen and (max-width: 1200px) {
+
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow-y: scroll;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border: 1px solid #ddd;
+    border-bottom: 3px solid #2d34ee;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: left;
+  }
+  
+  table td::before {
+
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
 }
 .recordBy{
   width: 10%;
@@ -651,69 +477,14 @@ input, select, button {
     background: #11132c;
   }
 }
-@media (max-width: 375px) {
-  
-  /* headers */
-  .left-side {
-    display: flex;
-    flex-direction: column;
-    flex-shrink: 0;
-    align-items: center;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 100px;
-    padding-bottom: 10px;
-        -webkit-animation: left 1s var(--delay) both;
-            animation: left 1s var(--delay) both;
-  }
-  .left-side .header-link {
-    padding: 10px;
-    border-bottom: 10px solid transparent;
-  }
-  .header{
-    font-size:0px; 
-  }
-  .header .header-link {
-    padding: 10px;
-  }
-  .header .header-link svg{
-    align-items: center !important;
-  }
-    /* end headers */
-    .wrapper{
-      max-width: 375%;
-    }
-
-    /* 1st box */
-    .activity{
-      height: 100%;
-      width: 700px;
-      display: block;
-    }
-    .activity .title {
-      font-size: 10px;
-    }
-    .activity .subtitle{
-      font-size: 9px;
-    }
-    .activity .subtitle-count{
-      font-size: 15px;
-
-    }
-    .list card{
-      width: 700px;
-    }
-    .list th{
-      font-size: 9px;
-    }
-    .list tbody{
-      font-size: 9px;
-    }
-
-}
-
 
 .user-box > * {
   -webkit-animation: top 1s var(--delay) both;
           animation: top 1s var(--delay) both;
+}
+@media (max-width: 768px) 
+ {
+  .recentList{
+    height: 300px;
+  }
 }

@@ -55,22 +55,6 @@
       <?php
       require_once 'userHeader.php';
       ?>
-      <!---first module-->
-            <div class="name"> 
-            <?php
-                
-               /* echo $_SESSION['firstName']. " ". $_SESSION['lastName']; */
-                
-                ?>
-            </div>
-            <!--
-            <div class="role">
-            <?php
-                
-                echo $_SESSION['role'];
-                
-            ?>
-            </div> -->
   
 
       <div class="user-box second-box">
@@ -88,19 +72,6 @@
             </div>
           </div>
         </div>
-
-        <!--Second Module
-        <div class="graph card" style="--delay: .4s">
-          <div class="title">Reports </div>
-
-        </div>
-        -->
-        <!--third Module-->
-        <!--Calendar-->
-      
-
-          <!--Profile Module-->
-
           
         </div>
 
@@ -118,10 +89,10 @@
                 <path d="M16 2v4M8 2v4M3 10h18" />
               </svg>
 
-              <span class="today"> Recent List </span>
+              <span class="TableTitle"> Recent List </span>
             </div>
           </div>
-          <div class="cards card">
+          <div class="recentList card">
             <table class="table">
               <thead>
                 <tr>
@@ -140,14 +111,8 @@
             </table>
           </div>
         </div>
-
-        <!--Incoming Events Module-->
-
-        
-
     </div>
 
-    <!--Scroll bar properties-->
     <script src="../JAVASCRIPT/DODeskDashboardJS.js"></script>
 </body>
 

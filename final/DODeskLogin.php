@@ -20,7 +20,7 @@
       <a href="https://www.facebook.com/globalcity.sti.edu">
         <img class="animation i1" id="logo" src="../PICTURE/STI GLOBAL LOGO.png" alt="logo of STI">
       </a>
-      <h1 class="animation i1">DO DESK</h1>
+      <h1 class="animation i1" >DO DESK</h1>
       <h2 class="animation i1">Disciplinary Officer Management System</h2>
 
     </div>

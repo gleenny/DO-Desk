@@ -192,13 +192,26 @@
         </div>
       </div>
       <!--4th Card-->
-      <div class="user-box fourth-box">
+      <div class="user-box fourth-box" style="--delay: .6s">
+          <!--searching violations-->
+          <form id="searchForm">
+            <input class="textType" type="text" name="searchAuditLOGID" id="searchAuditLOGID" placeholder="Log ID">
+            <input class="textType" type="text" name="searchAuditName" id="searchAuditName" placeholder="Name">
+            <input class="textType" type="date" name="searchAuditDate" id="searchAuditDate" placeholder="Transaction Date-Time">
+            <input class="textType" type="text" name="searchAuditProcess" id="searchAuditProcess" placeholder="Process">
+            <input class="textType" type="text" name="searchAuditNote" id="searchAuditNote" placeholder="Note">
+            <button type="submit" id="searchbtn" class="searchbutton">Search</button>
+          </form>
+      </div>  
+            <!--5th Card-->
+
+      <div class="user-box fifth-box">
 
         <!--List Module-->
         <div class="auditTrail cards-wrapper" style="--delay: 1s">
           <div class="cards-header">
             <div class="cards-view">
-                <svg id='Summary_List_24' width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' fill="currentColor" ><rect width='24' height='24' stroke='none' fill='#9b9ca7' opacity='0'/>
+                <svg id='Summary_List_24' `width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' fill="currentColor" ><rect width='24' height='24' stroke='none' fill='#9b9ca7' opacity='0'/>
                 <g transform="matrix(1 0 0 1 12 12)" >
                 <path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; rgba(155,156,167,255); fill-rule: nonzero; opacity: 1;" transform=" translate(-12, -12)" d="M 20 3 L 4 3 C 2.897 3 2 3.897 2 5 L 2 19 C 2 20.103 2.8970000000000002 21 4 21 L 20 21 C 21.103 21 22 20.103 22 19 L 22 5 C 22 3.897 21.103 3 20 3 z M 11 17 L 5 17 L 5 15 L 11 15 L 11 17 z M 11 13 L 5 13 L 5 11 L 11 11 L 11 13 z M 11 9 L 5 9 L 5 7 L 11 7 L 11 9 z M 15 17 L 13 17 L 13 7 L 15 7 L 15 17 z M 19 17 L 17 17 L 17 15 L 19 15 L 19 17 z M 19 13 L 17 13 L 17 11 L 19 11 L 19 13 z M 19 9 L 17 9 L 17 7 L 19 7 L 19 9 z" stroke-linecap="round" />
                 </g>
