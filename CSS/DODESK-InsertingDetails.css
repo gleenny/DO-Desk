@@ -1,6 +1,6 @@
 * {
   margin: 0;
-
+  white-space: nowrap;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -13,9 +13,6 @@
 * {
 outline: none;
 box-sizing: border-box;
-}
-a:link {
-  text-decoration: none;
 }
 
 body {
@@ -33,9 +30,8 @@ max-width: 1600px;
 background-color: #0e0e23;
 display: flex;
 height: 100vh;
-overflow: scroll;
+overflow: hidden;
 margin: 0 auto;
-
 }
 
 .left-side {
@@ -107,6 +103,7 @@ display: flex;
 flex-direction: column;
 flex-grow: 1;
 padding: 25px;
+overflow: auto;
 padding-left: 0;
 }
 
@@ -117,6 +114,7 @@ border: none;
 padding: 12px 18px;
 border-radius: 4px;
 margin-right: 20px;
+width: 100%;
 }
 .searchbutton:hover{
   background-color: rgb(28,36,68);
@@ -132,6 +130,7 @@ border: none;
 padding: 12px 18px;
 border-radius: 4px;
 margin-right: 20px;
+
 }
 .button svg {
 margin-left: 10px;
@@ -151,7 +150,7 @@ flex-grow: 1;
 max-width: none;
 }
 .user-box + .user-box .today {
-margin-left: 30px;
+margin-left: 20px;
 }
 .user-box + .user-box .cards-header {
 padding: 20px 30px;
@@ -239,7 +238,20 @@ margin-right: 0;
     transform: rotate(1turn);
   }
 }
-
+.studentList {
+  max-height: 100%;
+  max-width: 100%;
+  height: 400px;
+  width: 100%;
+  overflow-y: scroll;
+}
+.parentList {
+  max-height: 100%;
+  max-width: 100%;
+  height: 400px;
+  width: 100%;
+  overflow-y: scroll;
+}
 .table {
   text-align: left;
   padding: 0;
@@ -248,7 +260,7 @@ margin-right: 0;
 }
 .table th {
   font-size: 14px;
-  font-weight: normal;
+  font-weight: bold;
   padding-bottom: 30px;
 }
 
@@ -256,7 +268,6 @@ th + th {
   margin: 5px 0px;
 }
 .table td {
-  font-size: 15px;
   vertical-align: middle;
   padding: 20px 0;
 }
@@ -297,8 +308,29 @@ th + th {
   animation-delay: 0s;
   animation-fill-mode: forwards;
 }
+form {
+  display: flex;
+  flex-direction: row;
+  gap: 5px; /* Space between form rows */
+}
+.form-row {
+  display: flex;
+  gap: 5px; /* Space between columns */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: row; /* Label and input arranged vertically */
+  flex: 1; /* Make each group take equal space */
+}
+.modalSections{
+  display: flex;
+  flex-direction: row;
+  gap: 5px; /* Space between form rows */
+}
 
 .textType {
+  font-size: 13px;
   color: #9b9ca7;
   background: #1a1b3c;
   border: none;
@@ -370,7 +402,6 @@ th + th {
   margin-bottom: 200px;
 
 }
-
 
 /* Styling for the snackbar */
 #snackbar {
@@ -449,46 +480,142 @@ th + th {
   }
 }
 
+table {
+  white-space: nowrap;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
 
-/* Screen */
-@media (max-width: 375px) {
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+table tr {
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .8em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.TableTitle{
+  font-size:15px;
+}
+
+@media screen and (max-width: 960px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
   
-  /* headers */
-  .left-side {
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow-y: scroll;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+
+  }
+  
+  table tr {
+    border: 1px solid #ddd;
+    border-bottom: 3px solid #2d34ee;
+    display: block;
+    margin-bottom: .625em;
+    
+  }
+  
+  table td {
+    font-size: 13px;
+    border-bottom: 1px solid #ddd;
+    display: block;
+    text-align: left;
+
+  }
+  
+  table td::before {
+
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+
+}
+@media (max-width: 946px) 
+ {
+  .right-heading{
+    display: none;
+  }
+}
+@media (max-width: 430px) 
+{
+  .studentList{
+    height: 200px;
+
+  }
+  .parentList{
+    height: 200px;
+
+  }
+  .today{
+    font-size: 10px;
+  }
+}
+@media (max-width: 768px) 
+ {
+
+  .textType, .searchbutton{
+    font-size: 10px;
+  }
+  form {
     display: flex;
     flex-direction: column;
-    flex-shrink: 0;
-    align-items: center;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 100px;
-    padding-bottom: 10px;
-        -webkit-animation: left 1s var(--delay) both;
-            animation: left 1s var(--delay) both;
+    gap: 10px; /* Space between form rows */
   }
-  .left-side .header-link {
-    padding: 10px;
-    border-bottom: 10px solid transparent;
+  
+  .form-row {
+    display: flex;
+    gap: 10px; /* Space between columns */
   }
-  .header{
-    font-size:0px; 
+  
+  .form-group {
+    display: flex;
+    flex-direction: column; /* Label and input arranged vertically */
+    flex: 3; /* Make each group take equal space */
   }
-  .header .header-link {
-    padding: 10px;
+  .modalSections{
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between form rows */
   }
-  .header .header-link svg{
-    align-items: center !important;
-  }
-    /* end headers */
-    .wrapper{
-      max-width: 375%;
-    }
-    .modal-content {
-      top: 10;
-      padding: 20px;
-      width:80%;
-      height: 80%;
-      margin: 25% auto; /* 15% from the top and centered */
 
-      }
-  }
+ }
+
+              
+
+
+
+

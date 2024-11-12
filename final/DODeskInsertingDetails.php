@@ -56,30 +56,54 @@
     <?php
         require_once 'userHeader.php';
     ?>
-    
+        <div class="user-box zero-box" style="--delay: .10s">
+            <p style="font-weight: bold;"> Search Student</p>
+          </div>
         <!--first box-->
         <div class="user-box first-box" style="--delay: .10s">
-            <!--searching violations-->
-            <form id="searchForm">
-              <input class="textType" type="text" name="searchNumber" id="searchNumber" placeholder="Student Number">
-              <input class="textType" type="text" name="searchName" id="searchName" placeholder="Student Name">
-              <select class="textType" name="searchCourse" id="searchCourse" value=" ">
-                <option value="">Course</option>
-              </select>
-              <select class="textType" name="status" id="status" value=" ">
-                <option value="">Status</option>
-                  <option value="1">Enrolled</option>
-                  <option value="0">Not ernolled</option>
-              </select>
-              <button type="submit" id="searchbtn" class="searchbutton">Search</button>
-            </form>
+
+            <div class="form-container">
+              <form>
+                  <div class="form-row">
+                      <div class="form-group">
+                      <!--Student number search -->
+                      <input class="textType" type="text" name="searchNumber" id="searchNumber" placeholder="Student Number">
+                      </div>
+                      <div class="form-group">
+                      <!--Student name search -->
+                      <input class="textType" type="text" name="searchName" id="searchName" placeholder="Student Name">
+                      </div>
+                  </div>
+                  
+                  <div class="form-row">
+                      <div class="form-group">
+                      <!--Student course search -->
+                      <select class="textType" name="searchCourse" id="searchCourse" value=" ">
+                    <option value="">Course</option>
+                  </select>
+                      </div>
+                      <div class="form-group">
+                        <!--Student status search -->
+                      <select class="textType" name="status" id="status" value=" ">
+                        <option value="">Status</option>
+                          <option value="1">Enrolled</option>
+                          <option value="0">Not ernolled</option>
+                      </select>
+                      </div>
+                  </div>
+                  
+                  <button type="submit" id="searchbtn" class="searchbutton">Search</button>
+              </form>
+            </div>
+              
+            
         </div> 
         
         <!--second box -->
         <div class="user-box second-box" >
-            <button class="cards-button button" id="btnStudent" style="--delay: .7s">Register Student</button>
-            <button class="cards-button button" id="btnParent" style="--delay: .7s">Register Parent</button>
-            <button class="cards-button button" id="btnPairing" style="--delay: .7s">Pairing Parent Student</button>
+          <div class="modalSections">
+              <button class="cards-button button" id="btnStudent" style="--delay: .7s">Register Student</button>
+          </div>
             <!-- The Modal Register Violation -->
               <div id="modalStudent" class="modal">
                 <!-- Modal content -->
@@ -164,7 +188,7 @@
               </div>
             </div>
 
-            <div class="studentlist card">
+            <div class="studentList card">
               <table class="table">
                 <thead>
                 <tr>
@@ -183,8 +207,49 @@
 
           <!--END OF PARENT TABLE-->
         </div>
+        <div class="user-box fourth-box" style="--delay: .10s">
 
-        <div class="user-box fourth-box">
+          <p style="font-weight: bold;"> Search Parent</p>
+        </div>
+        <div class="user-box fifth-box" style="--delay: .10s">
+
+            <div class="form-container">
+              <form>
+                  <div class="form-row">
+                      <div class="form-group">
+                        <!-- Parent ID search -->
+                        <input class="textType" type="text" name="searchParentID" id="searchParentID" placeholder="Parent ID">
+                      </div>
+                      <div class="form-group">
+                        <!-- Parent Name search -->
+                        <input class="textType" type="text" name="searchParentName" id="searchParentName" placeholder="Parent Name">
+                      </div>
+                  </div>
+                  
+                  <div class="form-row">
+                      <div class="form-group">
+                        <!-- Parent Mobile Number search -->
+                        <input class="textType" type="text" name="searchParentMobileNumber" id="searchParentMobileNumber" placeholder="Mobile Number">
+                      </div>
+                      <div class="form-group">
+                        <!--Search child search -->
+                        <input class="textType" type="text" name="searchParentChild" id="searchParentChild" placeholder="Search Child">
+                      </div>
+                  </div>
+                  
+                  <button type="submit" id="searchbtn" class="searchbutton">Search</button>
+              </form>
+            </div>
+              
+            
+        </div> 
+        <div class="user-box sixth-box">
+          <div class="modalSections">
+                <button class="cards-button button" id="btnParent" style="--delay: .7s">Register Parent</button>
+                <button class="cards-button button" id="btnPairing" style="--delay: .7s">Pairing Parent Student</button>
+            </div>
+        </div>
+        <div class="user-box seventh-box">
                     <!--START OF PARENT TABLE-->
            <!--List Module-->
            <div class="cards-wrapper" style="--delay: 1s">

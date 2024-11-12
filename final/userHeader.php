@@ -185,6 +185,12 @@
                 background: #11132c;
                 border-bottom: 3px solid #4255d4;
                 }
+                @media (max-width: 946px) 
+                {
+                .right-heading{
+                    display: none;
+                }
+                }
                 @media (max-width: 768px) 
                 {
                     .right-heading{
@@ -196,6 +202,7 @@
 
                     }
                 }
+                
                 @media (max-width: 698px) 
                 {
 
