@@ -1,5 +1,6 @@
 const url = "../PHP/students.php";
 const searchForm = document.querySelector("#searchForm");
+const searchParentInfo = document.querySelector("#searchParent");
 const studentForm = document.querySelector("#myformStudent");
 const parentForm = document.querySelector("#myformParent");
 const pairingForm = document.querySelector("#myformPairing");
@@ -143,18 +144,24 @@ function uploadStudents(formData){
         return Response.text()
     }).then((body) => {
         showSnackbar(body);
+        document.querySelector("#studentListRows").innerHTML = '';
         getStudentInfo();
     })
 }
 parentForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("firstName", document.querySelector("#parentfirstName").value);
-    formData.append("middleName", document.querySelector("#parentMiddleName").value);
-    formData.append("lastName", document.querySelector("#parentLastName").value);
-    formData.append("mobileNumber", document.querySelector("#mobileNumber").value);
-    formData.append("requestType", "Parents");
-    uploadParents(formData);
+    let parMobileNumber = Math.abs(document.querySelector("#mobileNumber").value);
+    if(Number.isInteger(parMobileNumber) && (document.querySelector("#mobileNumber").value.startsWith("0") || document.querySelector("#mobileNumber").value.startsWith("9"))){
+        const formData = new FormData();
+        formData.append("firstName", document.querySelector("#parentfirstName").value);
+        formData.append("middleName", document.querySelector("#parentMiddleName").value);
+        formData.append("lastName", document.querySelector("#parentLastName").value);
+        formData.append("mobileNumber", parMobileNumber);
+        formData.append("requestType", "Parents");
+        uploadParents(formData);
+    }else{
+        showSnackbar("Mobile number is invalid");
+    }
 })
 function uploadParents(formData){
     fetch(url, {
@@ -164,6 +171,7 @@ function uploadParents(formData){
         return Response.text()
     }).then((body) => {
         showSnackbar(body);
+        document.querySelector("#parentListRows").innerHTML = '';
         getParentInfo();
     })
 }
@@ -184,6 +192,8 @@ function uploadPairing(formData){
     }).then((body) => {
         showSnackbar(body);
         console.log("Student has been paired with parent")
+        document.querySelector("#studentListRows").innerHTML = '';
+        document.querySelector("#parentListRows").innerHTML = '';
         getParentInfo();
         getStudentInfo();
     })
@@ -221,6 +231,36 @@ searchForm.addEventListener('submit', function (e) {
         getParentInfo();
     })
 });
+searchParentInfo.addEventListener('submit', function (e){
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("parentID", document.querySelector('#searchParentID').value);
+    formData.append("parentName", document.querySelector('#searchParentName').value);
+    formData.append("mobileNumber", document.querySelector('#searchParentMobileNumber').value);
+    formData.append("requestType", "searchParentInfo");
+    fetch(url, {
+        method: 'POST',
+        body: formData,
+    })
+    .then((Response) => Response.json())
+    .then((json) => {
+        document.querySelector("#parentListRows").innerHTML = '';
+        if(Object.keys(json).length == 0){
+            showSnackbar("No parent found");
+        }else{
+            for(let i = 0; i < json["parentID"].length; i++){
+                populateParentTable(i, json);
+            }
+            showSnackbar("data has been displayed")
+        }
+    })
+    .catch(error => {
+        console.log("An error occured: " + error);
+        showSnackbar("Table reset")
+        document.querySelector("#parentListRows").innerHTML = '';
+        getParentInfo();
+    })
+})
 function searchParent(formData){
     formData.set("requestType", "searchParent");
     fetch(url, {

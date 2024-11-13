@@ -3,6 +3,82 @@
 session_start(); // Start the session
 require_once 'connections.php';
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    //searching audit
+    if($_POST["requestType"] === "searchAudit"){
+        $conditionCounter = 0;
+        $logID = $_POST["logID"];
+        $name = str_ireplace(' ', '%', $_POST['name']);
+        $date = $_POST["date"];
+        $process = $_POST['process'];
+        $note = $_POST["note"];
+        if(!($logID == "")){
+            $conditionCounter++;
+        }
+        if(!($name == "")){
+            $conditionCounter++;
+        }
+        if(!($date == "")){
+            $conditionCounter++;
+        }
+        if(!($process == "")){
+            $conditionCounter++;
+        }
+        if(!($note == "")){
+            $conditionCounter++;
+        }
+        $query = "SELECT `audittbl`.*,
+         `accounttbl`.`userID`,
+          `accounttbl`.`personID`,
+           `usertbl`.`firstName`,
+            `usertbl`.`middleName`,
+             `usertbl`.`lastName`
+        FROM `audittbl` 
+        LEFT JOIN `accounttbl` ON `audittbl`.`userID` = `accounttbl`.`userID` 
+        LEFT JOIN `usertbl` ON `accounttbl`.`personID` = `usertbl`.`personID` 
+        WHERE ";
+        for($i = 0; $i < $conditionCounter; $i++){
+            if($i >= 1){
+                $query .= " AND ";
+            }
+
+            if(!($logID == "")){
+                $query .= "`auditTBL`.`logID` LIKE '%$logID%'";
+                $logID = "";
+            }
+            else if(!($name == "")){
+                $query .= "CONCAT(`userTBL`.`firstName`, COALESCE(`userTBL`.`middleName`, ''), `userTBL`.`lastName`) LIKE '%$name%'";
+                $name = "";
+            }
+            else if(!($date == "")){
+                $query .= "`auditTBL`.`transactionDateTime` LIKE '%$date%'";
+                $date = "";
+            }
+            else if(!($process == "")){
+                $query .= "`auditTBL`.`process` LIKE '%$process%'";
+                $process = "";
+            }
+            else if(!($note == "")){
+                $query .= "`auditTBL`.`note` LIKE '%$note%'";
+                $note = "";
+            }
+        }
+        $result = $conn->query($query);
+        $searchResults = [];
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $searchResults["logID"][] = $row['logID'];
+                $searchResults["firstName"][] = $row['firstName'];
+                $searchResults["middleName"][] = $row['middleName'];
+                $searchResults["lastName"][] = $row['lastName'];
+                $searchResults["dateTime"][] = $row['transactionDateTime'];
+                $searchResults["process"][] = $row['process'];
+                $searchResults["note"][] = $row['note'];
+            }
+        }
+        echo json_encode($searchResults);
+        $conn->close();
+    }
     //searching user
     if($_POST["requestType"] === "searchUser"){
         $conditionCounter = 0;

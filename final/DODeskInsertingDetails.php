@@ -63,7 +63,7 @@
         <div class="user-box first-box" style="--delay: .10s">
 
             <div class="form-container">
-              <form>
+              <form id="searchForm">
                   <div class="form-row">
                       <div class="form-group">
                       <!--Student number search -->
@@ -112,7 +112,7 @@
                   <!--Adding Students-->
                   <p style="font-weight: bold;">Register Student</p>
                     <form action="../JAVASCRIPT/addStudentsJS.js" enctype="multipart/form-data" method="POST" id="myformStudent">
-                        <input type="text" placeholder="Student Number" id="studentNumber">
+                        <input type="text" placeholder="Student Number" id="studentNumber" minlength="10" maxlength="10">
                         <input type="text" placeholder="First Name" id="studentfirstName">
                         <input type="text" placeholder="Middle Name" id="studentMiddleName">
                         <input type="text" placeholder="Last Name" id="studentLastName">
@@ -137,7 +137,7 @@
                         <input type="text" placeholder="First Name" id="parentfirstName">
                         <input type="text" placeholder="Middle Name" id="parentMiddleName">
                         <input type="text" placeholder="Last Name" id="parentLastName">
-                        <input type="text" placeholder="Mobile Number" id="mobileNumber">
+                        <input type="text" placeholder="Mobile Number" id="mobileNumber" minlength="10" maxlength="11">
                         <input type="submit" value="Submit Parent" name="submit">
                     </form>
                     <br>
@@ -214,7 +214,7 @@
         <div class="user-box fifth-box" style="--delay: .10s">
 
             <div class="form-container">
-              <form>
+              <form id="searchParent">
                   <div class="form-row">
                       <div class="form-group">
                         <!-- Parent ID search -->
@@ -230,10 +230,6 @@
                       <div class="form-group">
                         <!-- Parent Mobile Number search -->
                         <input class="textType" type="text" name="searchParentMobileNumber" id="searchParentMobileNumber" placeholder="Mobile Number">
-                      </div>
-                      <div class="form-group">
-                        <!--Search child search -->
-                        <input class="textType" type="text" name="searchParentChild" id="searchParentChild" placeholder="Search Child">
                       </div>
                   </div>
                   
