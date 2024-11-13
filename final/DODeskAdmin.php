@@ -194,7 +194,7 @@
       <!--4th Card-->
       <div class="user-box fourth-box" style="--delay: .6s">
           <!--searching violations-->
-          <form id="searchForm">
+          <form id="searchAuditForm">
             <input class="textType" type="text" name="searchAuditLOGID" id="searchAuditLOGID" placeholder="Log ID">
             <input class="textType" type="text" name="searchAuditName" id="searchAuditName" placeholder="Name">
             <input class="textType" type="date" name="searchAuditDate" id="searchAuditDate" placeholder="Transaction Date-Time">

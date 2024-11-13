@@ -2,6 +2,7 @@ const adminurl = "../PHP/admin.php";
 const auditurl = "../PHP/audit.php";
 const form = document.querySelector('#myform');
 const searchForm = document.getElementById('searchForm');
+const searchAudit = document.querySelector('#searchAuditForm');
 const updateStatusForm = document.querySelector('#updateStatusForm');
 const changePasswordForm = document.querySelector('#changePasswordForm');
 const changeUsernameForm = document.querySelector('#changeUsernameForm');
@@ -69,37 +70,39 @@ function getAudit(){
       }
   })
 }
-function populateTableAudit(i, json){
-  let tableRow = document.createElement('tr');
-    tableRow.id = 'AuditList' + i;
-    let logID = document.createElement('td');
-      logID.id = 'logID' + i;
-    studentNameHolder = json["firstName"][i] + " " + json["lastName"][i];
-    let name = document.createElement('td');
-      name.id = 'name' + i;
-    let dateTime = document.createElement('td');
-      dateTime.id = 'dateTime' + i;
-    let process = document.createElement('td');
-      process.id = 'process' + i;
-    if(json["note"][i] == null){
-        noteMessage = "N/A"
-    }else{
-        noteMessage = json["note"][i];
-    }
-    let note = document.createElement('td');
-    note.id = 'note' + i;
-    document.querySelector('#AuditListRows').appendChild(tableRow);//tbody
-      document.querySelector('#AuditList' + i).appendChild(logID);
-          document.querySelector('#logID' + i).innerHTML = json["logID"][i];
-      document.querySelector('#AuditList' + i).appendChild(name);
-          document.querySelector('#name' + i).innerHTML = studentNameHolder;
-      document.querySelector('#AuditList' + i).appendChild(dateTime);
-          document.querySelector('#dateTime' + i).innerHTML = json["dateTime"][i];
-      document.querySelector('#AuditList' + i).appendChild(process);
-          document.querySelector('#process' + i).innerHTML = json["process"][i];
-      document.querySelector('#AuditList' + i).appendChild(note);
-          document.querySelector('#note' + i).innerHTML = noteMessage;
-}
+searchAudit.addEventListener('submit', function (e){
+  e.preventDefault();
+  const formData = new FormData();
+  formData.append("logID", document.querySelector("#searchAuditLOGID").value);
+  formData.append("name", document.querySelector("#searchAuditName").value);
+  formData.append("date", document.querySelector("#searchAuditDate").value);
+  formData.append("process", document.querySelector("#searchAuditProcess").value);
+  formData.append("note", document.querySelector("#searchAuditNote").value);
+  formData.append("requestType", "searchAudit");
+  fetch(adminurl, {
+    method: 'POST',
+    body: formData,
+  })
+  .then((Response) => Response.json())
+  .then((json) => {
+      document.querySelector("#AuditListRows").innerHTML = '';
+      if(Object.keys(json).length == 0){
+        showSnackbar("No data match")
+        getUserInfo();
+      }else{
+        for(let i = 0; i < json["logID"].length; i++){
+          populateTableAudit(i, json);
+        }
+        showSnackbar("data has been displayed");
+      }
+  })
+  .catch(error => {
+      console.log(error)
+      showSnackbar("Table Refresh");
+      document.querySelector("#AuditListRows").innerHTML = '';
+      getAudit();
+  })
+})
 changeUsernameForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const formData = new FormData();
@@ -270,6 +273,37 @@ function populateTable(i, json){
         document.querySelector('#roleUser' + i).innerHTML = json["role"][i];
       document.querySelector('#userList' + i).appendChild(activeUser);
         document.querySelector('#activeUser' + i).innerHTML = isActiveUser;
+}
+function populateTableAudit(i, json){
+  let tableRow = document.createElement('tr');
+    tableRow.id = 'AuditList' + i;
+    let logID = document.createElement('td');
+      logID.id = 'logID' + i;
+    studentNameHolder = json["firstName"][i] + " " + json["lastName"][i];
+    let name = document.createElement('td');
+      name.id = 'name' + i;
+    let dateTime = document.createElement('td');
+      dateTime.id = 'dateTime' + i;
+    let process = document.createElement('td');
+      process.id = 'process' + i;
+    if(json["note"][i] == null){
+        noteMessage = "N/A"
+    }else{
+        noteMessage = json["note"][i];
+    }
+    let note = document.createElement('td');
+    note.id = 'note' + i;
+    document.querySelector('#AuditListRows').appendChild(tableRow);//tbody
+      document.querySelector('#AuditList' + i).appendChild(logID);
+          document.querySelector('#logID' + i).innerHTML = json["logID"][i];
+      document.querySelector('#AuditList' + i).appendChild(name);
+          document.querySelector('#name' + i).innerHTML = studentNameHolder;
+      document.querySelector('#AuditList' + i).appendChild(dateTime);
+          document.querySelector('#dateTime' + i).innerHTML = json["dateTime"][i];
+      document.querySelector('#AuditList' + i).appendChild(process);
+          document.querySelector('#process' + i).innerHTML = json["process"][i];
+      document.querySelector('#AuditList' + i).appendChild(note);
+          document.querySelector('#note' + i).innerHTML = noteMessage;
 }
 // Function to show the snackbar with a custom message
 function showSnackbar(message) {

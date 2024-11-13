@@ -59,7 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         }else{
             $parentQuery = "INSERT INTO `parentTBL` (`parentID`, `firstName`, `middleName`, `lastName`, `mobileNumber`) 
             VALUES (NULL, '$parentFirstName', '$parentMiddleName', '$parentLastName', '$mobileNumber');";
-            echo "world";
         }
 
         if ($conn->query($parentQuery) === TRUE) {
@@ -167,6 +166,68 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         }
         echo json_encode($searchResults);
 
+        $conn->close();
+    }
+    //search parent info
+    if($_POST["requestType"] == "searchParentInfo"){
+        $conditionCounter = 0;
+
+        $parentID = $_POST["parentID"];
+        $parentName = str_ireplace(' ', '%', $_POST['parentName']);
+        $mobileNumber = $_POST["mobileNumber"];
+
+        if(!($parentID == "")){
+            $conditionCounter++;
+        }
+        if(!($parentName == "")){
+            $conditionCounter++;
+        }
+        if(!($mobileNumber == "")){
+            $conditionCounter++;
+        }
+        // SQL query
+        $sql = "SELECT `parenttbl`.*,
+         `studentparenttbl`.`studentNumber`,
+          `studenttbl`.`firstName` AS `studentFirst`,
+           `studenttbl`.`middleName` AS `studentMiddle`,
+            `studenttbl`.`lastName` AS `studentLast`
+                FROM `parenttbl` 
+                LEFT JOIN `studentparenttbl` ON `studentparenttbl`.`parentID` = `parenttbl`.`parentID` 
+                LEFT JOIN `studenttbl` ON `studentparenttbl`.`studentNumber` = `studenttbl`.`studentNumber` 
+        WHERE ";
+        for($i = 0; $i < $conditionCounter; $i++){
+            if($i >= 1){
+                $sql .= " AND ";
+            }
+            if(!($parentID == "")){
+                $sql .= "`parenttbl`.`parentID` LIKE '%$parentID%'";
+                $parentID = "";
+            }
+            else if(!($parentName == "")){
+                $sql .= "CONCAT(`parentTBL`.`firstName`, COALESCE(`parentTBL`.`middleName`, ''), `parentTBL`.`lastName`) LIKE '%$parentName%'";
+                $parentName = "";
+            }
+            else if(!($mobileNumber == "")){
+                $sql .= "`parentTBL`.`mobileNumber` LIKE '%$mobileNumber%'";
+                $mobileNumber = "";
+            }
+        }
+        $sql .= " ORDER BY `parentTBL`.`parentID` ASC;";
+        $result = $conn->query($sql);
+        $searchResults = [];
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $searchResults["parentID"][] = $row['parentID'];
+                $searchResults["firstName"][] = $row['firstName'];
+                $searchResults["middleName"][] = $row['middleName'];
+                $searchResults["lastName"][] = $row['lastName'];
+                $searchResults["mobileNumber"][] = $row['mobileNumber'];
+                $searchResults["studentFirst"][] = $row['studentFirst'];
+                $searchResults["studentMiddle"][] = $row['studentMiddle'];
+                $searchResults["studentLast"][] = $row['studentLast'];
+            }
+        }
+        echo json_encode($searchResults);
         $conn->close();
     }
     //search parent
