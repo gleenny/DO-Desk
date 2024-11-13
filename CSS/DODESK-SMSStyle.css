@@ -1,6 +1,5 @@
 * {
   margin: 0;
-  white-space: nowrap;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -194,19 +193,6 @@ flex-direction: column;
 flex-grow: 1;
 max-height: 1000px;
 width: 100%;
-
-}
-.card .title {
-font-size: 30px;
-font-weight: 500;
-margin-bottom: 15px;
-}
-.card .subtitle {
-font-size: 13px;
-line-height: 1.6em;
-}
-.card + .card {
-margin-left: 20px;
 }
 
 /* 1st module */
@@ -219,19 +205,23 @@ margin-left: 20px;
   border: none;
   padding: 10px 15px;
 }
-.AddingStudent {
-  max-height: 100vh;
-  max-width: 70%;
+.SMSPage {
+  max-height: 100%;
+  max-width: 100%;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 16px 0px;
   margin-top: 1%;
   margin-left: 20%;
   margin-right: 20%;
 }
 
-.title {
-  font-size: 100px;
+.title{
+  font-size: 25px;
   font-weight: bold;
   margin-bottom: 5px;
+  }
+.titlelabel{
+    font-size: 15px;
+    font-weight: 500;
   }
 th {
   text-align: left;
@@ -242,14 +232,21 @@ th {
   border: none;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 16px 0px;
   padding: 10px 15px;
-  width: 20vw;
+  width: 200px;
+  font-size: 13px;
 }   
 
 .message .title {
   font-size: 16px;
   margin-bottom: 5px;
+  font-weight: bold;
+
 }
 
+.message .titlelabel{
+  font-size: 15px;
+  font-weight: 500;
+}
 .message .searchBar {
   width : 35%;
   margin-bottom: 10px;
@@ -365,10 +362,7 @@ th {
   color: #888;
 }
 
-/*notes*/
-.searchNote {
-    font-size: 10px;
-}
+
 
 /* Styling for the snackbar */
 #snackbar {
@@ -395,6 +389,10 @@ th {
   opacity: 1; /* Fully opaque */
   transition: opacity 0.5s ease;
 }
+ .notice{
+  font-size: 13px;
+
+}
 
 @keyframes fadeItIn {
 0% {
@@ -404,79 +402,87 @@ th {
   background: #11132c;
 }
 }
-@media (max-width: 375px) {
-      /* headers */
-      .left-side {
-        display: flex;
-        flex-direction: column;
-        flex-shrink: 0;
-        align-items: center;
-        padding-left: 5px;
-        padding-right: 5px;
-        padding-top: 100px;
-        padding-bottom: 10px;
-            -webkit-animation: left 1s var(--delay) both;
-                animation: left 1s var(--delay) both;
-      }
-      .left-side .header-link {
-        padding: 10px;
-        border-bottom: 10px solid transparent;
-      }
-      .header{
-        font-size:0px; 
-      }
-      .header .header-link {
-        padding: 10px;
-      }
-      .header .header-link svg{
-        align-items: center !important;
-      }
-        /* end headers */
-        .wrapper{
-          max-width: 375%;
-        }
-        .AddingStudent {
-          max-width: 100%;
-          max-height: 100%;
-          margin-top: 0%;
-          margin-left: 0%;
-          margin-right: 0%;
-        }
-        .AddingStudent .title{
-          font-size: 15px;
 
-        }
-        .AddingStudent .titlelabel{
-          font-size: 12px;
-        }
-        .AddingStudent .SearchStudentBar {
-          width: 50vw;
-        }
-        .message .title {
-          font-size: 12px;
+@media (max-width: 1440px) 
+{
+    .notice{
+    font-size: 13px;
 
-        }
-        .message .notice{
-          font-size: 10px;
-        }
-        .datepicker{
-          width: 20%;
-          height: 20px;
-          font-size: 2px;
-        }
-        .message .searchBar {
-          width : 200px;
-          font-size: 10px;
-          margin-bottom: 10px;
-          padding: 10px 15px;
-          background-color: #FCFBF4;
-        }
-        .message .messageTextBox {
-          width: 100%;
-          height: 200px;
-          resize: none;
-          padding: 20px 20px;
-          font-size: 10px;
-          margin-bottom: 5px;
-        }
   }
+  .message .messageTextBox {
+    height: 350px;
+    font-size: 14px;
+  }
+}
+@media (max-width: 1024px) 
+ {
+  .SearchStudentBar {
+    width: 170px;
+    font-size: 12px;
+
+  }   
+  .title {
+    font-size: 23px;
+
+    }
+  .notice{
+    font-size: 10px;
+  }
+  .SMSPage {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
+}
+@media (max-width: 768px) 
+ {
+  .SearchStudentBar {
+    width: 200px;
+    font-size: 10px;
+  }   
+  .SMSPage {
+    margin-top: 0%;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+  /* Basic Styling */
+  .datepicker {
+    width: 30%;
+    height: 10%;
+    font-size: 11px;
+  }
+  .message .messageTextBox {
+    height: 200px;
+    font-size: 12px;
+  }
+  .message .searchBar {
+    width: 200px;
+    font-size: 10px;
+  }
+
+}
+@media (max-width: 438px) 
+ {
+  
+  .SearchStudentBar, .input {
+    width: 170px;
+    font-size: 10px;
+  }   
+  .buttons{
+    font-size: 10px;
+  }
+  .message .messageTextBox {
+    height: 250px;
+    font-size: 10px;
+    width: 100%;
+  }
+  .datepicker {
+    width: 70%;
+    height: 7%;
+    font-size: 11px;
+  }
+  .message .searchBar {
+    width: 100%;
+    font-size: 10px;
+  }
+}

@@ -70,24 +70,28 @@
                     
                   </div>
                 </div>
-                <div class="containerbtn">
-                  <div class="centerbtn">
+                <div class="containerbtnup">
                     <button class="buttonRecord" id="record">record</button>
                     <button class="buttonStop" id="stop">stop</button>
-                  </div>
                 </div>
-              
                 <br>
-                <br>
-                <form action="../JAVASCRIPT/upload.js" method="post" enctype="multipart/form-data" id="myform">
-                  <input type="file" id="myFile" name="filename">
-                  <br>
-                  <input class="buttonUpload"type="submit" value="Upload File" name="submit">
-                  <input class= "buttonSave" type="button" value="Save Transcription" id="saveText">
-                </form>
+               
+                  <form class="form-container" action="../JAVASCRIPT/upload.js" method="post" enctype="multipart/form-data" id="myform">
+                    <div class="form-columns">
+                        <div class="column">
+                            
+                        <input type="file" id="myFile" name="filename">
+
+                          <input class="buttonUpload"type="submit" value="Upload File" name="submit">
+                          <input class= "buttonSave" type="button" value="Save Transcription" id="saveText">
+                        </div>
+                    </div>
+                  </form>
+
                 <audio controls id="audio">
                   <source id="audioPlayer" src="">
                 </audio>
+
                 <p class="notice">Click on the "Choose File" button to upload a file:</p>
                 <p class="notice">File Supported: mp3, mp4, mpeg, mpga, m4a, wav, and webm. File size should not exceed 25mb</p>
               </div> 

@@ -239,6 +239,7 @@ textarea {
   color: #9b9ca7;
   background: #FCFBF4 ;
   border: none;
+  font-size: 13px;
   padding: 10px 15px;
 }
 .textType:hover{
@@ -251,26 +252,33 @@ textarea {
 .textBox{
   resize: none;
 }
-.containerbtn{
+.containerbtnup{
   display: flex; /* Magic starts here, turning your container into a flex container */
   justify-content: center; /* This centers the child horizontally */
   align-items: center; /* And this centers it vertically */
+  flex-direction: row;
+  gap: 5px;
 }
-.centerbtn {
-  width: 40%; /* Set any width you prefer */
+.containerbtndown{
+  display: flex; /* Magic starts here, turning your container into a flex container */
+  justify-content: center; /* This centers the child horizontally */
+  align-items: center; /* And this centers it vertically */
+  flex-direction: row;
+  gap: 50px;
 }
+
 .buttonRecord {
   padding: 10px 15px;
   background-color: #4255d4;
   color: #e7e8ea;
   border: none;
   width: 300px;
-  margin-bottom: 5px;
 }
 .buttonRecord:hover{
   background-color: #4f64eb;
   cursor:pointer;
 }
+
 .buttonStop {
   padding: 10px 15px;
   background-color: #4255d4;
@@ -289,15 +297,12 @@ textarea {
   color: #e7e8ea;
   border: none;
   width: 300px;
-  margin-bottom: 10px;
-
 }
 .buttonSave:hover{
   background-color: #4f64eb;
   cursor:pointer;
 }
 .buttonUpload {
-  margin-top: 5px;
   padding: 10px 15px;
   background-color: #4255d4;
   color: #e7e8ea;
@@ -311,8 +316,31 @@ textarea {
 }
 audio{
   width: auto;
+  margin-top: 10px;
+}
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
+.form-columns {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.notice{
+  margin-top: 5px;
+  font-size: 15px;
+}
   @keyframes fadeItIn {
     0% {
       background: rgb(28,36,68);
@@ -346,76 +374,78 @@ audio{
   }
   
   
-  /* Screen */
-  @media (max-width: 375px) {
-  
-    /* headers */
-    .left-side {
-      display: flex;
-      flex-direction: column;
-      flex-shrink: 0;
-      align-items: center;
-      padding-left: 5px;
-      padding-right: 5px;
-      padding-top: 100px;
-      padding-bottom: 10px;
-          -webkit-animation: left 1s var(--delay) both;
-              animation: left 1s var(--delay) both;
-    }
-    .left-side .header-link {
-      padding: 10px;
-      border-bottom: 10px solid transparent;
-    }
-    .header{
-      font-size:0px; 
-    }
-    .header .header-link {
-      padding: 10px;
-    }
-    .header .header-link svg{
-      align-items: center !important;
-    }
-      /* end headers */
-      .wrapper{
-        max-width: 375%;
-      }
-      .notes{
-        margin-top: 0%;
-        margin-left: 0%;
-        margin-right: 0%;
-      }
-      .notes .title{
-        font-weight: bold;
-        font-size: 13px;
-      }
-      textarea{
-        height: 200px;
-        overflow: scroll;
-        font-size: 9px;
-      }
-      .textType{
-        width: 100px;
-        height: 30px;
-        font-size: 9px;
-      }
-      .buttonStop, .buttonRecord, .buttonUpload{
-        width: 100px;
-        font-size: 9px;
-      }
-      .buttonSave{
-        width: 100px;
-        font-size: 8px;
-      }
-      .notice{
-        font-size: 9px;
-      }
-      audio{
-        width: auto;
-        height: 50px;
-        margin-bottom: 5px;
-      }
-    }
   .user-box > * {
     -webkit-animation: top 1s var(--delay) both;
             animation: top 1s var(--delay) both;
   }
+@media (max-width: 1024px) {
+  .notes {
+    max-height: auto;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
+}
+@media (max-width: 900px) 
+ {
+  .textType {
+    font-size: 11px;
+
+  }
+  .notes {
+    max-height: auto;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+  textarea {
+    height: 300px;
+  }
+  textarea {
+    font-size: 14px;
+  }
+  
+}
+@media (max-width: 768px) 
+ {
+  .notice{
+    font-size:11px;
+  }
+  textarea {
+    font-size: 11px;
+  }
+}
+@media (max-width: 425px) 
+ {
+  .textType {
+    font-size: 9px;
+
+  }
+  textarea {
+    height: 200px;
+    font-size: 8px;
+
+  }
+ .buttonUpload, .buttonSave, .buttonRecord, .buttonStop{
+  width: 150px;
+  font-size: 9px;
+ }
+ .form-container {
+  margin-bottom: 0px;
+}
+ .notice{
+  font-size: 9px;
+}
+}
+@media (max-width: 375px) 
+ {
+
+ .form-container{
+  margin-left: 50px;
+ }
+ .form-container {
+  margin-bottom: 0px;
+}
+ .notice{
+  font-size: 9px;
+}
+}

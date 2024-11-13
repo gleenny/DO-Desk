@@ -51,16 +51,16 @@
     ?>
       <div class="user-box first-box" style="--delay: .1s">
 
-        <div class="AddingStudent card" style="--delay: .1s">
+        <div class="SMSPage card" style="--delay: .1s">
 
          <div class="searchStudent">
-         <div class="title"  style="font-weight: bold;">Contact Personnel</div>
+         <div class="title">Contact Personnel</div>
           <!--Search Student-->
-            <label class="titlelabel"style="font-weight: bold;">Search Student</label>
-            <p class="searchNote"> Search the student and you can see the parent name and their phone number </p>
+            <label class="titlelabel">Search Student</label>
+            <p class="notice"> Search the student and you can see the parent name and their phone number </p>
             <form action="../JAVASCRIPT/sendSMSJS.js" enctype="multipart/form-data" method="POST" id="myformFindParent">
               <input class="SearchStudentBar" type="text" placeholder="Student Name" id="studentName">
-              <input class="buttons" id="myBtn" type="submit" value="Look for Student" name="submit">              
+              <input class="buttons" id="myBtn" type="submit" value="Search" name="submit">              
             </form>
          </div>
           
@@ -86,18 +86,18 @@
           </div>
 
           <div class="message">
-              <label style=" font-weight: bold;" class="title">Send Message</label>
+              <label  class="titlelabel">Send Message</label>
               <p class="notice">Date when you would like the parents to visit the Office (for preset message)</p>
                 <!--For message-->
                 <form action="../JAVASCRIPT/sendSMSJS.js" enctype="multipart/form-data" method="POST" id="myformSMS">
                   <!--date-->
                   <input class="datepicker" type="date" name="scheduleDate" id="scheduleDate" placeholder="Date"><br>
                   <!--Student Number-->
-                  <h4 style="font-weight: bold;">Option to send a message</h4>
+                  <h4 class="titlelabel">Option to send a message</h4>
 
                   <p class="notice">Student number, to message all of student's parents/guardian</p>
                   <input class="searchBar" type="text" placeholder="Student Number" id="studentNumber"> 
-                  <h5 style="font-weight: bold;">OR</h5>
+                  <h5 class="titlelabel">OR</h5>
 
                   <p class="notice">Enter the Student name and the Parent contact number</p>
                   <input class="searchBar" type="text" placeholder="Student Name (for preset)" id="studentNameSMS">
