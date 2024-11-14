@@ -63,26 +63,26 @@
         <div class="user-box first-box" style="--delay: .10s">
 
             <div class="form-container">
-              <form id="searchForm">
-                  <div class="form-row">
-                      <div class="form-group">
+              <form class="form1" id="searchForm">
+                  <div class="form1-row">
+                      <div class="form1-group">
                       <!--Student number search -->
                       <input class="textType" type="text" name="searchNumber" id="searchNumber" placeholder="Student Number">
                       </div>
-                      <div class="form-group">
+                      <div class="form1-group">
                       <!--Student name search -->
                       <input class="textType" type="text" name="searchName" id="searchName" placeholder="Student Name">
                       </div>
                   </div>
                   
-                  <div class="form-row">
-                      <div class="form-group">
+                  <div class="form1-row">
+                      <div class="form1-group">
                       <!--Student course search -->
                       <select class="textType" name="searchCourse" id="searchCourse" value=" ">
                     <option value="">Course</option>
                   </select>
                       </div>
-                      <div class="form-group">
+                      <div class="form1-group">
                         <!--Student status search -->
                       <select class="textType" name="status" id="status" value=" ">
                         <option value="">Status</option>
@@ -109,22 +109,41 @@
                 <!-- Modal content -->
                 <div class="modal-content">
                   <span class="close">&times;</span>
-                  <!--Adding Students-->
                   <p style="font-weight: bold;">Register Student</p>
-                    <form action="../JAVASCRIPT/addStudentsJS.js" enctype="multipart/form-data" method="POST" id="myformStudent">
-                        <input type="text" placeholder="Student Number" id="studentNumber" minlength="10" maxlength="10">
-                        <input type="text" placeholder="First Name" id="studentfirstName">
-                        <input type="text" placeholder="Middle Name" id="studentMiddleName">
-                        <input type="text" placeholder="Last Name" id="studentLastName">
-                        <select name="course" id="course" value=" ">
-                        </select>
+                  <!--Adding Students-->
+                  <div class="modalform-container">
+                    <form class="modalform"action="../JAVASCRIPT/addStudentsJS.js" enctype="multipart/form-data" method="POST" id="myformStudent">
+                      <div class="modalform-row">
+                        <div class="modalform-group">
+                          <input type="text" placeholder="Student Number" id="studentNumber" minlength="10" maxlength="10">
+                        </div>
+                      </div>  
+                      <div class="modalform-row">
+                        <div class="modalform-group">
+                          <input type="text" placeholder="First Name" id="studentfirstName">
+                        </div>
+                        <div class="modalform-group">
+                          <input type="text" placeholder="Middle Name" id="studentMiddleName">
+                        </div>
+                      </div>
+                      <div class="modalform-row">
+                        <div class="modalform-group">
+                          <input type="text" placeholder="Last Name" id="studentLastName">
+                        </div>
+                        <div class="modalform-group">
+                          <select name="course" id="course" value=" ">
+                          </select>
+                        </div>
+                      </div>
+                        
                         <br>
                         <input type="submit" value="Submit Student" name="submit">
+                        <br>
+                        <p style="font-weight: bold;">Batch upload student data</p>
+                        <input id="studentExcel" type="file" accept=".xlsx, .xls">
+                        <input id="submitStudentExcel" type="submit" value="submit student excel">
                     </form>
-                    <br>
-                    <p style="font-weight: bold;">Batch upload student data</p>
-                    <input id="studentExcel" type="file" accept=".xlsx, .xls">
-                    <input id="submitStudentExcel" type="submit" value="submit student excel">
+                  </div>
                 </div>
               </div>
               <div id="modalParent" class="modal">
@@ -132,18 +151,33 @@
                 <div class="modal-content">
                   <span class="close">&times;</span>
                  <!--Add Parent--> 
-                 <p style="font-weight: bold;">Register Parent</lapbel> 
-                    <form action="../JAVASCRIPT/addStudentsJS.js" enctype="multipart/form-data" method="POST" id="myformParent">
-                        <input type="text" placeholder="First Name" id="parentfirstName">
-                        <input type="text" placeholder="Middle Name" id="parentMiddleName">
-                        <input type="text" placeholder="Last Name" id="parentLastName">
-                        <input type="text" placeholder="Mobile Number" id="mobileNumber" minlength="10" maxlength="11">
+                 <p style="font-weight: bold;">Register Parent</lapbel>
+                 <div class="modalform-container"> 
+                    <form class="modalform" action="../JAVASCRIPT/addStudentsJS.js" enctype="multipart/form-data" method="POST" id="myformParent">
+                        <div class="modalform-row">
+                          <div class="modalform-group">
+                            <input type="text" placeholder="First Name" id="parentfirstName">
+                          </div>
+                          <div class="modalform-group">
+                            <input type="text" placeholder="Middle Name" id="parentMiddleName">
+                          </div>
+                        </div>
+                        <div class="modalform-row">
+                          <div class="modalform-group">
+                          <input type="text" placeholder="Last Name" id="parentLastName">
+                          </div>
+                          <div class="modalform-group">
+                          <input type="text" placeholder="Mobile Number" id="mobileNumber" minlength="10" maxlength="11">
+                          </div>
+                        </div>
                         <input type="submit" value="Submit Parent" name="submit">
+                        <br>
+                        <p style="font-weight: bold;">Batch upload parent data</p>
+                        <input id="parentExcel" type="file" accept=".xlsx, .xls">
+                        <input id="submitParentExcel" type="submit" value="submit parent excel">
                     </form>
-                    <br>
-                    <p style="font-weight: bold;">Batch upload parent data</p>
-                    <input id="parentExcel" type="file" accept=".xlsx, .xls">
-                    <input id="submitParentExcel" type="submit" value="submit parent excel">
+                  </div>
+                    
                 </div>
               </div>
               <div id="modalPairing" class="modal">
@@ -152,22 +186,31 @@
                   <span class="close">&times;</span>
                 <!--Student Parent Pairing--> 
                 <p style="font-weight: bold;">Pair Students and Parent</p> 
-                  <form action="../JAVASCRIPT/addStudentsJS.js" enctype="multipart/form-data" method="POST" id="myformPairing">
-                    <label for="studentNumberPair">Student Number</label>
-                    <br>
-                      <select  name="studentNumberPair" id="studentNumberPair" value=" ">
-                      </select><br>
-                    <label for="parentNumberPair">Parent ID</label>
-                    <br>
-                      <select  name="parentNumberPair" id="parentNumberPair" value=" ">
-                        <br>
-                      </select>
+                <div class="modalform-container">
+                  <form class="modalformpair" action="../JAVASCRIPT/addStudentsJS.js" enctype="multipart/form-data" method="POST" id="myformPairing">
+                    <div class="modalformpair-row">
+                      <div class="modalformpair-group">
+                        <label for="studentNumberPair">Student Number</label>
+                        <select  name="studentNumberPair" id="studentNumberPair" value=" ">
+                        </select>
+                      </div>
+                    </div>
+                    <div class="modalformpair-row">
+                      <div class="modalformpair-group">
+                        <label for="parentNumberPair">Parent ID</label>
+                        <select  name="parentNumberPair" id="parentNumberPair" value=" ">
+                          <br>
+                        </select>
+                      </div>
+                    </div>
                       <input class="modalbtnSubmit"type="submit" value="Submit Pairing" name="submit"> 
                       <br>
                       <p style="font-weight: bold;">Batch upload parent data</p>
                       <input id="studentParentExcel" type="file" accept=".xlsx, .xls">
                       <input id="submitStudentParentExcel" type="submit" value="submit pairing excel">
                   </form>
+                </div>
+                  
                 </div>
               </div>
         </div>
@@ -214,20 +257,20 @@
         <div class="user-box fifth-box" style="--delay: .10s">
 
             <div class="form-container">
-              <form id="searchParent">
-                  <div class="form-row">
-                      <div class="form-group">
+              <form class="form2"  id="searchParent">
+                  <div class="form2-row">
+                      <div class="form2-group">
                         <!-- Parent ID search -->
                         <input class="textType" type="text" name="searchParentID" id="searchParentID" placeholder="Parent ID">
                       </div>
-                      <div class="form-group">
+                      <div class="form2-group">
                         <!-- Parent Name search -->
                         <input class="textType" type="text" name="searchParentName" id="searchParentName" placeholder="Parent Name">
                       </div>
                   </div>
                   
-                  <div class="form-row">
-                      <div class="form-group">
+                  <div class="form2-row">
+                      <div class="form2-group">
                         <!-- Parent Mobile Number search -->
                         <input class="textType" type="text" name="searchParentMobileNumber" id="searchParentMobileNumber" placeholder="Mobile Number">
                       </div>

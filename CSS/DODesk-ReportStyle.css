@@ -208,6 +208,7 @@ margin: 0 16px;
 }
 
 .card {
+overflow-y: scroll;
 background: radial-gradient(circle, #1a2049 0%, #13162f 100%);
 padding: 40px 30px;
 border-radius: 6px;
@@ -235,41 +236,60 @@ margin-left: 20px;
   padding: 20px;
   resize: none;
   overflow: scroll;
-
 }
-    .table {
-      text-align: left;
-      padding: 0;
-      padding-left: 10px;
-    }
-    .table th {
-      font-size: 14px;
-      font-weight: normal;
-      padding-bottom: 30px;
-    }
-    
-    
-    .table input {
-      -webkit-appearance: none;
-         -moz-appearance: none;
-              appearance: none;
-      width: 16px;
-      height: 16px;
-      border: 1px solid #9b9ca7;
-      vertical-align: middle;
-      background-color: transparent;
-      border-radius: 4px;
-      margin-right: 16px;
-      transition: 0.25s;
-      background-size: 0;
-      background-position: center;
-    }
-    .table input:checked {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' stroke='%23fff' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round' class='css-i6dzq1'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
-      background-color: #252954;
-      background-size: 12px;
-      background-repeat: no-repeat;
-    }
+
+table {
+  overflow-y: scroll; 
+  white-space: nowrap;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+table tr {
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-weight: bold;
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.TableTitle{
+  font-size:15px;
+}
+.formModal {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between form rows */
+}
+
+.formModal-row {
+  display: flex;
+  gap: 10px; /* Space between columns */
+}
+
+.formModal-group {
+  display: flex;
+  flex-direction: column; /* Label and input arranged vertically */
+  flex: 3; /* Make each group take equal space */
+}
+
     .cards-header {
       background: #10122b;
       border-radius: 6px 6px 0 0;
@@ -299,7 +319,6 @@ margin-left: 20px;
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
@@ -385,45 +404,125 @@ margin-left: 20px;
       background: #1a1b3c;
     }
   }
-  @media (max-width: 375px) {
-  
-    /* headers */
-    .left-side {
-      display: flex;
-      flex-direction: column;
-      flex-shrink: 0;
-      align-items: center;
-      padding-left: 5px;
-      padding-right: 5px;
-      padding-top: 100px;
-      padding-bottom: 10px;
-          -webkit-animation: left 1s var(--delay) both;
-              animation: left 1s var(--delay) both;
+  @media screen and (max-width: 2560px) {
+    .modal-content {
+      margin: 5% auto; /* 15% from the top and centered */
+      padding: 40px;
+      width: 40%;
+      height: 50%; /* Could be more or less, depending on screen size */
     }
-    .left-side .header-link {
-      padding: 10px;
-      border-bottom: 10px solid transparent;
+  }
+  @media screen and (max-width: 1440px){
+    .modal-content {
+      margin: 10% auto; /* 15% from the top and centered */
+      padding: 40px;
+      width: 40%;
+      height: auto; /* Could be more or less, depending on screen size */
     }
-    .header{
-      font-size:0px; 
+    .textbox{
+      width: 500px;
+      height: 300px;
+      padding: 20px;
+      resize: none;
+      overflow-y: scroll;
     }
-    .header .header-link {
-      padding: 10px;
-    }
-    .header .header-link svg{
-      align-items: center !important;
-    }
-      /* end headers */
-      .wrapper{
-        max-width: 375%;
-      }
-      .audioInput{
-        margin-bottom: 100px;
-      }
-
+  }
+  @media screen and (max-width: 1200px) {
+    table {
+      border: 0;
     }
   
-
+    table caption {
+      font-size: 1.3em;
+    }
+    
+    table thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow-y: scroll;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+    
+    table tr {
+      border: 1px solid #ddd;
+      border-bottom: 3px solid #2d34ee;
+      display: block;
+      margin-bottom: .625em;
+    }
+    
+    table td {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      font-size: .8em;
+      text-align: left;
+    }
+    
+    table td::before {
+  
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    
+    table td:last-child {
+      border-bottom: 0;
+    }
+  }
+  @media screen and (max-width: 1024px) {
+    .modal-content {
+      margin: 15% auto; /* 15% from the top and centered */
+      padding: 40px;
+      width: 55%;
+      height: auto; /* Could be more or less, depending on screen size */
+    }
+    .textbox{
+      width: 500px;
+      height: 280px;
+      padding: 20px;
+      resize: none;
+      overflow-y: scroll;
+    }
+    
+    
+  }
+  @media screen and (max-width: 772px) {
+    .modal-content {
+      margin:20% auto; /* 15% from the top and centered */
+      padding: 40px;
+      width: 60%;
+      height: auto; /* Could be more or less, depending on screen size */
+    }
+    .textbox{
+      width: 380px;
+      height: 250px;
+      padding: 20px;
+      resize: none;
+      overflow-y: scroll;
+    }
+  }
+  @media screen and (max-width: 425px) {
+    .modal-content {
+      margin: 25% auto; /* 15% from the top and centered */
+      padding: 40px;
+      width: 80%;
+      height: auto; /* Could be more or less, depending on screen size */
+    }
+    .textbox{
+      width: 250px;
+      height: 250px;
+      padding: 20px;
+      resize: none;
+      overflow-y: scroll;
+    }
+    .audioInput{
+      width: auto;
+    }
+  }
   .user-box > * {
     -webkit-animation: top 1s var(--delay) both;
             animation: top 1s var(--delay) both;

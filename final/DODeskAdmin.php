@@ -57,65 +57,125 @@
       <!--first box-->
       <div class="user-box first-box" style="--delay: .6s">
           <!--searching violations-->
-          <form id="searchForm">
-            <input class="textType" type="text" name="searchNumber" id="searchUserID" placeholder="User ID">
-            <input class="textType" type="text" name="searchName" id="searchName" placeholder="Name">
-            <select class="select" name="status" id="searchStatus" value="">
-              <option value="">Status</option>
-              <option value="1">Active</option>
-              <option value="0">Inactive</option>
-            </select>
-            <button type="submit" id="searchbtn" class="searchbutton">Search</button>
-          </form>
+          <div class="form-container">
+            <form class="form1" id="searchForm">
+              <div class="form1-row"><!--first row-->
+                <div class="form1-group"><!--column 1-->
+                  <input class="textType" type="text" name="searchNumber" id="searchUserID" placeholder="User ID">
+                </div>
+                <div class="form1-group"><!--column 2-->
+                  <input class="textType" type="text" name="searchName" id="searchName" placeholder="Name">
+                </div>
+              </div>
+              <div class="form1-row"><!--first row-->
+                <div class="form1-group"><!--column 1-->
+                  <select class="select" name="status" id="searchStatus" value="">
+                    <option value="">Status</option>
+                    <option value="1">Active</option>
+                    <option value="0">Inactive</option>
+                  </select>
+                </div>
+              </div>
+              
+              <button type="submit" id="searchbtn" class="searchbutton">Search</button>
+            </form>
+          </div>
       </div>  
       <!--Second box-->
       <div class="user-box second-box" style="--delay: .6s">
         <!-- Trigger/Open The Modal -->
-        <button class="cards-button button" id="btnRegister">Register Administrator</button>
+         <div class="buttonSection">
+          <button class="cards-button button" id="btnRegister">Register Administrator</button>
+          <button class="cards-button button" id="btnUpdateStatus">Update Status</button>
+          <button class="cards-button button" id="btnChangePassword">Change Passsword</button>
+         </div>        
         <!-- The Modal Register Violation -->
         <div id="modalRegister" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
         <span class="close">&times;</span>
+        <!--Title-->
+        <div class="title">Register User</div>
         <!--Adding Violations-->
-          <form action="../JAVASCRIPT/DODeskAdmin.js" enctype="multipart/form-data" method="POST" id="myform">
-            <!--Title-->
-            <div class="title">Register User</div>
-            <!--Content-->
-            <input type="text" placeholder="First Name" id="firstName">
-            <input type="text" placeholder="Middle Name" id="middleName">
-            <input type="text" placeholder="Last Name" id="lastName">
-            <input type="text" placeholder="Username" id="username">
-            <input type="text" placeholder="Password" id="password"><br>
-            <select  name="status" id="role" value="">
-              <option value="Disciplinary Officer">Disciplinary Officer</option>
-              <option value="Admin">Admin</option>
-            </select>
-            <br>
-            <input type="submit" value="Resgister User" name="submit" > 
-          </form>
+        <div class="form-container">
+          <form class="formModal" action="../JAVASCRIPT/DODeskAdmin.js" enctype="multipart/form-data" method="POST" id="myform">
+              <div class="formModal-row">
+                <div class="formModal-group">
+                  <input type="text" placeholder="First Name" id="firstName">
+                </div>
+              </div>
+              <div class="formModal-row">
+                <div class="formModal-group">
+                  <input type="text" placeholder="Middle Name" id="middleName">                  
+                </div>
+              </div>
+              <div class="formModal-row">
+                <div class="formModal-group">
+                  <input type="text" placeholder="Last Name" id="lastName">
+                </div>
+              </div>
+              <div class="formModal-row">
+                <div class="formModal-group">
+                <input type="text" placeholder="Username" id="username">
+
+                </div>
+                
+              </div>
+              <div class="formModal-row">
+                <div class="formModal-group">
+                  <input type="text" placeholder="Password" id="password">
+                </div>
+              </div>
+              <div class="formModal-row">
+                <div class="formModal-group">
+                  <select  name="status" id="role" value="">
+                    <option value="Disciplinary Officer">Disciplinary Officer</option>
+                    <option value="Admin">Admin</option>
+                  </select>
+                </div>  
+              </div>
+              <input type="submit" value="Resgister User" name="submit" > 
+            </form>
+        </div>
+         
         </div>
       </div>
 
       <!--updating violation status-->
       <!-- Trigger/Open The Modal -->
-      <button class="cards-button button" id="btnUpdateStatus">Update Status</button>
 
       <!-- The Modal -->
       <div id="modalUpdateStatus" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
           <span class="close">&times;</span>
-          <form action="../JAVASCRIPT/DODeskAdmin.js" enctype="multipart/form-data" method="POST" id="updateStatusForm">
-            <div class="title">Update Status</div>
-            <select name="adminID" id="adminID" value=" ">
-            </select>
-            <select name="adminStatus" id="adminStatus" value=" ">
-                <option value="1">Active</option>
-                <option value="0">Inactive</option>
-            </select>
-            <input type="submit" value="Update Status" name="submit">
-          </form>
+          <div class="title">Update Status</div>
+
+          <div class="form-container">
+            <form class="formModal" action="../JAVASCRIPT/DODeskAdmin.js" enctype="multipart/form-data" method="POST" id="updateStatusForm">
+              <div class="formModal-row">
+                <div class="formModal-group">
+                  <select name="adminID" id="adminID" value=" ">
+                  </select>
+                </div>
+              </div>
+              <div class="formModal-row">
+                <div class="formModal-group">
+                  <select name="adminStatus" id="adminStatus" value=" ">
+                    <option value="1">Active</option>
+                    <option value="0">Inactive</option>
+                  </select>
+                </div>
+              </div>
+              <div class="formModal-row">
+                <div class="formModal-group">
+                <input type="submit" value="Update Status" name="submit">
+                </div>
+              </div>
+                            
+            </form>
+          </div>
+          
           </div>
         </div>
 
@@ -124,19 +184,33 @@
       <!--
       <button class="cards-button button" id="btnChangeUsername">Change username</button>
       -->
-      <button class="cards-button button" id="btnChangePassword">Change Passsword</button>
       <!-- The Modal -->
       <div id="modalChangePassword" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
           <span class="close">&times;</span>
-          <form action="../JAVASCRIPT/DODeskAdmin.js" enctype="multipart/form-data" method="POST" id="changePasswordForm">
-            <div class="title">Change Password</div>
-            <select name="userIDPassword" id="userIDPassword" value=" ">
-            </select>
-            <input type="text" placeholder="Password" id="changePassword">
-            <input type="submit" value="Change Password" name="submit">
-          </form>
+          <div class="title">Change Password</div>
+            <div class="form-container">
+              <form class="formModal" action="../JAVASCRIPT/DODeskAdmin.js" enctype="multipart/form-data" method="POST" id="changePasswordForm">
+                <div class="formModal-row">
+                  <div class="formModal-group">
+                    <select name="userIDPassword" id="userIDPassword" value=" ">
+                    </select>
+                  </div>
+                </div>
+                <div class="formModal-row">
+                  <div class="formModal-group">
+                  <input type="text" placeholder="Password" id="changePassword">
+                  </div>
+                </div>
+                <div class="formModal-row">
+                  <div class="formModal-group">
+                  <input type="submit" value="Change Password" name="submit">
+                  </div>
+                </div>
+              </form>
+            </div>
+          
           </div>
         </div>
 
@@ -161,7 +235,7 @@
       <div class="user-box third-box">
         <!--3:First module-->
         <!--List Module-->
-        <div class="cards-wrapper" style="--delay: 1s">
+        <div class="cards-wrapper" style="--delay: .8s">
           <div class="cards-header">
             
           <div class="cards-view">
@@ -191,17 +265,41 @@
           </div>
         </div>
       </div>
+
+      <br>
+      <br>
+      
+
+
       <!--4th Card-->
-      <div class="user-box fourth-box" style="--delay: .6s">
+      <div class="user-box fourth-box" style="--delay: .9s">
           <!--searching violations-->
-          <form id="searchAuditForm">
-            <input class="textType" type="text" name="searchAuditLOGID" id="searchAuditLOGID" placeholder="Log ID">
-            <input class="textType" type="text" name="searchAuditName" id="searchAuditName" placeholder="Name">
-            <input class="textType" type="date" name="searchAuditDate" id="searchAuditDate" placeholder="Transaction Date-Time">
-            <input class="textType" type="text" name="searchAuditProcess" id="searchAuditProcess" placeholder="Process">
-            <input class="textType" type="text" name="searchAuditNote" id="searchAuditNote" placeholder="Note">
-            <button type="submit" id="searchbtn" class="searchbutton">Search</button>
-          </form>
+          <div class="form-container">
+            <form class="form2" id="searchAuditForm">
+              <div class="form2-row"><!--first row-->
+                <div class="form2-group"><!--column 1-->
+                  <input class="textType" type="text" name="searchAuditLOGID" id="searchAuditLOGID" placeholder="Log ID">
+                </div>
+                <div class="form2-group"><!--column 2-->
+                <input class="textType" type="text" name="searchAuditName" id="searchAuditName" placeholder="Name">
+                </div>
+              </div>
+              <div class="form2-row"><!--second row-->
+                <div class="form2-group"><!--column 1-->
+                  <input class="textType" type="date" name="searchAuditDate" id="searchAuditDate" placeholder="Transaction Date-Time">
+                </div>
+              </div>
+              <div class="form2-row"><!--second row-->
+                <div class="form2-group"><!--column 1-->
+                  <input class="textType" type="text" name="searchAuditProcess" id="searchAuditProcess" placeholder="Process">
+                </div>
+                <div class="form2-group"><!--column 2-->
+                  <input class="textType" type="text" name="searchAuditNote" id="searchAuditNote" placeholder="Note">
+                </div>
+              </div>
+              <button type="submit" id="searchbtn" class="searchbutton">Search</button>
+            </form>
+          </div>
       </div>  
             <!--5th Card-->
 

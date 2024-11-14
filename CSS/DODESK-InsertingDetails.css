@@ -318,7 +318,22 @@ form {
   gap: 5px; /* Space between columns */
 }
 
-.form-group {
+.modalform-group {
+  display: flex;
+  flex-direction: row; /* Label and input arranged vertically */
+  flex: 1; /* Make each group take equal space */
+}
+.modalform {
+  display: flex;
+  flex-direction: row;
+  gap: 5px; /* Space between form rows */
+}
+.modalform-row {
+  display: flex;
+  gap: 5px; /* Space between columns */
+}
+
+.modalform-group {
   display: flex;
   flex-direction: row; /* Label and input arranged vertically */
   flex: 1; /* Make each group take equal space */
@@ -365,7 +380,6 @@ form {
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
@@ -373,7 +387,7 @@ form {
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
+  margin: 10% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
   width: 30%;
@@ -513,6 +527,73 @@ table th {
 .TableTitle{
   font-size:15px;
 }
+.modalformpair {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between form rows */
+}
+
+.modalformpair-row {
+  display: flex;
+  gap: 10px; /* Space between columns */
+}
+
+.modalformpair-group {
+  display: flex;
+  flex-direction: column; /* Label and input arranged vertically */
+  flex: 3; /* Make each group take equal space */
+}
+.form1, .form2 {
+  display: flex;
+  flex-direction: row;
+  gap: 5px; /* Space between form rows */
+}
+.form1-row, .form2-row {
+  display: flex;
+  gap: 5px; /* Space between columns */
+}
+
+.form1-group, .form2-group {
+  display: flex;
+  flex-direction: row; /* Label and input arranged vertically */
+  flex: 1; /* Make each group take equal space */
+}
+
+@media(max-width:2560px){
+  .modal-content {
+    width: 40%;
+    height: 60%; /* Could be more or less, depending on screen size */
+  }
+}
+@media(max-width:4000px){
+  .modal-content {
+    width: 40%;
+  }  
+  .modalform {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between form rows */
+  }
+  
+  .modalform-row {
+    display: flex;
+    gap: 10px; /* Space between columns */
+  }
+  
+  .modalform-group {
+    display: flex;
+    flex-direction: column; /* Label and input arranged vertically */
+    flex: 3; /* Make each group take equal space */
+  }
+  
+}
+@media(max-width:1024px){
+  .modal-content {
+    margin: 15% auto; /* 15% from the top and centered */
+    width: 50%;
+    height: auto; /* Could be more or less, depending on screen size */
+  }
+}
 
 @media screen and (max-width: 960px) {
   table {
@@ -564,55 +645,84 @@ table th {
   }
 
 }
-@media (max-width: 946px) 
- {
+@media (max-width: 946px) {
   .right-heading{
     display: none;
   }
 }
-@media (max-width: 430px) 
-{
+@media (max-width: 768px) {
+  .modal-content {
+  margin: 20% auto; /* 15% from the top and centered */
+  border: 1px solid #888;
+  width: 60%;
+  height: auto; /* Could be more or less, depending on screen size */
+}
+
+  .textType, .searchbutton{
+    font-size: 10px;
+  }
+  .form1, .form2 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between form rows */
+  }
+  
+  .form1-row, .form2{
+    display: flex;
+    gap: 10px; /* Space between columns */
+  }
+  
+  .form1-group {
+    width: 320px;
+    display: flex;
+    flex-direction: column; /* Label and input arranged vertically */
+    flex: 3; /* Make each group take equal space */
+  }
+  .form2-group {
+    width: 320px;
+    display: flex;
+    flex-direction: column; /* Label and input arranged vertically */
+    flex: 3; /* Make each group take equal space */
+  }
+
+
+}
+
+@media (max-width: 430px) {
+  .modal-content {
+    margin: 35% auto; /* 15% from the top and centered */
+    width: 90%;
+    height: auto; /* Could be more or less, depending on screen size */
+  }
   .studentList{
     height: 200px;
 
   }
   .parentList{
     height: 200px;
-
   }
   .today{
     font-size: 10px;
   }
-}
-@media (max-width: 768px) 
- {
-
-  .textType, .searchbutton{
+  .modal-content .modalform-container .textType {
     font-size: 10px;
+    width: 0px;
   }
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Space between form rows */
+  .form1-group {
+    width: 160px;
   }
-  
-  .form-row {
-    display: flex;
-    gap: 10px; /* Space between columns */
-  }
-  
-  .form-group {
-    display: flex;
-    flex-direction: column; /* Label and input arranged vertically */
-    flex: 3; /* Make each group take equal space */
+  .form2-group {
+    width: 160px;
   }
   .modalSections{
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Space between form rows */
+    gap: 5px; /* Space between form rows */
+    width: 100%;
+    text-align: center;
   }
+}
 
- }
 
               
 

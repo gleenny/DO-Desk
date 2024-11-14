@@ -14,9 +14,6 @@
 outline: none;
 box-sizing: border-box;
 }
-a:link {
-  text-decoration: none;
-}
 
 body {
   margin: 0;
@@ -26,16 +23,14 @@ body {
   background-color: #03051f;
   color: #9b9ca7;
   cursor: default;
-  overflow: scroll;
-
 }
 
 .wrapper {
-max-width: 1600px;
-max-height: 100%;
+max-width: 1750px;
 background-color: #0e0e23;
 display: flex;
-height: 100%;
+height: 100vh;
+overflow: hidden;
 margin: 0 auto;
 }
 
@@ -95,7 +90,6 @@ color: #4255d4;
 }
 @keyframes top {
 0% {
-  transform: translateY(-30px);
   opacity: 0;
 }
 100% {
@@ -108,9 +102,20 @@ display: flex;
 flex-direction: column;
 flex-grow: 1;
 padding: 25px;
+overflow: auto;
 padding-left: 0;
 }
+.textType {
+  color: #9b9ca7;
+  background: #1a1b3c;
+  border: none;
+  padding: 10px 15px;
+}
+.textType:hover{
+  cursor: pointer;
+  animation-name: fadeItIn;
 
+}
 .searchbutton{
 color: #9b9ca7;
 background: #1a1b3c;
@@ -118,6 +123,7 @@ border: none;
 padding: 12px 18px;
 border-radius: 4px;
 margin-right: 20px;
+width: 100%;
 }
 .searchbutton:hover{
   background-color: rgb(28,36,68);
@@ -125,6 +131,7 @@ margin-right: 20px;
 }
 
 .button {
+white-space: nowrap;
 display: flex;
 align-items: end;
 color: #9b9ca7;
@@ -133,6 +140,7 @@ border: none;
 padding: 12px 18px;
 border-radius: 4px;
 margin-right: 20px;
+
 }
 .button svg {
 margin-left: 10px;
@@ -161,8 +169,8 @@ justify-content: space-between;
 .user-box .cards-header,
 .user-box .cards-view {
 display: flex;
-align-items: left;
-justify-content: left;
+align-items: center;
+justify-content: center;
 }
 .user-box .cards-header svg,
 .user-box .cards-view svg {
@@ -182,25 +190,24 @@ width: 30px;
 padding: 10px 16px;
 margin-right: 0;
 }
-
 .cards-button:hover {
-  background-color: rgb(28,36,68);
-  cursor: pointer;
+background-color: rgb(28,36,68);
+cursor: pointer;
 }
 .user-box .cards-header .cards-button svg,
 .user-box .cards-view .cards-button svg {
-  width: 16px;
-  margin: 0 2px 0 0;
+width: 16px;
+margin: 0 2px 0 0;
 }
 .user-box .cards-header .date-wrapper,
 .user-box .cards-view .date-wrapper {
-  display: flex;
-  align-items: end;
-  margin: auto;
+display: flex;
+align-items: center;
+margin: auto;
 }
 .user-box .cards-header .date-wrapper .title,
 .user-box .cards-view .date-wrapper .title {
-  margin: 0 16px;
+margin: 0 16px;
 }
 .today {
   font-weight: bold;
@@ -242,48 +249,52 @@ margin-right: 0;
   }
 }
 
-.table {
-  text-align: left;
-  padding: 0;
-  padding-left: 10px;
-  max-height: 20px;
-}
-.table th {
-  font-size: 14px;
-  font-weight: bold;
-  padding-bottom: 30px;
-}
-
 th + th {
   margin: 5px 0px;
 }
-.table td {
+.table td { 
   font-size: 15px;
   vertical-align: middle;
   padding: 20px 0;
 }
-.table input {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  width: 16px;
-  height: 16px;
-  border: 1px solid #868791;
-  vertical-align: middle;
-  background-color: transparent;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-right: 16px;
-  transition: 0.25s;
-  background-size: 0;
-  background-position: center;
+table {
+  overflow-y: scroll; 
+  white-space: nowrap;
+  border-collapse: collapse;
+  text-align: left;
+  padding-left: 10px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
 }
-.table input:checked {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' stroke='%23fff' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round' class='css-i6dzq1'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
-  background-color: #252954;
-  background-size: 12px;
-  background-repeat: no-repeat;
+
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
 }
+
+table tr {
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-weight: bold;
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.TableTitle{
+  font-size:15px;
+}
+
 .cards-header {
   background: #10122b;
   border-radius: 6px 6px 0 0;
@@ -429,49 +440,223 @@ th + th {
   }
 }
 
-
-
-/* Screen */
-@media (max-width: 375px) {
-  
-  /* headers */
-  .left-side {
-    display: flex;
-    flex-direction: column;
-    flex-shrink: 0;
-    align-items: center;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 100px;
-    padding-bottom: 10px;
-        -webkit-animation: left 1s var(--delay) both;
-            animation: left 1s var(--delay) both;
-  }
-  .left-side .header-link {
-    padding: 10px;
-    border-bottom: 10px solid transparent;
-  }
-  .header{
-    font-size:0px; 
-  }
-  .header .header-link {
-    padding: 10px;
-  }
-  .header .header-link svg{
-    align-items: center !important;
-  }
-    /* end headers */
-    .wrapper{
-      max-width: 375%;
-    }
-    .modal-content {
-      width: 37%;
-      height: 20%;
-      margin: 25% auto; /* 15% from the top and centered */
-
-      }
-  }
 .user-box > * {
   -webkit-animation: top 1s var(--delay) both;
           animation: top 1s var(--delay) both;
 }
+.formModal {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between form rows */
+}
+
+.formModal-row {
+  display: flex;
+  gap: 10px; /* Space between columns */
+}
+
+.formModal-group {
+  display: flex;
+  flex-direction: column; /* Label and input arranged vertically */
+  flex: 3; /* Make each group take equal space */
+}
+
+.form1, .form2 {
+  display: flex;
+  flex-direction: row;
+  gap: 5px; /* Space between form rows */
+}
+.form1-row, .form2-row {
+  display: flex;
+  gap: 5px; /* Space between columns */
+}
+
+.form1-group, .form2-group {
+  display: flex;
+  flex-direction: row; /* Label and input arranged vertically */
+  flex: 1; /* Make each group take equal space */
+}
+.modalSection{
+  display:flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+@media (max-width: 2560px) 
+{
+/* Modal Content/Box */
+.modal-content {
+  margin: 10% auto; /* 15% from the top and centered */
+  padding: 40px;
+  border: 1px solid #888;
+  width: 30%;
+  height: 60%; /* Could be more or less, depending on screen size */
+}
+}
+ @media (max-width: 1639px) 
+ {
+ 
+  .form1{
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between form rows */
+  }
+  
+  .form1-row, .form2-row {
+    display: flex;
+    gap: 10px; /* Space between columns */
+  }
+
+  .form1-group {
+    width: 750px;
+    display: flex;
+    flex-direction: column; /* Label and input arranged vertically */
+    flex: 3; /* Make each group take equal space */
+  }
+  }
+  @media (max-width: 1440px) 
+  {
+    .form1-group {
+      width: 650px;
+          }
+    }
+@media (max-width: 1024px) 
+{
+  .modal-content {
+    margin: 15% auto; /* 15% from the top and centered */
+    width: 45%;
+    height: 60%; /* Could be more or less, depending on screen size */
+  }
+ .cards-wrapper {
+   height: 300px;
+   width: 70px;
+ }
+ .textType, .searchbutton{
+   font-size: 10px;
+ }
+ .form1-group {
+  width: 450px;
+      }
+      .form2{
+        display: flex;
+        flex-direction: column;
+        gap: 10px; /* Space between form rows */
+      }
+      
+     .form2-row {
+        display: flex;
+        gap: 10px; /* Space between columns */
+      }
+      
+        .form2-group {
+        width: 300px;
+        display: flex;
+        flex-direction: column; /* Label and input arranged vertically */
+        flex: 3; /* Make each group take equal space */
+      }      
+}
+
+
+@media (max-width: 768px) 
+ {
+  .form1-group {
+    width: 320px;
+        }
+  .modal-content {
+    margin: 20% auto; /* 15% from the top and centered */
+    width: 45%;
+    height: 60%; /* Could be more or less, depending on screen size */
+  }
+  }
+
+
+@media (max-width: 900px) 
+ {
+
+  .form2-group {
+    width: 200px;
+  }
+ }
+@media (max-width: 425px) 
+{
+  .modalSection{
+    display:flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+  }
+  .button {
+    font-size: 10px;
+  }
+  .modal-content {
+    margin: 30% auto; /* 15% from the top and centered */
+    width: 80%;
+    height: 60%; /* Could be more or less, depending on screen size */
+  }
+  .cards-wrapper {
+    height: 320px;
+  }
+.form1-group {
+    width: 150px;
+        }
+  .form2-group {
+    width: 100px;
+  }
+ }
+
+ @media screen and (max-width: 1317px) {
+
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow-y: scroll;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+
+  }
+  
+  table tr {
+    border: 1px solid #ddd;
+    border-bottom: 3px solid #2d34ee;
+    display: block;
+    margin-bottom: .625em;
+    
+  }
+  
+  table td {
+    font-size: 13px;
+    border-bottom: 1px solid #ddd;
+    display: block;
+    text-align: left;
+
+  }
+  
+  table td::before {
+
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+
+}
+              
+
+
+
+

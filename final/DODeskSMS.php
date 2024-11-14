@@ -70,6 +70,7 @@
             <!-- Modal content -->
             <div class="modal-content">
               <span class="close">&times;</span>
+              <label class="titlelabel">Parent of the Student</label>
               <table>
               <thead>
                   <tr>

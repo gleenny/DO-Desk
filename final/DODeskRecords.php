@@ -54,38 +54,64 @@
       <?php
         require_once 'userHeader.php';
       ?>
+      <div class="user-box zero-box" style="--delay: .6s">
+        <p style="font-weight: bold;">Violation Records</p>
+      </div>
         <!--First Flow-->
         <div class="user-box first-box" style="--delay: .6s">
             <!--searching violations-->
-            <form id="searchForm">
-            <p style="font-weight: bold;">Violation Records</p>
-
-              <input class="textType" type="text" name="searchNumber" id="searchNumber" placeholder="Student Number">
-              <input class="textType" type="text" name="searchName" id="searchName" placeholder="Student Name">
-              <select class="textType" name="searchCourse" id="searchCourse" value=" ">
-                <option value="">Course</option>
-              </select>
-              <select class="textType" name="typeOfViolation" id="typeOfViolation" value=" ">
-                <option value="">Violation Type</option>
-                  <option value="Minor">Minor</option>
-                  <option value="Major">Major</option>
-              </select>
-              <select class="textType"name="searchCase" id="searchCase" value=" "> <br>
-                <option value="">Violation Case</option>
-              </select> 
-              <select class="textType" name="status" id="status" value=" ">
-                <option value="">Status</option>
-                  <option value="0">Resolve</option>
-                  <option value="1">Unresolve</option>
-              </select>
-              <input class="textType" type="date" name="searchDate" id="searchDate" placeholder="Date">
-              <button type="submit" id="searchbtn" class="searchbutton">Search</button>
-            </form>
+            <div class="form-container">
+                <form class="form2" id="searchForm">
+                    <div class="form2-row"><!--first row-->
+                        <div class="form2-group"><!--column 1-->
+                            <input class="textType" type="text" name="searchNumber" id="searchNumber" placeholder="Student Number">
+                        </div>
+                        <div class="form2-group"><!--column 2-->
+                            <input class="textType" type="text" name="searchName" id="searchName" placeholder="Student Name">
+                        </div>
+                    </div>
+                    <div class="form2-row"><!--second row-->
+                        <div class="form2-group"><!--column 1-->
+                            <select class="textType" name="searchCourse" id="searchCourse" value=" ">
+                              <option value="">Course</option>
+                            </select>
+                        </div>
+                        <div class="form2-group"><!--column 2-->
+                            <select class="textType" name="typeOfViolation" id="typeOfViolation" value=" ">
+                              <option value="">Violation Type</option>
+                                <option value="Minor">Minor</option>
+                                <option value="Major">Major</option>
+                            </select>
+                        </div>
+                        <div class="form2-group"><!--column 3-->
+                            <select class="textType" name="status" id="status" value=" ">
+                              <option value="">Status</option>
+                                <option value="0">Resolve</option>
+                                <option value="1">Unresolve</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form2-row"><!--third row-->
+                        <div class="form2-group"><!--column 1-->
+                            <select class="textType"name="searchCase" id="searchCase" value=" "> <br>
+                              <option value="">Violation Case</option>
+                            </select> 
+                        </div>
+                    </div>
+                    <!--Outside element-->
+                    <button type="submit" id="searchbtn" class="searchbutton">Search</button>
+                </form>
+            </div>
+           
         </div>  
         <!--Second Flow-->
         <div class="user-box second-box">
           <!-- Trigger/Open The Modal -->
-              <button class="cards-button button" id="btnSubmit"  style="--delay: .7s">Submit Violation</button>
+           <div class="modalSection">
+           <button class="cards-button button" id="btnSubmit"  style="--delay: .7s">Submit Violation</button>
+           <button class="cards-button button" id="btnUpdate"  style="--delay: .7s">Update Status</button>
+           <button class="cards-button button" id="exportViolations" style="--delay: .7s">Export as Excel</button>
+           </div>
 
               <!-- The Modal Register Violation -->
               <div id="modalSubmit" class="modal">
@@ -93,18 +119,34 @@
                 <!-- Modal content -->
                 <div class="modal-content">
                   <span class="close">&times;</span>
+                  <div class="title">Sumbit Violation</div>
                   <!--Adding Violations-->
-                    <form action="../JAVASCRIPT/DODeskRecordsJS.js" enctype="multipart/form-data" method="POST" id="myform">
-                      <div class="title">Sumbit Violation</div>
-                      <input type="text" placeholder="Student Number" id="studentNumber"> <br>
-                      <select class="violationdrp"name="violationCase" id="violationCase" value=" "> <br>
-                      </select> 
-                      <br><input type="submit" value="Submit Violation" name="submit" id="submitViolation"> <br>
-                      <br>
-                      <p style="font-weight: bold;">Batch violation</p>
-                      <input id="violationExcel" type="file" accept=".xlsx, .xls">
-                      <input id="submitViolationExcel" type="button" value="submit violation excel">
-                    </form>
+                  <div class="form-container">
+                    <form class="formModal" action="../JAVASCRIPT/DODeskRecordsJS.js" enctype="multipart/form-data" method="POST" id="myform">
+                        <div class="formModal-row">
+                          <div class="formModal-group">
+                          <input type="text" placeholder="Student Number" id="studentNumber"> <br>
+
+                          </div>
+                        </div>
+                        <div class="formModal-row">
+                          <div class="formModal-group">
+                          <select class="violationdrp"name="violationCase" id="violationCase" value=" "> <br>
+                          </select> 
+                          </div>
+                        </div>
+                        <div class="formModal-row">
+                          <div class="formModal-group">
+                          <input type="submit" value="Submit Violation" name="submit" id="submitViolation"> <br>
+                            
+                          </div>
+                        </div>
+                        <p style="font-weight: bold;">Batch violation</p>
+                        <input id="violationExcel" type="file" accept=".xlsx, .xls">
+                        <input id="submitViolationExcel" type="button" value="submit violation excel">
+                      </form>
+                  </div>
+                   
                 </div>
               </div>
 
@@ -134,24 +176,37 @@
                   </div>
               </div>
 
-              <button class="cards-button button" id="btnUpdate"  style="--delay: .7s">Update Status</button>
-              <button class="cards-button button" id="exportViolations" style="--delay: .7s">Export as Excel</button>
+              
               <!-- The Modal -->
               <div id="modalUpdate" class="modal">
                 <!-- Modal content -->
                 <div class="modal-content">
                   <span class="close">&times;</span>
-                  <form action="../JAVASCRIPT/DODesk-RecordsJS.js" enctype="multipart/form-data" method="POST" id="updateStatusForm">
-                    <div class="title">Update Status</div> <br>
-                    <select name="violationID" id="violationID" value=" ">
-                      
-                    </select> <br>
-                    <select name="violationStatus" id="violationStatus" value=" "><br>
-                        <option value="Resolve">Resolve</option>
-                        <option value="Unresolve">Unresolve</option>
-                    </select> <br>
-                    <input type="submit" value="Update Status" name="submit">
-                  </form>
+                  <div class="title">Update Status</div>
+                    <div class="form-container">
+                      <form class="formModal" action="../JAVASCRIPT/DODesk-RecordsJS.js" enctype="multipart/form-data" method="POST" id="updateStatusForm">
+                        <div class="formModal-row">
+                          <div class="formModal-group">
+                            <select name="violationID" id="violationID" value=" ">
+                            </select>
+                          </div>
+                        </div>
+                        <div class="formModal-row">
+                          <div class="formModal-group">
+                            <select name="violationStatus" id="violationStatus" value=" "><br>
+                              <option value="Resolve">Resolve</option>
+                              <option value="Unresolve">Unresolve</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="formModal-row">
+                          <div class="formModal-group">
+                            <input type="submit" value="Update Status" name="submit">
+                          </div>
+                        </div>                      
+                      </form>
+                    </div>
+                  
                 </div>    
               </div>
 
@@ -175,7 +230,6 @@
         <div class="user-box third-box">
           <!--List Module-->
           <div class="cards-wrapper" style="--delay: .9s">
-
             <div class="cards-header">
               <div class="cards-view">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
@@ -210,40 +264,76 @@
 
            </div>
         </div>
-
+        <br>
+        <br>
+        <div class="user-box fourth-box" style="--delay: .6s">
+          <p style="font-weight: bold;">Sanction Records</p>
+        </div>
+        
           <!--searching sanction-->
-          <div class="user-box fourth-box" style="--delay: .8s">
+          <div class="user-box fifth-box" style="--delay: .8s">
             <!--searching violations-->
-            <form id="searchSanctionForm">
-            <p style="font-weight: bold;">Sanction Records</p>
-                <input class="textType" type="text" name="sanctionID" id="sanSanctionID" placeholder="Sanction ID">
-                <input class="textType" type="text" name="studentNumber" id="sanStudentNumber" placeholder="Student Number">
-                <input class="textType" type="text" name="studentName" id="sanStudentName" placeholder="Student Name">
-                <input class="textType" type="text" name="violationID" id="sanViolationID" placeholder="Violation ID">
-                <select class="textType" name="violationCase" id="sanViolationCase" value=" ">
-                <option value="">Violation Case</option>
-                </select>
-                <select class="textType" name="status" id="sanStatus" value=" ">
-                <option value="">Status</option>
-                    <option value="0">Resolve</option>
-                    <option value="1">Unresolve</option>
-                </select>
-                <select class="textType" name="sanction" id="sanSanction" value=" ">
-                  <option value="">Sanction</option>
-                    <option value="Verbal Warning">Verbal Warning</option>
-                    <option value="Written Reprimand">Written Reprimand</option>
-                    <option value="community Service">community Service</option>
-                    <option value="suspension">suspension</option>
-                    <option value="Non-readmisson">Non-readmisson</option>
-                </select>
-                <button type="submit" id="searchbtn" class="searchbutton">Search</button>
+            <div class="form-container">
+              <form class="form1" id="searchSanctionForm">
+                <div class="form1-row"><!--first row-->
+                  <div class="form1-group"><!--column 1-->
+                    <input class="textType" type="text" name="sanctionID" id="sanSanctionID" placeholder="Sanction ID">
+                  </div>
+                  <div class="form1-group"><!--column 2-->
+                    <input class="textType" type="text" name="violationID" id="sanViolationID" placeholder="Violation ID">
+                </div>
+                </div>
+
+                <div class="form1-row"><!--second row-->
+                  <div class="form1-group"><!--column 1-->
+                    <input class="textType" type="text" name="studentNumber" id="sanStudentNumber" placeholder="Student Number">
+                  </div>
+                  <div class="form1-group"><!--column 2-->
+                    <input class="textType" type="text" name="studentName" id="sanStudentName" placeholder="Student Name">
+                  </div>
+                </div>
+                <div class="form1-row"><!--third row-->
+                  <div class="form1-group"><!--column 1-->
+                  <select class="textType" name="violationCase" id="sanViolationCase" value=" ">
+                    <option value="">Violation Case</option>
+                  </select>
+                  </div>
+                </div>  
+                <div class="form1-row"><!--third row-->
+                  <div class="form1-group"><!--column 1-->
+                  <select class="textType" name="status" id="sanStatus" value=" ">
+                      <option value="">Status</option>
+                      <option value="0">Resolve</option>
+                      <option value="1">Unresolve</option>
+                  </select>
+                  </div>
+                  <div class="form1-group"><!--column 2-->
+                    <select class="textType" name="sanction" id="sanSanction" value=" ">
+                        <option value="">Sanction</option>
+                        <option value="Verbal Warning">Verbal Warning</option>
+                        <option value="Written Reprimand">Written Reprimand</option>
+                        <option value="community Service">community Service</option>
+                        <option value="suspension">suspension</option>
+                        <option value="Non-readmisson">Non-readmisson</option>
+                    </select>
+                  </div>
+                </div>  
+                <button type="submit" id="searchbtn" class="searchbutton">Search</button>  
+            
               </form>
+            </div>
+            
           </div>
 
           <!--modal buttons for sanction-->
           <div class="user-box fifth-box">
             <!--button for new sanction-->
+            <div class="modalSection">
             <button class="cards-button button" id="btnSanction"  style="--delay: .8s">Set Sanction</button>
+            <button class="cards-button button" id="btnUpdateSanction"  style="--delay: .8s">Update Sanction</button>
+            <button class="cards-button button" id="exportSanction" style="--delay: .7s">Export as Excel</button>
+
+            </div>
              <!-- The Modal Register Violation -->
              <div id="modalSanction" class="modal">
                 <!-- Modal content -->
@@ -251,21 +341,36 @@
                   <span class="close">&times;</span>
                   <!--Adding Violations-->
                   <label>Submit Sanction</label>
-                    <form action="../JAVASCRIPT/DODeskRecordsJS.js" enctype="multipart/form-data" method="POST" id="addSanctionform">
-                        <input type="text" placeholder="Violation ID" id="sanSearchViolationID">
-                        <select class="textType" name="Sanction" id="sanSearchSanction" value=" ">
-                        </select>
-                        <input type="submit" value="Set Sanction" name="submit">
+                  <div class="form-container">
+                    <form class="formModal" action="../JAVASCRIPT/DODeskRecordsJS.js" enctype="multipart/form-data" method="POST" id="addSanctionform">
+                        <div class="formModal-row">
+                          <div class="formModal-group">
+                            <input type="text" placeholder="Violation ID" id="sanSearchViolationID">
+                          </div>
+                        </div>
+                        <div class="formModal-row">
+                          <div class="formModal-group">
+                            <select name="Sanction" id="sanSearchSanction" value=" ">
+                            </select>
+                          </div>
+                        </div>
+                        <div class="formModal-row">
+                          <div class="formModal-group">
+                            <input type="submit" value="Set Sanction" name="submit">
+                          </div>
+                        </div>
+                        
                         <p style="font-weight: bold;">Batch Sanction</p>
                         <input id="sanctionExcel" type="file" accept=".xlsx, .xls">
                         <input id="submitSanctionExcel" type="button" value="Submit Sanction Excel">
                     </form>
+                  </div>
+                    
                 </div>
             </div>
 
     <!--UPDATE SANCTION-->
-            <button class="cards-button button" id="btnUpdateSanction"  style="--delay: .8s">Update Sanction</button>
-            <button class="cards-button button" id="exportSanction" style="--delay: .7s">Export as Excel</button>
+            
              <!-- The Modal Register Violation -->
              <div id="modalUpdateSanction" class="modal">
                 <!-- Modal content -->
@@ -273,15 +378,29 @@
                   <span class="close">&times;</span>
                   <!--Adding Violations-->
                   <label>Update Sanction</label>
-                    <form action="../JAVASCRIPT/DODeskRecordsJS.js" enctype="multipart/form-data" method="POST" id="updateSanctionform">
-                        <select class="textType" name="sanctionID" id="sanctionID" value=" ">
-                        </select>
-                        <select name="sanctionStatus" id="sanctionStatus" value="">
-                            <option value="0">Resolve</option>
-                            <option value="1">Unresolve</option>
-                        </select>
-                        <input type="submit" value="Set Sanction" name="submit">
+                  <div class="form-container">
+                    <form class="formModal" action="../JAVASCRIPT/DODeskRecordsJS.js" enctype="multipart/form-data" method="POST" id="updateSanctionform">
+                      <div class="formModal-row">
+                        <div class="formModal-group">
+                          <select name="sanctionID" id="sanctionID" value=" ">
+                          </select>
+                        </div>
+                      </div>
+                      <div class="formModal-row">
+                        <div class="formModal-group">
+                          <select name="sanctionStatus" id="sanctionStatus" value="">
+                                <option value="0">Resolve</option>
+                                <option value="1">Unresolve</option>
+                            </select>
+                        </div>
+                      </div>
+                      <div class="formModal-row">
+                        <div class="formModal-group">
+                          <input type="submit" value="Set Sanction" name="submit">
+                        </div>
+                      </div>
                     </form>
+                  </div>
                 </div>
             </div>
         </div>
@@ -324,7 +443,7 @@
 
           <!--end fifth-box-->
           </div>
-
+          <br><br><br>
        <!--end wrapper-->
     </div>
      <!-- Snackbar element -->

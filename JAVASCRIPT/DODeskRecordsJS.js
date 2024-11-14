@@ -200,6 +200,7 @@ form.addEventListener('submit', (e) => {
             showSnackbar(json["result"][0]);
             document.querySelector("#reportListRows").innerHTML = '';
             getViolationInfo();
+            //getViolationID();
             if(json["type"][0] == "Minor"){
                 checkMinorViolationCount();
             }
@@ -553,6 +554,7 @@ addSanction.addEventListener('submit', (e) => {
             showSnackbar(body);
             document.querySelector("#sanctionListRows").innerHTML = '';
             getSanctionInfo();
+            getSanctionID();
         })
     }else{
         showSnackbar("Missing Field");

@@ -109,11 +109,39 @@
           <div class="modal-content">
             <span class="close">&times;</span>
             <!--Adding Violations-->
-            <span id="studentInfo"></span>
-            <span id="violationIDInfo"></span>
-            <textarea class="textbox" readonly id="myTextarea" placeholder="Displaying trancript file"></textarea><br>  
-            <audio controls id="audio"  class="audioInput" >
-            <source id="audioPlayer" src="">
+            <div class="form-container">
+              <div class="formModal">
+                <div class="formModal-row">
+                  <div class="formModal-group">
+                    <span id="studentInfo"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="formModal">
+                <div class="formModal-row">
+                  <div class="formModal-group">
+                    <span id="violationIDInfo"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="formModal">
+                <div class="formModal-row">
+                  <div class="formModal-group">
+                    <textarea class="textbox" readonly id="myTextarea" placeholder="Displaying trancript file"></textarea><br>  
+                  </div>
+                </div>
+              </div>
+              <div class="formModal">
+                <div class="formModal-row">
+                  <div class="formModal-group">
+                    <audio controls id="audio"  class="audioInput" >
+                    <source id="audioPlayer" src="">
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+
           </div>
       <script src="../JAVASCRIPT/DODeskReportsJS.js"></script>
 </body>

@@ -294,7 +294,8 @@ th {
   padding: 20px;
   border: 1px solid #888;
   width: 35%; /* Could be more or less, depending on screen size */
-  height: 20%; /* Could be more or less, depending on screen size */
+  height: 50%; /* Could be more or less, depending on screen size */
+  overflow-y: scroll;
 
 }
 .th-modal {
@@ -316,7 +317,7 @@ th {
   cursor: pointer;
 }
 
-/* date design */
+/* table responsive */
 
 /* Basic Styling */
 .datepicker {
@@ -394,6 +395,39 @@ th {
 
 }
 
+table {
+  white-space: nowrap;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+table tr {
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .8em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.TableTitle{
+  font-size:15px;
+}
 @keyframes fadeItIn {
 0% {
   background: rgb(28,36,68);
@@ -414,8 +448,66 @@ th {
     font-size: 14px;
   }
 }
+
+@media screen and (max-width: 2000px) {
+
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow-y: scroll;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+
+  }
+  
+  table tr {
+    border: 1px solid #ddd;
+    border-bottom: 3px solid #2d34ee;
+    display: block;
+    margin-bottom: .625em;
+    
+  }
+  
+  table td {
+    font-size: 13px;
+    border-bottom: 1px solid #ddd;
+    display: block;
+    text-align: left;
+
+  }
+  
+  table td::before {
+
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+
+}
 @media (max-width: 1024px) 
  {
+  .modal-content {
+    margin: 18% auto; /* 15% from the top and centered */
+    width: 37%; /* Could be more or less, depending on screen size */
+    height: 52%; /* Could be more or less, depending on screen size */
+  
+  }
   .SearchStudentBar {
     width: 170px;
     font-size: 12px;
@@ -436,6 +528,12 @@ th {
 }
 @media (max-width: 768px) 
  {
+  .modal-content {
+    margin: 20% auto; /* 15% from the top and centered */
+    width: 52%; /* Could be more or less, depending on screen size */
+    height: 55%; /* Could be more or less, depending on screen size */
+  
+  }
   .SearchStudentBar {
     width: 200px;
     font-size: 10px;
@@ -463,7 +561,12 @@ th {
 }
 @media (max-width: 438px) 
  {
+  .modal-content {
+    margin: 40% auto; /* 15% from the top and centered */ 
+    width: 60%; /* Could be more or less, depending on screen size */
+    height: 50%; /* Could be more or less, depending on screen size */
   
+  }
   .SearchStudentBar, .input {
     width: 170px;
     font-size: 10px;
