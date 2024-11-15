@@ -206,7 +206,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
     if($_POST['requestType'] == "getSanctionID"){
 
-        $query = "SELECT `sanctionTBL`.`sanctionID` FROM `sanctionTBL`;";
+        $query = "SELECT `sanctionTBL`.`sanctionID` FROM `sanctionTBL`
+        ORDER BY `sanctionTBL`.`sanctionID` DESC;";
 
         $result = $conn->query($query);
         

@@ -81,9 +81,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         if($message == ""){
             $message = "Hello, This is the Disciplinary Officer of STI College Global City. We are reaching out to the parents/guardians of $studentName regarding their school violations. We are hoping to meet you in the Disciplinary Office of our school on $date";
         }
-
-        echo $message;
-
         for($i = 0; $i < sizeof($mobileNumbers); $i++){
             $ch = curl_init();
             $parameters = array(

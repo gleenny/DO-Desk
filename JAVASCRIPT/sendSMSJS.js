@@ -119,17 +119,22 @@ smsForm.addEventListener('submit', (e) => {
     formData.append("requestType", "sendMessage");
 
     //preset bulk
-    if(document.querySelector('#scheduleDate').value > today && document.querySelector('#studentNumber').value != "" && document.querySelector('#message').value == ""){
-        SMS(formData);
-    }else if(document.querySelector('#studentNumber').value != "" && document.querySelector('#message').value != ""){ //customized bulk
-        SMS(formData);
-    }else if(document.querySelector('#scheduleDate').value > today && document.querySelector('#studentNameSMS').value != "" && document.querySelector('#mobileNumber').value != "" && document.querySelector('#message').value == ""){ //preset one message
-        SMS(formData);
-    }else if(document.querySelector('#mobileNumber').value != "" && document.querySelector('#message').value != ""){ //customize one message
-        SMS(formData);
+    if(document.querySelector('#scheduleDate').value > today){
+        if(document.querySelector('#scheduleDate').value > today && document.querySelector('#studentNumber').value != "" && document.querySelector('#message').value == ""){
+            SMS(formData);
+        }else if(document.querySelector('#studentNumber').value != "" && document.querySelector('#message').value != ""){ //customized bulk
+            SMS(formData);
+        }else if(document.querySelector('#scheduleDate').value > today && document.querySelector('#studentNameSMS').value != "" && document.querySelector('#mobileNumber').value != "" && document.querySelector('#message').value == ""){ //preset one message
+            SMS(formData);
+        }else if(document.querySelector('#mobileNumber').value != "" && document.querySelector('#message').value != ""){ //customize one message
+            SMS(formData);
+        }else{
+            showSnackbar("Missing field");
+        }
     }else{
-        showSnackbar("Missing field");
+        showSnackbar("Invalid Date");
     }
+   
 })
 function SMS(formData){
     fetch(url, {

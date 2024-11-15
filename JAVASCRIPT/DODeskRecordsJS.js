@@ -200,7 +200,8 @@ form.addEventListener('submit', (e) => {
             showSnackbar(json["result"][0]);
             document.querySelector("#reportListRows").innerHTML = '';
             getViolationInfo();
-            //getViolationID();
+            document.querySelector('#violationID').innerHTML = '';
+            getViolationID();
             if(json["type"][0] == "Minor"){
                 checkMinorViolationCount();
             }
@@ -218,7 +219,7 @@ searchForm.addEventListener('submit', function (e) {
     formData.append("violationType", document.querySelector("#typeOfViolation").value);
     formData.append("violationCase", document.querySelector("#searchCase").value);
     formData.append("status", document.querySelector("#status").value);
-    formData.append("date", document.querySelector("#searchDate").value);
+    formData.append("date", document.querySelector("#searchDate").value); 
     formData.append("requestType", "SearchStudentViolation");
         fetch(violationurl, {
             method: 'POST',
@@ -551,9 +552,10 @@ addSanction.addEventListener('submit', (e) => {
         }).then((Response) => {
             Response.text()
         }).then((body) => {
-            showSnackbar(body);
+            showSnackbar("Data has been added");
             document.querySelector("#sanctionListRows").innerHTML = '';
             getSanctionInfo();
+            document.querySelector("#sanctionID").innerHTML = '';
             getSanctionID();
         })
     }else{

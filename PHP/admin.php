@@ -254,7 +254,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "Username has been changed";
     }
     if($_POST["requestType"] == "getAdminID"){
-        $query = "SELECT `accountTBL`.`userID` FROM `accountTBL`;";
+        $query = "SELECT `accountTBL`.`userID` FROM `accountTBL`
+        ORDER BY `accountTBL`.`userID` DESC;";
    
        $result = $conn->query($query);
    

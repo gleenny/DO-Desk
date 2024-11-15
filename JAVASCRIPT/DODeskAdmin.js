@@ -154,6 +154,8 @@ form.addEventListener('submit', (e) => {
         showSnackbar(body);
         document.querySelector("#userListRows").innerHTML = '';
         getUserInfo();
+        document.querySelector('#adminID').innerhtml = '';
+        getAdminID();
     })
   }else{
     showSnackbar("missing field");

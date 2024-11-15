@@ -228,7 +228,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
     if($_POST['requestType'] == "getViolationID"){
 
-        $query = "SELECT `violationTBL`.`violationID` FROM `violationTBL`;";
+        $query = "SELECT `violationTBL`.`violationID` FROM `violationTBL`
+        ORDER BY `violationTBL`.`violationID` DESC;";
 
         $result = $conn->query($query);
         
