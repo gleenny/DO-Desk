@@ -98,6 +98,11 @@
                             </select> 
                         </div>
                     </div>
+                    <div class="form2-row"><!--fourth row-->
+                        <div class="form2-group"><!--column 1-->
+                          <input class="textType" type="date" name="searchDate" id="searchDate" placeholder="Date">
+                        </div>
+                    </div>
                     <!--Outside element-->
                     <button type="submit" id="searchbtn" class="searchbutton">Search</button>
                 </form>
@@ -107,7 +112,7 @@
         <!--Second Flow-->
         <div class="user-box second-box">
           <!-- Trigger/Open The Modal -->
-           <div class="modalSection">
+           <div class="modalSection" style="--delay: .7s">
            <button class="cards-button button" id="btnSubmit"  style="--delay: .7s">Submit Violation</button>
            <button class="cards-button button" id="btnUpdate"  style="--delay: .7s">Update Status</button>
            <button class="cards-button button" id="exportViolations" style="--delay: .7s">Export as Excel</button>
@@ -137,13 +142,13 @@
                         </div>
                         <div class="formModal-row">
                           <div class="formModal-group">
-                          <input type="submit" value="Submit Violation" name="submit" id="submitViolation"> <br>
+                          <input class="modalBtn" type="submit" value="Submit Violation" name="submit" id="submitViolation"> <br>
                             
                           </div>
                         </div>
                         <p style="font-weight: bold;">Batch violation</p>
                         <input id="violationExcel" type="file" accept=".xlsx, .xls">
-                        <input id="submitViolationExcel" type="button" value="submit violation excel">
+                        <input class="modalBtn" id="submitViolationExcel" class="modalBtn" type="button" value="submit violation excel">
                       </form>
                   </div>
                    
@@ -171,8 +176,8 @@
                         </tbody>
                       </table>
                     </div>
-                    <button id="sendMessage">Notify Parents</button>
-                    <button id="cancel">Cancel</button>
+                    <button class="modalBtn" id="sendMessage">Notify Parents</button>
+                    <button class="modalBtn" id="cancel">Cancel</button>
                   </div>
               </div>
 
@@ -201,7 +206,7 @@
                         </div>
                         <div class="formModal-row">
                           <div class="formModal-group">
-                            <input type="submit" value="Update Status" name="submit">
+                            <input class="modalBtn" type="submit" value="Update Status" name="submit">
                           </div>
                         </div>                      
                       </form>
@@ -220,7 +225,7 @@
                             <div id="studentNumberSMS">student Number</div>
                             <input type="date" name="schedDate" id="schedDate" placeholder="Date">
                             <textarea class="messageTextBox" id="messageText" placeholder="Your message here, leave blank for preset message"></textarea>
-                            <input type="submit" value="Notify Parents" name="submit" id="notifyParents" > 
+                            <input class="modalBtn" type="submit" value="Notify Parents" name="submit" id="notifyParents" > 
                           </form>
                 </div>
             </div>
@@ -266,12 +271,12 @@
         </div>
         <br>
         <br>
-        <div class="user-box fourth-box" style="--delay: .6s">
+        <div class="user-box fourth-box" style="--delay: .8s">
           <p style="font-weight: bold;">Sanction Records</p>
         </div>
         
           <!--searching sanction-->
-          <div class="user-box fifth-box" style="--delay: .8s">
+          <div class="user-box fifth-box" style="--delay: .9s">
             <!--searching violations-->
             <div class="form-container">
               <form class="form1" id="searchSanctionForm">
@@ -328,7 +333,7 @@
           <!--modal buttons for sanction-->
           <div class="user-box fifth-box">
             <!--button for new sanction-->
-            <div class="modalSection">
+            <div class="modalSection" style="--delay: .9s">
             <button class="cards-button button" id="btnSanction"  style="--delay: .8s">Set Sanction</button>
             <button class="cards-button button" id="btnUpdateSanction"  style="--delay: .8s">Update Sanction</button>
             <button class="cards-button button" id="exportSanction" style="--delay: .7s">Export as Excel</button>
@@ -356,13 +361,13 @@
                         </div>
                         <div class="formModal-row">
                           <div class="formModal-group">
-                            <input type="submit" value="Set Sanction" name="submit">
+                            <input class="modalBtn" type="submit" value="Set Sanction" name="submit">
                           </div>
                         </div>
                         
                         <p style="font-weight: bold;">Batch Sanction</p>
                         <input id="sanctionExcel" type="file" accept=".xlsx, .xls">
-                        <input id="submitSanctionExcel" type="button" value="Submit Sanction Excel">
+                        <input id="submitSanctionExcel" class="modalBtn" type="button" value="Submit Sanction Excel">
                     </form>
                   </div>
                     
@@ -396,7 +401,7 @@
                       </div>
                       <div class="formModal-row">
                         <div class="formModal-group">
-                          <input type="submit" value="Set Sanction" name="submit">
+                          <input class="modalBtn" type="submit" value="Set Sanction" name="submit">
                         </div>
                       </div>
                     </form>

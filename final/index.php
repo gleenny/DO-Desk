@@ -93,18 +93,18 @@
             </div>
           </div>
           <div class="recentList card">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th class="recordBy" style="font-weight: bold;">Record By</th>
-                  <th class="Snumber" style="font-weight: bold;">Student number</th>
-                  <th class="Sname" style="font-weight: bold;">Student Name</th>
-                  <th class="Scourse" style="font-weight: bold;">Course</th>
-                  <th class="StypeViolation" style="font-weight: bold;">Type Of Violation</th>
-                  <th class="Scase" style="font-weight: bold;">Case</th>
-                  <th class="Sstatus" style="font-weight: bold;">Status</th>
-                </tr>
-              </thead>
+            <table>
+            <thead>
+              <tr>
+                <th scope="col">Record By</th>
+                <th scope="col">Student number</th>
+                <th scope="col">Student Name</th>
+                <th scope="col">Course</th>
+                <th scope="col">Type Of Violation</th>
+                <th scope="col">Case</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
 
               <tbody id="reportListRows">
               </tbody>

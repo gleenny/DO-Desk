@@ -294,7 +294,7 @@ th {
   padding: 20px;
   border: 1px solid #888;
   width: 35%; /* Could be more or less, depending on screen size */
-  height: 50%; /* Could be more or less, depending on screen size */
+  height: auto; /* Could be more or less, depending on screen size */
   overflow-y: scroll;
 
 }
@@ -503,7 +503,7 @@ table th {
 @media (max-width: 1024px) 
  {
   .modal-content {
-    margin: 18% auto; /* 15% from the top and centered */
+    margin: 20% auto 10% auto; /* 18% from the top and centered */
     width: 37%; /* Could be more or less, depending on screen size */
     height: 52%; /* Could be more or less, depending on screen size */
   

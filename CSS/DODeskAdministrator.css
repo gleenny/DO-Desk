@@ -377,6 +377,13 @@
     text-decoration: none;
     cursor: pointer;
   }
+  .modalBtn{
+    background-color: #4255d4;
+    color: #e7e8ea;
+    padding: 10px 15px;
+    width: 100%;
+    border: none;
+  }
   .auditTrail{
     height: 500px;
     margin-bottom: 200px;

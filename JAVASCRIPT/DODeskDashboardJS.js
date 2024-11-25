@@ -63,25 +63,25 @@ function setData(){
             active.id = 'active' + i;
 
             document.querySelector('#reportListRows').appendChild(tableRow);//tbody
-            document.querySelector('#violationList' + i).appendChild(doName);
+            document.querySelector('#violationList' + i).appendChild(doName); //Disciplinary Officer Name
                 document.querySelector('#doName' + i).innerHTML = json["doFirst"][i] + " " + json["doLast"][i];
 
-            document.querySelector('#violationList' + i).appendChild(studentNumber);
+            document.querySelector('#violationList' + i).appendChild(studentNumber); // Student Number
                 document.querySelector('#studentNumber' + i).innerHTML = json["studentNumber"][i];
 
-            document.querySelector('#violationList' + i).appendChild(studentName);
+            document.querySelector('#violationList' + i).appendChild(studentName); // Student Name
                 document.querySelector('#studentName' + i).innerHTML = studentNameHolder;
 
-            document.querySelector('#violationList' + i).appendChild(course);
+            document.querySelector('#violationList' + i).appendChild(course); //Course
                 document.querySelector('#course' + i).innerHTML = json["course"][i];
 
-            document.querySelector('#violationList' + i).appendChild(violationType);
+            document.querySelector('#violationList' + i).appendChild(violationType); //Violation Type
                 document.querySelector('#violationType' + i).innerHTML = json["violationType"][i];
 
-            document.querySelector('#violationList' + i).appendChild(violationCase);
+            document.querySelector('#violationList' + i).appendChild(violationCase); //Case Type
                 document.querySelector('#violationCase' + i).innerHTML = json["violationCase"][i];
 
-            document.querySelector('#violationList' + i).appendChild(active);
+            document.querySelector('#violationList' + i).appendChild(active); //Status
                 document.querySelector('#active' + i).innerHTML = resolveHolder;
         }
     })

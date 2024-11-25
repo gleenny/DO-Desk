@@ -378,9 +378,12 @@ table th {
   text-decoration: none;
   cursor: pointer;
 }
-.modalbtnSubmit
-{
-  margin-bottom: 20px;
+.modalBtn{
+  background-color: #4255d4;
+  color: #e7e8ea;
+  padding: 10px 15px;
+  width: 100%;
+  border: none;
 }
 /* Styling for the snackbar */
 #snackbar {

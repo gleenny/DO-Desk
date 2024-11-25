@@ -134,7 +134,7 @@
                   </select>
                 </div>  
               </div>
-              <input type="submit" value="Resgister User" name="submit" > 
+              <input class="modalBtn" type="submit" value="Resgister User" name="submit" > 
             </form>
         </div>
          
@@ -169,7 +169,7 @@
               </div>
               <div class="formModal-row">
                 <div class="formModal-group">
-                <input type="submit" value="Update Status" name="submit">
+                <input class="modalBtn" type="submit" value="Update Status" name="submit">
                 </div>
               </div>
                             
@@ -205,7 +205,7 @@
                 </div>
                 <div class="formModal-row">
                   <div class="formModal-group">
-                  <input type="submit" value="Change Password" name="submit">
+                  <input class="modalBtn" type="submit" value="Change Password" name="submit">
                   </div>
                 </div>
               </form>
@@ -225,7 +225,7 @@
             <div class="title">Change username</div>
             <input type="text" placeholder="User ID" id="userIDUsername">
             <input type="text" placeholder="Username" id="changeUsername">
-            <input type="submit" value="Change Username" name="submit">
+            <input class="modalBtn" type="submit" value="Change Username" name="submit">
           </form>
           </div>
         </div>

@@ -56,11 +56,11 @@
     <?php
         require_once 'userHeader.php';
     ?>
-        <div class="user-box zero-box" style="--delay: .10s">
-            <p style="font-weight: bold;"> Search Student</p>
+          <div class="user-box zero-box" style="--delay: .6s">
+            <p style="font-weight: bold; "> Search Student</p>
           </div>
         <!--first box-->
-        <div class="user-box first-box" style="--delay: .10s">
+        <div class="user-box first-box" style="--delay: .6s"  >
 
             <div class="form-container">
               <form class="form1" id="searchForm">
@@ -100,7 +100,7 @@
         </div> 
         
         <!--second box -->
-        <div class="user-box second-box" >
+        <div class="user-box second-box" style="--delay: .7s">
           <div class="modalSections">
               <button class="cards-button button" id="btnStudent" style="--delay: .7s">Register Student</button>
           </div>
@@ -137,11 +137,11 @@
                       </div>
                         
                         <br>
-                        <input type="submit" value="Submit Student" name="submit">
+                        <input class="modalBtn" type="submit" value="Submit Student" name="submit">
                         <br>
                         <p style="font-weight: bold;">Batch upload student data</p>
                         <input id="studentExcel" type="file" accept=".xlsx, .xls">
-                        <input id="submitStudentExcel" type="submit" value="submit student excel">
+                        <input class="modalBtn" id="submitStudentExcel" type="submit" value="submit student excel">
                     </form>
                   </div>
                 </div>
@@ -170,11 +170,11 @@
                           <input type="text" placeholder="Mobile Number" id="mobileNumber" minlength="10" maxlength="11">
                           </div>
                         </div>
-                        <input type="submit" value="Submit Parent" name="submit">
+                        <input class="modalBtn"type="submit" value="Submit Parent" name="submit">
                         <br>
                         <p style="font-weight: bold;">Batch upload parent data</p>
                         <input id="parentExcel" type="file" accept=".xlsx, .xls">
-                        <input id="submitParentExcel" type="submit" value="submit parent excel">
+                        <input class="modalBtn" id="submitParentExcel" type="submit" value="submit parent excel">
                     </form>
                   </div>
                     
@@ -198,16 +198,16 @@
                     <div class="modalformpair-row">
                       <div class="modalformpair-group">
                         <label for="parentNumberPair">Parent ID</label>
-                        <select  name="parentNumberPair" id="parentNumberPair" value=" ">
+                        <select name="parentNumberPair" id="parentNumberPair" value=" ">
                           <br>
                         </select>
                       </div>
                     </div>
-                      <input class="modalbtnSubmit"type="submit" value="Submit Pairing" name="submit"> 
+                      <input class="modalBtn" type="submit" value="Submit Pairing" name="submit"> 
                       <br>
                       <p style="font-weight: bold;">Batch upload parent data</p>
                       <input id="studentParentExcel" type="file" accept=".xlsx, .xls">
-                      <input id="submitStudentParentExcel" type="submit" value="submit pairing excel">
+                      <input class="modalBtn" id="submitStudentParentExcel" type="submit" value="submit pairing excel">
                   </form>
                 </div>
                   
@@ -216,7 +216,7 @@
         </div>
 
          <!--Third Flow-->
-         <div class="user-box third-box">
+         <div class="user-box third-box" style="--delay: .9s" >
           <!--List Module-->
           <div class="cards-wrapper" style="--delay: 1s">
 
