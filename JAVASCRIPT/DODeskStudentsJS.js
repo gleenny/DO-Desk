@@ -8,45 +8,6 @@ const studentExcelUpload = document.querySelector("#submitStudentExcel");
 const parentExcelUpload = document.querySelector("#submitParentExcel");
 const pairingExcelUpload = document.querySelector("#submitStudentParentExcel");
 
-var modal1 = document.getElementById("modalStudent");
-var modal2 = document.getElementById("modalParent");
-var modal3 = document.getElementById("modalPairing");
-var btn1 = document.getElementById("btnStudent");
-var btn2 = document.getElementById("btnParent");
-var btn3 = document.getElementById("btnPairing");
-var span1 = document.getElementsByClassName("close")[0];
-var span2 = document.getElementsByClassName("close")[0];
-var span3 = document.getElementsByClassName("close")[0];
-
-btn1.onclick = function() {
-    modal1.style.display = "block";
-}
-btn2.onclick = function() {
-    modal2.style.display = "block";
-}
-btn3.onclick = function() {
-    modal3.style.display = "block";
-}
-span1.onclick = function() {
-    modal1.style.display = "none";
-}
-span2.onclick = function() {
-    modal2.style.display = "none";
-}
-span3.onclick = function() {
-    modal3.style.display = "none";
-}
-window.onclick = function(event) {
-    if (event.target == modal1) {
-      modal1.style.display = "none";
-    }
-    if (event.target == modal2) {
-        modal2.style.display = "none";
-    }
-    if (event.target == modal3) {
-        modal3.style.display = "none";
-    }
-}
 getStudentInfo();
 getParentInfo();
 getCourses();

@@ -121,7 +121,7 @@ width: 100%;
   cursor: pointer;
 }
 
-.button {
+button {
 display: flex;
 align-items: end;
 color: #9b9ca7;
@@ -351,6 +351,7 @@ form {
   gap: 5px; /* Space between form rows */
 }
 
+
 .textType {
   font-size: 13px;
   color: #9b9ca7;
@@ -395,10 +396,10 @@ form {
 .modal-content {
   background-color: #fefefe;
   margin: 10% auto; /* 15% from the top and centered */
-  padding: 20px;
+  padding: 50px;
   border: 1px solid #888;
-  width: 30%;
-  height: 20%; /* Could be more or less, depending on screen size */
+  width: 100%;
+  height: 100%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
@@ -565,16 +566,9 @@ table th {
   flex-direction: row; /* Label and input arranged vertically */
   flex: 1; /* Make each group take equal space */
 }
-
-@media(max-width:2560px){
-  .modal-content {
-    width: 40%;
-    height: 60%; /* Could be more or less, depending on screen size */
-  }
-}
 @media(max-width:4000px){
   .modal-content {
-    width: 40%;
+    width: 60%;
   }  
   .modalform {
     display: flex;
@@ -594,11 +588,18 @@ table th {
   }
   
 }
+@media(max-width:2560px){
+  .modal-content {
+    width: 40%;
+    height: 60%; /* Could be more or less, depending on screen size */
+    padding: 60px;
+  }
+}
 @media(max-width:1024px){
   .modal-content {
     margin: 15% auto; /* 15% from the top and centered */
-    width: 50%;
-    height: auto; /* Could be more or less, depending on screen size */
+    width: 70%;
+    height: 60%; /* Could be more or less, depending on screen size */
   }
 }
 
@@ -661,8 +662,8 @@ table th {
   .modal-content {
   margin: 20% auto; /* 15% from the top and centered */
   border: 1px solid #888;
-  width: 60%;
-  height: auto; /* Could be more or less, depending on screen size */
+  width: 75%;
+  height: 60%; /* Could be more or less, depending on screen size */
 }
 
   .textType, .searchbutton{
@@ -694,7 +695,9 @@ table th {
 
 
 }
-
+.smallDisplay{
+  display: none;
+}
 @media (max-width: 430px) {
   .modal-content {
     margin: 35% auto; /* 15% from the top and centered */
@@ -703,7 +706,6 @@ table th {
   }
   .studentList{
     height: 200px;
-
   }
   .parentList{
     height: 200px;
@@ -716,7 +718,7 @@ table th {
     width: 0px;
   }
   .form1-group {
-    width: 160px;
+    width: 140px;
   }
   .form2-group {
     width: 160px;
@@ -728,6 +730,18 @@ table th {
     width: 100%;
     text-align: center;
   }
+  .smallDisplay{
+    display: inline;
+    width: 100%;
+
+  }
+  .bigDisplay{
+    display: none;
+  }
+  .RPsizeInput{
+    width: 100%;
+  }
+  
 }
 
 

@@ -575,9 +575,74 @@ table th {
 
 @media (max-width: 900px) 
  {
-
   .form2-group {
     width: 200px;
+  }
+ }
+ @media (max-width: 680px) 
+ {
+  .form1-group {
+    width: 280px;
+  }
+  .form2-group {
+    width: 185px;
+  }
+ }
+ @media (max-width: 600px) 
+ {
+  .form1-group {
+    width: 245px;
+  }
+  .form2-group {
+    width: 160px;
+  }
+ }
+ @media (max-width: 540px) 
+ {
+  .modalSection{
+    display:flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+    text-align: center;
+  }
+  .form1-group {
+    width: 210px;
+  }
+  .form2-group {
+    width: 135px;
+  }
+ }
+ @media (max-width: 540px) 
+ {
+  .modalSection{
+    display:flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+    text-align: center;
+  }
+  .form1-group {
+    width: 200px;
+  }
+  .form2-group {
+    width: 125px;
+  }
+ }
+ @media (max-width: 460px) 
+ {
+  .modalSection{
+    display:flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+    text-align: center;
+  }
+  .form1-group {
+    width: 180px;
+  }
+  .form2-group {
+    width: 115px;
   }
  }
 @media (max-width: 425px) 

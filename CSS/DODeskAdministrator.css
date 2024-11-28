@@ -33,7 +33,6 @@
   background-color: #0e0e23;
   display: flex;
   height: 100vh;
-  overflow-y: scroll;
   margin: 0 auto;
   }
   
@@ -531,50 +530,6 @@
     width: 450px;
   }
 
- table {
-    border: 0;
-  }
-
- table caption {
-    font-size: 1.3em;
-  }
-  
- table thead {
-    border: none;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow-y: scroll;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-  }
-  
- table tr {
-    border: 1px solid #ddd;
-    border-bottom: 3px solid #2d34ee;
-    display: block;
-    margin-bottom: .625em;
-  }
-  
-  table td {
-    border-bottom: 1px solid #ddd;
-    display: block;
-    font-size: .8em;
-    text-align: left;
-  }
-  
-table td::before {
-
-    content: attr(data-label);
-    float: left;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-  
-table td:last-child {
-    border-bottom: 0;
-  }
 }
 
 @media screen and (max-width: 772px) {
@@ -607,7 +562,95 @@ table td:last-child {
  .select {
   width: 650px;
  }
+ 
+ table {
+  border: 0;
+}
 
+table caption {
+  font-size: 1.3em;
+}
+
+table thead {
+  border: none;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow-y: scroll;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+table tr {
+  border: 1px solid #ddd;
+  border-bottom: 3px solid #2d34ee;
+  display: block;
+  margin-bottom: .625em;
+}
+
+table td {
+  border-bottom: 1px solid #ddd;
+  display: block;
+  font-size: .8em;
+  text-align: left;
+}
+
+table td::before {
+
+  content: attr(data-label);
+  float: left;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+table td:last-child {
+  border-bottom: 0;
+}
+
+ }
+ @media screen and (max-width: 650px) {
+  .form1-group {
+    width: 265px;
+  }
+  .select, .searchbutton{
+    width: auto;
+  }
+  .form2-group {
+    width: 264px;
+  }
+ }
+ @media screen and (max-width: 530px) {
+  .form1-group {
+    width: 205px;
+  }
+  .select, .searchbutton{
+    width: auto;
+  }
+  .form2-group {
+    width: 210px;
+  }
+  .button {
+    align-items: center;
+    color: #9b9ca7;
+    padding: 12px 18px;
+    border-radius: 4px;
+    margin-right: 5px;
+    font-size: 10px;
+    }
+  .buttonSection{
+      flex-direction: column;
+      gap: 10px;
+      width: 100%; 
+    }
+ }
+ @media screen and (max-width: 460px) {
+  .form1-group {
+    width: 180px;
+  }
+  .form2-group {
+    width: 180px;
+  }
  }
 @media screen and (max-width: 425px) {
   .modal-content {
@@ -628,21 +671,7 @@ table td:last-child {
   .select{
     width: 330px;
   }
-  .button {
-    align-items: center;
-    color: #9b9ca7;
-    padding: 12px 18px;
-    border-radius: 4px;
-    margin-right: 5px;
-    font-size: 10px;
-    }
-    .buttonSection{
-      flex-direction: column;
-      gap: 10px;
-      width: 100%;
-      
-    }
-      
+  
 }
   .user-box > * {
     -webkit-animation: top 1s var(--delay) both;

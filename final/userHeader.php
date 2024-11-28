@@ -104,14 +104,12 @@
                     </svg>
                     Administration
                 </a>
-            </div>
-
              <?php } ?>
-
+             </div>
             <h1 class="right-heading"> 
                 <?php
                 echo $_SESSION['firstName']. " ". $_SESSION['lastName'];
-            ?>
+            ?> 
             </h1>
             <style>
                 

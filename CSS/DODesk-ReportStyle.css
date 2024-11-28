@@ -328,11 +328,11 @@ table th {
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
+  margin: 5% auto; /* 15% from the top and centered */
+  padding: 40px;
   border: 1px solid #888;
-  width: 30%;
-  height: 20%; /* Could be more or less, depending on screen size */
+  width: 40%;
+  height: 50%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
@@ -414,14 +414,7 @@ table th {
       background: #1a1b3c;
     }
   }
-  @media screen and (max-width: 2560px) {
-    .modal-content {
-      margin: 5% auto; /* 15% from the top and centered */
-      padding: 40px;
-      width: 40%;
-      height: 50%; /* Could be more or less, depending on screen size */
-    }
-  }
+
   @media screen and (max-width: 1440px){
     .modal-content {
       margin: 10% auto; /* 15% from the top and centered */
