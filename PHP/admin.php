@@ -26,15 +26,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if(!($note == "")){
             $conditionCounter++;
         }
-        $query = "SELECT `audittbl`.*,
-         `accounttbl`.`userID`,
-          `accounttbl`.`personID`,
-           `usertbl`.`firstName`,
-            `usertbl`.`middleName`,
-             `usertbl`.`lastName`
-        FROM `audittbl` 
-        LEFT JOIN `accounttbl` ON `audittbl`.`userID` = `accounttbl`.`userID` 
-        LEFT JOIN `usertbl` ON `accounttbl`.`personID` = `usertbl`.`personID` 
+        $query = "SELECT `auditTBL`.*,
+         `accountTBL`.`userID`,
+          `accountTBL`.`personID`,
+           `userTBL`.`firstName`,
+            `userTBL`.`middleName`,
+             `userTBL`.`lastName`
+        FROM `auditTBL` 
+        LEFT JOIN `accountTBL` ON `auditTBL`.`userID` = `accountTBL`.`userID` 
+        LEFT JOIN `userTBL` ON `accountTBL`.`personID` = `userTBL`.`personID` 
         WHERE ";
         for($i = 0; $i < $conditionCounter; $i++){
             if($i >= 1){

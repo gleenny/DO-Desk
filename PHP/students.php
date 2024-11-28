@@ -186,21 +186,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             $conditionCounter++;
         }
         // SQL query
-        $sql = "SELECT `parenttbl`.*,
-         `studentparenttbl`.`studentNumber`,
-          `studenttbl`.`firstName` AS `studentFirst`,
-           `studenttbl`.`middleName` AS `studentMiddle`,
-            `studenttbl`.`lastName` AS `studentLast`
-                FROM `parenttbl` 
-                LEFT JOIN `studentparenttbl` ON `studentparenttbl`.`parentID` = `parenttbl`.`parentID` 
-                LEFT JOIN `studenttbl` ON `studentparenttbl`.`studentNumber` = `studenttbl`.`studentNumber` 
+        $sql = "SELECT `parentTBL`.*,
+         `studentparentTBL`.`studentNumber`,
+          `studentTBL`.`firstName` AS `studentFirst`,
+           `studentTBL`.`middleName` AS `studentMiddle`,
+            `studentTBL`.`lastName` AS `studentLast`
+                FROM `parentTBL` 
+                LEFT JOIN `studentparentTBL` ON `studentparentTBL`.`parentID` = `parentTBL`.`parentID` 
+                LEFT JOIN `studentTBL` ON `studentparentTBL`.`studentNumber` = `studentTBL`.`studentNumber` 
         WHERE ";
         for($i = 0; $i < $conditionCounter; $i++){
             if($i >= 1){
                 $sql .= " AND ";
             }
             if(!($parentID == "")){
-                $sql .= "`parenttbl`.`parentID` LIKE '%$parentID%'";
+                $sql .= "`parentTBL`.`parentID` LIKE '%$parentID%'";
                 $parentID = "";
             }
             else if(!($parentName == "")){

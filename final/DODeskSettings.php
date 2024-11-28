@@ -83,12 +83,11 @@
 
                   <a class="buttonFormats"href="../FormatFiles\Violation batch upload Format.xlsx" download>Violation Format</a><br>
 
-                </div>
-
-                
+                </div>    
         </div>
-
+        
     </div>
+    <div id="snackbar"></div>
     <script src="../JAVASCRIPT/DODeskSettingJS.js"></script>
 </body>
 </html>
