@@ -30,7 +30,6 @@ var span3 = document.getElementsByClassName("close")[0];
 // Get the button that opens the modal
         var btn = document.getElementById("btnRegister");
         var btn1 = document.getElementById("btnUpdateStatus");
-        var btn2 = document.getElementById("btnChangeUsername");
         var btn3 = document.getElementById("btnChangePassword");
 
 
@@ -46,7 +45,6 @@ var span3 = document.getElementsByClassName("close")[0];
 
         btn.onclick = function() { modal.style.display = "block";}
         btn1.onclick = function() { modal1.style.display = "block";}
-        btn2.onclick = function() { modal2.style.display = "block";}
         btn3.onclick = function() { modal3.style.display = "block";}
 
 

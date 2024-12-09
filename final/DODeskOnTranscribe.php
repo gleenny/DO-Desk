@@ -98,6 +98,7 @@
               </div> 
             </div>
           </div>
+          <div id="snackbar"></div>
         <!--Scroll bar properties-->
       <script src="../JAVASCRIPT/upload.js"></script>
 </body>

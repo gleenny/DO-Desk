@@ -7,7 +7,6 @@ changePassword.addEventListener('submit', (e) => {
     formdata.append("oldPassword", document.querySelector("#oldPass").value);
     formdata.append("newPassword", document.querySelector("#newPass").value);
     formdata.append("requestType", "changePassword");
-    console.log(formdata)
     fetch(url, {
         method: 'POST',
         body: formdata
@@ -15,6 +14,8 @@ changePassword.addEventListener('submit', (e) => {
         return Response.text();
     }).then((body) => {
         showSnackbar(body);
+        document.querySelector("#oldPass").value = "";
+        document.querySelector("#newPass").value = "";
     })
 })
 function showSnackbar(message) {

@@ -134,6 +134,7 @@ function uploadParents(formData){
         showSnackbar(body);
         document.querySelector("#parentListRows").innerHTML = '';
         getParentInfo();
+        getParentID()
     })
 }
 pairingForm.addEventListener('submit', (e) => {
@@ -298,6 +299,7 @@ function getStudentID(){
         body:formData
     }).then((Response) => Response.json())
     .then((json) => {   
+        document.querySelector('#studentNumberPair').innerHTML = "";
         for(let i = 0; i < json["studentNumber"].length ; i++){
             let opt = document.createElement('option');
             opt.text = json["studentNumber"][i]
@@ -313,7 +315,8 @@ function getParentID(){
         method: 'POST',
         body:formData
     }).then((Response) => Response.json())
-    .then((json) => {   
+    .then((json) => {  
+        document.querySelector('#parentNumberPair').innerHTML = "";
         for(let i = 0; i < json["parentID"].length ; i++){
             let opt = document.createElement('option');
             opt.text = json["parentID"][i]

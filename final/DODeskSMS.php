@@ -97,7 +97,7 @@
                   <h4 class="titlelabel">Option to send a message</h4>
 
                   <p class="notice">Student number, to message all of student's parents/guardian</p>
-                  <input class="searchBar" type="text" placeholder="Student Number" id="studentNumber"> 
+                  <input class="searchBar" type="text" placeholder="Student Number Ex. 2000111111" id="studentNumber"> 
                   <h5 class="titlelabel">OR</h5>
 
                   <p class="notice">Enter the Student name and the Parent contact number</p>

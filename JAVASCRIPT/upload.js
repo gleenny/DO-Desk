@@ -14,23 +14,27 @@ getViolationID();
 //save text file and db query
 saveTranscript.addEventListener("click", textUpload);
 function textUpload(){
-  
-  const formData = new FormData();
+  if(document.querySelector("#myTextarea").value && document.querySelector("#violationID").value && filename){
+      const formData = new FormData();
 
-  formData.append("textContent", document.querySelector("#myTextarea").value);
-  fileParts = filename.split(".");
-  formData.append("fileName", fileParts[0]);
-  formData.append("fileExtension", fileParts[1]);
-  formData.append("violationID", document.querySelector("#violationID").value);
-  
-  formData.append("requestType", "uploadText");
-
-  fetch(texturl, {
-    method: 'POST',
-    body: formData
-  }).then((Response) => {
-    console.log(Response);
-  })
+      formData.append("textContent", document.querySelector("#myTextarea").value);
+      fileParts = filename.split(".");
+      formData.append("fileName", fileParts[0]);
+      formData.append("fileExtension", fileParts[1]);
+      formData.append("violationID", document.querySelector("#violationID").value);
+      
+      formData.append("requestType", "uploadText");
+    
+      fetch(texturl, {
+        method: 'POST',
+        body: formData
+      }).then((Response) => {
+        showSnackbar("Transcriptions has been saved to " + document.querySelector("#violationID").value)
+      })
+    }
+  else{
+    showSnackbar("data is incomplete")
+  }
 }
 //recording
 if (navigator.mediaDevices) {
@@ -103,25 +107,39 @@ if (navigator.mediaDevices) {
 form.addEventListener('submit', (e) => {
     e.preventDefault()
 
-    const files = document.querySelector('#myFile').files;
-    const formData = new FormData();
-
-    for (let i = 0; i < files.length; i++){
-        let file = files[i]
-
-        formData.append('files[]', file)
+    if(document.querySelector('#myFile').files.length != 0){
+      const files = document.querySelector('#myFile').files;
+      const formData = new FormData();
+  
+      for (let i = 0; i < files.length; i++){
+          let file = files[i]
+  
+          formData.append('files[]', file)
+      }
+  
+      showSnackbar("file is uploading");
+  
+      fetch(url, {
+          method: 'POST',
+          body: formData,
+      }).then((Response)  => Response.json())
+      .then((json) => {
+          if(json[2] == "error"){
+            showSnackbar("there has been an error")
+          }
+          else{
+            showSnackbar("file has been transcribed")
+            document.querySelector('#myTextarea').innerHTML = json[0]
+            filename = json[1];
+            document.querySelector('#audioPlayer').setAttribute('src', audioPath+filename)
+            document.querySelector('#audio').load();
+          }
+      })
+    }
+    else{
+      showSnackbar("file is missing");
     }
 
-    fetch(url, {
-        method: 'POST',
-        body: formData,
-    }).then((Response)  => Response.json())
-    .then((json) => {
-        document.querySelector('#myTextarea').innerHTML = json[0]
-        filename = json[1];
-        document.querySelector('#audioPlayer').setAttribute('src', audioPath+filename)
-        document.querySelector('#audio').load();
-    })
 });
 
 function getViolationID(){
@@ -142,4 +160,19 @@ function getViolationID(){
           document.querySelector('#violationID').options.add(opt);
       }
   })
+}
+// Function to show the snackbar with a custom message
+function showSnackbar(message) {
+  const snackbar = document.getElementById("snackbar");
+  
+  // Set the custom message
+  snackbar.textContent = message;
+
+  // Add the "show" class to make it visible
+  snackbar.classList.add("show");
+
+  // Remove the "show" class after 3 seconds
+  setTimeout(() => {
+    snackbar.classList.remove("show");
+  }, 3000);
 }

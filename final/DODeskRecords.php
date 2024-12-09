@@ -155,7 +155,7 @@
                 </div>
               </div>
 
-                <!-- The Modal message Violation -->
+                <!-- The Modal message Violation --> 
               <div id="modalMessage" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>

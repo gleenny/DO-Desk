@@ -29,12 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
         if(empty($errors)){
             move_uploaded_file($file_tmp, $file);
-
-            //ayusin yung api key para di nakalabas dito
             $yourApiKey = OPENAIAPIKEY;
-            //$yourApiKey = getenv('your_API_key');
             $client = OpenAI::client($yourApiKey);
-            
+            $errorMSG = "clear";
             try{
                 $response = $client->audio()->transcribe([
                     'model' => 'whisper-1',
@@ -55,11 +52,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
                 $audit->execute();
             }
             catch(Exception $e){
-                $text = 'error';
+                $errorMSG = 'error';
             }
             $fileInfo = array(
                 0 => $text,
                 1 => $file_name,
+                2 => $errorMSG,
             );
             print_r (json_encode($fileInfo));
         }
@@ -67,6 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             $fileInfo = array(
                 0 => $text,
                 1 => $file_name,
+                2 => $errorMSG,
             );
             print_r (json_encode($fileInfo));
         }

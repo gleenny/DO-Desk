@@ -38,7 +38,6 @@ var modal6 = document.getElementById("modalUpdateSanction");
 // Get the button that opens the modal
 var btn1 = document.getElementById("btnSubmit");
 var btn2 = document.getElementById("btnUpdate");
-var btn3 = document.getElementById("submitViolation");
 var btn4 = document.getElementById("sendMessage");
 var btn5 = document.getElementById("btnSanction");
 var btn6 = document.getElementById("btnUpdateSanction");
@@ -54,7 +53,6 @@ var span6 = modal6.getElementsByClassName("close")[0];
 // When the user clicks on the button, open the modal
 btn1.onclick = function() { modal1.style.display = "block"; }
 btn2.onclick = function() { modal2.style.display = "block"; }
-btn3.onclick = function() { modal3.style.display = "block"; }
 btn4.onclick = function() { modal4.style.display = "block"; 
     document.querySelector('#studentNameSMS').innerHTML = studentNameHolderSMS;
     document.querySelector('#studentNumberSMS').innerHTML = studentViolator;

@@ -317,7 +317,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
            `studentTBL`.`lastName` AS `studentLast`
        FROM `parentTBL` 
        LEFT JOIN `studentparentTBL` ON `studentparentTBL`.`parentID` = `parentTBL`.`parentID` 
-       LEFT JOIN `studentTBL` ON `studentparentTBL`.`studentNumber` = `studentTBL`.`studentNumber`;";
+       LEFT JOIN `studentTBL` ON `studentparentTBL`.`studentNumber` = `studentTBL`.`studentNumber`
+       ORDER BY `parentTBL`.`parentID` DESC;";
    
        $result = $conn->query($query);
    
@@ -351,7 +352,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
        $conn->close();
     }
     if($_POST["requestType"] == "getStudentID"){
-        $query = "SELECT `studentTBL`.`studentNumber` FROM `studentTBL`;";
+        $query = "SELECT `studentTBL`.`studentNumber` FROM `studentTBL`
+        ORDER BY `studentTBL`.`studentNumber` DESC;";
    
        $result = $conn->query($query);
    
@@ -364,7 +366,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
        $conn->close();
     }
     if($_POST["requestType"] == "getParentID"){
-        $query = "SELECT `parentTBL`.`parentID` FROM `parentTBL`;";
+        $query = "SELECT `parentTBL`.`parentID` FROM `parentTBL`
+        ORDER BY `parentTBL`.`parentID` DESC;";
    
        $result = $conn->query($query);
    
@@ -380,7 +383,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET'){
     $query = "SELECT `studentTBL`.* FROM `studentTBL`
-    ORDER BY `studentTBL`.`studentNumber` ASC;";
+    ORDER BY `studentTBL`.`studentNumber`DESC;";
 
     $result = $conn->query($query);
 

@@ -90,7 +90,6 @@
          <div class="buttonSection">
           <button class="cards-button button" id="btnRegister">Register Administrator</button>
           <button class="cards-button button" id="btnUpdateStatus">Update Status</button>
-          <button class="cards-button button" id="btnChangeUsername">Change username</button>
           <button class="cards-button button" id="btnChangePassword">Change Passsword</button>
          </div>        
         <!-- The Modal Register Violation -->
