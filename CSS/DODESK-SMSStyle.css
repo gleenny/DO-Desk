@@ -428,6 +428,7 @@ table th {
 .TableTitle{
   font-size:15px;
 }
+
 @keyframes fadeItIn {
 0% {
   background: rgb(28,36,68);
@@ -563,8 +564,8 @@ table th {
  {
   .modal-content {
     margin: 40% auto; /* 15% from the top and centered */ 
-    width: 60%; /* Could be more or less, depending on screen size */
-    height: 50%; /* Could be more or less, depending on screen size */
+    width: 75%; /* Could be more or less, depending on screen size */
+    height: 65%; /* Could be more or less, depending on screen size */
   
   }
   .SearchStudentBar, .input {

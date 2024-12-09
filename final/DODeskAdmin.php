@@ -55,6 +55,9 @@
         require_once 'userHeader.php';
       ?>
       <!--first box-->
+      <div class="user-box zero-box" style="--delay: .6s">
+        <p style="font-weight: bold;">Users Table</p>
+      </div>
       <div class="user-box first-box" style="--delay: .6s">
           <!--searching violations-->
           <div class="form-container">
@@ -230,7 +233,7 @@
         </div>
 
       </div>
-      
+
       <div class="user-box third-box">
         <!--3:First module-->
         <!--List Module-->
@@ -265,11 +268,10 @@
         </div>
       </div>
 
-      <br>
-      <br>
+      <div class="user-box zero-box" style="--delay: .6s">
+        <p style="font-weight: bold;">Audit Table</p>
+      </div>
       
-
-
       <!--4th Card-->
       <div class="user-box fourth-box" style="--delay: .9s">
           <!--searching violations-->

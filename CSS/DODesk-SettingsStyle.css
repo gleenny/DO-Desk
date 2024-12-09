@@ -348,7 +348,31 @@
 
     border-bottom: 3px solid blue;
   }
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
 
+.form-columns {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-container input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 500px;
+}
   @media (max-width: 1024px) 
   {
     .searchs{

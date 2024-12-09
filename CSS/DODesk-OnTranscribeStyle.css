@@ -407,6 +407,9 @@ audio{
 }
 @media (max-width: 768px) 
  {
+  .buttonRecord, .buttonStop{
+    display: none;
+  }
   .notice{
     font-size:11px;
   }

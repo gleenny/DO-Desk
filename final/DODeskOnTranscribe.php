@@ -61,7 +61,8 @@
                 <br>
                 
                 <div class="textarea-container">
-                  <select class="textType" name="violationID" id="violationID" value=" ">
+                  <select class="textType" name="violationID" id="violationID">
+                  <option value="">Search Student Number</option>
                   </select>
 
                   <textarea class="textBox"id="myTextarea" placeholder="Upload your audio file"></textarea>

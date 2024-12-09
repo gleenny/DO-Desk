@@ -63,10 +63,14 @@
                 <h7 class="titleSection" style="font-weight: bold;" >Change password</h7>
                 <p>Kindly enter your current password, followed by your new password.</p>
                 <br>
-                <form id="changePassword" method="POST">
-                    <input class="textType" type="text" placeholder="Old password" id="oldPass">
+                <form class="form-container" id="changePassword" method="POST">
+                    <div class="form-columns">
+                        <div class="column">
+                        <input class="textType" type="text" placeholder="Old password" id="oldPass">
                     <input class="textType" type="text" placeholder="New password" id="newPass">
                     <input class="search" type="submit" value="Change Password" name="submit">
+                        </div>
+                    </div>
                 </form>
                 <br>
                 <h7 class="titleSection" style="font-weight: bold; ">Batch upload format</h7>
