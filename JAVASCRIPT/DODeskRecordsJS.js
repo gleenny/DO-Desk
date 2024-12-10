@@ -522,6 +522,7 @@ addSanction.addEventListener('submit', (e) => {
     const formData = new FormData();
     formData.append("violationID", document.querySelector("#sanSearchViolationID").value);
     formData.append("sanction", document.querySelector("#sanSearchSanction").value);
+    formData.append("note", document.querySelector("#sanSanctionNote").value);
     formData.append("requestType", "addSanction");
     if(document.querySelector("#sanSearchViolationID").value != ""){
         fetch(sanctionurl, {
@@ -583,6 +584,8 @@ function populateSanctionTable(i, json){
                 sanStatus.id = 'sanStatus' + i;
             let sanDate = document.createElement('td');
                 sanDate.id = 'sanDate' + i;
+            let sanNote = document.createElement('td');
+                sanNote.id = 'sanNote' + i;
             document.querySelector('#sanctionListRows').appendChild(tableRow);//tbody
                 document.querySelector('#sanctionList' + i).appendChild(sanSanctionID);
                     document.querySelector('#sanSanctionID' + i).innerHTML = json["sanctionID"][i];
@@ -602,6 +605,8 @@ function populateSanctionTable(i, json){
                     document.querySelector('#sanStatus' + i).innerHTML = sanResolveHolder;
                 document.querySelector('#sanctionList' + i).appendChild(sanDate);
                     document.querySelector('#sanDate' + i).innerHTML = json["date"][i];
+                document.querySelector('#sanctionList' + i).appendChild(sanNote);
+                    document.querySelector('#sanNote' + i).innerHTML = json["note"][i];
 }
 exportViolation.addEventListener('click', (e) => {
     e.preventDefault();

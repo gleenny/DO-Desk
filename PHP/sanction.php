@@ -121,6 +121,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $sanction = $_POST["sanction"];
         $doID = $_SESSION["userID"];
         $currentDate = date("Y-m-d");
+        $note = $_POST["note"];
         
         $sanctionIDQuery = "SELECT `punishmentTBL`.*
         FROM `punishmentTBL`
@@ -134,8 +135,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
         }
 
-        $query = "INSERT INTO `sanctionTBL` (`sanctionID`, `violationID`, `sanction`, `active`, `recordedBy`, `date`) 
-        VALUES (NULL, '$violationID', '$sanctionID', '1', '$doID', '$currentDate');";
+        $query = "INSERT INTO `sanctionTBL` (`sanctionID`, `violationID`, `sanction`, `active`, `recordedBy`, `date`, `note`) 
+        VALUES (NULL, '$violationID', '$sanctionID', '1', '$doID', '$currentDate', '$note');";
     
         if ($conn->query($query) === TRUE) {
             echo "New record created successfully!";
@@ -258,6 +259,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             $sanctions["sanction"][] = $row['sanction'];
             $sanctions["status"][] = $row['active'];
             $sanctions["date"][] = $row['date'];
+            $sanctions["note"][] = $row['note'];
         }
         print_r (json_encode($sanctions));
     }     

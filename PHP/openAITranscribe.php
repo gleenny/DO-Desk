@@ -6,12 +6,13 @@ require_once 'connections.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     if (isset($_FILES['files'])){
         require_once 'vendor/autoload.php';
+        $errorMSG = "clear";
         $text = '';
         $errors = [];
         $path = '../audio/';
         $extensions = ['mp3', 'mp4', 'mpeg', 'mpga', 'm4a', 'wav', 'webm'];
         
-        $file_name = $_FILES['files']['name'][0]; //file name
+        $file_name = $_FILES['files']['name'][0]; //file name    . $_POST["violationID"]
         $file_tmp = $_FILES['files']['tmp_name'][0]; // temp name on server
         $file_type = $_FILES['files']['type'][0]; // MIME type of file
         $file_size = $_FILES['files']['size'][0]; // file size
@@ -31,7 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             move_uploaded_file($file_tmp, $file);
             $yourApiKey = OPENAIAPIKEY;
             $client = OpenAI::client($yourApiKey);
-            $errorMSG = "clear";
             try{
                 $response = $client->audio()->transcribe([
                     'model' => 'whisper-1',
