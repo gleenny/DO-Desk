@@ -9,6 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $logID = $_POST["logID"];
         $name = str_ireplace(' ', '%', $_POST['name']);
         $date = $_POST["date"];
+        $untilDate = $_POST["untilDate"]." 23:59:59";
         $process = $_POST['process'];
         $note = $_POST["note"];
         if(!($logID == "")){
@@ -50,7 +51,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $name = "";
             }
             else if(!($date == "")){
-                $query .= "`auditTBL`.`transactionDateTime` LIKE '%$date%'";
+                if(!$untilDate == ""){
+                    $query .= "`auditTBL`.`transactionDateTime` >= '$date' AND `auditTBL`.`transactionDateTime` <= '$untilDate'";
+                }else{
+                    $query .= "`auditTBL`.`transactionDateTime` LIKE '%$date%'";
+                }
                 $date = "";
             }
             else if(!($process == "")){

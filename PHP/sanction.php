@@ -15,6 +15,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $violationCase = $_POST['violationCase'];
         $sanction = $_POST['sanction'];
         $status = $_POST['status'];
+        $date = $_POST['date'];
+        $untilDate = $_POST['untilDate'];
 
         if(!($sanctionID == "")){
             $conditionCounter++;
@@ -35,6 +37,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $conditionCounter++;
         }
         if(!($status == "")){
+            $conditionCounter++;
+        }
+        if(!($date == "")){
             $conditionCounter++;
         }
         // SQL query
@@ -90,6 +95,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $sql .= "`sanctionTBL`.`active` LIKE '%$status%'";
                 $status = "";
             }
+            else if(!($date == "")){
+                if(!$untilDate == ""){
+                    $sql .= "`sanctionTBL`.`date` >= '$date' AND `sanctionTBL`.`date` <= '$untilDate'";  
+                }else{
+                    $sql .= "`sanctionTBL`.`date` = '$date'";  
+                }
+                $date = "";
+            }
         }
         $sql .= "ORDER BY `sanctionTBL`.`sanctionID` DESC";
 
@@ -110,6 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $sanctions["sanction"][] = $row['sanction'];
                 $sanctions["status"][] = $row['active'];
                 $sanctions["date"][] = $row['date'];
+                $sanctions["note"][] = $row['note'];
             }
         }
         echo json_encode($sanctions);
@@ -168,7 +182,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $dateTime = date("Y-m-d H:i:s");
             $userID = $_SESSION['userID'];
             $auditQuery = "INSERT INTO `auditTBL` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
-            VALUES (NULL, '$userID', '$dateTime', 'Changed violation status', 'Sanction ID: $sanctionID - changed into $sanctionStatus');";
+            VALUES (NULL, '$userID', '$dateTime', 'Changed sanction status', 'Sanction ID: $sanctionID - changed into $sanctionStatus');";
             $audit = $conn->prepare($auditQuery);
             $audit->execute();
 
@@ -261,8 +275,28 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             $sanctions["date"][] = $row['date'];
             $sanctions["note"][] = $row['note'];
         }
-        print_r (json_encode($sanctions));
-    }     
+        
+    }  
+    for($i = 0; $i < count($sanctions["sanctionID"]); $i++){
+        $sanID = $sanctions['sanctionID'][$i];
+        $queryHandled = "SELECT `audittbl`.`userID`, `audittbl`.`process`, `audittbl`.`note`, `accounttbl`.`userID`, `usertbl`.`lastName`
+                        FROM `audittbl` 
+                        LEFT JOIN `accounttbl` ON `audittbl`.`userID` = `accounttbl`.`userID` 
+                        LEFT JOIN `usertbl` ON `accounttbl`.`personID` = `usertbl`.`personID`
+                        WHERE `audittbl`.`note` LIKE '%Sanction ID: $sanID - changed into 0%';";
+
+        $handleResult = $conn->query($queryHandled);
+
+        if ($handleResult->num_rows > 0) {
+            while($row = $handleResult->fetch_assoc()){
+                $sanctions["handledBy"][] = $row['lastName'];
+                break;
+            }
+        }else{
+            $sanctions["handledBy"][] = "N/A";
+        }
+    }   
+    print_r (json_encode($sanctions));
     $conn->close();
 }
 

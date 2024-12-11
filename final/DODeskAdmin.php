@@ -313,6 +313,7 @@
               <div class="form2-row"><!--second row-->
                 <div class="form2-group"><!--column 1-->
                   <input class="textType" type="date" name="searchAuditDate" id="searchAuditDate" placeholder="Transaction Date-Time">
+                  <input class="textType" type="date" name="searchAuditUntilDate" id="searchAuditUntilDate" placeholder="Transaction Date-Time">
                 </div>
               </div>
               <div class="form2-row"><!--second row-->

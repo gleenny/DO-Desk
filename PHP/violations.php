@@ -15,6 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $searchCase = $_POST['violationCase'];
         $status = $_POST['status'];
         $searchDate = $_POST['date'];
+        $untilDate = $_POST['untilDate'];
 
         if(!($studentNumber == "")){
             $conditionCounter++;
@@ -85,7 +86,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $status = "";
             }
             else if(!($searchDate == "")){
-                $sql .= "`violationTBL`.`violationDate` = '$searchDate'";
+                if(!$untilDate == ""){
+                    $sql .= "`violationTBL`.`violationDate` >= '$searchDate' AND `violationTBL`.`violationDate` <= '$untilDate'";  
+                }else{
+                    $sql .= "`violationTBL`.`violationDate` = '$searchDate'";  
+                }
                 $searchDate = "";
             }
         }
@@ -269,6 +274,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()){
+
             if($row['violationType'] == "Minor" && $row['active'] =='1'){
                 $minorCount++;
             }else if($row['violationType'] == "Major" && $row['active'] =='1'){
@@ -287,14 +293,30 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             $cases["lastName"][] = $row['lastName'];
             $cases["course"][] = $row['course'];
             $cases["violationDate"][] = $row['violationDate'];
-            //not in use
-            $cases["offenseID"][] = $row['offenseID'];
-            $cases["personID"][] = $row['personID'];
         }
         $cases["minorCount"][] = $minorCount;
         $cases["majorCount"][] = $majorCount;
-        print_r (json_encode($cases));
-    }     
+    } 
+    for($i = 0; $i < count($cases["violationID"]); $i++){
+        $vioID = $cases['violationID'][$i];
+        $queryHandled = "SELECT `audittbl`.`userID`, `audittbl`.`process`, `audittbl`.`note`, `accounttbl`.`userID`, `usertbl`.`lastName`
+                        FROM `audittbl` 
+                        LEFT JOIN `accounttbl` ON `audittbl`.`userID` = `accounttbl`.`userID` 
+                        LEFT JOIN `usertbl` ON `accounttbl`.`personID` = `usertbl`.`personID`
+                        WHERE `audittbl`.`note` LIKE '%Violation ID: $vioID - changed into Resolve%';";
+
+        $handleResult = $conn->query($queryHandled);
+
+        if ($handleResult->num_rows > 0) {
+            while($row = $handleResult->fetch_assoc()){
+                $cases["handledBy"][] = $row['lastName'];
+                break;
+            }
+        }else{
+            $cases["handledBy"][] = "N/A";
+        }
+    }
+    echo json_encode($cases);    
     $conn->close();
 }
 

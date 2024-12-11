@@ -245,7 +245,8 @@ searchForm.addEventListener('submit', function (e) {
     formData.append("violationType", document.querySelector("#typeOfViolation").value);
     formData.append("violationCase", document.querySelector("#searchCase").value);
     formData.append("status", document.querySelector("#status").value);
-    formData.append("date", document.querySelector("#searchDate").value); 
+    formData.append("date", document.querySelector("#searchDate").value);
+    formData.append("untilDate", document.querySelector("#searchUntilDate").value);  
     formData.append("requestType", "SearchStudentViolation");
         fetch(violationurl, {
             method: 'POST',
@@ -475,6 +476,8 @@ function populateTable(i, json){
             active.id = 'active' + i;
             let violationDate = document.createElement('td');
             violationDate.id = 'violationDate' + i;
+            let handledBy = document.createElement('td');
+            handledBy.id = 'handledBy' + i;
             document.querySelector('#reportListRows').appendChild(tableRow);//tbody
             document.querySelector('#violationList' + i).appendChild(violationID);
                 document.querySelector('#violationID' + i).innerHTML = json["violationID"][i];
@@ -494,6 +497,8 @@ function populateTable(i, json){
                 document.querySelector('#active' + i).innerHTML = resolveHolder;
             document.querySelector('#violationList' + i).appendChild(violationDate);
                 document.querySelector('#violationDate' + i).innerHTML = json["violationDate"][i];
+            document.querySelector('#violationList' + i).appendChild(handledBy);
+                document.querySelector('#handledBy' + i).innerHTML = json["handledBy"][i];
 }
 searchSanction.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -505,6 +510,8 @@ searchSanction.addEventListener('submit', (e) => {
     formData.append("violationCase", document.querySelector("#sanViolationCase").value);
     formData.append("sanction", document.querySelector("#sanSanction").value);
     formData.append("status", document.querySelector("#sanStatus").value);
+    formData.append("date", document.querySelector("#searchSanDate").value);
+    formData.append("untilDate", document.querySelector("#searchSanUntilDate").value);
     formData.append("requestType", "searchSanction");
     fetch(sanctionurl, {
         method: 'POST',
@@ -634,6 +641,8 @@ function populateSanctionTable(i, json){
                 sanDate.id = 'sanDate' + i;
             let sanNote = document.createElement('td');
                 sanNote.id = 'sanNote' + i;
+            let sanhandledBy = document.createElement('td');
+                sanhandledBy.id = 'sanhandledBy' + i;
             document.querySelector('#sanctionListRows').appendChild(tableRow);//tbody
                 document.querySelector('#sanctionList' + i).appendChild(sanSanctionID);
                     document.querySelector('#sanSanctionID' + i).innerHTML = json["sanctionID"][i];
@@ -655,6 +664,8 @@ function populateSanctionTable(i, json){
                     document.querySelector('#sanDate' + i).innerHTML = json["date"][i];
                 document.querySelector('#sanctionList' + i).appendChild(sanNote);
                     document.querySelector('#sanNote' + i).innerHTML = json["note"][i];
+                document.querySelector('#sanctionList' + i).appendChild(sanhandledBy);
+                    document.querySelector('#sanhandledBy' + i).innerHTML = json["handledBy"][i];
 }
 exportViolation.addEventListener('click', (e) => {
     e.preventDefault();

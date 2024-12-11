@@ -102,12 +102,14 @@
                     </div>
                     <div class="form2-row"><!--fourth row-->
                         <div class="form2-group"><!--column 1-->
-                          <input class="textType" type="date" name="searchDate" id="searchDate" placeholder="Date">
+                          <input class="textType" type="date" name="searchDate" id="searchDate" placeholder="Date"><br>
                         </div>
+                        
                     </div>
                     <!--Outside element-->
                     <button type="submit" id="searchbtn" class="searchbutton">Search</button>
                 </form>
+                <input class="textType" type="date" name="searchUntilDate" id="searchUntilDate" placeholder="untilDate">
             </div>
            
         </div>  
@@ -263,6 +265,7 @@
                   <th>Case</th>
                   <th>Status</th>
                   <th>Date</th>
+                  <th>Handled by</th>
                 </tr>
                 </thead>
 
@@ -328,9 +331,11 @@
                     </select>
                   </div>
                 </div>  
+                
                 <button type="submit" id="searchbtn" class="searchbutton">Search</button>  
-            
               </form>
+              <input class="textType" type="date" name="searchSanDate" id="searchSanDate" placeholder="Date">
+              <input class="textType" type="date" name="searchSanUntilDate" id="searchSanUntilDate" placeholder="untilDate">
             </div>
             
           </div>
@@ -449,6 +454,7 @@
                   <th>Status</th>
                   <th>Date</th>
                   <th>Notes</th>
+                  <th>Handled by</th>
                 </tr>
                 </thead>
 
