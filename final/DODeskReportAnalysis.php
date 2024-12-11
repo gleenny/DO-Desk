@@ -4,8 +4,9 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>DO DESK: Disciplinary Office Management System</title>
         
         <link rel="icon" type="image/x-icon" href="../PICTURE/DoDeskViolet.png">
@@ -16,7 +17,7 @@
             <!--font-->
             <link rel="stylesheet" href="../CSS/poppinsFont.css">
             <!--Page Style-->
-            <link rel="stylesheet" href="../CSS/DODesk-SettingsStyle.css">
+            <link rel="stylesheet" href="../CSS/aDODesk-ReportAnalysis.css">
             <!--Script-->
             <link rel="stylesheet" href="styles.css">
             <style>
@@ -57,10 +58,65 @@
       <?php
         require_once 'userHeader.php';
       ?>
-        <div class="user-box first-box">
-            
-    </div>
+      <div class="user-box first-box" style="--delay: .4s">
+        <p style="font-weight: bold; color: var(--title-text); font-size: 25px;">Reports analysis</p>
+      </div>
+
+      <div class="user-box third-box" style="--delay: 1s">
+        <p style="font-weight: bold; color: var(--title-text);"> Violation Reports</p>       
+      </div>
+
+      <div class="user-box second-box">            
+          <div class="graph card" style="--delay: 1s">
+            <div class="title">Violation Bar Graph</div>
+            <canvas id="barchartViolation" width="300" height="100"></canvas>
+          </div>
+        <div class="activity card" style="--delay: 1s">
+            <div class="title">Violations Overall</div>
+
+            <div class="activity-wrapper">
+              <div class="activity-info">
+                
+              </div>
+              <div class="activity-chart">
+                <canvas id="doughnutViolationOverall" width="250" height="250"></canvas>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="user-box third-box" style="--delay: 1s">
+        <p style="font-weight: bold; color: var(--title-text);"> Sanction Reports</p>       
+      </div>
+
+      <div class="user-box third-box">
+        <div class="graph card" style="--delay: 1s">
+          <div class="title">Sanction Bar Graph</div>
+          <canvas id="barchartSanction" width="300" height="100"></canvas>
+        </div>
+       
+        <div class="activity card" style="--delay: 1s">
+        <div class="title">Sanction Overall</div>
+
+          <div class="activity-wrapper">
+            <div class="activity-info">
+              
+            </div>
+            <div class="activity-chart">
+              <canvas id="doughnutSanctionOverall" width="250" height="250"></canvas>
+            </div>
+          </div>
+        </div>
+        
+
+      </div>
+
+
+
     <div id="snackbar"></div>
     <script src="../JAVASCRIPT/DODeskSettingJS.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
+    <script src="../Charts/chart1.js"></script>
+    <script src="../Charts/chartOverallViolation.js"></script>
 </body>
 </html>

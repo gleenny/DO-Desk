@@ -128,18 +128,23 @@
 
             <!-- Modal content -->
             <div class="modal-content1">
-              <span class="close">&times;</span>
-              <label class="titlelabel">Parent of the Student</label>
-              <table>
-              <thead>
-                  <tr>
-                    <th class="th-modal">Notes</th>
-                  </tr>
-                  </thead>
-                  <tbody id="historySMS">
-                  </tbody>
-              </table>      
+              <div class="modal-header">
+                <h2>History Message</h2>
+                <span class="close-btn">&times;</span>
+              </div>
+              <div class="modal-body">
+                <table>
+                <thead>
+                    <tr>
+                      <th class="th-modal">Notes</th>
+                    </tr>
+                    </thead>
+                    <tbody id="historySMS">
+                    </tbody>
+                </table>    
+              </div>
             </div>
+            
           </div>
 
 

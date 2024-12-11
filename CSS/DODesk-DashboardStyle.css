@@ -1,6 +1,5 @@
 * {
     margin: 0;
-
     font-family: "Poppins", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -18,6 +17,11 @@
   --leftsvg-logo: #0b5793;
   --leftsvg-logohover: #ffffff;
   --title-text: #234b6b;
+  --button: #21659c;
+  --button-text:  #ffffff;
+  --inputBackground: #ffffff;
+  --inputTextColor: #1a1b3c;
+
 
   }
   .darkmode{
@@ -29,7 +33,11 @@
   --svg-logo-color: rgba(155,156,167,255);
   --leftsvg-logo: #9898a0;
   --leftsvg-logohover: #0b5793;
-
+  --title-text: #9b9ca7;
+  --button: #141530;
+  --button-text:  #ffffff;
+  --inputBackground:#1a1b3c;
+  --inputTextColor: #9b9ca7;
   }
 * {
   outline: none;
@@ -222,6 +230,7 @@ body {
   font-size: 16px;
   font-weight: 500;
   color: var(--title-text);
+  
 }
 .card .subtitle {
   font-size: 13px;
@@ -231,6 +240,15 @@ body {
   margin-left: 20px;
 }
 
+.activity-chart{
+  margin-top: 24px;
+  margin-left: 25px;
+}
+.totalOfStudent{
+  font-size: 2rem;
+  color: var(--title-text);
+  font-weight: bold;
+}
 /* 1st module */
 
 .activity {
@@ -271,7 +289,15 @@ body {
   max-width: 100%;
   height: 350px;
   width: 100%;
-  overflow-y: scroll;
+}
+.cards-header {
+  background: var(--header-color);
+  border-radius: 6px 6px 0 0;
+  padding: 20px 45px;
+  font-size: 14px;
+  font-weight: 500;
+  align-items:flex-start;
+  color: var(--header-text);
 }
 
 .cards-header-date svg {
@@ -287,7 +313,13 @@ body {
   width: 100%;
 }
 
-
+.chart {
+  padding: 2rem;
+  border: 1px solid #f49131;
+  border-radius: 1rem;
+  background: #251c35;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.8);
+}
 /* 5th module */
 
 @-webkit-keyframes turn {
@@ -336,7 +368,7 @@ table th {
 
 .TableTitle{
   font-size:15px;
-  color: var(--title-text);
+  color: var(--header-text);
   font-weight: bold;
 
 }

@@ -5,8 +5,9 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DO DESK: Disciplinary Office Management System</title>
 
   <link rel="icon" type="image/x-icon" href="../PICTURE/DoDeskViolet.png">
@@ -43,7 +44,7 @@
     }
   </style>
   <script type="text/javascript" src="../JAVASCRIPT/darkmode.js" defer></script>
-
+  
 </head>
 
 <body class="dark-mode">
@@ -57,29 +58,60 @@
       <?php
       require_once 'userHeader.php';
       ?>
-  
-
       <div class="user-box second-box">
-        <div class="activity card" style="--delay: .1s">
-          <div class="title">Unresolved Violations</div>
+          <p style="--delay: .5s; color: var(--title-text); font-weight: bold; font-size: 2rem;">Welcome back! Sir <?php echo $_SESSION['firstName']. " ". $_SESSION['lastName']; ?> </p>
+      </div>
+
+      <div class="user-box second-box">            
+          <div class="graph card" style="--delay: 1s">
+            <div class="title">Violation Bar Graph</div>
+            <canvas id="barchartViolation" width="300" height="100"></canvas>
+          </div>
+        <div class="activity card" style="--delay: 1s">
+            <div class="title">Unresolved Violations</div>
+
+            <div class="activity-wrapper">
+              <div class="activity-info">
+                <div class="subtitle">Minor Violation:</div>
+                <div class="subtitle-count" id="minorCount">5</div>
+                <div class="subtitle">Major Violation:</div>
+                <div class="subtitle-count dist" id="majorCount">45</div>
+              </div>
+              <div class="activity-chart">
+                <canvas id="doughnutViolation" width="250" height="250"></canvas>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="user-box third-box">
+        <div class="activity card" style="--delay: 1s">
 
           <div class="activity-wrapper">
+
             <div class="activity-info">
-              <div class="subtitle">Minor Violation:</div>
+            <div class="title">Sanction Status</div>
+              <div class="subtitle">Resolved Status:</div>
               <div class="subtitle-count" id="minorCount">5</div>
-              <div class="subtitle">Major Violation:</div>
+              <div class="subtitle">Unresolved Status:</div>
               <div class="subtitle-count dist" id="majorCount">45</div>
             </div>
             <div class="activity-chart">
+              <canvas id="doughnutSanction" width="200" height="200"></canvas>
             </div>
           </div>
         </div>
-          
+        
+        <div class="graph card" style="--delay: 1s">
+          <div class="title">Sanction Bar Graph</div>
+          <canvas id="barchartSanction" width="300" height="100"></canvas>
         </div>
+       
+      </div>
 
 
       <!--2nd Card-->
-      <div class="user-box third-box">
+      <div class="user-box fourt-box">
 
         <!--List Module-->
         <div class="list cards-wrapper" style="--delay: 1s">
@@ -116,6 +148,10 @@
     </div>
 
     <script src="../JAVASCRIPT/DODeskDashboardJS.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
+    <script src="../Charts/chart1.js"></script>
+    <script src="../Charts/chart2.js"></script>
+
 </body>
 
 </html>
