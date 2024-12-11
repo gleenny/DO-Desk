@@ -2,52 +2,166 @@
 
       <!--On Insert Details-->
       <a class="header-link" href="DODeskInsertingDetails.php">
-          <svg id='Pixar_Lamp_2_24' width='19' height='19' viewBox='0 0 19 19' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='24' height='24' stroke='none' fill='#000000' opacity='0'/>
-          <g transform="matrix(0.42 0 0 0.42 12 12)" >
-          <path style="stroke: none; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(144,144,152); fill-rule: nonzero; opacity: 1;" transform=" translate(-25, -25)" d="M 27.257813 1.007813 C 26.824219 0.964844 26.378906 1.042969 25.976563 1.179688 C 25.175781 1.445313 24.390625 1.960938 23.675781 2.675781 C 22.960938 3.386719 22.445313 4.175781 22.179688 4.976563 C 21.914063 5.773438 21.867188 6.753906 22.558594 7.445313 C 23.460938 8.347656 23.996094 9.285156 24.339844 10.25 C 24.3125 10.273438 24.285156 10.296875 24.265625 10.324219 L 13.359375 22.222656 C 13.355469 22.222656 13.351563 22.226563 13.351563 22.226563 C 13.179688 22.371094 13.058594 22.566406 13.011719 22.785156 L 9.148438 32.445313 C 8.992188 32.671875 8.9375 32.949219 8.992188 33.214844 C 9.050781 33.480469 9.210938 33.714844 9.445313 33.859375 L 16 40.414063 L 16 43.03125 C 13.148438 43.164063 11.046875 43.855469 9.628906 44.585938 C 8.835938 44.992188 8.257813 45.40625 7.859375 45.734375 C 7.664063 45.902344 7.511719 46.046875 7.398438 46.160156 C 7.34375 46.21875 7.300781 46.269531 7.257813 46.324219 C 7.234375 46.351563 7.210938 46.375 7.179688 46.421875 C 7.167969 46.445313 7.148438 46.46875 7.117188 46.527344 C 7.105469 46.554688 7.085938 46.585938 7.0625 46.648438 C 7.054688 46.679688 7.027344 46.769531 7.027344 46.769531 C 7.027344 46.773438 7 47 7 47 L 7 48 C 7 48.550781 7.449219 49 8 49 L 26 49 C 26.550781 49 27 48.550781 27 48 L 27 47 C 27 46.761719 26.914063 46.53125 26.761719 46.347656 C 26.761719 46.347656 25.953125 45.433594 24.375 44.613281 C 22.957031 43.878906 20.855469 43.167969 18 43.03125 L 18 40.535156 L 23.554688 36.832031 C 23.816406 36.65625 23.980469 36.367188 24 36.054688 C 24.015625 35.738281 23.882813 35.433594 23.640625 35.234375 L 18.3125 30.792969 L 22.769531 23.65625 C 22.960938 23.429688 23.046875 23.132813 23 22.84375 L 23 15 C 23 14.898438 22.988281 14.800781 22.957031 14.703125 L 24.839844 12.65625 C 24.882813 13.082031 24.925781 13.511719 24.953125 13.953125 C 25.097656 16.300781 25.085938 18.914063 27.085938 20.914063 C 27.136719 20.96875 27.195313 21.015625 27.257813 21.054688 C 28.570313 22.207031 30.515625 22.207031 32.445313 21.5625 C 34.457031 20.890625 36.613281 19.507813 38.5625 17.5625 C 40.507813 15.613281 41.890625 13.457031 42.5625 11.445313 C 43.203125 9.523438 43.207031 7.589844 42.074219 6.28125 C 42.03125 6.214844 41.980469 6.152344 41.921875 6.097656 C 41.921875 6.09375 41.917969 6.089844 41.914063 6.085938 C 41.90625 6.078125 41.902344 6.074219 41.894531 6.070313 C 41.894531 6.066406 41.890625 6.066406 41.890625 6.0625 C 41.886719 6.0625 41.882813 6.058594 41.878906 6.054688 C 41.859375 6.039063 41.835938 6.023438 41.816406 6.007813 C 41.664063 5.863281 41.503906 5.734375 41.332031 5.625 C 39.164063 3.976563 36.804688 4.039063 34.769531 4 C 32.5625 3.957031 30.660156 3.851563 28.453125 1.570313 C 28.109375 1.214844 27.691406 1.050781 27.257813 1.007813 Z M 27.015625 2.960938 C 29.636719 5.667969 32.429688 5.957031 34.730469 6 C 34.882813 6.003906 35.015625 6.007813 35.164063 6.007813 C 34.398438 6.375 33.628906 6.839844 32.863281 7.382813 C 32.859375 7.386719 32.855469 7.386719 32.851563 7.390625 C 32.734375 7.445313 32.632813 7.523438 32.546875 7.621094 C 32.542969 7.621094 32.542969 7.621094 32.542969 7.625 C 31.828125 8.160156 31.121094 8.757813 30.4375 9.4375 C 29.734375 10.144531 29.113281 10.878906 28.566406 11.621094 C 28.527344 11.660156 28.492188 11.707031 28.457031 11.753906 C 27.863281 12.578125 27.363281 13.414063 26.972656 14.234375 C 26.964844 14.097656 26.957031 13.976563 26.949219 13.832031 C 26.800781 11.410156 26.453125 8.511719 23.96875 6.03125 C 24.042969 6.101563 23.941406 6.019531 24.078125 5.609375 C 24.214844 5.195313 24.566406 4.609375 25.089844 4.089844 C 25.613281 3.566406 26.195313 3.214844 26.609375 3.074219 C 27.027344 2.933594 27.09375 3.042969 27.015625 2.960938 Z M 38.808594 7.007813 C 39.417969 6.976563 39.898438 7.089844 40.246094 7.304688 C 40.332031 7.375 40.421875 7.4375 40.515625 7.515625 C 41.046875 8.066406 41.203125 9.199219 40.667969 10.8125 C 40.125 12.441406 38.902344 14.390625 37.144531 16.144531 C 35.390625 17.902344 33.441406 19.125 31.8125 19.667969 C 30.183594 20.207031 29.042969 20.042969 28.5 19.5 C 27.957031 18.957031 27.792969 17.816406 28.332031 16.1875 C 28.558594 15.511719 28.929688 14.769531 29.378906 14.019531 C 30.082031 14.628906 31 15 32 15 C 34.199219 15 36 13.199219 36 11 C 36 10 35.628906 9.082031 35.019531 8.378906 C 35.769531 7.929688 36.511719 7.558594 37.1875 7.335938 C 37.796875 7.128906 38.339844 7.027344 38.808594 7.007813 Z M 33.347656 9.53125 C 33.746094 9.894531 34 10.410156 34 11 C 34 12.117188 33.117188 13 32 13 C 31.410156 13 30.894531 12.746094 30.53125 12.347656 C 30.929688 11.84375 31.367188 11.339844 31.855469 10.855469 C 32.339844 10.367188 32.84375 9.929688 33.347656 9.53125 Z M 21 16.84375 L 21 22 L 16.273438 22 Z M 14.675781 24 L 20.195313 24 L 16.355469 30.144531 L 11.6875 31.480469 Z M 16.765625 32.105469 L 21.332031 35.910156 L 17.125 38.714844 L 11.90625 33.496094 Z M 16.863281 45.003906 C 16.957031 45.015625 17.046875 45.015625 17.136719 45.003906 C 20.121094 45.023438 22.164063 45.71875 23.453125 46.386719 C 24.089844 46.714844 24.035156 46.773438 24.320313 47 L 9.5625 47 C 9.835938 46.800781 10.085938 46.601563 10.542969 46.363281 C 11.832031 45.703125 13.875 45.023438 16.863281 45.003906 Z" stroke-linecap="round" />
-          </g>
-          </svg>
+      <svg
+        viewBox="0 0 24.00 24.00"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        style="transition: stroke 0.3s ease;"
+        onmouseover="this.querySelector('path').style.stroke = 'white';"
+        onmouseout="this.querySelector('path').style.stroke = 'var(--leftsvg-logo)';"
+        >
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier">
+            <path
+            d="M18.1957 8.80413C18.9727 9.22817 19.4998 10.0526 19.4998 11.0001C19.4998 12.3808 18.3805 13.5001 16.9998 13.5001C16.0523 13.5001 15.2279 12.973 14.8039 12.196M18.1957 8.80413L20.9998 6.00006L15.9998 6.00006L13.9998 4.00006C12.8952 2.89549 11.1044 2.89549 9.99981 4.00006C8.89524 5.10463 8.89524 6.89549 9.99981 8.00006L11.9998 10.0001L11.9998 15.0001L14.8039 12.196M18.1957 8.80413L14.8039 12.196M8.99951 20.9998L6.99951 11.9998L10.4995 8.49976M2.99951 20.9998L14.9995 20.9998"
+            stroke="var(--leftsvg-logo)"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ></path>
+        </g>
+        </svg>
       </a>
 
       <!--On Transcribe Case-->
       <a class="header-link" href="DODeskOnTranscribe.php">
-      <svg id='Interface_Setting_Tool_Box_24' width='26' height='26' viewBox='0 0 23 23' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='24' height='24' stroke='none' fill='#4252ce' opacity='0'/>
-              <g transform="matrix(1.43 0 0 1.43 12 12)" >
-              <g style="" >
-              <g transform="matrix(1 0 0 1 0 2)" >
-              <rect style="stroke:rgb(152,152,160); stroke-width: 1; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;" x="-6.5" y="-4.5" rx="1" ry="1" width="13" height="9" />
-              </g>
-              <g transform="matrix(1 0 0 1 0 1.5)" >
-              <line style="stroke: rgb(152,152,160); stroke-width: 1; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;" x1="-6.5" y1="0" x2="6.5" y2="0" />
-              </g>
-              <g transform="matrix(1 0 0 1 0 1.5)" >
-              <line style="stroke: rgb(152,152,160); stroke-width: 1; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;" x1="0" y1="-1" x2="0" y2="1" />
-              </g>
-              <g transform="matrix(1 0 0 1 0 -4)" >
-              <path style="stroke: rgb(152,152,160); stroke-width: 1; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;" transform=" translate(-7, -3)" d="M 10 4.5 C 10 2.8431457505076194 8.65685424949238 1.5 7 1.5 L 7 1.5 C 5.343145750507619 1.5 4 2.8431457505076194 4 4.5" stroke-linecap="round" />
-              </g>
-              </g>
-              </g>
-      </svg>
+      <svg
+        id="Interface_Setting_Tool_Box_24"
+        width="26"
+        height="26"
+        viewBox="0 0 23 23"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        style="transition: stroke 0.3s ease;"
+        onmouseover="this.querySelectorAll('rect, line, path').forEach(el => el.style.stroke = 'white');"
+        onmouseout="this.querySelectorAll('rect, line, path').forEach(el => el.style.stroke = 'var(--leftsvg-logo)');"
+        >
+        <rect width="24" height="24" stroke="var(--leftsvg-logo)" opacity="0"></rect>
+        <g transform="matrix(1.43 0 0 1.43 12 12)">
+            <g style="">
+            <g transform="matrix(1 0 0 1 0 2)">
+                <rect
+                style="stroke: var(--leftsvg-logo); stroke-width: 1; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;"
+                x="-6.5"
+                y="-4.5"
+                rx="1"
+                ry="1"
+                width="13"
+                height="9"
+                />
+            </g>
+            <g transform="matrix(1 0 0 1 0 1.5)">
+                <line
+                style="stroke: var(--leftsvg-logo); stroke-width: 1; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;"
+                x1="-6.5"
+                y1="0"
+                x2="6.5"
+                y2="0"
+                />
+            </g>
+            <g transform="matrix(1 0 0 1 0 1.5)">
+                <line
+                style="stroke: var(--leftsvg-logo); stroke-width: 1; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;"
+                x1="0"
+                y1="-1"
+                x2="0"
+                y2="1"
+                />
+            </g>
+            <g transform="matrix(1 0 0 1 0 -4)">
+                <path
+                style="stroke: var(--leftsvg-logo); stroke-width: 1; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;"
+                transform="translate(-7, -3)"
+                d="M 10 4.5 C 10 2.8431457505076194 8.65685424949238 1.5 7 1.5 L 7 1.5 C 5.343145750507619 1.5 4 2.8431457505076194 4 4.5"
+                stroke-linecap="round"
+                />
+            </g>
+            </g>
+        </g>
+        </svg>
+
       </a>
 
       <!--Message-->
       <!--http://127.0.0.1:5500/DO%20DESK/Final%20HTML/DODESK-SMS.html#-->
       <a class="header-link" href="DODeskSMS.php" > 
-      <svg viewBox="0 0 512 512" fill="currentColor" >
-      <path d="M467 76H45a45 45 0 00-45 45v270a45 45 0 0045 45h422a45 45 0 0045-45V121a45 45 0 00-45-45zm-6.3 30L287.8 278a44.7 44.7 0 01-63.6 0L51.3 106h409.4zM30 384.9V127l129.6 129L30 384.9zM51.3 406L181 277.2l22 22c14.2 14.1 33 22 53.1 22 20 0 38.9-7.9 53-22l22-22L460.8 406H51.3zM482 384.9L352.4 256 482 127V385z" /></svg>
+      <svg
+        style="stroke: pink; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 1; fill: var(--leftsvg-logo); fill-rule: nonzero; opacity: 1; transition: stroke 0.3s ease, fill 0.3s ease;"
+        fill="var(--leftsvg-logo)"
+        viewBox="0 0 1024 1024"
+        xmlns="http://www.w3.org/2000/svg"
+        onmouseover="this.style.stroke='white'; this.style.fill='white';"
+        onmouseout="this.style.stroke='pink'; this.style.fill='var(--leftsvg-logo)';"
+        >
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier">
+            <path
+            d="M1023.31 473.28c-1.36-11.312-5.614-21.713-12.095-30.465h.16l-.88-.88c-3.28-4.32-7.12-8.128-11.408-11.504L831.935 262.047V158.783c0-17.68-14.32-32-32-32H698.607l-116.8-99.711c-36.223-36.224-99.504-36.289-135.776 0l-116.4 99.711H223.935c-17.68 0-32 14.32-32 32V264.16L28.815 427.28c-17.343 11.472-28.88 31.088-28.88 53.344v479.504c0 35.184 28.817 64 64 64h896c35.184 0 64-28.816 64-64v-478.24c.224-2.88-.064-5.76-.624-8.607zM268.865 725.503L63.937 915.582V544.686zm61.697 29.999a31.634 31.634 0 0 0 11.377-8.224c1.712-1.935 3.056-4.063 4.224-6.255l137.904-127.936c7.248-5.84 15.84-8.913 24.88-8.913 9.183 0 18.367 3.216 24.527 8l383.84 347.936H110.002zm427.777-25.776l201.6-178.896v361.632zm139.599-313.104h-.976l54.896 55.792-119.92 106.432V350.638zM491.283 72.318c6.064-6.032 14.095-9.376 22.623-9.376 8.56 0 16.592 3.344 22.656 9.376l64.624 54.464H426.754zm276.655 118.464V635.63l-57.312 50.88-136.32-123.568c-37.68-29.536-91.775-30.817-131.68 1.376l-126.624 117.44-60.064-53.008V190.782zM103.777 442.813l88.16-88.129V572.3L75.313 469.404l26.992-26.592h1.472z"
+            ></path>
+        </g>
+        </svg>
       </a>
       <!--Settings-->
       <a class="header-link" href="DODeskSettings.php">
-      <svg viewBox="0 0 512 512" fill="currentColor">
-      <path d="M272 512h-32c-26 0-47.2-21.1-47.2-47.1V454c-11-3.5-21.8-8-32.1-13.3l-7.7 7.7a47.1 47.1 0 01-66.7 0l-22.7-22.7a47.1 47.1 0 010-66.7l7.7-7.7c-5.3-10.3-9.8-21-13.3-32.1H47.1c-26 0-47.1-21.1-47.1-47.1v-32.2c0-26 21.1-47.1 47.1-47.1H58c3.5-11 8-21.8 13.3-32.1l-7.7-7.7a47.1 47.1 0 010-66.7l22.7-22.7a47.1 47.1 0 0166.7 0l7.7 7.7c10.3-5.3 21-9.8 32.1-13.3V47.1c0-26 21.1-47.1 47.1-47.1h32.2c26 0 47.1 21.1 47.1 47.1V58c11 3.5 21.8 8 32.1 13.3l7.7-7.7a47.1 47.1 0 0166.7 0l22.7 22.7a47.1 47.1 0 010 66.7l-7.7 7.7c5.3 10.3 9.8 21 13.3 32.1h10.9c26 0 47.1 21.1 47.1 47.1v32.2c0 26-21.1 47.1-47.1 47.1H454c-3.5 11-8 21.8-13.3 32.1l7.7 7.7a47.1 47.1 0 010 66.7l-22.7 22.7a47.1 47.1 0 01-66.7 0l-7.7-7.7c-10.3 5.3-21 9.8-32.1 13.3v10.9c0 26-21.1 47.1-47.1 47.1zM165.8 409.2a176.8 176.8 0 0045.8 19 15 15 0 0111.3 14.5V465c0 9.4 7.7 17.1 17.1 17.1h32.2c9.4 0 17.1-7.7 17.1-17.1v-22.2a15 15 0 0111.3-14.5c16-4.2 31.5-10.6 45.8-19a15 15 0 0118.2 2.3l15.7 15.7a17.1 17.1 0 0024.2 0l22.8-22.8a17.1 17.1 0 000-24.2l-15.7-15.7a15 15 0 01-2.3-18.2 176.8 176.8 0 0019-45.8 15 15 0 0114.5-11.3H465c9.4 0 17.1-7.7 17.1-17.1v-32.2c0-9.4-7.7-17.1-17.1-17.1h-22.2a15 15 0 01-14.5-11.2c-4.2-16.1-10.6-31.6-19-45.9a15 15 0 012.3-18.2l15.7-15.7a17.1 17.1 0 000-24.2l-22.8-22.8a17.1 17.1 0 00-24.2 0l-15.7 15.7a15 15 0 01-18.2 2.3 176.8 176.8 0 00-45.8-19 15 15 0 01-11.3-14.5V47c0-9.4-7.7-17.1-17.1-17.1h-32.2c-9.4 0-17.1 7.7-17.1 17.1v22.2a15 15 0 01-11.3 14.5c-16 4.2-31.5 10.6-45.8 19a15 15 0 01-18.2-2.3l-15.7-15.7a17.1 17.1 0 00-24.2 0l-22.8 22.8a17.1 17.1 0 000 24.2l15.7 15.7a15 15 0 012.3 18.2 176.8 176.8 0 00-19 45.8 15 15 0 01-14.5 11.3H47c-9.4 0-17.1 7.7-17.1 17.1v32.2c0 9.4 7.7 17.1 17.1 17.1h22.2a15 15 0 0114.5 11.3c4.2 16 10.6 31.5 19 45.8a15 15 0 01-2.3 18.2l-15.7 15.7a17.1 17.1 0 000 24.2l22.8 22.8a17.1 17.1 0 0024.2 0l15.7-15.7a15 15 0 0118.2-2.3z" />
-      <path d="M256 367.4c-61.4 0-111.4-50-111.4-111.4s50-111.4 111.4-111.4 111.4 50 111.4 111.4-50 111.4-111.4 111.4zm0-192.8a81.5 81.5 0 000 162.8 81.5 81.5 0 000-162.8z" /></svg>
-      </a>
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        style="transition: stroke 0.3s ease;"
+        onmouseover="this.querySelectorAll('path').forEach(el => el.style.stroke = 'white');"
+        onmouseout="this.querySelectorAll('path').forEach(el => el.style.stroke = 'var(--leftsvg-logo)');"
+        >
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier">
+            <g id="style=linear">
+            <g id="setting">
+                <path
+                id="vector"
+                d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z"
+                stroke="var(--leftsvg-logo)"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ></path>
+                <path
+                id="vector_2"
+                d="M2 12.88V11.12C2 10.08 2.85 9.22 3.9 9.22C5.71 9.22 6.45 7.94 5.54 6.37C5.02 5.47 5.33 4.3 6.24 3.78L7.97 2.79C8.76 2.32 9.78 2.6 10.25 3.39L10.36 3.58C11.26 5.15 12.74 5.15 13.65 3.58L13.76 3.39C14.23 2.6 15.25 2.32 16.04 2.79L17.77 3.78C18.68 4.3 18.99 5.47 18.47 6.37C17.56 7.94 18.3 9.22 20.11 9.22C21.15 9.22 22.01 10.07 22.01 11.12V12.88C22.01 13.92 21.16 14.78 20.11 14.78C18.3 14.78 17.56 16.06 18.47 17.63C18.99 18.54 18.68 19.7 17.77 20.22L16.04 21.21C15.25 21.68 14.23 21.4 13.76 20.61L13.65 20.42C12.75 18.85 11.27 18.85 10.36 20.42L10.25 20.61C9.78 21.4 8.76 21.68 7.97 21.21L6.24 20.22C5.33 19.7 5.02 18.53 5.54 17.63C6.45 16.06 5.71 14.78 3.9 14.78C2.85 14.78 2 13.92 2 12.88Z"
+                stroke="var(--leftsvg-logo)"
+                stroke-width="1.8"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ></path>
+            </g>
+            </g>
+        </g>
+        </svg>
+
+    </a>
       <!--logout-->
-      <a class="header-link" href="../PHP/logout.php"><svg viewBox="0 0 512 512" fill="currentColor">
-        <path d="M255.2 468.6H63.8a21.3 21.3 0 01-21.3-21.2V64.6c0-11.7 9.6-21.2 21.3-21.2h191.4a21.2 21.2 0 100-42.5H63.8A63.9 63.9 0 000 64.6v382.8A63.9 63.9 0 0063.8 511H255a21.2 21.2 0 100-42.5z" />
-        <path d="M505.7 240.9L376.4 113.3a21.3 21.3 0 10-29.9 30.3l92.4 91.1H191.4a21.2 21.2 0 100 42.6h247.5l-92.4 91.1a21.3 21.3 0 1029.9 30.3l129.3-127.6a21.3 21.3 0 000-30.2z" />
-      </svg>
+      <a class="header-link" href="../PHP/logout.php">
+      <svg
+        style="stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 1; fill: var(--leftsvg-logo); fill-rule: nonzero; opacity: 1; transition: fill 0.3s ease;"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        enable-background="new 0 0 24 24"
+        onmouseover="this.style.fill='white';"
+        onmouseout="this.style.fill='var(--leftsvg-logo)';"
+        >
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier">
+            <path
+            d="M17,2H7C5.3,2,4,3.3,4,5v6h8.6l-2.3-2.3c-0.4-0.4-0.4-1,0-1.4c0.4-0.4,1-0.4,1.4,0l4,4c0.4,0.4,0.4,1,0,1.4c0,0,0,0,0,0
+            l-4,4c-0.4,0.4-1,0.4-1.4,0c-0.4-0.4-0.4-1,0-1.4l2.3-2.3H4v6c0,1.7,1.3,3,3,3h10c1.7,0,3-1.3,3-3V5C20,3.3,18.7,2,17,2z"
+            ></path>
+        </g>
+        </svg>
+
     </a>
     </div>
 
@@ -83,8 +197,8 @@
                     </svg>
                     Records
                 </a>
-                <!--Reports-->
-                <a class="header-link" href="DODeskReports.php"><svg viewBox="0 0 512 512"
+                <!--Reports --> 
+                <a class="header-link" href="DODeskReportAnalysis.php"><svg viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                     <path
                         d="M76 240c12.1 0 23.1-4.8 31.2-12.6l44.2 22A44.9 44.9 0 00196 300a45 45 0 0040.6-64.4l60-60a45 45 0 0062.3-54l52.2-39.2a45 45 0 10-18-24l-52.2 39.2a45 45 0 00-65.5 56.8l-60 60a44.7 44.7 0 00-50.6 8.2l-44.2-22A44.9 44.9 0 0076 150a45 45 0 000 90zM436 30a15 15 0 110 30 15 15 0 010-30zm-120 90a15 15 0 110 30 15 15 0 010-30zM196 240a15 15 0 110 30 15 15 0 010-30zM76 180a15 15 0 110 30 15 15 0 010-30zm0 0" />
@@ -94,25 +208,54 @@
                     Reports
                 </a>
 
+                <!--Transciptions-->
+                <a class="header-link" href="DODeskReports.php">
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.144"></g><g id="SVGRepo_iconCarrier"> <path d="M6 14.5H14" stroke="#ffffff" stroke-width="1.008" stroke-linecap="round"></path> <path d="M6 18H11.5" stroke="#ffffff" stroke-width="1.008" stroke-linecap="round"></path> <path d="M13 2.5V5C13 7.35702 13 8.53553 13.7322 9.26777C14.4645 10 15.643 10 18 10H22" stroke="#ffffff" stroke-width="1.008"></path> <path d="M2.75 10C2.75 9.58579 2.41421 9.25 2 9.25C1.58579 9.25 1.25 9.58579 1.25 10H2.75ZM21.25 14C21.25 14.4142 21.5858 14.75 22 14.75C22.4142 14.75 22.75 14.4142 22.75 14H21.25ZM15.3929 4.05365L14.8912 4.61112L15.3929 4.05365ZM19.3517 7.61654L18.85 8.17402L19.3517 7.61654ZM21.654 10.1541L20.9689 10.4592V10.4592L21.654 10.1541ZM3.17157 20.8284L3.7019 20.2981H3.7019L3.17157 20.8284ZM20.8284 20.8284L20.2981 20.2981L20.2981 20.2981L20.8284 20.8284ZM1.35509 5.92658C1.31455 6.33881 1.61585 6.70585 2.02807 6.7464C2.4403 6.78695 2.80734 6.48564 2.84789 6.07342L1.35509 5.92658ZM22.6449 18.0734C22.6855 17.6612 22.3841 17.2941 21.9719 17.2536C21.5597 17.2131 21.1927 17.5144 21.1521 17.9266L22.6449 18.0734ZM14 21.25H10V22.75H14V21.25ZM2.75 14V10H1.25V14H2.75ZM21.25 13.5629V14H22.75V13.5629H21.25ZM14.8912 4.61112L18.85 8.17402L19.8534 7.05907L15.8947 3.49618L14.8912 4.61112ZM22.75 13.5629C22.75 11.8745 22.7651 10.8055 22.3391 9.84897L20.9689 10.4592C21.2349 11.0565 21.25 11.742 21.25 13.5629H22.75ZM18.85 8.17402C20.2034 9.3921 20.7029 9.86199 20.9689 10.4592L22.3391 9.84897C21.9131 8.89241 21.1084 8.18853 19.8534 7.05907L18.85 8.17402ZM10.0298 2.75C11.6116 2.75 12.2085 2.76158 12.7405 2.96573L13.2779 1.5653C12.4261 1.23842 11.498 1.25 10.0298 1.25V2.75ZM15.8947 3.49618C14.8087 2.51878 14.1297 1.89214 13.2779 1.5653L12.7405 2.96573C13.2727 3.16993 13.7215 3.55836 14.8912 4.61112L15.8947 3.49618ZM10 21.25C8.09318 21.25 6.73851 21.2484 5.71085 21.1102C4.70476 20.975 4.12511 20.7213 3.7019 20.2981L2.64124 21.3588C3.38961 22.1071 4.33855 22.4392 5.51098 22.5969C6.66182 22.7516 8.13558 22.75 10 22.75V21.25ZM1.25 14C1.25 15.8644 1.24841 17.3382 1.40313 18.489C1.56076 19.6614 1.89288 20.6104 2.64124 21.3588L3.7019 20.2981C3.27869 19.8749 3.02502 19.2952 2.88976 18.2892C2.75159 17.2615 2.75 15.9068 2.75 14H1.25ZM14 22.75C15.8644 22.75 17.3382 22.7516 18.489 22.5969C19.6614 22.4392 20.6104 22.1071 21.3588 21.3588L20.2981 20.2981C19.8749 20.7213 19.2952 20.975 18.2892 21.1102C17.2615 21.2484 15.9068 21.25 14 21.25V22.75ZM10.0298 1.25C8.15538 1.25 6.67442 1.24842 5.51887 1.40307C4.34232 1.56054 3.39019 1.8923 2.64124 2.64124L3.7019 3.7019C4.12453 3.27928 4.70596 3.02525 5.71785 2.88982C6.75075 2.75158 8.11311 2.75 10.0298 2.75V1.25ZM2.84789 6.07342C2.96931 4.83905 3.23045 4.17335 3.7019 3.7019L2.64124 2.64124C1.80633 3.47616 1.48944 4.56072 1.35509 5.92658L2.84789 6.07342ZM21.1521 17.9266C21.0307 19.1609 20.7695 19.8266 20.2981 20.2981L21.3588 21.3588C22.1937 20.5238 22.5106 19.4393 22.6449 18.0734L21.1521 17.9266Z" fill="#ffffff"></path> </g></svg>                    Transciptions
+                </a>
+
                 <?php if($_SESSION["role"] === "Admin"){ ?>
                 <!--Admin-->
                 <a class="header-link" href="DODeskAdmin.php">
-                    <svg id='Administrator_Male_24' width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' fill="currentColor"><rect width='24' height='24' stroke='none' fill='#9b9ca7' opacity='0'/>
+                    <svg id='Administrator_Male_24' width='24' height='24' viewBox='0 0 24 24'  xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' fill="currentColor"><rect width='24' height='24' stroke='none' fill='#9b9ca7' opacity='0'/>
                     <g transform="matrix(0.5 0 0 0.5 12 12)" >
-                    <path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgba(155,156,167,255); fill-rule: nonzero; opacity: 1;" transform=" translate(-24, -22)" d="M 24 2 C 18.477152501692068 2 14 6.477152501692066 14 12 C 14 17.522847498307932 18.477152501692068 22 24 22 C 29.522847498307932 22 34 17.522847498307932 34 12 C 34 6.477152501692066 29.522847498307932 2 24 2 z M 36.391 26 L 11.609 26 C 9.619 26 8 27.785 8 29.979 L 8 31.5 C 8 34.821 9.888 37.688 13.315000000000001 39.573 C 16.161 41.139 19.955 42 24 42 C 31.706 42 40 38.714 40 31.5 L 40 29.979 C 40 27.785 38.381 26 36.391 26 z M 21.055 38.815 L 23.225 31.580999999999996 L 21.818 29 L 26.182000000000002 29 L 24.774 31.581 L 26.944000000000003 38.816 C 25.976 38.933 24.988 39 24 39 C 23.012 39 22.024 38.933 21.055 38.815 z" stroke-linecap="round" />
+                    <path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: var(--svg-logo-color); fill-rule: nonzero; opacity: 1;" transform=" translate(-24, -22)" d="M 24 2 C 18.477152501692068 2 14 6.477152501692066 14 12 C 14 17.522847498307932 18.477152501692068 22 24 22 C 29.522847498307932 22 34 17.522847498307932 34 12 C 34 6.477152501692066 29.522847498307932 2 24 2 z M 36.391 26 L 11.609 26 C 9.619 26 8 27.785 8 29.979 L 8 31.5 C 8 34.821 9.888 37.688 13.315000000000001 39.573 C 16.161 41.139 19.955 42 24 42 C 31.706 42 40 38.714 40 31.5 L 40 29.979 C 40 27.785 38.381 26 36.391 26 z M 21.055 38.815 L 23.225 31.580999999999996 L 21.818 29 L 26.182000000000002 29 L 24.774 31.581 L 26.944000000000003 38.816 C 25.976 38.933 24.988 39 24 39 C 23.012 39 22.024 38.933 21.055 38.815 z" stroke-linecap="round" />
                     </g>
                     </svg>
                     Administration
                 </a>
              <?php } ?>
              </div>
-            <h1 class="right-heading"> 
+            <h1 class="right-heading" style="color: var(--header-text)"> 
                 <?php
                 echo $_SESSION['firstName']. " ". $_SESSION['lastName'];
             ?> 
             </h1>
             <style>
-                
+                :root {
+                --delay: 0s;
+                --body-background-color: #0b5793;
+                --wrapper-background-color: #ececec;
+                --card-color: #ffffff;
+                --header-color: #0b5793;
+                --header-text: #ffffff;
+                --headerlinkhover:#21659c;
+                --svg-logo-color: #ffffff;
+                --leftsvg-logo: #0b5793;
+                --leftsvg-logohover: #ffffff;
+
+                }
+                .darkmode{
+                --body-background-color: #03051f;
+                --wrapper-background-color: #0e0e23;
+                --card-color: radial-gradient(circle, #1a2049 0%, #13162f 100%);
+                --header-color: radial-gradient(circle, #141834 0%, #13162f 100%);
+                --headerlinkhover: #abb5ff;
+                --svg-logo-color: rgba(155,156,167,255);
+                --leftsvg-logo: #9898a0;
+                --leftsvg-logohover: #0b5793;
+
+
+                }
                 .left-links {
                 display: flex;
                 gap: 15px; /* Adds space between each <a> link */
@@ -128,8 +271,7 @@
                 justify-content: space-between;
                 align-items: center;
                 background: #141834;
-                background: radial-gradient(circle, #141834 0%, #13162f 100%);
-                box-shadow: 0 16px 12px #0e0e23;
+                background: var(--header-color);
                 width: 100%;
                 padding: 0 30px;
                 -webkit-animation: top 1s both;
@@ -162,11 +304,10 @@
                 position: absolute;
                 top: -25px;
                 left: 0;
-                background-color: #0e0e23;
                 }
                 .header-link {
                 float: left;
-                color: #9b9ca7;
+                color: var(--header-text);
                 text-decoration: none;
                 display: flex;
                 align-items: center;
@@ -180,9 +321,11 @@
                 margin-right: 14px;
                 }
                 .header-link.active, .header-link:hover {
-                background: #11132c;
+                background: var(--headerlinkhover);
                 border-bottom: 3px solid #4255d4;
+                stroke: var(--leftsvg-logohover);
                 }
+                
                 @media (max-width: 946px) 
                 {
                 .right-heading{

@@ -42,9 +42,11 @@
       background: #800080;
     }
   </style>
+  <script type="text/javascript" src="../JAVASCRIPT/darkmode.js" defer></script>
+
 </head>
 
-<body>
+<body class="dark-mode">
   <!--Checks if dumaan sa login-->
   <?php
     if(!isset($_SESSION['userID']) || $_SESSION['userID'] === ''){ ?>
