@@ -41,7 +41,33 @@ window.onclick = function(event) {
     modal1.style.display = "none";
   }
 }
+getSMSHistory();
+//getting sms history
+function getSMSHistory(){
+    const formData = new FormData();
 
+    formData.append('requestType', "getHistory")
+
+    fetch(url, {
+        method: 'POST',
+        body: formData
+    }).then((Response) => Response.json())
+    .then((json) => {
+        document.querySelector("#historySMS").innerHTML = '';
+        console.log(json)
+        console.log(Object.keys(json).length)
+        for(let i = 0; i <= Object.keys(json).length; i++){
+            let smstableRow = document.createElement('tr');
+                smstableRow.id = 'smsHistory' + i;
+            let smsNote = document.createElement('td');
+                smsNote.id = 'smsNote' + i;
+            document.querySelector('#historySMS').appendChild(smstableRow);//tbody
+
+            document.querySelector('#smsHistory' + i).appendChild(smsNote);
+                document.querySelector('#smsNote' + i).innerHTML = json[i];
+        }
+    })
+}
 //searching information
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -49,7 +75,7 @@ searchForm.addEventListener('submit', (e) => {
     const formData = new FormData();
 
     formData.append("studentName", document.querySelector('#studentName').value);
-    formData.append("requestType", "searchParent");
+    formData.append("requestType", "searchParent"); 
 
     fetch(url, {
         method: 'POST',
@@ -147,6 +173,7 @@ function SMS(formData){
         return Response.text()
     }).then((body) => {
         showSnackbar("Message was succesfully sent to the student's parent");
+        getSMSHistory();
     }).catch(error => {
         showSnackbar("An error occure: " + error);
     })

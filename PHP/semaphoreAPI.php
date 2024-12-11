@@ -95,13 +95,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             
             //Show the server response
             echo $output;
+
+            $mNum = $mobileNumbers[$i];
+            $dateTime = date("Y-m-d H:i:s");
+            $userID = $_SESSION['userID'];
+            $auditQuery = "INSERT INTO `auditTBL` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
+            VALUES (NULL, '$userID', '$dateTime', 'Messaged parents', '$studentName: parent meeting on $date - $time: $mNum');";
+            $audit = $conn->prepare($auditQuery);
+            $audit->execute();
         }
-        $dateTime = date("Y-m-d H:i:s");
+    }
+    if($_POST['requestType'] == "getHistory"){
         $userID = $_SESSION['userID'];
-        $auditQuery = "INSERT INTO `auditTBL` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
-        VALUES (NULL, '$userID', '$dateTime', 'Messaged parents', '$studentName: parent meeting on $date');";
-        $audit = $conn->prepare($auditQuery);
-        $audit->execute();
+
+        $smsHistoryQuery = "SELECT `audittbl`.`userID`, `audittbl`.`process`, `audittbl`.`note`, `audittbl`.`logID`
+                            FROM `audittbl`
+                            WHERE `audittbl`.`process` LIKE 'Messaged parents' AND `audittbl`.`userID` LIKE $userID
+                            ORDER BY `audittbl`.`logID` DESC";
+        
+        $result = $conn->query($smsHistoryQuery);
+
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()){
+                $smsNote[] = $row['note'];
+            }
+        }
+        echo json_encode($smsNote);
     }
 }
 

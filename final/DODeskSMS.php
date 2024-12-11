@@ -133,13 +133,10 @@
               <table>
               <thead>
                   <tr>
-                    <th class="th-modal">Student Number</th>
-                    <th class="th-modal">Student Name</th>
-                    <th class="th-modal">Parent Name</th>
-                    <th class="th-modal">Mobile Number</th>
+                    <th class="th-modal">Notes</th>
                   </tr>
                   </thead>
-                  <tbody id="reportListRows">
+                  <tbody id="historySMS">
                   </tbody>
               </table>      
             </div>

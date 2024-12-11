@@ -14,6 +14,8 @@ const violationBatch = document.querySelector('#submitViolationExcel');
 const sanctionBatch = document.querySelector('#submitSanctionExcel');
 const exportViolation = document.querySelector('#exportViolations');
 const exportSanction = document.querySelector('#exportSanction');
+const exportPDFViolations = document.querySelector('#exportPDFViolations');
+const exportPDFSanctions = document.querySelector('#exportPDFSanctions');
 
 let rowMinorReset = 0;
 let studentViolator;
@@ -89,6 +91,52 @@ window.onclick = function(event) {
     modal6.style.display = "none";
   }
 }
+exportPDFSanctions.addEventListener('click', (e) => {
+    var sTable = document.getElementById('divSanctiontbl').innerHTML;
+
+    var style = "<style>";
+    style = style + "table {width: 100%;font: 17px Calibri;}";
+    style = style + "table, th, td {border: solid 1px #DDD; border-collapse: collapse;";
+    style = style + "padding: 2px 3px;text-align: center;}";
+    style = style + "</style>";
+
+    var win = window.open('', '', 'height=700,width=700');
+
+    win.document.write('<html><head>');
+    win.document.write('<title>Sanction List</title>');
+    win.document.write(style);
+    win.document.write('</head>');
+    win.document.write('<body>');
+    win.document.write(sTable);
+    win.document.write('</body></html>');
+
+    win.document.close();
+
+    win.print();
+})
+exportPDFViolations.addEventListener('click', (e) => {
+    var sTable = document.getElementById('divViolationtbl').innerHTML;
+
+    var style = "<style>";
+    style = style + "table {width: 100%;font: 17px Calibri;}";
+    style = style + "table, th, td {border: solid 1px #DDD; border-collapse: collapse;";
+    style = style + "padding: 2px 3px;text-align: center;}";
+    style = style + "</style>";
+
+    var win = window.open('', '', 'height=700,width=700');
+
+    win.document.write('<html><head>');
+    win.document.write('<title>Violation List</title>');
+    win.document.write(style);
+    win.document.write('</head>');
+    win.document.write('<body>');
+    win.document.write(sTable);
+    win.document.write('</body></html>');
+
+    win.document.close();
+
+    win.print();
+})
 updateSanction.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData();

@@ -118,6 +118,7 @@
            <button class="cards-button button" id="btnSubmit"  style="--delay: .7s">Submit Violation</button>
            <button class="cards-button button" id="btnUpdate"  style="--delay: .7s">Update Status</button>
            <button class="cards-button button" id="exportViolations" style="--delay: .7s">Export as Excel</button>
+           <button class="cards-button button" id="exportPDFViolations" style="--delay: .7s">Print or export as PDF</button>
            </div>
 
               <!-- The Modal Register Violation -->
@@ -249,6 +250,7 @@
             </div>
 
             <div class="cards card">
+              <div id="divViolationtbl">
               <table class="table" id="violationTable">
                 <thead>
                 <tr>
@@ -267,6 +269,7 @@
                 <tbody id="reportListRows">
                 </tbody>
               </table>
+              </div>
             </div>
 
            </div>
@@ -339,6 +342,7 @@
             <button class="cards-button button" id="btnSanction"  style="--delay: .8s">Set Sanction</button>
             <button class="cards-button button" id="btnUpdateSanction"  style="--delay: .8s">Update Sanction</button>
             <button class="cards-button button" id="exportSanction" style="--delay: .7s">Export as Excel</button>
+            <button class="cards-button button" id="exportPDFSanctions" style="--delay: .7s">Print or export as PDF</button>
 
             </div>
              <!-- The Modal Register Violation -->
@@ -431,6 +435,7 @@
             </div>
 
             <div class="cards card">
+              <div id="divSanctiontbl">
               <table class="table" id="sanctionTable">
                 <thead>
                 <tr>
@@ -450,6 +455,7 @@
                 <tbody id="sanctionListRows">
                 </tbody>
               </table>
+              </div>
             </div>
 
             </div>
