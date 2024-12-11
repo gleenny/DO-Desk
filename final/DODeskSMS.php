@@ -88,25 +88,22 @@
 
           <div class="message">
               <label  class="titlelabel">Send Message</label>
-              <p class="notice">Date when you would like the parents to visit the Office (for preset message)</p>
+              <p class="notice">Date when you would like the parents to visit the Office</p>
                 <!--For message-->
                 <form action="../JAVASCRIPT/sendSMSJS.js" enctype="multipart/form-data" method="POST" id="myformSMS">
                   <!--date-->
-                  <input class="datepicker" type="date" name="scheduleDate" id="scheduleDate" placeholder="Date"><br>
-                  <!--Student Number-->
-                  <h4 class="titlelabel">Option to send a message</h4>
-
-                  <p class="notice">Student number, to message all of student's parents/guardian</p>
+                  <input class="datepicker" type="date" name="scheduleDate" id="scheduleDate" placeholder="Date">
+                  <input class="datepicker" type="time" name="scheduleTime" id="scheduleTime" placeholder="Time"><br>
+                  <p class="notice">Mobile number, to send message to a specific number</p>
                   <input class="searchBar" type="text" placeholder="Student Number Ex. 2000111111" id="studentNumber"> 
-                  <h5 class="titlelabel">OR</h5>
-
-                  <p class="notice">Enter the Student name and the Parent contact number</p>
-                  <input class="searchBar" type="text" placeholder="Student Name (for preset)" id="studentNameSMS">
-                  <input class="searchBar" type="text" placeholder="Parent's Mobile Number" id="mobileNumber">
+                  <input class="searchBar" type="text" placeholder="Mobile Number" id="mobileNumber">
                   <br>
                   <!--textbox-->
-                  <textarea class="messageTextBox" placeholder="Your message Here, leave blank for preset message" id="message"></textarea>
+                  <textarea class="messageTextBox" placeholder="Your message Here" id="message">Hello, This is the Disciplinary Officer of STI College Global City. We are reaching to you regarding your child's school violation.</textarea>
                   <br>
+                  <p class="notice">Below is the your child who violated the school rules and the date when we are hoping to meet you.<br>
+                                    Student: Student name<br>
+                                    Date and time: dd/mm/yyyy hh/mm</p>
                   <input class="buttons" type="submit" value="Send Message" name="submit">
                 </form>
                   <!-- Snackbar element -->

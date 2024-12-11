@@ -63,7 +63,7 @@ searchForm.addEventListener('submit', (e) => {
             }
             else{
                 studentNameHolder = json["firstName"][i] + " " + json["middleName"][i] + " " + json["lastName"][i];
-            }  
+            }
 
             let studentName = document.createElement('td');
             studentName.id = 'studentName' + i;
@@ -112,29 +112,19 @@ smsForm.addEventListener('submit', (e) => {
     const formData = new FormData();
 
     formData.append("studentNumber", document.querySelector('#studentNumber').value);
-    formData.append("studentName", document.querySelector('#studentNameSMS').value);
     formData.append("mobileNumber", document.querySelector('#mobileNumber').value);
     formData.append("message", document.querySelector('#message').value);
     formData.append("date", document.querySelector('#scheduleDate').value);
+    formData.append("time", document.querySelector('#scheduleTime').value);
     formData.append("requestType", "sendMessage");
 
-    //preset bulk
     if(document.querySelector('#scheduleDate').value > today){
-        if(document.querySelector('#scheduleDate').value > today && document.querySelector('#studentNumber').value != "" && document.querySelector('#message').value == ""){
+        if(document.querySelector('#studentNumber').value && document.querySelector('#message').value && document.querySelector('#scheduleTime').value){
             SMS(formData);
-        }else if(document.querySelector('#studentNumber').value != "" && document.querySelector('#message').value != ""){ //customized bulk
-            SMS(formData);
-        }else if(document.querySelector('#scheduleDate').value > today && document.querySelector('#studentNameSMS').value != "" && document.querySelector('#mobileNumber').value != "" && document.querySelector('#message').value == ""){ //preset one message
-            SMS(formData);
-        }else if(document.querySelector('#mobileNumber').value != "" && document.querySelector('#message').value != ""){ //customize one message
-            SMS(formData);
-        }else{
-            showSnackbar("Missing field");
         }
     }else{
         showSnackbar("Invalid Date");
     }
-   
 })
 function SMS(formData){
     fetch(url, {

@@ -361,6 +361,11 @@
                         </div>
                         <div class="formModal-row">
                           <div class="formModal-group">
+                            <input type="text" placeholder="Notes example: 3 days suspension" id="sanSanctionNote">
+                          </div>
+                        </div>
+                        <div class="formModal-row">
+                          <div class="formModal-group">
                             <input class="modalBtn" type="submit" value="Set Sanction" name="submit">
                           </div>
                         </div>
@@ -436,6 +441,7 @@
                   <th>Sanction</th>
                   <th>Status</th>
                   <th>Date</th>
+                  <th>Notes</th>
                 </tr>
                 </thead>
 

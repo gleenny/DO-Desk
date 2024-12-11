@@ -267,6 +267,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
        }     
        $conn->close();
     }
+    if($_POST["requestType"] === "addNewViolation"){
+        $newViolation = $_POST["newViolation"];
+        $newViolationType = $_POST["newViolationType"];
+
+        $query = "INSERT INTO `offensetbl` (`offenseID`, `offense`, `violationType`) VALUES (NULL, '$newViolation', '$newViolationType');";
+        $addViolation = $conn->prepare($query);
+        $addViolation->execute();
+
+        $dateTime = date("Y-m-d H:i:s");
+        $userID = $_SESSION['userID'];
+        $auditQuery = "INSERT INTO `auditTBL` (`logID`, `userID`, `transactionDateTime`, `process`, `note`) 
+        VALUES (NULL, '$userID', '$dateTime', 'Added new violation', '$adminID : $adminStatus');";
+        $audit = $conn->prepare($auditQuery);
+        $audit->execute();
+        
+        echo "Added new violation";
+    }
 }
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
     $query = "SELECT `userTBL`.`firstName`,

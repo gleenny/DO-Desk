@@ -6,6 +6,7 @@ const searchAudit = document.querySelector('#searchAuditForm');
 const updateStatusForm = document.querySelector('#updateStatusForm');
 const changePasswordForm = document.querySelector('#changePasswordForm');
 const changeUsernameForm = document.querySelector('#changeUsernameForm');
+const addNewViolation = document.querySelector('#addNewViolation');
 
 getUserInfo();
 getAudit();
@@ -56,7 +57,25 @@ var span3 = document.getElementsByClassName("close")[0];
         span3.onclick = function() { modal3.style.display = "none"; }
 
 
-
+addNewViolation.addEventListener('click', (e) =>{
+  e.preventDefault();
+  const formData = new FormData();
+  formData.append("newViolation", document.querySelector("#newViolation").value);
+  formData.append("newViolationType", document.querySelector("#newViolationType").value);
+  formData.append("requestType", "addNewViolation");
+  fetch(adminurl, {
+    method: 'POST',
+    body: formData,
+  })
+  .then((Response) => {
+    return Response.text()
+  }).then((body) => {
+    showSnackbar("New violation has been added")
+  }).catch(error => {
+    console.log(error)
+    showSnackbar("An Error occured");
+  })
+})
 function getAudit(){
   fetch(auditurl, {
       method: 'GET'

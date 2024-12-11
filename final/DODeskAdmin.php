@@ -83,7 +83,9 @@
               <button type="submit" id="searchbtn" class="searchbutton">Search</button>
             </form>
           </div>
+          
       </div>  
+      
       <!--Second box-->
       <div class="user-box second-box" style="--delay: .6s">
         <!-- Trigger/Open The Modal -->
@@ -91,7 +93,15 @@
           <button class="cards-button button" id="btnRegister">Register Administrator</button>
           <button class="cards-button button" id="btnUpdateStatus">Update Status</button>
           <button class="cards-button button" id="btnChangePassword">Change Passsword</button>
-         </div>        
+        <!--PAKILIPAT TO-->
+          <input class="textType" type="text" name="newViolation" id="newViolation" placeholder="New Violation"> 
+          <select class="select" name="status" id="newViolationType" value="">
+                    <option value="Minor">Minor</option>
+                    <option value="Major">Major</option>
+                  </select>
+          <button class="cards-button button" id="addNewViolation">Add new violation</button>
+
+         </div>  <br>     
         <!-- The Modal Register Violation -->
         <div id="modalRegister" class="modal">
         <!-- Modal content -->

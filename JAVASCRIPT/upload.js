@@ -11,6 +11,8 @@ let filename;
 
 getViolationID();
 
+
+
 //save text file and db query
 saveTranscript.addEventListener("click", textUpload);
 function textUpload(){
@@ -107,7 +109,7 @@ if (navigator.mediaDevices) {
 form.addEventListener('submit', (e) => {
     e.preventDefault()
 
-    if(document.querySelector('#myFile').files.length != 0){
+    if(document.querySelector('#myFile').files.length != 0 && document.querySelector("#violationID").selectedIndex != 0){
       const files = document.querySelector('#myFile').files;
       const formData = new FormData();
   
@@ -115,6 +117,7 @@ form.addEventListener('submit', (e) => {
           let file = files[i]
   
           formData.append('files[]', file)
+          formData.append('violationID', document.querySelector("#violationID").value)
       }
   
       showSnackbar("file is uploading");

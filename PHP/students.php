@@ -55,7 +55,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         if(empty($_POST["middleName"])){
             $parentQuery = "INSERT INTO `parentTBL` (`parentID`, `firstName`, `middleName`, `lastName`, `mobileNumber`) 
             VALUES (NULL, '$parentFirstName', NULL, '$parentLastName', '$mobileNumber');";
-            echo "hello";
         }else{
             $parentQuery = "INSERT INTO `parentTBL` (`parentID`, `firstName`, `middleName`, `lastName`, `mobileNumber`) 
             VALUES (NULL, '$parentFirstName', '$parentMiddleName', '$parentLastName', '$mobileNumber');";
