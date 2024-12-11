@@ -43,6 +43,8 @@
                 background: #800080;
             }
         </style>
+        <script type="text/javascript" src="../JAVASCRIPT/darkmode.js" defer></script>
+
 </head>
 <body>
     <!--Checks if dumaan sa login-->
@@ -57,7 +59,7 @@
         require_once 'userHeader.php';
     ?>
           <div class="user-box zero-box" style="--delay: .6s">
-            <p style="font-weight: bold; "> Search Student</p>
+            <p style="font-weight: bold;  color: var(--title-text); "> Search Student</p>
           </div>
         <!--first box-->
         <div class="user-box first-box" style="--delay: .6s"  >
@@ -143,7 +145,7 @@
         </div>
         <div class="user-box fourth-box" style="--delay: .10s">
 
-          <p style="font-weight: bold;"> Search Parent</p>
+          <p style="font-weight: bold;  color: var(--title-text);"> Search Parent</p>
         </div>
         <div class="user-box fifth-box" style="--delay: .10s">
 

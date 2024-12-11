@@ -41,6 +41,8 @@
               background: #800080;
           }
       </style>
+      <script type="text/javascript" src="../JAVASCRIPT/darkmode.js" defer></script>
+
 </head>
 <body>
   <!--Checks if dumaan sa login-->

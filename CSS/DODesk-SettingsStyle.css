@@ -20,7 +20,9 @@
     --title-text: #234b6b;
     --button: #21659c;
     --button-text:  #ffffff;
-
+    --inputBackground: #ffffff;
+    --inputTextColor: #1a1b3c;
+  
   
     }
     .darkmode{
@@ -32,12 +34,12 @@
     --svg-logo-color: rgba(155,156,167,255);
     --leftsvg-logo: #9898a0;
     --leftsvg-logohover: #0b5793;
+    --title-text: #9b9ca7;
     --button: #141530;
-    --button-text:  #9b9ca7;
-
-  
+    --button-text:  #ffffff;
+    --inputBackground:#ffffff;
+    --inputTextColor: #9b9ca7;
     }
-  
   * {
     outline: none;
     box-sizing: border-box;
@@ -221,8 +223,7 @@
     display: block;
     flex-direction: column;
     flex-grow: 1;
-    width: 100%;
-  
+    width: 70%;
   }
   .card .title {
   font-size: 16px;
@@ -240,8 +241,9 @@
   }
   
   .textType {
-    color: #9b9ca7;
-    background: #dddef1;
+    font-size: 13px;
+    color: var(--inputTextColor);
+    background: var(--inputBackground);
     border: none;
     padding: 10px 15px;
   }
@@ -257,6 +259,7 @@
     background: var(--button);
     border: none;
     padding: 10px 15px;
+
   }
   .search:hover {
     background: #232435;

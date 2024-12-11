@@ -42,7 +42,10 @@
       background: #800080;
     }
   </style>
+  <script type="text/javascript" src="../JAVASCRIPT/darkmode.js" defer></script>
+
 </head>
+
 
 <body>
   <div class="wrapper">
@@ -52,41 +55,25 @@
       <div class="user-box first-box" style="--delay: .1s">
 
         <div class="SMSPage card" style="--delay: .1s">
-
-         <div class="searchStudent">
-         <div class="title">Contact Personnel</div>
-          <!--Search Student-->
-            <label class="titlelabel">Search Student</label>
-            <p class="notice"> Search the student and you can see the parent name and their phone number </p>
-            <form action="../JAVASCRIPT/sendSMSJS.js" enctype="multipart/form-data" method="POST" id="myformFindParent">
-              <input class="SearchStudentBar" type="text" placeholder="Student Name" id="studentName">
-              <input class="buttons" id="myBtn" type="submit" value="Search" name="submit">              
-            </form>
-         </div>
-          
-      <!-- The Modal -->
-          <div id="myModal" class="modal">
-
-            <!-- Modal content -->
-            <div class="modal-content">
-              <span class="close">&times;</span>
-              <label class="titlelabel">Parent of the Student</label>
-              <table>
-              <thead>
-                  <tr>
-                    <th class="th-modal">Student Number</th>
-                    <th class="th-modal">Student Name</th>
-                    <th class="th-modal">Parent Name</th>
-                    <th class="th-modal">Mobile Number</th>
-                  </tr>
-                  </thead>
-                  <tbody id="reportListRows">
-                  </tbody>
-              </table>      
-            </div>
-          </div>
-
-          <div class="message">
+          <div class="boxcard">
+            <button class="svg-button" id="historyBtn">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 15h-2v-6h3v2h-1zM11 4v2H6v5H4V4z"/>
+              </svg>
+            </button>
+            <div class="boxcard-content">
+              <div class="searchStudent">
+                  <div class="title">Contact Personnel</div>
+                    <!--Search Student-->
+                      <label class="titlelabel">Search Student</label>
+                      <p class="notice"> Search the student and you can see the parent name and their phone number </p>
+                      <form action="../JAVASCRIPT/sendSMSJS.js" enctype="multipart/form-data" method="POST" id="myformFindParent">
+                        <input class="SearchStudentBar" type="text" placeholder="Student Name" id="studentName">
+                        <input class="buttons" id="myBtn" type="submit" value="Search" name="submit">              
+                      </form>
+                  </div>
+              </div>
+              <div class="message">
               <label  class="titlelabel">Send Message</label>
               <p class="notice">Date when you would like the parents to visit the Office</p>
                 <!--For message-->
@@ -112,6 +99,54 @@
               </div>
             </div>
           </div>
+            </div>
+
+
+      <!-- The Modal -->
+          <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <label class="titlelabel">Parent of the Student</label>
+              <table>
+              <thead>
+                  <tr>
+                    <th class="th-modal">Student Number</th>
+                    <th class="th-modal">Student Name</th>
+                    <th class="th-modal">Parent Name</th>
+                    <th class="th-modal">Mobile Number</th>
+                  </tr>
+                  </thead>
+                  <tbody id="reportListRows">
+                  </tbody>
+              </table>      
+            </div>
+          </div>
+          <!-- The History Modal -->
+          <div id="historyModal" class="modal1">
+
+            <!-- Modal content -->
+            <div class="modal-content1">
+              <span class="close">&times;</span>
+              <label class="titlelabel">Parent of the Student</label>
+              <table>
+              <thead>
+                  <tr>
+                    <th class="th-modal">Student Number</th>
+                    <th class="th-modal">Student Name</th>
+                    <th class="th-modal">Parent Name</th>
+                    <th class="th-modal">Mobile Number</th>
+                  </tr>
+                  </thead>
+                  <tbody id="reportListRows">
+                  </tbody>
+              </table>      
+            </div>
+          </div>
+
+
+         
       </div>
     <script src="../JAVASCRIPT/sendSMSJS.js"></script>
 </body>

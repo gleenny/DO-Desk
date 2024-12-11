@@ -43,6 +43,7 @@
                 background: #800080;
             }
         </style>
+      <script type="text/javascript" src="../JAVASCRIPT/darkmode.js" defer></script>
 </head>
 <body>
   <!--Checks if dumaan sa login-->
@@ -56,11 +57,12 @@
       ?>
       <!--first box-->
       <div class="user-box zero-box" style="--delay: .6s">
-        <p style="font-weight: bold;">Users Table</p>
+        <p style="font-weight: bold; color: var(--title-text);">Users Table</p>
       </div>
       <div class="user-box first-box" style="--delay: .6s">
           <!--searching violations-->
           <div class="form-container">
+            <p>Search User</p>
             <form class="form1" id="searchForm">
               <div class="form1-row"><!--first row-->
                 <div class="form1-group"><!--column 1-->
@@ -94,12 +96,7 @@
           <button class="cards-button button" id="btnUpdateStatus">Update Status</button>
           <button class="cards-button button" id="btnChangePassword">Change Passsword</button>
         <!--PAKILIPAT TO-->
-          <input class="textType" type="text" name="newViolation" id="newViolation" placeholder="New Violation"> 
-          <select class="select" name="status" id="newViolationType" value="">
-                    <option value="Minor">Minor</option>
-                    <option value="Major">Major</option>
-                  </select>
-          <button class="cards-button button" id="addNewViolation">Add new violation</button>
+          
 
          </div>  <br>     
         <!-- The Modal Register Violation -->
@@ -276,9 +273,28 @@
           </div>
         </div>
       </div>
+      <br>
+      <div class="user-box titlefourthhalf-box" style="--delay: .6s">
+        <p style="font-weight: bold; color: var(--title-text);">Violations Setting</p>
 
+      </div>
+
+      <div class="user-box fourthhalf-box" style="--delay: .6s">
+        
+        <div class="violation-form">
+          <p>Register a new violation here. Please specify the type of violation: minor or major.</p>
+          <input class="newViolation" type="text" name="newViolation" id="newViolation" placeholder="New Violation"> 
+          <select class="violationType" name="status" id="newViolationType" value="">
+            <option value="">Violation Type</option>
+            <option value="Minor">Minor</option>
+            <option value="Major">Major</option>
+          </select>
+          <button class="cards-button button" id="addNewViolation">Add new violation</button>
+        </div>
+      </div>
+    <br>
       <div class="user-box zero-box" style="--delay: .6s">
-        <p style="font-weight: bold;">Audit Table</p>
+        <p style="font-weight: bold;   color: var(--title-text); ">Audit Table</p>
       </div>
       
       <!--4th Card-->
@@ -324,7 +340,7 @@
                 <path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; rgba(155,156,167,255); fill-rule: nonzero; opacity: 1;" transform=" translate(-12, -12)" d="M 20 3 L 4 3 C 2.897 3 2 3.897 2 5 L 2 19 C 2 20.103 2.8970000000000002 21 4 21 L 20 21 C 21.103 21 22 20.103 22 19 L 22 5 C 22 3.897 21.103 3 20 3 z M 11 17 L 5 17 L 5 15 L 11 15 L 11 17 z M 11 13 L 5 13 L 5 11 L 11 11 L 11 13 z M 11 9 L 5 9 L 5 7 L 11 7 L 11 9 z M 15 17 L 13 17 L 13 7 L 15 7 L 15 17 z M 19 17 L 17 17 L 17 15 L 19 15 L 19 17 z M 19 13 L 17 13 L 17 11 L 19 11 L 19 13 z M 19 9 L 17 9 L 17 7 L 19 7 L 19 9 z" stroke-linecap="round" />
                 </g>
                 </svg>
-              <span class="today"> Audit Trail </span>
+              <span class="today" > Audit Trail </span>
             </div>
           </div>
           <div class="cards card">

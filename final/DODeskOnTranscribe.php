@@ -41,6 +41,8 @@
               background: #800080;
           }
       </style>
+              <script type="text/javascript" src="../JAVASCRIPT/darkmode.js" defer></script>
+
 </head>
 <body>
   <!--Checks if dumaan sa login-->
@@ -57,7 +59,7 @@
             <!--FIrst Column-->
             <div class="user-box first-box">
               <div class="notes card" style="--delay: .1s">
-                <p class="title">Recording Case</p>
+                <p class="title" style="color: var(--title-text);">Recording Case</p>
                 <br>
                 
                 <div class="textarea-container">
