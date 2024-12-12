@@ -63,23 +63,53 @@
       </div>
 
       <div class="user-box third-box" style="--delay: 1s">
+        <select class="textType" name="searchYear" id="searchYear" value=" ">
+        </select>      
+      </div>
+
+      <div class="user-box third-box" style="--delay: 1s">
         <p style="font-weight: bold; color: var(--title-text);"> Violation Reports</p>       
       </div>
 
       <div class="user-box second-box">            
           <div class="graph card" style="--delay: 1s">
-            <div class="title">Violation Bar Graph</div>
-            <canvas id="barchartViolation" width="300" height="100"></canvas>
+            <div class="title">Violations by Course</div>
+            <canvas id="barchartCourseViolation" width="300" height="100"></canvas>
           </div>
+          <div class="graph card" style="--delay: 1s">
+            <div class="title">Violation Bar Graph</div>
+            <canvas id="barchartTop5Violation" width="300" height="100"></canvas>
+          </div>
+      </div>
+
+      <div class="user-box second-box" style="--delay: 1s">
         <div class="activity card" style="--delay: 1s">
-            <div class="title">Violations Overall</div>
+            <div class="title">Violations Type Overall</div>
 
             <div class="activity-wrapper">
               <div class="activity-info">
-                
+              <div class="subtitle">Minor violation:</div>
+                <div class="subtitle-count" id="violationMinor">5</div>
+                <div class="subtitle">Major violation:</div>
+                <div class="subtitle-count dist" id="violationMajor">45</div>
               </div>
               <div class="activity-chart">
-                <canvas id="doughnutViolationOverall" width="250" height="250"></canvas>
+                <canvas id="doughnutViolationCaseOverall" width="250" height="250"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="activity card" style="--delay: 1s">
+            <div class="title">Violations Resolve Overall</div>
+
+            <div class="activity-wrapper">
+              <div class="activity-info">
+              <div class="subtitle">Resolved Violation:</div>
+                <div class="subtitle-count" id="violationResolve">5</div>
+                <div class="subtitle">Unresolved Violation:</div>
+                <div class="subtitle-count dist" id="violationUnresolve">45</div>
+              </div>
+              <div class="activity-chart">
+                <canvas id="doughnutViolationResolveOveralls" width="250" height="250"></canvas>
               </div>
             </div>
           </div>
@@ -100,7 +130,10 @@
 
           <div class="activity-wrapper">
             <div class="activity-info">
-              
+            <div class="subtitle">Resolved Sanction:</div>
+                <div class="subtitle-count" id="sanctionResolve">5</div>
+                <div class="subtitle">Unresolved Sanction:</div>
+                <div class="subtitle-count dist" id="sanctionUnresolve">45</div>
             </div>
             <div class="activity-chart">
               <canvas id="doughnutSanctionOverall" width="250" height="250"></canvas>
@@ -114,9 +147,7 @@
 
 
     <div id="snackbar"></div>
-    <script src="../JAVASCRIPT/DODeskSettingJS.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
-    <script src="../Charts/chart1.js"></script>
-    <script src="../Charts/chartOverallViolation.js"></script>
+    <script src="../JAVASCRIPT/DODeskAnalysisJS.js"></script>
 </body>
 </html>

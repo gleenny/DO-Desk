@@ -234,6 +234,90 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }     
         $conn->close();
     }
+    if($_POST['requestType'] == "getSanctionCaseCount"){
+        $year = $_POST['year'];
+        $sanctionCounts = [];
+    
+        $query = "SELECT `punishmenttbl`.`sanction` AS 'case', `sanctiontbl`.`sanction`, count(`sanctiontbl`.`sanction`) AS 'count'
+                    FROM `punishmenttbl` 
+                    LEFT JOIN `sanctiontbl` ON `sanctiontbl`.`sanction` = `punishmenttbl`.`sanctionID`
+                    WHERE `sanctiontbl`.`date` LIKE '%2024%'
+                    GROUP BY `sanctiontbl`.`sanction`
+                    ORDER BY count(`sanctiontbl`.`sanction`) DESC;";
+    
+        $results = $conn->query($query);
+    
+        if($results->num_rows > 0){  
+            while ($row = $results->fetch_assoc()) {
+                $sanctionCounts["case"][] = $row['case'];
+                $sanctionCounts["count"][] = $row['count'];
+            }
+        }
+        echo json_encode($sanctionCounts);
+        $conn->close();
+    }
+    if($_POST['requestType'] == "getSanctionResolveCount"){
+        $year = $_POST['year'];
+        $sanctionResolveCounts = [];
+    
+        $query = "SELECT `sanctiontbl`.`active`, count(`sanctiontbl`.`active`) as 'count'
+                    FROM `sanctiontbl`
+                    WHERE `sanctiontbl`.`date` LIKE '%2024%'
+                    GROUP BY `sanctiontbl`.`active`
+                    ORDER BY `sanctiontbl`.`active` ASC;";
+    
+        $results = $conn->query($query);
+    
+        if($results->num_rows > 0){  
+            while ($row = $results->fetch_assoc()) {
+                $sanctionResolveCounts["active"][] = $row['active'];
+                $sanctionResolveCounts["count"][] = $row['count'];
+            }
+        }
+        echo json_encode($sanctionResolveCounts);
+        $conn->close();
+    }
+    if($_POST['requestType'] == "getOverallResolveSanction"){
+        $overallSanctionResolveCounts = [];
+    
+        $query = "SELECT `sanctiontbl`.`active`, count(`sanctiontbl`.`active`) AS 'count'
+                    FROM `sanctiontbl`
+                    GROUP BY `sanctiontbl`.`active`
+                    ORDER BY `sanctiontbl`.`active`;";
+    
+        $results = $conn->query($query);
+    
+        if($results->num_rows > 0){  
+            while ($row = $results->fetch_assoc()) {
+                $overallSanctionResolveCounts["active"][] = $row['active'];
+                $overallSanctionResolveCounts["count"][] = $row['count'];
+            }
+        }
+        echo json_encode($overallSanctionResolveCounts);
+        $conn->close();
+    }
+    if($_POST['requestType'] == "SanctionYear"){
+        $year = $_POST['year'];
+        $yearlySanctions = [];
+    
+        $query = "SELECT `punishmenttbl`.*, count(`sanctiontbl`.`sanction`) AS 'count'
+                FROM `punishmenttbl` 
+                LEFT JOIN `sanctiontbl` ON `sanctiontbl`.`sanction` = `punishmenttbl`.`sanctionID`
+                WHERE `sanctiontbl`.`date` LIKE '%$year%'
+                GROUP BY `punishmenttbl`.`sanction`
+                ORDER BY `punishmenttbl`.`sanctionID`;";
+    
+        $results = $conn->query($query);
+    
+        if($results->num_rows > 0){  
+            while ($row = $results->fetch_assoc()) {
+                $yearlySanctions["sanction"][] = $row['sanction'];
+                $yearlySanctions["count"][] = $row['count'];
+            }
+        }
+        echo json_encode($yearlySanctions);
+        $conn->close();
+    }
 }
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
     $sanctions = [];

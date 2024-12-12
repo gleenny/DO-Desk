@@ -195,6 +195,76 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
         $conn->close();
     }
+    if($_POST['requestType'] == "getViolationCaseCount"){
+        $year = $_POST['year'];
+        $violationCounts = [];
+
+        $query = "SELECT `violationtbl`.`offenseID`, `offensetbl`.`offense`, count(`violationtbl`.`offenseID`) AS 'count'
+                FROM `violationtbl` 
+                LEFT JOIN `offensetbl` ON `violationtbl`.`offenseID` = `offensetbl`.`offenseID`
+                WHERE `violationtbl`.`violationDate` LIKE '%$year%'
+                GROUP BY `offensetbl`.`offense`
+                ORDER BY count(`violationtbl`.`offenseID`) DESC;";
+
+        $results = $conn->query($query);
+
+        if($results->num_rows > 0){  
+            while ($row = $results->fetch_assoc()) {
+                $violationCounts["offense"][] = $row['offense'];
+                $violationCounts["count"][] = $row['count'];
+            }
+        }
+        echo json_encode($violationCounts);
+        $conn->close();
+    }
+    if($_POST['requestType'] == "violationCourse"){
+        $year = $_POST['year'];
+        $violationCounts = [];
+
+        $query = "SELECT `coursetbl`.`courseID`, a.count
+                    FROM `coursetbl`
+                    LEFT JOIN ( 
+                    SELECT `coursetbl`.`courseID`, count(`violationtbl`.`studentNumber`) AS 'count'
+                    FROM `coursetbl` 
+                        LEFT JOIN `studenttbl` ON `studenttbl`.`course` = `coursetbl`.`courseID` 
+                        LEFT JOIN `violationtbl` ON `violationtbl`.`studentNumber` = `studenttbl`.`studentNumber`
+                        WHERE `violationtbl`.`violationDate` LIKE '%$year%'
+                        GROUP BY `coursetbl`.`courseID`
+                        ORDER BY `coursetbl`.`courseID`) a ON `coursetbl`.`courseID` = a.courseID";
+
+        $results = $conn->query($query);
+
+        if($results->num_rows > 0){  
+            while ($row = $results->fetch_assoc()) {
+                $violationCounts["course"][] = $row['courseID'];
+                $violationCounts["count"][] = $row['count'];
+            }
+        }
+        echo json_encode($violationCounts);
+        $conn->close();
+    }
+    if($_POST['requestType'] == "violationTop5"){
+        $year = $_POST['year'];
+        $Top5violationCounts = [];
+
+        $query = "SELECT `violationtbl`.`offenseID`, `offensetbl`.`offense`, count(`offensetbl`.`offense`) AS 'count'
+                    FROM `violationtbl` 
+                    LEFT JOIN `offensetbl` ON `violationtbl`.`offenseID` = `offensetbl`.`offenseID`
+                    WHERE `violationtbl`.`violationDate` LIKE '%$year%'
+                    GROUP BY `offensetbl`.`offense`
+                    ORDER BY count(`offensetbl`.`offense`) DESC;";
+
+        $results = $conn->query($query);
+
+        if($results->num_rows > 0){  
+            while ($row = $results->fetch_assoc()) {
+                $Top5violationCounts["offense"][] = $row['offense'];
+                $Top5violationCounts["count"][] = $row['count'];
+            }
+        }
+        echo json_encode($Top5violationCounts);
+        $conn->close();
+    }
     //checking minor violations
     if($_POST['requestType'] == "checkMinorViolationCount"){
         
@@ -246,6 +316,65 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }     
         $conn->close();
     }
+    if($_POST['requestType'] == "getViolationResolveCount"){
+        $year = $_POST['year'];
+        $violationResolveCounts = [];
+    
+        $query = "SELECT `violationtbl`.`active`, count(`violationtbl`.`active`) AS 'count'
+                    FROM `violationtbl`
+                    WHERE `violationtbl`.`violationDate` LIKE '%2024%'
+                    GROUP BY `violationtbl`.`active`
+                    ORDER BY `violationtbl`.`active` ASC;";
+    
+        $results = $conn->query($query);
+    
+        if($results->num_rows > 0){  
+            while ($row = $results->fetch_assoc()) {
+                $violationResolveCounts["active"][] = $row['active'];
+                $violationResolveCounts["count"][] = $row['count'];
+            }
+        }
+        echo json_encode($violationResolveCounts);
+        $conn->close();
+    }
+    if($_POST['requestType'] == "getOverallResolveViolation"){
+        $violationResolveCounts = [];
+    
+        $query = "SELECT `violationtbl`.`active`, count(`violationtbl`.`active`) AS 'count'
+                    FROM `violationtbl`
+                    GROUP BY `violationtbl`.`active`
+                    ORDER BY `violationtbl`.`active` ASC;";
+    
+        $results = $conn->query($query);
+    
+        if($results->num_rows > 0){  
+            while ($row = $results->fetch_assoc()) {
+                $violationResolveCounts["active"][] = $row['active'];
+                $violationResolveCounts["count"][] = $row['count'];
+            }
+        }
+        echo json_encode($violationResolveCounts);
+        $conn->close();
+    }
+    if($_POST['requestType'] == "getOverallTypeViolation"){
+        $violationTypeOverallCounts = [];
+    
+        $query = "SELECT `offensetbl`.`violationType`, count(`offensetbl`.`violationType`) AS 'count'
+                    FROM `violationtbl` 
+	                LEFT JOIN `offensetbl` ON `violationtbl`.`offenseID` = `offensetbl`.`offenseID`
+                    GROUP BY `offensetbl`.`violationType`;";
+    
+        $results = $conn->query($query);
+    
+        if($results->num_rows > 0){  
+            while ($row = $results->fetch_assoc()) {
+                $violationTypeOverallCounts["violationType"][] = $row['violationType'];
+                $violationTypeOverallCounts["count"][] = $row['count'];
+            }
+        }
+        echo json_encode($violationTypeOverallCounts);
+        $conn->close();
+    }
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
@@ -274,7 +403,6 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()){
-
             if($row['violationType'] == "Minor" && $row['active'] =='1'){
                 $minorCount++;
             }else if($row['violationType'] == "Major" && $row['active'] =='1'){

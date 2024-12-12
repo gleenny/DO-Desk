@@ -72,10 +72,10 @@
 
             <div class="activity-wrapper">
               <div class="activity-info">
-                <div class="subtitle">Minor Violation:</div>
-                <div class="subtitle-count" id="minorCount">5</div>
-                <div class="subtitle">Major Violation:</div>
-                <div class="subtitle-count dist" id="majorCount">45</div>
+                <div class="subtitle">Resolved Violation:</div>
+                <div class="subtitle-count" id="violationResolve">5</div>
+                <div class="subtitle">Unresolved Violation:</div>
+                <div class="subtitle-count dist" id="violationUnresolve">45</div>
               </div>
               <div class="activity-chart">
                 <canvas id="doughnutViolation" width="250" height="250"></canvas>
@@ -92,9 +92,9 @@
             <div class="activity-info">
             <div class="title">Sanction Status</div>
               <div class="subtitle">Resolved Status:</div>
-              <div class="subtitle-count" id="minorCount">5</div>
+              <div class="subtitle-count" id="sanctionResolved">5</div>
               <div class="subtitle">Unresolved Status:</div>
-              <div class="subtitle-count dist" id="majorCount">45</div>
+              <div class="subtitle-count dist" id="sanctionUnresolved">45</div>
             </div>
             <div class="activity-chart">
               <canvas id="doughnutSanction" width="200" height="200"></canvas>
@@ -106,7 +106,6 @@
           <div class="title">Sanction Bar Graph</div>
           <canvas id="barchartSanction" width="300" height="100"></canvas>
         </div>
-       
       </div>
 
 
@@ -147,11 +146,8 @@
         </div>
     </div>
 
-    <script src="../JAVASCRIPT/DODeskDashboardJS.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
-    <script src="../Charts/chart1.js"></script>
-    <script src="../Charts/chart2.js"></script>
-
+    <script src="../JAVASCRIPT/DODeskDashboardJS.js"></script>
 </body>
 
 </html>
