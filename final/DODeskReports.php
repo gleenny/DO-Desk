@@ -82,7 +82,7 @@
           <path d="M16 2v4M8 2v4M3 10h18" />
           </svg>
           
-          <span class="today">Transcript files</span>        </div>
+          <span class="today">Transcript files</span> </div>
         
         </div>
         <div class="cards card">

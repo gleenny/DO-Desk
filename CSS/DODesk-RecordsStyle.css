@@ -503,50 +503,66 @@ table th {
   width: 30%;
   height: 60%; /* Could be more or less, depending on screen size */
 }
+.form1-row, .form2-row {
+  display: flex;
+  gap: 10px; /* Space between columns */
+}
+
+.form1-group {
+  width: auto;
+  max-width: 200px;
+  display: flex;
+  flex-direction: column; /* Label and input arranged vertically */
+  flex: 3; /* Make each group take equal space */
+}
 }
  @media (max-width: 1639px) 
  {
- 
-  .form1{
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Space between form rows */
-  }
-  
-  .form1-row, .form2-row {
-    display: flex;
-    gap: 10px; /* Space between columns */
-  }
-
   .form1-group {
-    width: 750px;
+    width: auto;
+    max-width: 190px;
     display: flex;
     flex-direction: column; /* Label and input arranged vertically */
     flex: 3; /* Make each group take equal space */
   }
+
+
   }
   @media (max-width: 1440px) 
   {
+    .form1-group {
+      width: auto;
+      max-width: 150px;
+      display: flex;
+      flex-direction: column; /* Label and input arranged vertically */
+      flex: 3; /* Make each group take equal space */
+    }
+ 
     .form1-group {
       width: 650px;
           }
     }
 @media (max-width: 1024px) 
 {
-  .modal-content {
-    margin: 15% auto; /* 15% from the top and centered */
-    width: 45%;
-    height: 60%; /* Could be more or less, depending on screen size */
-  }
- .cards-wrapper {
-   height: 300px;
-   width: 70px;
- }
- .textType, .searchbutton{
-   font-size: 10px;
- }
- .form1-group {
-  width: 450px;
+    .form1{
+      display: flex;
+      flex-direction: column;
+      gap: 10px; /* Space between form rows */
+    }
+    .modal-content {
+      margin: 15% auto; /* 15% from the top and centered */
+      width: 45%;
+      height: 60%; /* Could be more or less, depending on screen size */
+      }
+      .cards-wrapper {
+        height: 300px;
+        width: 70px;
+      }
+      .textType, .searchbutton{
+        font-size: 10px;
+      }
+      .form1-group {
+        width: 450px;
       }
       .form2{
         display: flex;
@@ -570,6 +586,12 @@ table th {
 
 @media (max-width: 768px) 
  {
+  .form1-group {
+    width: 750px;
+    display: flex;
+    flex-direction: column; /* Label and input arranged vertically */
+    flex: 3; /* Make each group take equal space */
+  }
   .form1-group {
     width: 320px;
         }

@@ -63,6 +63,8 @@
         <div class="user-box first-box" style="--delay: .6s">
             <!--searching violations-->
             <div class="form-container">
+            <p>Search data violations</p>
+
                 <form class="form2" id="searchForm">
                     <div class="form2-row"><!--first row-->
                         <div class="form2-group"><!--column 1-->
@@ -101,19 +103,40 @@
                         </div>
                     </div>
                     <div class="form2-row"><!--fourth row-->
-                        <div class="form2-group"><!--column 1-->
-                          <input class="textType" type="date" name="searchDate" id="searchDate" placeholder="Date"><br>
-                        </div>
+                        
                         
                     </div>
                     <!--Outside element-->
                     <button type="submit" id="searchbtn" class="searchbutton">Search</button>
                 </form>
-                <input class="textType" type="date" name="searchUntilDate" id="searchUntilDate" placeholder="untilDate">
             </div>
            
         </div>  
-        <!--Second Flow-->
+        <!--date filter-->
+        <div class="user-box first-box" style="--delay: .6s">
+            <!--searching violations-->
+            <div class="form-container">
+            <p>Date Filter</p>
+                <form class="form2" id="searchForm">
+                    <div class="form2-row"><!--first row-->
+                        <div class="form2-group"><!--column 1-->
+                          <!-- Date Search -->
+                          <input class="textType" type="date" name="searchDate" id="searchDate" placeholder="Date"><br>
+                        </div>
+                    </div>
+                      -
+                    <div class="form2-row"><!--second row-->
+                        <div class="form2-group"><!--column 1-->
+                          <!--Until Date-->
+                        <input class="textType" type="date" name="searchUntilDate" id="searchUntilDate" placeholder="untilDate">
+                        </div>
+                    </div>
+                    <!--Outside element-->
+                </form>
+            </div>
+           
+        </div>  
+        <!--Second Flow modals-->
         <div class="user-box second-box">
           <!-- Trigger/Open The Modal -->
            <div class="modalSection" style="--delay: .7s">
@@ -236,7 +259,7 @@
             </div>
        </div>
       
-        <!--Third Flow-->
+        <!--Third Flow table-->
         <div class="user-box third-box">
           <!--List Module-->
           <div class="cards-wrapper" style="--delay: .9s">
@@ -279,6 +302,7 @@
         </div>
         <br>
         <br>
+
         <div class="user-box fourth-box" style="--delay: .8s">
           <p style="font-weight: bold;">Sanction Records</p>
         </div>
@@ -287,6 +311,8 @@
           <div class="user-box fifth-box" style="--delay: .9s">
             <!--searching violations-->
             <div class="form-container">
+            <p>Search information from the violation table</p>
+
               <form class="form1" id="searchSanctionForm">
                 <div class="form1-row"><!--first row-->
                   <div class="form1-group"><!--column 1-->
@@ -334,12 +360,34 @@
                 
                 <button type="submit" id="searchbtn" class="searchbutton">Search</button>  
               </form>
-              <input class="textType" type="date" name="searchSanDate" id="searchSanDate" placeholder="Date">
-              <input class="textType" type="date" name="searchSanUntilDate" id="searchSanUntilDate" placeholder="untilDate">
+              
             </div>
             
           </div>
-
+          <!--date filter-->
+        <div class="user-box first-box" style="--delay: .6s">
+            <!--searching violations-->
+            <div class="form-container">
+            <p>Date Filter</p>
+                <form class="form2" id="searchForm">
+                    <div class="form2-row"><!--first row-->
+                        <div class="form2-group"><!--column 1-->
+                          <!-- Date Search -->
+                          <input class="textType" type="date" name="searchSanDate" id="searchSanDate" placeholder="Date">
+                          </div>
+                    </div>
+                      -
+                    <div class="form2-row"><!--second row-->
+                        <div class="form2-group"><!--column 1-->
+                          <!--Until Date-->
+                          <input class="textType" type="date" name="searchSanUntilDate" id="searchSanUntilDate" placeholder="untilDate">
+                          </div>
+                    </div>
+                    <!--Outside element-->
+                </form>
+            </div>
+           
+        </div>  
           <!--modal buttons for sanction-->
           <div class="user-box fifth-box">
             <!--button for new sanction-->

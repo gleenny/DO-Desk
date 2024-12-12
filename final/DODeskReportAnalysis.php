@@ -63,17 +63,15 @@
       </div>
 
       <div class="user-box third-box" style="--delay: 1s">
-        <select class="textType" name="searchYear" id="searchYear" value=" ">
-        </select>      
-      </div>
-
-      <div class="user-box third-box" style="--delay: 1s">
         <p style="font-weight: bold; color: var(--title-text);"> Violation Reports</p>       
       </div>
 
       <div class="user-box second-box">            
           <div class="graph card" style="--delay: 1s">
             <div class="title">Violations by Course</div>
+            <p class="subtitle">Select a year to view its analysis.</p>
+            <select class="filterSearch" name="searchYear" id="searchYear" value=" ">
+            </select>      
             <canvas id="barchartCourseViolation" width="300" height="100"></canvas>
           </div>
           <div class="graph card" style="--delay: 1s">
@@ -85,6 +83,7 @@
       <div class="user-box second-box" style="--delay: 1s">
         <div class="activity card" style="--delay: 1s">
             <div class="title">Violations Type Overall</div>
+            <p class="subtitle">Showcasing the overall minor and major violations.</p>
 
             <div class="activity-wrapper">
               <div class="activity-info">
@@ -100,6 +99,7 @@
           </div>
           <div class="activity card" style="--delay: 1s">
             <div class="title">Violations Resolve Overall</div>
+            <p class="subtitle">Showcasing the overall resolved and unresolved violations.</p>
 
             <div class="activity-wrapper">
               <div class="activity-info">
