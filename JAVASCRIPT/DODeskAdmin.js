@@ -92,6 +92,7 @@ searchAudit.addEventListener('submit', function (e){
   formData.append("logID", document.querySelector("#searchAuditLOGID").value);
   formData.append("name", document.querySelector("#searchAuditName").value);
   formData.append("date", document.querySelector("#searchAuditDate").value);
+  formData.append("untilDate", document.querySelector("#searchAuditUntilDate").value);
   formData.append("process", document.querySelector("#searchAuditProcess").value);
   formData.append("note", document.querySelector("#searchAuditNote").value);
   formData.append("requestType", "searchAudit");
