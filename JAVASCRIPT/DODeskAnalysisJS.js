@@ -43,8 +43,10 @@ function barchartCourseViolation(){
         body: formData
     }).then((Response) => Response.json())
     .then((json) => { 
+        let newTitle = 'Violation per courses in ' + chosenYear
         let newData = [json['count'][0], json['count'][1], json['count'][2], json['count'][3], json['count'][4], json['count'][5], json['count'][6], json['count'][7], json['count'][8], json['count'][9]];
         barchartViolationCourse.data.datasets[0].data = newData;
+        barchartViolationCourse.data.datasets[0].label = newTitle;
         barchartViolationCourse.update();
     });
 }
@@ -58,8 +60,10 @@ function barchartTop5Violation(){
         body: formData
     }).then((Response) => Response.json())
     .then((json) => { 
+        let newTitle = 'Top 5 Violations in ' + chosenYear
         let newData = [json['count'][0], json['count'][1], json['count'][2], json['count'][3], json['count'][4]];
         let newLabel = [json['offense'][0], json['offense'][1], json['offense'][2], json['offense'][3], json['offense'][4]]
+        barchartViolationTop5.data.datasets[0].label = newTitle;
         barchartViolationTop5.data.datasets[0].data = newData;
         barchartViolationTop5.data.labels = newLabel;
         barchartViolationTop5.update();
@@ -75,8 +79,10 @@ function barchartYearlySanction(){
         body: formData
     }).then((Response) => Response.json())
     .then((json) => { 
+        let newTitle = 'Sanctions in ' + chosenYear
         let newData = [json['count'][0], json['count'][1], json['count'][2], json['count'][3], json['count'][4]];
         let newLabel = [json['sanction'][0], json['sanction'][1], json['sanction'][2], json['sanction'][3], json['sanction'][4]]
+        barchartSanction.data.datasets[0].label = newTitle;
         barchartSanction.data.datasets[0].data = newData;
         barchartSanction.data.labels = newLabel;
         barchartSanction.update();
@@ -222,7 +228,7 @@ const sanction = document.getElementById('barchartSanction').getContext('2d'); /
             labels: ['violation 1', 'violation 2', 'violation 3', 'violation 4', 'violation 5'],
             datasets: [
                 {
-                    label: 'Pageviews by Violations',
+                    label: 'Sanctions in ' + chosenYear,
                     data: [1, 2, 3, 4, 5],
                     backgroundColor: 'rgba(130, 151, 255, 0.5)',
                     borderColor: 'rgba(130, 151, 255)',
@@ -246,7 +252,7 @@ const violationTop5 = document.getElementById('barchartTop5Violation').getContex
             labels: ['violation 1', 'violation 2', 'violation 3', 'violation 4', 'violation 5'],
             datasets: [
                 {
-                    label: 'Pageviews by Violations',
+                    label: 'Top 5 violations in ' + chosenYear,
                     data: [1, 2, 3, 4, 5],
                     backgroundColor: 'rgba(130, 151, 255, 0.5)',
                     borderColor: 'rgba(130, 151, 255)',
