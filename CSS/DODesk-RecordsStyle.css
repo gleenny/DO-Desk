@@ -252,9 +252,9 @@ margin: 0 16px;
   flex-grow: 1;
   max-height: 100%;
   max-width: 100%;
-  height: 600px;
   width: 100%;
   overflow-y: scroll;
+  overflow-x: scroll;
 }
 .card .title {
   font-size: 16px;
@@ -290,7 +290,6 @@ th + th {
 }
 table {
   overflow-y: scroll; 
-  white-space: nowrap;
   border-collapse: collapse;
   text-align: left;
   padding-left: 10px;

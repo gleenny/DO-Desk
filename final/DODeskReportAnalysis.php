@@ -81,41 +81,44 @@
             <canvas id="barchartTop5Violation" width="300" height="100"></canvas>
           </div>
       </div>
-
-      <div class="user-box second-box" style="--delay: 1s">
-        <div class="activity card" style="--delay: 1s">
-            <div class="title">Violations Type Overall</div>
-            <p class="subtitle">Showcasing the overall minor and major violations.</p>
-
-            <div class="activity-wrapper">
-              <div class="activity-info">
-              <div class="subtitle">Minor violation:</div>
-                <div class="subtitle-count" id="violationMinor">5</div>
-                <div class="subtitle">Major violation:</div>
-                <div class="subtitle-count dist" id="violationMajor">45</div>
-              </div>
-              <div class="activity-chart">
-                <canvas id="doughnutViolationCaseOverall" width="250" height="250"></canvas>
-              </div>
-            </div>
-          </div>
+      <div class="centerlize">
+        <div class="user-box second-box" style="--delay: 1s">
           <div class="activity card" style="--delay: 1s">
-            <div class="title">Violations Resolve Overall</div>
-            <p class="subtitle">Showcasing the overall resolved and unresolved violations.</p>
+              <div class="title">Violations Type Overall</div>
+              <p class="subtitle">Showcasing the overall minor and major violations.</p>
 
-            <div class="activity-wrapper">
-              <div class="activity-info">
-              <div class="subtitle">Resolved Violation:</div>
-                <div class="subtitle-count" id="violationResolve">5</div>
-                <div class="subtitle">Unresolved Violation:</div>
-                <div class="subtitle-count dist" id="violationUnresolve">45</div>
+              <div class="activity-wrapper">
+                <div class="activity-info">
+                  <div class="subtitle">Minor violation:</div>
+                  <div class="subtitle-count" id="violationMinor">5</div>
+                  <div class="subtitle">Major violation:</div>
+                  <div class="subtitle-count dist" id="violationMajor">45</div>
+                </div>
+                <div class="activity-chart">
+                  <canvas id="doughnutViolationCaseOverall" width="200" height="200"></canvas>
+                </div>
               </div>
-              <div class="activity-chart">
-                <canvas id="doughnutViolationResolveOveralls" width="250" height="250"></canvas>
-              </div>
-            </div>
           </div>
+
+          <div class="activity card" style="--delay: 1s">
+              <div class="title">Violations Resolve Overall</div>
+              <p class="subtitle">Showcasing the overall resolved and unresolved violations.</p>
+
+              <div class="activity-wrapper">
+                <div class="activity-info">
+                  <div class="subtitle">Resolved Violation:</div>
+                  <div class="subtitle-count" id="violationResolve">5</div>
+                  <div class="subtitle">Unresolved Violation:</div>
+                  <div class="subtitle-count dist" id="violationUnresolve">45</div>
+                </div>
+                <div class="activity-chart">
+                  <canvas id="doughnutViolationResolveOveralls" width="200" height="200"></canvas>
+                </div>
+              </div>
+          </div>
+        </div>
       </div>
+
 
       <div class="user-box third-box" style="--delay: 1s">
         <p style="font-weight: bold; color: var(--title-text);"> Sanction Reports</p>       
