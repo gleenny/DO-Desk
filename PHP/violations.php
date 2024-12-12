@@ -114,9 +114,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $searchResults["lastName"][] = $row['lastName'];
                 $searchResults["course"][] = $row['course'];
                 $searchResults["violationDate"][] = $row['violationDate'];
-                //not in use
-                $searchResults["offenseID"][] = $row['offenseID'];
-                $searchResults["personID"][] = $row['personID'];
+            }
+        }
+        for($i = 0; $i < count($searchResults["violationID"]); $i++){
+            $vioID = $searchResults['violationID'][$i];
+            $queryHandled = "SELECT `audittbl`.`userID`, `audittbl`.`process`, `audittbl`.`note`, `accounttbl`.`userID`, `usertbl`.`lastName`
+                            FROM `audittbl` 
+                            LEFT JOIN `accounttbl` ON `audittbl`.`userID` = `accounttbl`.`userID` 
+                            LEFT JOIN `usertbl` ON `accounttbl`.`personID` = `usertbl`.`personID`
+                            WHERE `audittbl`.`note` LIKE '%Violation ID: $vioID - changed into Resolve%';";
+    
+            $handleResult = $conn->query($queryHandled);
+    
+            if ($handleResult->num_rows > 0) {
+                while($row = $handleResult->fetch_assoc()){
+                    $searchResults["handledBy"][] = $row['lastName'];
+                    break;
+                }
+            }else{
+                $cases["handledBy"][] = "N/A";
             }
         }
         echo json_encode($searchResults);

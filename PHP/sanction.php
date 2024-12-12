@@ -126,6 +126,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $sanctions["note"][] = $row['note'];
             }
         }
+        for($i = 0; $i < count($sanctions["sanctionID"]); $i++){
+            $sanID = $sanctions['sanctionID'][$i];
+            $queryHandled = "SELECT `audittbl`.`userID`, `audittbl`.`process`, `audittbl`.`note`, `accounttbl`.`userID`, `usertbl`.`lastName`
+                            FROM `audittbl` 
+                            LEFT JOIN `accounttbl` ON `audittbl`.`userID` = `accounttbl`.`userID` 
+                            LEFT JOIN `usertbl` ON `accounttbl`.`personID` = `usertbl`.`personID`
+                            WHERE `audittbl`.`note` LIKE '%Sanction ID: $sanID - changed into 0%';";
+    
+            $handleResult = $conn->query($queryHandled);
+    
+            if ($handleResult->num_rows > 0) {
+                while($row = $handleResult->fetch_assoc()){
+                    $sanctions["handledBy"][] = $row['lastName'];
+                    break;
+                }
+            }else{
+                $sanctions["handledBy"][] = "N/A";
+            }
+        }   
         echo json_encode($sanctions);
 
         $conn->close();
