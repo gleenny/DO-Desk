@@ -61,6 +61,9 @@
       <div class="user-box second-box">
           <p style="--delay: .5s; color: var(--title-text); font-weight: bold; font-size: 2rem;">Welcome back! Sir <?php echo $_SESSION['firstName']. " ". $_SESSION['lastName']; ?> </p>
       </div>
+      <div class="user-box second-box" style="--delay: 1s">
+        <p>Violations Graph</p>
+      </div>
 
       <div class="user-box second-box">            
           <div class="graph card" style="--delay: 1s">
@@ -83,6 +86,10 @@
             </div>
           </div>
       </div>
+      <div class="user-box second-box" style="--delay: 1s">
+        <p>Sanction Graph</p>
+      </div>
+
 
       <div class="user-box third-box">
         <div class="activity card" style="--delay: 1s">
@@ -107,7 +114,9 @@
           <canvas id="barchartSanction" width="300" height="100"></canvas>
         </div>
       </div>
-
+      <div class="user-box second-box" style="--delay: 1s">
+        <p>Recent List of Violation Table</p>
+      </div>
 
       <!--2nd Card-->
       <div class="user-box fourt-box">
