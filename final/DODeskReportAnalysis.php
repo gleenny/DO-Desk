@@ -61,7 +61,11 @@
       <div class="user-box first-box" style="--delay: .4s">
         <p style="font-weight: bold; color: var(--title-text); font-size: 25px;">Reports analysis</p>
       </div>
-
+      <div class="user-box second-box" style="--delay: 1s;">
+        <p class="subtitle">Select a year to view its analysis for violation and sanction graphs.</p>
+        <select class="filterSearch" name="searchYear" id="searchYear" value=" ">
+        </select> 
+      </div>
       <div class="user-box third-box" style="--delay: 1s">
         <p style="font-weight: bold; color: var(--title-text);"> Violation Reports</p>       
       </div>
@@ -69,9 +73,7 @@
       <div class="user-box second-box">            
           <div class="graph card" style="--delay: 1s">
             <div class="title">Violations by Course</div>
-            <p class="subtitle">Select a year to view its analysis.</p>
-            <select class="filterSearch" name="searchYear" id="searchYear" value=" ">
-            </select>      
+                 
             <canvas id="barchartCourseViolation" width="300" height="100"></canvas>
           </div>
           <div class="graph card" style="--delay: 1s">
